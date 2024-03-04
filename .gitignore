@@ -4,3 +4,9 @@
 /Traning/Nagao/Sample/Game/GameProject.exp
 /Traning/Nagao/Sample/Game/GameProject.lib
 /Traning/Nagao/Sample/Game/GameProject.pdb
+/Traning/Akuta/Sample/Game/*.exp
+/Traning/Akuta/Sample/Game/*.lib
+/Traning/Akuta/Sample/Game/*.pdb
+/Traning/Akuta/Sample/Project/Debug
+/Traning/Akuta/Sample/Project/.vs
+/Traning/Akuta/Sample/Project/GameProject/*.user

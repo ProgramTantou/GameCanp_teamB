@@ -11,9 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Slime.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Slime.h" />
     <ClInclude Include="Global.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

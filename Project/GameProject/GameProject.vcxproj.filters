@@ -5,10 +5,19 @@
     <ClCompile Include="Base\Base.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Title.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Casol.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
       <UniqueIdentifier>{92d21a0f-3d8d-4a8b-8c39-31fd384788c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{a707ae22-fe1c-41de-8f05-6889ca57e513}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -16,5 +25,11 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Game\Title.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Casol.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

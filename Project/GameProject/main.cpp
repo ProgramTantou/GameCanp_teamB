@@ -1,4 +1,6 @@
 #include "Base/Base.h"
+#include "Game/Title.h"
+#include "Game/Casol.h"
 //--------------------------------------------
 //ƒOƒ[ƒoƒ‹•Ï”—Ìˆæ
 //--------------------------------------------
@@ -73,8 +75,8 @@ void Init(void)
 	//-----------------------------------------------------
 
 
-
-
+	Base::Add(new Title(CVector2D(950, 600)));
+	Base::Add(new Casol(CVector2D(950, 600)));
 
 
 

@@ -13,10 +13,11 @@ private:
 public:
 	Player(const CVector3D& p );
 	
-	//const CVector2D& GetPos()const;
+	// CVector2D& GetPos()const;
 
 	//void SetPos(const CVector2D& pos);
 	void Update();
+	void Move();
 	void Draw();
 	void Collision(Base* b);
 

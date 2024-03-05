@@ -16,7 +16,7 @@ void GameOver::Update() {
 }
 
 void GameOver::Draw() {
-	m_img.SetPos((m_pos));
+	
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
 }

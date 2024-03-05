@@ -1,6 +1,6 @@
 #include "light.h"
 
-light::light(const CVector2D& p) :Base(eType_Title) {
+light::light(const CVector2D& p) :Base(eType_UI) {
 	m_img.Load("Image/ÉJÅ[É\Éã.png");
 	m_rad = 15;
 	m_img.SetSize(200, 200);
@@ -45,7 +45,8 @@ void light::Update() {
 }
 
 void light::Draw() {
-	m_img.SetPos((m_pos));
-	m_img.SetPos(GetScreenPos(m_pos));
+	m_img.SetPos(m_pos.x, m_pos.y);
+
+	
 	m_img.Draw();
 }

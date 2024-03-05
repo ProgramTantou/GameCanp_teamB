@@ -28,7 +28,7 @@ void Title::Update() {
 }
 
 void Title::Draw() {
-	m_img.SetPos((m_pos));
-	m_img.SetPos(GetScreenPos(m_pos));
+	m_img.SetPos(m_pos.x,m_pos.y);
+	
 	m_img.Draw();
 }

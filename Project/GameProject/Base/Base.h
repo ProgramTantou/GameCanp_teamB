@@ -13,7 +13,6 @@ enum {
     eType_Player_Attack,
     eType_Enemy_Attack,
     eType_Effect,
-    eType_UI,
     eType_Scene,
     eType_Screen,//ゲームオーバーなどのスクリーンのタイプ名。
     eType_UI,//画面のUI。

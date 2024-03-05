@@ -1,6 +1,6 @@
 #include "Casol.h"
 
-Casol::Casol(const CVector2D& p) :Base(eType_Title) {
+Casol::Casol(const CVector2D& p) :Base(eType_Screen) {
 	m_img.Load("Image/ƒJ[ƒ\ƒ‹.png");
 	m_rad = 15;
 	m_img.SetSize(200, 200);
@@ -17,24 +17,30 @@ void Casol::Update() {
 			m_pos.y += 200;
 			select_mode += 1;
 		}
-		if (select_mode >= 4)
+	}
+	else if (select_mode >= 4)
+	{
+		if (PUSH(CInput::eDown))
 		{
 			select_mode = 1;
 			m_pos.y = 600;
 		}
 	}
 
-	if (select_mode > 1)
+	if (select_mode > 0)
 	{
 		if (PUSH(CInput::eUp))
 		{
 			m_pos.y -= 200;
 			select_mode -= 1;
 		}
-		if (select_mode <= 0)
+		if (select_mode <= 1)
 		{
-			select_mode = 4;
-			m_pos.y = 200;
+			if (PUSH(CInput::eUp))
+			{
+				select_mode = 4;
+				m_pos.y = 1000;
+			}
 		}
 	}
 	

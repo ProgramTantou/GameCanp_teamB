@@ -1,7 +1,7 @@
 #include "Title.h"
 
-Title::Title(const CVector2D& p) :Base(eType_Title) {
-	m_img.Load("Image/タイトルカッコ仮.png");
+Title::Title(const CVector2D& p) :Base(eType_Screen) {
+	m_img.Load("Image/タイトル画面.png");
 	m_rad = 15;
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);

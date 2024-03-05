@@ -76,8 +76,8 @@ void Init(void)
 	//-----------------------------------------------------
 
 
-	Base::Add(new Title(CVector2D(950, 600)));
-	Base::Add(new Casol(CVector2D(950, 600)));
+	Base::Add(new Title(CVector2D(950, 300)));
+	Base::Add(new Casol(CVector2D(1250, 600)));
 	Base::Add(new light(CVector2D(950, 600)));
 
 

@@ -32,10 +32,10 @@ void Init(void)
 	CFPS::Init();
 	//É{É^ÉìÇÃê›íË
 	CInput::Init();
-	CInput::SetButton(0, CInput::eButton1, 'Z');
-	CInput::SetButton(0, CInput::eButton2, 'X');
-	CInput::SetButton(0, CInput::eButton3, 'C');
-	CInput::SetButton(0, CInput::eButton4, 'V');
+	CInput::SetButton(0, CInput::eButton1, 'W');
+	CInput::SetButton(0, CInput::eButton2, 'A');
+	CInput::SetButton(0, CInput::eButton3, 'S');
+	CInput::SetButton(0, CInput::eButton4, 'D');
 	CInput::SetButton(0, CInput::eButton5, VK_SPACE);
 	CInput::SetButton(0, CInput::eButton10, VK_RETURN);
 	CInput::SetButton(0, CInput::eUp, VK_UP);

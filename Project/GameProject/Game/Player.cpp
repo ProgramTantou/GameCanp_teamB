@@ -18,18 +18,18 @@ void Player::Move() {
 	
 	bool isMove = false;
 	int move_speed = 2;
-	//W
-	if (HOLD(CInput::eButton1)) {
-		m_pos.z += move_speed;
+	//
+	/*if (HOLD(CInput::eButton1)) {
+		m_pos.y += move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
-	//S
+	//
 	else if (HOLD(CInput::eButton2)) {
-		m_pos.z -= move_speed;
+		m_pos.y -= move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
-	}
+	}*/
 	//A
 	if (HOLD(CInput::eButton3)) {
 		m_pos.x -= move_speed;
@@ -42,7 +42,16 @@ void Player::Move() {
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
-		
+	if (HOLD(CInput::eUp)) {
+		m_pos.z += move_speed;
+		m_img.ChangeAnimation(0);
+		isMove = true;
+	}
+	else if (HOLD(CInput::eDown)) {
+		m_pos.z -= move_speed;
+		m_img.ChangeAnimation(0);
+		isMove = true;
+	}
 
 }
 

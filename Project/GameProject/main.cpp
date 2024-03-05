@@ -3,6 +3,7 @@
 #include "Game/Casol.h"
 #include "Game/light.h"
 #include"Game/Player.h"
+#include "Game/Enemy.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -60,7 +61,7 @@ void Init(void)
 	//-----------------------------------------------------
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/歩行１.png", player_anim_data, 512, 512));
-	//ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 256, 256));
+	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/デンキウサギ.png", enemy_anim_data, 512, 512));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
@@ -80,7 +81,7 @@ void Init(void)
 	//Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new light(CVector2D(950, 600)));
 	Base::Add(new Player(CVector2D(300, 750)));
-
+	Base::Add(new Enemy(CVector2D(300,500)));
 
 
 

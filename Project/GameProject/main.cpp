@@ -1,13 +1,10 @@
 #include "Base/Base.h"
 #include "Game/Title.h"
 #include "Game/Casol.h"
+#include "Game/light.h"
 //--------------------------------------------
 //ƒOƒ[ƒoƒ‹•Ï”—Ìˆæ
 //--------------------------------------------
-
-
-
-
 
 
 void MainLoop(void) {
@@ -22,6 +19,10 @@ void MainLoop(void) {
 
 }
 void Init(void)
+
+
+
+
 {
 
 	CFPS::SetFPS(60);
@@ -77,6 +78,7 @@ void Init(void)
 
 	Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new Casol(CVector2D(950, 600)));
+	Base::Add(new light(CVector2D(950, 600)));
 
 
 

@@ -27,13 +27,13 @@ public:
     //オブジェクトの種類
     int m_type;
     //座標データ
-    CVector2D m_pos;
+    CVector3D m_pos;
     //過去の位置
-    CVector2D m_pos_old;
+    CVector3D m_pos_old;
     //半径
     float m_rad;
     //移動ベクトル
-    CVector2D m_vec;
+    CVector3D m_vec;
 
     //矩形
     CRect   m_rect;

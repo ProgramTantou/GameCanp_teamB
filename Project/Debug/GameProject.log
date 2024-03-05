@@ -1,11 +1,69 @@
-﻿  light.cpp
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\Game\light.cpp(16,13): error C2065: 'Point': 定義されていない識別子です。
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\Game\light.cpp(16,20): error C2065: 'p': 定義されていない識別子です。
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\Game\light.cpp(16,23): error C2062: 型 'double' は不要です。
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\Game\light.cpp(17,1): error C2143: 構文エラー: ';' が '{' の前にありません。
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\Game\light.cpp(17,1): error C2447: '{': 対応する関数ヘッダーがありません (旧形式の仮引数リスト?)
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\Game\light.cpp(40,3): error C3861: 'rotate': 識別子が見つかりませんでした
+﻿  Base.cpp
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(4,42): error C2661: 'CVector3D::CVector3D': 2 個の引数を伴うオーバーロードされた関数はありません。
+  C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(4,42):
+  引数リスト '(int, int)' を一致させようとしているとき
+  
+  AnimData.cpp
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(26,17): error C2440: '初期化中': 'CVector3D' から 'CVector2D' に変換できません。
+  C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(26,17):
+  'CVector2D::CVector2D': オーバーロードされた関数ですべての引数の型を変換できませんでした
+  	C:\Gamecamp2024\GameCanp_teamB\Project\GLLibrary\GLLibrary\CVector.h(24,2):
+  	'CVector2D::CVector2D(const CVector2D &)' の可能性があります
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(26,17):
+  		'CVector2D::CVector2D(const CVector2D &)': 引数 1 を 'CVector3D' から 'const CVector2D &' へ変換できません。
+  			C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(26,29):
+  			理由: 'CVector3D' から 'const CVector2D' へは変換できません。
+  			C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(26,29):
+  			この変換を実行可能なユーザー定義変換演算子がないか、または演算子を呼び出せません。
+  	C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Base\Base.cpp(26,17):
+  	引数リスト '(CVector3D)' を一致させようとしているとき
+  
+  BackGround.cpp
+  Boss.cpp
+  Casol.cpp
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Casol.cpp(44,7): error C2665: 'CImage::SetPos': オーバーロードされた関数ですべての引数の型を変換できませんでした
+  C:\Gamecamp2024\GameCanp_teamB\Project\GLLibrary\GLLibrary\CImage.h(91,7):
+  'void CImage::SetPos(const CVector2D &)' の可能性があります
+  	C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Casol.cpp(44,7):
+  	'void CImage::SetPos(const CVector2D &)': 引数 1 を 'CVector3D' から 'const CVector2D &' へ変換できません。
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Casol.cpp(44,16):
+  		理由: 'CVector3D' から 'const CVector2D' へは変換できません。
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Casol.cpp(44,16):
+  		この変換を実行可能なユーザー定義変換演算子がないか、または演算子を呼び出せません。
+  C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Casol.cpp(44,7):
+  引数リスト '(CVector3D)' を一致させようとしているとき
+  
+  Enemy.cpp
+  GameOver.cpp
+  Osakana.cpp
+  Player.cpp
+  Title.cpp
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Title.cpp(31,7): error C2665: 'CImage::SetPos': オーバーロードされた関数ですべての引数の型を変換できませんでした
+  C:\Gamecamp2024\GameCanp_teamB\Project\GLLibrary\GLLibrary\CImage.h(91,7):
+  'void CImage::SetPos(const CVector2D &)' の可能性があります
+  	C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Title.cpp(31,7):
+  	'void CImage::SetPos(const CVector2D &)': 引数 1 を 'CVector3D' から 'const CVector2D &' へ変換できません。
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Title.cpp(31,16):
+  		理由: 'CVector3D' から 'const CVector2D' へは変換できません。
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Title.cpp(31,16):
+  		この変換を実行可能なユーザー定義変換演算子がないか、または演算子を呼び出せません。
+  C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\Title.cpp(31,7):
+  引数リスト '(CVector3D)' を一致させようとしているとき
+  
+  light.cpp
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\light.cpp(48,7): error C2665: 'CImage::SetPos': オーバーロードされた関数ですべての引数の型を変換できませんでした
+  C:\Gamecamp2024\GameCanp_teamB\Project\GLLibrary\GLLibrary\CImage.h(91,7):
+  'void CImage::SetPos(const CVector2D &)' の可能性があります
+  	C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\light.cpp(48,7):
+  	'void CImage::SetPos(const CVector2D &)': 引数 1 を 'CVector3D' から 'const CVector2D &' へ変換できません。
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\light.cpp(48,16):
+  		理由: 'CVector3D' から 'const CVector2D' へは変換できません。
+  		C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\light.cpp(48,16):
+  		この変換を実行可能なユーザー定義変換演算子がないか、または演算子を呼び出せません。
+  C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\Game\light.cpp(48,7):
+  引数リスト '(CVector3D)' を一致させようとしているとき
+  
   main.cpp
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\main.cpp(106,42): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Gamecanp\GameCanp_teamB\Project\GameProject\main.cpp(106,39): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\main.cpp(107,42): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Gamecamp2024\GameCanp_teamB\Project\GameProject\main.cpp(107,39): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   コードを生成中...

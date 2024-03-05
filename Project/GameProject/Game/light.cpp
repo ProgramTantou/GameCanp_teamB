@@ -13,13 +13,13 @@ light::light(const CVector2D& p) :Base(eType_Title) {
 	}Point;
 }
 
-void rotate(Point* p, double theta)
+/*void rotate(Point* p, double theta)
 {
 	double x = p->x;
 	double y = p->y;
 	p->x = cos(theta) * x - sin(theta) * y;
 	p->y = sin(theta) * x + cos(theta) * y;
-}
+}*/
 
 void light::Update() {
 	typedef struct {
@@ -35,11 +35,11 @@ void light::Update() {
 		{0.0,1.0},
 	};
 	double theta = M_PI / 4;
-	for (int i = 0; i < 4; i++)
+	/*for (int i = 0; i < 4; i++)
 	{
 		rotate(&rect[i], theta);
 		printf("%d:%f,%f\n", i, rect[i].x, rect[i].y);
-	}
+	}*/
 	
 	
 }

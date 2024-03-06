@@ -1,5 +1,6 @@
 #pragma once
-class Field {
+#include "../Base/Base.h"
+class Field : public Base {
 public:
 	//コンストラクタ
 	Field();
@@ -31,7 +32,7 @@ public:
 
 private:
 	CVector2D m_pos;  //フィールドの座標
-	CImage* mp_image; //フィールドの画像
+	CImage mp_image; //フィールドの画像
 	float m_ground_y; //フィールドの当たり判定
 
 protected:

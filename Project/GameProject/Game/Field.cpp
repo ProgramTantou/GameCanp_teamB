@@ -1,20 +1,18 @@
 #include "Field.h"
 
 //コンストラクタ
-Field::Field()
-	:m_pos()
-	,mp_image(nullptr)
+Field::Field() :Base(eType_Field)
+	,m_pos(960.0f,540.0f)
+	//,mp_image(nullptr)
 {
-	//フィールドの画像を読み込み
-	mp_image = CImage::CreateImage("Field.png");
-	mp_image->SetCenter(960.0f,540.0f);
+	mp_image = COPY_RESOURCE("Field", CImage);
+	
 	m_ground_y = 540;
 }
 
 //デストラクタ
 Field::~Field() {
-	//画像データを削除
-	delete mp_image;
+	
 }
 
 //フィールドの座標を取得
@@ -34,13 +32,12 @@ const float Field::GetGroundY(){
 
 //更新処理
 void Field::Update() {
-	//イメージに座標を設定
-	mp_image->SetPos(m_pos);
+	
 }
 
 //描画処理
 void Field::Draw() {
 	float sc;
-	mp_image->Draw();
+	mp_image.Draw();
 	//sc = m_scroll.x
 }

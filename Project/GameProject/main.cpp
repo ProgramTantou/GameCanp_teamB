@@ -9,7 +9,9 @@
 //グローバル変数領域
 //--------------------------------------------
 
-CImage* filedimage = nullptr;
+
+
+
 
 
 void MainLoop(void) {
@@ -22,7 +24,7 @@ void MainLoop(void) {
 	Base::CollisionAll();
 	Base::DrawAll();
 
-
+	
 }
 void Init(void)
 
@@ -66,6 +68,7 @@ void Init(void)
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/walk1.png", player_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Field", CImage::CreateImage("Image/Field_kari.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
@@ -81,13 +84,13 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 
-	filedimage = CImage::CreateImage("Field.png");
+	//filedimage = CImage::CreateImage("Field_kari.png");
 
 	//Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new light(CVector2D(950, 600)));
 	Base::Add(new Player(CVector2D(300, 500)));
 	Base::Add(new Enemy(CVector2D(300,500)));
-	
+	Base::Add(new Field());
 
 
 

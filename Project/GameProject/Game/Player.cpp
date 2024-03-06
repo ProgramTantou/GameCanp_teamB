@@ -25,13 +25,13 @@ void Player::Move() {
 		isMove = true;
 	}
 	//
-	else if (HOLD(CInput::eButton2)) {
+	else if (HOLD(CInput::eButton3)) {
 		m_pos.y -= move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}*/
 	//A
-	if (HOLD(CInput::eButton3)) {
+	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;

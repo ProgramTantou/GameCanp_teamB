@@ -3,9 +3,15 @@
 #include "Game/Casol.h"
 #include "Game/light.h"
 #include"Game/Player.h"
+#include "Game/Enemy.h"
+#include"Game/Field.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
+
+
+
+
 
 
 void MainLoop(void) {
@@ -18,6 +24,7 @@ void MainLoop(void) {
 	Base::CollisionAll();
 	Base::DrawAll();
 
+	
 }
 void Init(void)
 
@@ -31,10 +38,10 @@ void Init(void)
 	CFPS::Init();
 	//ボタンの設定
 	CInput::Init();
-	CInput::SetButton(0, CInput::eButton1, 'Z');
-	CInput::SetButton(0, CInput::eButton2, 'X');
-	CInput::SetButton(0, CInput::eButton3, 'C');
-	CInput::SetButton(0, CInput::eButton4, 'V');
+	CInput::SetButton(0, CInput::eButton1, 'W');
+	CInput::SetButton(0, CInput::eButton2, 'A');
+	CInput::SetButton(0, CInput::eButton3, 'S');
+	CInput::SetButton(0, CInput::eButton4, 'D');
 	CInput::SetButton(0, CInput::eButton5, VK_SPACE);
 	CInput::SetButton(0, CInput::eButton10, VK_RETURN);
 	CInput::SetButton(0, CInput::eUp, VK_UP);
@@ -59,8 +66,9 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/歩行１.png", player_anim_data, 512, 512));
-	//ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 256, 256));
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/walk1.png", player_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Field", CImage::CreateImage("Image/Field.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
@@ -76,11 +84,13 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 
+	
 
 	//Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new light(CVector2D(950, 600)));
-	Base::Add(new Player(CVector2D(300, 750)));
-
+	Base::Add(new Player(CVector2D(300, 500)));
+	Base::Add(new Enemy(CVector2D(300,500)));
+	Base::Add(new Field());
 
 
 

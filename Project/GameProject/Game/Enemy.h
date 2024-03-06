@@ -1,9 +1,10 @@
 #pragma once
 #include "../Base/Base.h"
 
+extern TexAnimData enemy_anim_data[];
 class Enemy : public Base {
 public:
-	Enemy(const CVector2D& p, bool flip);
+	Enemy(const CVector3D& p);
 	void Update();
 	void Draw();
 	void Collision(Base* b);

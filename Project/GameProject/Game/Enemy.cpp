@@ -1,17 +1,27 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const CVector2D& p, bool flip) :Base(eType_Enemy) {
+
+TexAnim enemy_Idle[] = {
+{0,6},
+};
+
+extern TexAnimData enemy_anim_data[] = {
+	{enemy_Idle,sizeof(enemy_Idle) / sizeof(enemy_Idle[0])},
+};
+
+
+Enemy::Enemy(const CVector3D& p) :Base(eType_Enemy) {
 	//画像複製
-	//m_img = COPY_RESOURCE("Enemy.png", CImage);
+	m_img = COPY_RESOURCE("Enemy", CImage);
 	//再生アニメーション
-	//m_img.ChangeAnimation(0);
+	m_img.ChangeAnimation(0);
 	//座標設定
 	m_pos = p;
 	//中心位置設定
 	m_img.SetCenter(0, 0/*???*/);
 	m_rect = CRect(-0, 0, 0, 0);
 	//反転フラグ
-	m_flip = flip;
+	//m_flip = flip;
 }
 
 void Enemy::Update() {

@@ -17,9 +17,9 @@
     <ClCompile Include="Game\Boss.cpp" />
     <ClCompile Include="Game\Casol.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
+    <ClCompile Include="Game\Field.cpp" />
     <ClCompile Include="Game\GameOver.cpp" />
     <ClCompile Include="Game\light.cpp" />
-    <ClCompile Include="Game\Osakana.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Title.cpp" />
     <ClCompile Include="main.cpp" />
@@ -31,9 +31,9 @@
     <ClInclude Include="Game\Boss.h" />
     <ClInclude Include="Game\Casol.h" />
     <ClInclude Include="Game\Enemy.h" />
+    <ClInclude Include="Game\Field.h" />
     <ClInclude Include="Game\GameOver.h" />
     <ClInclude Include="Game\light.h" />
-    <ClInclude Include="Game\Osakana.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Title.h" />
     <ClInclude Include="Global.h" />

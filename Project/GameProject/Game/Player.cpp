@@ -84,6 +84,7 @@ void Player::Move() {
 	}
 	if (PUSH(CInput::eButton6)) {
 		Attack();
+		m_attck_no++;
 	}
 }
 

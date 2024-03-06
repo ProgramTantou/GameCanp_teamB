@@ -6,9 +6,9 @@ class Player :public Base {
 private:
 	CImage m_img;
 	bool m_is_ground;
-
-
-
+	int m_attack_no;
+	//int m_damage_no;
+	//int m_hp;
 
 public:
 	Player(const CVector3D& p );

@@ -27,7 +27,19 @@ Enemy::Enemy(const CVector3D& p) :Base(eType_Enemy) {
 void Enemy::Update() {
 	m_pos;
 	m_pos_old = m_pos;
-
+	//移動量
+	const float move_spped = 2;
+	//移動フラグ
+	bool move_flag = false;
+	//ジャンプ力
+	//const float jump_pow = 12;
+	Base* player = Base::FindObject(eType_Player);
+	//左移動
+	if (player->m_pos.x < m_pos.x - 64) {
+		//移動量を設定
+		m_pos.x += -move_spped;
+		move_flag = true;
+	}
 
 
 	m_img.ChangeAnimation(move_dir);

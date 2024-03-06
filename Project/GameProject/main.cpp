@@ -1,5 +1,5 @@
 #include "Base/Base.h"
-#include "Game/Title.h"
+#include "Title/Title.h"
 #include "Game/Casol.h"
 #include "Game/light.h"
 #include"Game/Player.h"
@@ -92,7 +92,7 @@ void Init(void)
 	//Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new light(CVector2D(950, 600)));
 	Base::Add(new Player(CVector2D(300, 500)));
-	Base::Add(new Enemy(CVector2D(300,500)));
+	Base::Add(new Enemy(CVector2D(1000,500)));
 	Base::Add(new Field());
 
 

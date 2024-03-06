@@ -9,6 +9,8 @@
 //グローバル変数領域
 //--------------------------------------------
 
+CImage* filedimage = nullptr;
+
 
 void MainLoop(void) {
 	//--------------------------------------------------------------
@@ -19,6 +21,7 @@ void MainLoop(void) {
 	Base::UpdateAll();
 	Base::CollisionAll();
 	Base::DrawAll();
+
 
 }
 void Init(void)
@@ -78,6 +81,7 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 
+	filedimage = CImage::CreateImage("Field.png");
 
 	//Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new light(CVector2D(950, 600)));

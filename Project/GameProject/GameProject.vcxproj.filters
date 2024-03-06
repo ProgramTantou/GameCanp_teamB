@@ -5,9 +5,6 @@
     <ClCompile Include="Base\Base.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Title.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Casol.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -35,6 +32,12 @@
     <ClCompile Include="Game\Field.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Title.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -43,15 +46,15 @@
     <Filter Include="Game">
       <UniqueIdentifier>{a707ae22-fe1c-41de-8f05-6889ca57e513}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Title">
+      <UniqueIdentifier>{9cb35df8-dd92-44d4-9ed7-a501479538bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Base.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Global.h" />
-    <ClInclude Include="Game\Title.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Casol.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -78,6 +81,12 @@
     </ClInclude>
     <ClInclude Include="Game\Field.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Title.h">
+      <Filter>Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

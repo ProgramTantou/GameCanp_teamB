@@ -16,6 +16,7 @@ Player::Player(const CVector3D& p) :Base(eType_Player)
 	m_img = COPY_RESOURCE("Player", CImage);
 	m_pos = p;
 	m_img.ChangeAnimation(0);
+	m_img.SetSize(512 / 2, 512 / 2);
 	m_is_ground = true;
 }
 
@@ -24,35 +25,35 @@ void Player::Move() {
 	//移動フラグ
 	bool isMove = false;
 	//移動スピード
-	int move_speed = 2;
+	int move_speed = 4;
 	//ジャンプ力
 	const float jump_pow=15;         
-	//左向きの移動
+	//左向きの移動(A)
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
-	//右向きの移動
+	//右向きの移動(D)
 	else if (HOLD(CInput::eButton4)) {
 		m_pos.x += move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
-	//Z軸（右斜め上）
+	//Z軸（右斜め上）(W)
 	if (HOLD(CInput::eButton1)) {
 		m_pos.z += move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
-	//Z軸（左斜め下）
+	//Z軸（左斜め下）(S)
 	else if (HOLD(CInput::eButton3)) {
 		m_pos.z -= move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
 	
-	//ジャンプ
+	//ジャンプ(スペース)
 	if (m_is_ground && PUSH(CInput::eButton5)) 
 	{
 		m_vec.y = -jump_pow;
@@ -81,10 +82,14 @@ void Player::Move() {
 			m_img.ChangeAnimation(0);
 		}
 	}
+	if (PUSH(CInput::eButton6)) {
+		Attack();
+		m_attck_no++;
+	}
 }
 
 void Player::Attack() {
-
+	
 }
 
 void Player::Update()

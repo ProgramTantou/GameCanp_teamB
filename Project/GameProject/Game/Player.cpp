@@ -1,5 +1,6 @@
 #include"Player.h"
 #include"Field.h"
+//#include"Fish.h"
 
 
 TexAnim Idle[] = {
@@ -16,7 +17,6 @@ Player::Player(const CVector3D& p) :Base(eType_Player)
 	m_pos = p;
 	m_img.ChangeAnimation(0);
 	m_is_ground = true;
-	
 }
 
 void Player::Move() {
@@ -26,9 +26,7 @@ void Player::Move() {
 	//移動スピード
 	int move_speed = 2;
 	//ジャンプ力
-	const float jump_pow=15;
-
-	              
+	const float jump_pow=15;         
 	//左向きの移動
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
@@ -42,13 +40,13 @@ void Player::Move() {
 		isMove = true;
 	}
 	//Z軸（右斜め上）
-	if (HOLD(CInput::eUp)) {
+	if (HOLD(CInput::eButton1)) {
 		m_pos.z += move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
 	}
 	//Z軸（左斜め下）
-	else if (HOLD(CInput::eDown)) {
+	else if (HOLD(CInput::eButton3)) {
 		m_pos.z -= move_speed;
 		m_img.ChangeAnimation(0);
 		isMove = true;
@@ -85,9 +83,14 @@ void Player::Move() {
 	}
 }
 
+void Player::Attack() {
+
+}
+
 void Player::Update()
 {	
 	Move();
+	Attack();
 
 	m_img.UpdateAnimation();
 	if (m_is_ground&&m_vec.y>GRAVITY) 

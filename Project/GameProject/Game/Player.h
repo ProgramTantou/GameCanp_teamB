@@ -18,6 +18,7 @@ public:
 	//void SetPos(const CVector2D& pos);
 	void Update();
 	void Move();
+	void Attack();
 	void Draw();
 	void Collision(Base* b);
 

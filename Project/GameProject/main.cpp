@@ -4,6 +4,7 @@
 #include "Game/light.h"
 #include"Game/Player.h"
 #include "Game/Enemy.h"
+#include"Game/Field.h"
 //--------------------------------------------
 //ƒOƒ[ƒoƒ‹•Ï”—Ìˆæ
 //--------------------------------------------
@@ -80,8 +81,9 @@ void Init(void)
 
 	//Base::Add(new Title(CVector2D(950, 600)));
 	Base::Add(new light(CVector2D(950, 600)));
-	Base::Add(new Player(CVector2D(300, 750)));
+	Base::Add(new Player(CVector2D(300, 500)));
 	Base::Add(new Enemy(CVector2D(300,500)));
+	
 
 
 

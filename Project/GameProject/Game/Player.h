@@ -5,7 +5,7 @@ extern TexAnimData player_anim_data[];
 class Player :public Base {
 private:
 	CImage m_img;
-	
+	bool m_is_ground;
 
 
 

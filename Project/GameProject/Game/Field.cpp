@@ -18,9 +18,9 @@ Field::~Field() {
 }
 
 //フィールドの座標を取得
-const CVector2D& Field::GetPos() const {
+/*const CVector2D& Field::GetPos() const {
 	
-}
+}*/
 
 //フィールドの座標を設定
 void Field::SetPos(const CVector2D& pos) {

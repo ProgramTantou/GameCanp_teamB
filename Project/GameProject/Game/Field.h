@@ -10,7 +10,7 @@ public:
 	/// フィールドの座標を取得
 	/// </summary>
 	/// <returns>フィールドの座標</returns>
-	const CVector2D& GetPos() const;
+	//const CVector2D& GetPos() const;
 
 	/// <summary>
 	/// フィールドの座標を設定

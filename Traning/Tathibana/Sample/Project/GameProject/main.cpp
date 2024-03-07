@@ -2,7 +2,7 @@
 #include"Game/Slime.h"
 #include"Game/ObjectBase.h"
 #include"Game/TsakManager.h"
-
+#include"Game/Shadow.h"
 
 //--------------------------------------------
 //ƒOƒ[ƒoƒ‹•Ï”—Ìˆæ
@@ -60,6 +60,8 @@ void Init(void)
 	//-----------------------------------------------------
 
 	fieldimage = CImage::CreateImage("field.png");
+
+	new Shadow();
 	
 	new Player();
 	

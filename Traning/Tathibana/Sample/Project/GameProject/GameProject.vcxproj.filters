@@ -4,10 +4,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Slime.cpp" />
+    <ClCompile Include="Game\ObjectBase.cpp" />
+    <ClCompile Include="Game\CharaBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Slime.h" />
+    <ClInclude Include="Game\ObjectBase.h" />
+    <ClInclude Include="Game\CharaBase.h" />
   </ItemGroup>
 </Project>

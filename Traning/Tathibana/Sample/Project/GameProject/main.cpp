@@ -1,5 +1,6 @@
 #include"Game/Player.h"
 #include"Game/Slime.h"
+#include"Game/ObjectBase.h"
 
 
 //--------------------------------------------
@@ -28,7 +29,13 @@ void MainLoop(void) {
 	//ƒQ[ƒ€’†‚Í‚±‚ÌŠÖ”_‚ð1•bŠÔ‚É60‰ñŒÄ‚Ño‚µ‚Ä‚¢‚é
 	//--------------------------------------------------------------
 
-	p_player->Update();
+	
+
+
+
+	ObjectBase* player = p_player;
+	player->Update();
+	//p_player->Update();
 	p_slime_A->Update();
 	p_slime_B->Update();
 	p_slime_C->Update();
@@ -90,6 +97,7 @@ void Init(void)
 
 void Release()
 {
+	
 	CLoadThread::ClearInstance();
 	CSound::ClearInstance();
 	CResourceManager::ClearInstance();

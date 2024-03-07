@@ -2,13 +2,13 @@
 
 //コンストラクタ
 Player::Player()
-	:m_pos(CVector2D(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.75f))
+	:CharaBase(CVector2D(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.75f))
 	, mp_animData(nullptr)
 	, mp_image(nullptr)
-	,m_hp(100)
+	
 	
 {
-	
+	m_hp = 200;
 	//プレイヤーのアニメーションデータを生成
 	int frame = 6;
 	mp_animData = new TexAnimData[2]
@@ -55,21 +55,6 @@ Player::~Player()
 }
 
 
-//プレイヤーの座標を取得
-const CVector2D& Player::GetPos() const
-{
-	return m_pos;
-}
-
-
-//プレイヤーの座標を設定
-void Player::SetPos(const CVector2D &pos) 
-{
-	m_pos = pos;
-}
-
-
-
 //更新処理
 void Player::Update()
 {
@@ -103,9 +88,6 @@ void Player::Update()
 		mp_image->ChangeAnimation(1);
 		isMove = true;
 	}
-
-
-
 	//左右キーどちらも押されていない場合
 	if(!isMove)
 	{
@@ -115,6 +97,14 @@ void Player::Update()
 	//イメージに座標を設定して、アニメーションを更新
 	mp_image->SetPos(m_pos);
 	mp_image->UpdateAnimation();
+}
+
+void Player::Death() {
+	//基底クラスの死亡処理を呼び出す
+	CharaBase::Death();
+
+	//死亡アニメーションを再生
+	//再生が終わり次第ゲームオーバー画面を表示
 }
 
 //描画処理

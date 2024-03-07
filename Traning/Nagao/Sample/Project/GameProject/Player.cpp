@@ -1,19 +1,12 @@
 #include "Player.h"
 
-const CVector2D& Player::GetPos()
-{
-	return m_pos;
-}
-
-void Player::SetPos(CVector2D& pos)
-{
-	m_pos = pos;
-}
-
 //コンストラクタ
 Player::Player()
+	: CharaBase(CVector2D(SCREEN_WIDTH*0.5f,SCREEN_HEIGHT*0.75f))
+	,mp_anim(nullptr)
+	,mp_image(nullptr)
 {
-	m_pos = CVector2D(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.75f);
+	m_hp = 200;
 
 	int freme = 6;
 	
@@ -53,20 +46,30 @@ Player::~Player()
 
 }
 
+void Player::Death()
+{
+	//基底クラスの死亡処理も呼び出す。
+	CharaBase::Death();
+
+	//死亡アニメーション
+	//死亡アニメーションが終わったら
+	//ゲームオーバー画面を表示する
+}
+
 void Player::Update()
 {
 	//左キーを押している間
 	if (HOLD(CInput::eLeft))
 	{
 		//左方向へ移動
-		m_pos.x -= 8.0f;
+		m_pos.x -= 4.0f;
 		mp_image->ChangeAnimation(1);
 		mp_image->SetFlipH(true);
 	}
 	else if (HOLD(CInput::eRight))
 	{
 		//右方向へ移動
-		m_pos.x += 8.0f;
+		m_pos.x += 4.0f;
 		mp_image->ChangeAnimation(1);
 		mp_image->SetFlipH(false);
 	}
@@ -78,13 +81,13 @@ void Player::Update()
 	if (HOLD(CInput::eUp))
 	{
 		//左方向へ移動
-		m_pos.y -= 8.0f;
+		m_pos.y -= 4.0f;
 		mp_image->ChangeAnimation(1);
 	}
 	else if (HOLD(CInput::eDown))
 	{
 		//右方向へ移動
-		m_pos.y += 8.0f;
+		m_pos.y += 4.0f;
 		mp_image->ChangeAnimation(1);
 	}
 

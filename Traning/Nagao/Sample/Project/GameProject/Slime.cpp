@@ -12,12 +12,12 @@ void Slime::SetPos(CVector2D pos)
 
 //コンストラクタ
 Slime::Slime(int type,const CVector2D& pos)
-	:m_pos(pos)
+	:CharaBase(pos)
 	,mp_anim(nullptr)
 	,mp_image(nullptr)
-	,m_hp(100)
 	,m_type(type)
 	{
+	m_hp = 50;
 	int freme = 6;
 
 	mp_anim = new TexAnimData[1]
@@ -50,7 +50,10 @@ Slime::Slime(int type,const CVector2D& pos)
 //デストラクタ
 Slime::~Slime()
 {
-
+	for (int i = 0; i < 1; i++)
+	{
+		//delete 
+	}
 }
 
 void Slime::Update()

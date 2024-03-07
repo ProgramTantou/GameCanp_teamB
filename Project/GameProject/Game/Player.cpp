@@ -18,6 +18,7 @@ Player::Player(const CVector3D& p) :Base(eType_Player)
 	m_img.ChangeAnimation(0);
 	m_img.SetSize(512 / 2, 512 / 2);
 	m_is_ground = true;
+	m_attack_no = rand();
 }
 
 void Player::Move() {
@@ -84,7 +85,7 @@ void Player::Move() {
 	}
 	if (PUSH(CInput::eButton6)) {
 		Attack();
-		//m_attck_no++;
+		m_attack_no++;
 	}
 }
 

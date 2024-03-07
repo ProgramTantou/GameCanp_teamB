@@ -1,8 +1,9 @@
 #include "ObjectBase.h"
 
 //コンストラクタ
-ObjectBase::ObjectBase(const CVector2D& pos) 
-	:m_pos(pos)
+ObjectBase::ObjectBase(const CVector2D& pos)
+	:Task((int)TaskPrio::Object)
+	, m_pos(pos)
 {
 
 }
@@ -25,12 +26,3 @@ const CVector2D& ObjectBase::GetPos() const
 	return m_pos;
 }
 
-void ObjectBase::Update() 
-{
-
-}
-
-void ObjectBase::Render() 
-{
-
-}

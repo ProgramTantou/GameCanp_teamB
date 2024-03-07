@@ -105,12 +105,12 @@ void Player::Update() {
 	}
 	if (HOLD(CInput::eUp))
 	{
-		if (m_pos.y == 330) 
-		{
-				m_pos.y -= 0.0f;
-		}
+		//if (m_pos.y == 330) 
+		//{
+		//		m_pos.y -= 0.0f;
+		//}
 		
-		else m_pos.y -= 5.0f;
+		 m_pos.y -= 5.0f;
 		
 		mp_image->ChangeAnimation(1);
 		isMove = true;
@@ -118,12 +118,12 @@ void Player::Update() {
 	else if (HOLD(CInput::eDown))
 	{
 
-		if (m_pos.y == 650)
-		{
-			m_pos.y -= 0.0f;
-		}
+		//if (m_pos.y == 650)
+		//{
+		//	m_pos.y -= 0.0f;
+		//}
 
-		else m_pos.y += 5.0f;
+		m_pos.y += 5.0f;
 		mp_image->ChangeAnimation(1);
 		isMove = true;
 	}

@@ -6,6 +6,8 @@
     <ClCompile Include="Game\Slime.cpp" />
     <ClCompile Include="Game\ObjectBase.cpp" />
     <ClCompile Include="Game\CharaBase.cpp" />
+    <ClCompile Include="Game\Task.cpp" />
+    <ClCompile Include="Game\TsakManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h" />
@@ -13,5 +15,7 @@
     <ClInclude Include="Game\Slime.h" />
     <ClInclude Include="Game\ObjectBase.h" />
     <ClInclude Include="Game\CharaBase.h" />
+    <ClInclude Include="Game\Task.h" />
+    <ClInclude Include="Game\TsakManager.h" />
   </ItemGroup>
 </Project>

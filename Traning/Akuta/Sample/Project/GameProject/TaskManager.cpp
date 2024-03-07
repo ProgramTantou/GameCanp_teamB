@@ -108,6 +108,12 @@ void TaskManager::DeleteAll()
 	}
 }
 
+
+const std::list<Task*>& TaskManager::GetObjectList()
+{
+	return m_objectList;
+}
+
 //XV
 void TaskManager::Update()
 {

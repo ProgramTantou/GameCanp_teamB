@@ -29,6 +29,12 @@ public:
 	//リスト内のタスクをすべて削除
 	static void DeleteAll();
 
+	/// <summary>
+	/// オブジェクトリストを取得
+	/// </summary>
+	/// <returns></returns>
+	static const std::list<Task*>& GetObjectList();
+
 	//リスト内の全タスクの更新処理を呼び出す
 	static void Update();
 	//リスト内の全タスクの描画処理を呼び出す

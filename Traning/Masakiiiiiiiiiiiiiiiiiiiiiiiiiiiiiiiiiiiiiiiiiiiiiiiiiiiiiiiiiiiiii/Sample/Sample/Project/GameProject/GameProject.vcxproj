@@ -16,6 +16,7 @@
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Slime.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShadowManager.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskManager.cpp" />
   </ItemGroup>
@@ -25,6 +26,7 @@
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Slime.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="ShadowManager.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />
   </ItemGroup>

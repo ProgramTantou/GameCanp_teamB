@@ -17,6 +17,8 @@ void MainLoop(void) {
 	//ƒQ[ƒ€’†‚Ì“®‚«‚Í‚±‚±‚É‘‚­
 	//ƒQ[ƒ€’†‚Í‚±‚ÌŠÖ”_‚ð1•bŠÔ‚É60‰ñŒÄ‚Ño‚µ‚Ä‚¢‚é
 	//--------------------------------------------------------------
+	//ObjectBase* player = p_player;
+	//player->Update();
 
 	p_player->Update();
 	p_slimeA->Update();
@@ -28,6 +30,7 @@ void MainLoop(void) {
 	p_player->Render();
 	p_slimeA->Render();
 	p_slimeC->Render();
+
 }
 void Init(void)
 {

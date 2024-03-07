@@ -1,6 +1,7 @@
 #include"Game/Player.h"
 #include"Game/Slime.h"
 #include"Game/ObjectBase.h"
+#include"Game/TsakManager.h"
 
 
 //--------------------------------------------
@@ -8,19 +9,8 @@
 //--------------------------------------------
 
  
-//プレイヤーのポインター
-Player* p_player = nullptr;
-//スライムのポインター
-Slime* p_slime_A = nullptr;
-Slime* p_slime_B = nullptr; 
-Slime* p_slime_C = nullptr;
-
 
 CImage* fieldimage = nullptr;
-
-
-
-
 
 
 void MainLoop(void) {
@@ -28,24 +18,12 @@ void MainLoop(void) {
 	//ゲーム中の動きはここに書く
 	//ゲーム中はこの関数_を1秒間に60回呼び出している
 	//--------------------------------------------------------------
-
-	
-
-
-
-	ObjectBase* player = p_player;
-	player->Update();
-	//p_player->Update();
-	p_slime_A->Update();
-	p_slime_B->Update();
-	p_slime_C->Update();
-	
+	//全タスクの更新処理を呼び出す
+	TaskManager::Update();
 
 	fieldimage->Draw();
-	p_slime_B->Render();
-	p_player->Render();
-	p_slime_A->Render();
-	p_slime_C->Render();
+	//全タスクの描画処理を呼び出す
+	TaskManager::Render();
 }
 void Init(void)
 {
@@ -82,22 +60,19 @@ void Init(void)
 	//-----------------------------------------------------
 
 	fieldimage = CImage::CreateImage("field.png");
-
-
-	//プレイヤーを生成
-	p_player = new Player();
-
-	//スライムを生成
-	p_slime_A = new Slime(0, CVector2D(SCREEN_WIDTH * 0.75f, SCREEN_HEIGHT * 0.8f));
-	p_slime_B = new Slime(1, CVector2D(SCREEN_WIDTH * 0.8f, SCREEN_HEIGHT * 0.6f));
-	p_slime_C = new Slime(2, CVector2D(SCREEN_WIDTH * 0.85f, SCREEN_HEIGHT * 0.9f));
 	
+	new Player();
+	
+	new Slime(0, CVector2D(SCREEN_WIDTH * 0.75f, SCREEN_HEIGHT * 0.8f));
+	new Slime(1, CVector2D(SCREEN_WIDTH * 0.8f, SCREEN_HEIGHT * 0.6f));
+	new Slime(2, CVector2D(SCREEN_WIDTH * 0.85f, SCREEN_HEIGHT * 0.9f));
 }
 
 
 void Release()
 {
-	
+	//全タスクの削除
+	TaskManager::DeleteAll();
 	CLoadThread::ClearInstance();
 	CSound::ClearInstance();
 	CResourceManager::ClearInstance();

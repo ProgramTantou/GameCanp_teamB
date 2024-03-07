@@ -1,6 +1,7 @@
 #include "Game/Player.h"
 #include "Game/Slime.h"
 #include "TaskManager.h"
+#include "ShadowManager.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -55,6 +56,9 @@ void Init(void)
 
 	fieldimage = CImage::CreateImage("field.png");
 
+	//影描画クラス生成
+	new ShadowManager();
+
 	//プレイヤーを生成
 	new Player();
 
@@ -62,6 +66,7 @@ void Init(void)
 	new Slime(0, CVector2D(SCREEN_WIDTH * 0.75f, SCREEN_HEIGHT * 0.8f));
 	new Slime(1, CVector2D(SCREEN_WIDTH * 0.8f, SCREEN_HEIGHT * 0.6f));
 	new Slime(2, CVector2D(SCREEN_WIDTH * 0.85f, SCREEN_HEIGHT * 0.9f));
+
 }
 
 

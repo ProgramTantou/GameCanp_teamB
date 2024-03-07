@@ -1,7 +1,8 @@
 #pragma once
+#include "Task.h"
 
 //ゲーム中のオブジェクトのベースクラス
-class ObjectBase {
+class ObjectBase : public Task{
 public:
 	//コンストラクタ
 	ObjectBase(const CVector2D& pos);
@@ -20,8 +21,6 @@ public:
 	/// <returns>オブジェクトの座標</returns>
 	const CVector2D& GetPos() const;
 
-	virtual void Update();
-	virtual void Render();
 protected:
 	CVector2D m_pos; //オブジェクトの座標
 };

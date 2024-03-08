@@ -24,6 +24,7 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	m_flip = flip;
 	m_is_ground = true;
 	m_attack_no = rand();
+	m_hp = 9;
 }
 
 void Player::Move() {
@@ -116,6 +117,11 @@ void Player::Attack() {
 	
 }
 
+int Player::GetHp()
+{
+	return m_hp;
+}
+
 void Player::Update()
 {	
 	Move();
@@ -153,6 +159,7 @@ void Player::Collision(Base* b)
 		}
 		break;
 	case eType_Enemy:
+
 		break;
 	}
 }

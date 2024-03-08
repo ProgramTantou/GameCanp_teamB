@@ -39,7 +39,7 @@ void Player::Move() {
 		move_speed = move_speed / 2;
 	}*/
 	//ジャンプ力
-	const float jump_pow=15;         
+	const float jump_pow=12;         
 	//左向きの移動(A)
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
@@ -136,17 +136,13 @@ int Player::GetHp()
 
 //更新
 void Player::Update()
-{	
+{
 	Move();
 	m_img.UpdateAnimation();
-	if (m_is_ground&&m_vec.y>GRAVITY*4) 
-	{
-		m_is_ground = false;
-		m_vec.y += GRAVITY;
-		m_pos += m_vec;
-	}
-		m_scroll.x = m_pos.x - 1920 / 2;
-	
+	m_vec.y += GRAVITY;
+	m_pos += m_vec;
+	m_scroll.x = m_pos.x - 1920 / 2;
+
 }
 //描画
 void Player::Draw()

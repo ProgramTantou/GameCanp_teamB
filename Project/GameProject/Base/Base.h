@@ -27,7 +27,7 @@ enum
 
 
 //重力加速度
-#define GRAVITY (9.8f/20)
+#define GRAVITY (9.8f/35)
 /// <summary>
 /// ゲームオブジェクトの基底クラス
 /// </summary>

@@ -8,7 +8,7 @@ enum {
     eType_AreaChange,
     eType_Player,
     eType_Enemy,
-    eType_Bullet,
+    eType_Fish,
     eType_Goal,
     eType_Player_Attack,
     eType_Enemy_Attack,
@@ -17,6 +17,15 @@ enum {
     eType_Screen,//ゲームオーバーなどのスクリーンのタイプ名。
     eType_UI,//画面のUI。
 };
+
+enum 
+{
+eFish_1,
+eFish_2,
+eFish_3,
+};
+
+
 //重力加速度
 #define GRAVITY (9.8f/20)
 /// <summary>
@@ -24,6 +33,7 @@ enum {
 /// </summary>
 class Base {
 public:
+    int m_fish;
     //オブジェクトの種類
     int m_type;
     //座標データ

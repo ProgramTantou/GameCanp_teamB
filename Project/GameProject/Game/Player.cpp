@@ -103,11 +103,13 @@ void Player::Update()
 		m_is_ground = false;
 		m_vec.y += GRAVITY;
 		m_pos += m_vec;
+		//m_scroll.x = m_pos.x - 1920 / 2;
 }
 
 void Player::Draw()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
+	
 	m_img.Draw();
 }
 

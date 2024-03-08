@@ -38,6 +38,9 @@
     <ClCompile Include="Title\Title.cpp">
       <Filter>Title</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Fish.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -87,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="Title\Title.h">
       <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Fish.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

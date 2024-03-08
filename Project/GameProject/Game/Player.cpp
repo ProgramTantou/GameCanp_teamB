@@ -55,14 +55,14 @@ void Player::Move() {
 		isMove = true;
 	}
 	//Z軸（右斜め上）(W)
-	if (HOLD(CInput::eButton1)&&m_pos.z<50) {
+	if (HOLD(CInput::eButton1)&&m_pos.z<80) {
 		m_pos.z += move_speed;
 		m_img.ChangeAnimation(0);
 		m_flip = false;
 		isMove = true; 
 	}
 	//Z軸（左斜め下）(S)
-	else if (HOLD(CInput::eButton3)&&m_pos.z>-370) {
+	else if (HOLD(CInput::eButton3)&&m_pos.z>-280) {
 		m_pos.z -= move_speed;
 		m_img.ChangeAnimation(0);
 		m_flip = true;

@@ -62,7 +62,7 @@ void Enemy::Update() {
 		m_flip = false;
 		move_flag = true;
 	}
-	/*
+	
 	//上移動
 	if (player->m_pos.y < m_pos.y - 64) {
 		//移動量を設定
@@ -77,7 +77,7 @@ void Enemy::Update() {
 		m_flip = false;
 		move_flag = true;
 	}
-*/
+
 
 	m_img.ChangeAnimation(move_dir);
 	//アニメーション更新
@@ -90,7 +90,7 @@ void Enemy::Draw() {
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 
 void Enemy::Collision(Base* b)

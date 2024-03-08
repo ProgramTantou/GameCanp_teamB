@@ -37,7 +37,7 @@ public:
 	* @param pos	[in]Å@à íu
 	* @param size	[in]Å@ëÂÇ´Ç≥
 	*/
-	CRect(const CVector3D& pos, const CVector2D& size);
+	CRect(const CVector2D& pos, const CVector2D& size);
 	CRect(const CRect& rect);
 
 	CRect operator=(const CRect& rect);

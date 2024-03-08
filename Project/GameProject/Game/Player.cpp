@@ -34,6 +34,10 @@ void Player::Move() {
 	bool isMove = false;
 	//移動スピード
 	int move_speed = 4;
+	/*if (Damage)
+	{
+		move_speed = move_speed / 2;
+	}*/
 	//ジャンプ力
 	const float jump_pow=15;         
 	//左向きの移動(A)
@@ -51,14 +55,14 @@ void Player::Move() {
 		isMove = true;
 	}
 	//Z軸（右斜め上）(W)
-	if (HOLD(CInput::eButton1)) {
+	if (HOLD(CInput::eButton1)&&m_pos.z<50) {
 		m_pos.z += move_speed;
 		m_img.ChangeAnimation(0);
 		m_flip = false;
-		isMove = true;
+		isMove = true; 
 	}
 	//Z軸（左斜め下）(S)
-	else if (HOLD(CInput::eButton3)) {
+	else if (HOLD(CInput::eButton3)&&m_pos.z>-370) {
 		m_pos.z -= move_speed;
 		m_img.ChangeAnimation(0);
 		m_flip = true;
@@ -100,6 +104,8 @@ void Player::Move() {
 	}
 	Damage();
 }
+
+//攻撃を受けた際の点滅表示
 void Player::Damage()
 {
 
@@ -133,13 +139,14 @@ void Player::Update()
 {	
 	Move();
 	m_img.UpdateAnimation();
-	if (m_is_ground&&m_vec.y>GRAVITY) 
+	if (m_is_ground&&m_vec.y>GRAVITY*4) 
 	{
 		m_is_ground = false;
 		m_vec.y += GRAVITY;
 		m_pos += m_vec;
-		m_scroll.x = m_pos.x - 1920 / 2;
 	}
+		m_scroll.x = m_pos.x - 1920 / 2;
+	
 }
 //描画
 void Player::Draw()

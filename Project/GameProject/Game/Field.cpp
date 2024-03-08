@@ -7,7 +7,7 @@ Field::Field() :Base(eType_Field)
 {
 	mp_image = COPY_RESOURCE("Field", CImage);
 	
-	m_ground_y = 700;
+	m_ground_y = 800;
 }
 
 //デストラクタ

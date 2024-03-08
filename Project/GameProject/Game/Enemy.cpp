@@ -10,16 +10,17 @@ extern TexAnimData enemy_anim_data[] = {
 };
 
 
-Enemy::Enemy(const CVector3D& p) :Base(eType_Enemy) {
+Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 	//画像複製
 	m_img = COPY_RESOURCE("Enemy", CImage);
 	//再生アニメーション
 	m_img.ChangeAnimation(0);
 	//座標設定
 	m_pos = p;
+	m_img.SetSize(256, 256);
 	//中心位置設定
-	m_img.SetCenter(256, 256);
-	m_rect = CRect(-256, -256, 256, 256);
+	m_img.SetCenter(256/2, 256/2);
+	m_rect = CRect(-256/2, -256/2, 256/2, 256/2);
 	//反転フラグ
 	//m_flip = flip;
 }
@@ -38,6 +39,7 @@ void Enemy::Update() {
 	if (player->m_pos.x < m_pos.x - 64) {
 		//移動量を設定
 		m_pos.x += -move_speed;
+		m_flip = false;
 		move_flag = true;
 	}
 	//右移動
@@ -45,13 +47,14 @@ void Enemy::Update() {
 		//移動量を設定
 		m_pos.x += move_speed;
 		//反転フラグ
-		m_flip = false;
+		m_flip = true;
 		move_flag = true;
 	}
 	//奥移動
 	if (player->m_pos.z < m_pos.z - 64) {
 		//移動量を設定
 		m_pos.z += -move_speed;
+		m_flip = false;
 		move_flag = true;
 	}
 	//手前移動
@@ -59,7 +62,7 @@ void Enemy::Update() {
 		//移動量を設定
 		m_pos.z += move_speed;
 		//反転フラグ
-		m_flip = false;
+		m_flip = true;
 		move_flag = true;
 	}
 	
@@ -69,7 +72,7 @@ void Enemy::Update() {
 		m_pos.y += -move_speed;
 		move_flag = true;
 	}
-	//右移動
+	//下移動
 	if (player->m_pos.y > m_pos.y + 64) {
 		//移動量を設定
 		m_pos.y += move_speed;
@@ -90,7 +93,7 @@ void Enemy::Draw() {
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
-	//DrawRect();
+	DrawRect();
 }
 
 void Enemy::Collision(Base* b)

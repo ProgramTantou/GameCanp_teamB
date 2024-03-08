@@ -4,11 +4,12 @@
 extern TexAnimData enemy_anim_data[];
 class Enemy : public Base {
 public:
-	Enemy(const CVector3D& p);
+	Enemy(const CVector3D& p,int enemy_number,bool flip);
 	void Update();
 	void Draw();
 	void Collision(Base* b);
 
+	int Enemy_number;
 private:
 	CImage m_img;
 	bool m_flip;

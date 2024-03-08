@@ -75,6 +75,7 @@ void Init(void)
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/butakame.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Field", CImage::CreateImage("Image/Field.png"));
+	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

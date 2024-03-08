@@ -10,6 +10,8 @@ TexAnim Idle[] = {
 extern TexAnimData player_anim_data[] = {
 	{Idle,sizeof(Idle)/sizeof(Idle[0])}, 
 };
+
+int Player::m_hp;
 //コンストラクタ
 Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 {
@@ -96,6 +98,11 @@ void Player::Move() {
 		Attack();
 		m_attack_no++;
 	}
+	Damage();
+}
+void Player::Damage()
+{
+
 }
 //攻撃
 void Player::Attack() {
@@ -116,25 +123,23 @@ void Player::Attack() {
 	
 }
 //
-
 int Player::GetHp()
 {
-	return 0;
+	return m_hp;
 }
 
 //更新
 void Player::Update()
 {	
 	Move();
-	Attack();
-
 	m_img.UpdateAnimation();
 	if (m_is_ground&&m_vec.y>GRAVITY) 
+	{
 		m_is_ground = false;
 		m_vec.y += GRAVITY;
 		m_pos += m_vec;
 		m_scroll.x = m_pos.x - 1920 / 2;
-		
+	}
 }
 //描画
 void Player::Draw()

@@ -13,7 +13,7 @@ private:
 	bool m_flip;
 	//int m_damage_no;
 	//HP残量
-	int m_hp;
+	static int m_hp;
 
 public:
 	Player(const CVector3D& p,bool flip);
@@ -26,6 +26,8 @@ public:
 	void Update();
 	//移動
 	void Move();
+	//ダメージ
+	void Damage();
 	//攻撃
 	void Attack();
 	//描画

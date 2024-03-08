@@ -9,7 +9,7 @@ public:
 	void Draw();
 	void Collision(Base* b);
 
-	int Enemy_number;
+	int Enemy_Number;
 private:
 	CImage m_img;
 	bool m_flip;

@@ -11,18 +11,60 @@ extern TexAnimData enemy_anim_data[] = {
 
 
 Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
-	//画像複製
-	m_img = COPY_RESOURCE("Enemy", CImage);
-	//再生アニメーション
-	m_img.ChangeAnimation(0);
-	//座標設定
-	m_pos = p;
-	m_img.SetSize(256, 256);
-	//中心位置設定
-	m_img.SetCenter(256/2, 256/2);
-	m_rect = CRect(-256/2, -256/2, 256/2, 256/2);
-	//反転フラグ
-	//m_flip = flip;
+	Enemy_Number = enemy_number;
+	switch (Enemy_Number)
+	{
+	case 0:
+	{
+		//画像複製
+		m_img = COPY_RESOURCE("Enemy1", CImage);
+		//再生アニメーション
+		m_img.ChangeAnimation(0);
+		//座標設定
+		m_pos = p;
+		m_img.SetSize(256, 256);
+		//中心位置設定
+		m_img.SetCenter(256 / 2, 256 / 2);
+		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
+		//反転フラグ
+		m_flip = flip;
+		break;
+	}
+	case 1:
+	{
+		//画像複製
+		m_img = COPY_RESOURCE("Enemy2", CImage);
+		//再生アニメーション
+		m_img.ChangeAnimation(0);
+		//座標設定
+		m_pos = p;
+		m_img.SetSize(256, 256);
+		//中心位置設定
+		m_img.SetCenter(256 / 2, 256 / 2);
+		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
+		//反転フラグ
+		m_flip = flip;
+		break;
+	}
+	case 2:
+	{
+		//画像複製
+		m_img = COPY_RESOURCE("Enemy3", CImage);
+		//再生アニメーション
+		m_img.ChangeAnimation(0);
+		//座標設定
+		m_pos = p;
+		m_img.SetSize(256, 256);
+		//中心位置設定
+		m_img.SetCenter(256 / 2, 256 / 2);
+		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
+		//反転フラグ
+		m_flip = flip;
+		break;
+	}
+
+	}
+	
 }
 
 void Enemy::Update() {

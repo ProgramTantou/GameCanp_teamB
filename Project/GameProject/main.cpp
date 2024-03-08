@@ -71,7 +71,9 @@ void Init(void)
 	//-----------------------------------------------------
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/walk1.png", player_anim_data, 512, 512));
-	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/butakame.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Field", CImage::CreateImage("Image/Field.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));

@@ -20,9 +20,9 @@ enum {
 
 enum 
 {
-eFish_1,
-eFish_2,
-eFish_3,
+    eFish_1,
+    eFish_2,
+    eFish_3,
 };
 
 
@@ -33,7 +33,6 @@ eFish_3,
 /// </summary>
 class Base {
 public:
-    int m_fish;
     //オブジェクトの種類
     int m_type;
     //座標データ

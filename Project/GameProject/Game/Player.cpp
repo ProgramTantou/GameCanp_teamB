@@ -1,6 +1,7 @@
 #include"Player.h"
 #include"Field.h"
-//#include"Fish.h"
+#include"Fish.h"
+#include"Enemy.h"
 
 
 TexAnim Idle[] = {
@@ -98,6 +99,20 @@ void Player::Move() {
 }
 
 void Player::Attack() {
+	//C
+	if (PUSH(CInput::eButton6)) {
+		Base::Add(new Fish(CVector2D (GetScreenPos(m_pos)), 1));
+	}
+	//V
+	else if (PUSH(CInput::eButton7)) 
+	{
+		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 2));
+	}
+	//B
+	else if (PUSH(CInput::eButton8)) 
+	{
+		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 3));
+	}
 	
 }
 
@@ -136,6 +151,8 @@ void Player::Collision(Base* b)
 				m_is_ground = true;
 			}
 		}
+		break;
+	case eType_Enemy:
 		break;
 	}
 }

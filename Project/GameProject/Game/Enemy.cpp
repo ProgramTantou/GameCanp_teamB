@@ -25,7 +25,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
+		m_rect = CRect(-256 / 2, -256 / 4, 256 / 2, 256 / 4);
 		//反転フラグ
 		m_flip = flip;
 		break;
@@ -41,7 +41,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
+		m_rect = CRect(-256 / 2, -256 / 4, 256 / 2, 256 / 4);
 		//反転フラグ
 		m_flip = flip;
 		break;
@@ -96,7 +96,6 @@ void Enemy::Update() {
 	if (player->m_pos.z < m_pos.z - 64) {
 		//移動量を設定
 		m_pos.z += -move_speed;
-		m_flip = false;
 		move_flag = true;
 	}
 	//手前移動
@@ -104,7 +103,6 @@ void Enemy::Update() {
 		//移動量を設定
 		m_pos.z += move_speed;
 		//反転フラグ
-		m_flip = true;
 		move_flag = true;
 	}
 	
@@ -119,7 +117,6 @@ void Enemy::Update() {
 		//移動量を設定
 		m_pos.y += move_speed;
 		//反転フラグ
-		m_flip = false;
 		move_flag = true;
 	}
 

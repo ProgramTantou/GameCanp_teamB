@@ -3,15 +3,14 @@
 #include"Fish.h"
 #include"Enemy.h"
 
-
+//アニメーション
 TexAnim Idle[] = {
 {0,6},{1,6},{2,6},{3,6}
 };
-
 extern TexAnimData player_anim_data[] = {
 	{Idle,sizeof(Idle)/sizeof(Idle[0])}, 
 };
-
+//コンストラクタ
 Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
@@ -26,7 +25,7 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	m_attack_no = rand();
 	m_hp = 9;
 }
-
+//移動
 void Player::Move() {
 	
 	//移動フラグ
@@ -98,30 +97,32 @@ void Player::Move() {
 		m_attack_no++;
 	}
 }
-
+//攻撃
 void Player::Attack() {
-	//C
+	//Cキー
 	if (PUSH(CInput::eButton6)) {
 		Base::Add(new Fish(CVector2D (GetScreenPos(m_pos)), 1));
 	}
-	//V
+	//Vキー
 	else if (PUSH(CInput::eButton7)) 
 	{
 		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 2));
 	}
-	//B
+	//Bキー
 	else if (PUSH(CInput::eButton8)) 
 	{
 		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 3));
 	}
 	
 }
+//
 
 int Player::GetHp()
 {
-	return m_hp;
+	return 0;
 }
 
+//更新
 void Player::Update()
 {	
 	Move();
@@ -135,7 +136,7 @@ void Player::Update()
 		m_scroll.x = m_pos.x - 1920 / 2;
 		
 }
-
+//描画
 void Player::Draw()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
@@ -143,7 +144,7 @@ void Player::Draw()
 	m_img.Draw();
 	DrawRect();
 }
-
+//衝突判定
 void Player::Collision(Base* b)
 {
 	switch (b->m_type) {
@@ -158,7 +159,8 @@ void Player::Collision(Base* b)
 			}
 		}
 		break;
-	case eType_Enemy:
+	case eType_Enemy_Attack:
+		
 
 		break;
 	}

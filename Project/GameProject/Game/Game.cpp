@@ -3,6 +3,7 @@
 #include"Enemy.h"
 #include"Field.h"
 
+
 Game::Game() :Base(eType_Scene) 
 {
 	Base::Add(new Field());

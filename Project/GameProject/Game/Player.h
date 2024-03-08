@@ -5,10 +5,14 @@ extern TexAnimData player_anim_data[];
 class Player :public Base {
 private:
 	CImage m_img;
+	//地面に足がついているかのフラグ
 	bool m_is_ground;
+	//攻撃番号
 	int m_attack_no;
+	//反転フラグ
 	bool m_flip;
 	//int m_damage_no;
+	//HP残量
 	int m_hp;
 
 public:
@@ -17,11 +21,16 @@ public:
 	// CVector2D& GetPos()const;
 
 	//void SetPos(const CVector2D& pos);
-	int GetHp();
+	 static int GetHp();
+	//更新
 	void Update();
+	//移動
 	void Move();
+	//攻撃
 	void Attack();
+	//描画
 	void Draw();
+	//衝突処理
 	void Collision(Base* b);
 	
 

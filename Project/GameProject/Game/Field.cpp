@@ -38,6 +38,7 @@ void Field::Update() {
 //•`‰æˆ—
 void Field::Draw() {
 	float sc;
+	sc = m_scroll.x;
+	mp_image.SetRect(sc, 0, sc + 1920, 1080);
 	mp_image.Draw();
-	//sc = m_scroll.x
 }

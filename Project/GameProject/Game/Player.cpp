@@ -17,7 +17,9 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	m_pos = p;
 	m_img.ChangeAnimation(0);
 	m_img.SetSize(512 / 2, 512 / 2);
-	m_img.SetCenter(256/2, 256/2);
+	m_img.SetCenter(256/2, 256/1);
+	m_img.SetRect(-512/4, -512/2, 512/4, 0);
+	m_rect = CRect(-512/4, -512/2, 512/4, 0);
 	m_flip = flip;
 	m_is_ground = true;
 	m_attack_no = rand();
@@ -116,11 +118,9 @@ void Player::Update()
 void Player::Draw()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
+	m_img.SetFlipH(m_flip);
 	m_img.Draw();
-	Utility::DrawQuad(
-		GetScreenPos(m_pos),
-		CVector2D(16, 16),
-		CVector4D(1, 0, 0, 0.5f));
+	DrawRect();
 }
 
 void Player::Collision(Base* b)

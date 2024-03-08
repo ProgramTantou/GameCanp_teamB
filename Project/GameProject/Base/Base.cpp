@@ -147,7 +147,7 @@ void Base::DrawRect()
         m_pos.x + m_rect.m_right,
         m_pos.y + m_rect.m_bottom);
     Utility::DrawQuad(
-        CVector2D(rect.m_left, rect.m_top) - m_scroll,
+        GetScreenPos( CVector3D(rect.m_left, rect.m_top,m_pos.z) ),
         CVector2D(rect.m_width, rect.m_height),
         CVector4D(1, 0, 0, 0.5f));
 }

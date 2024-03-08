@@ -11,9 +11,11 @@ private:
 	CFont m_UI_text;
 	//画像矩形用の変数
 	int hp;
+	//UIの判別用の変数
+	int UI_number;
 public:
 	//コンストラクタ
-	UI();
+	UI(const CVector2D& pos,int UI_Nunber);
 	//デストラクタ
 	~UI();
 	//更新処理

@@ -32,10 +32,12 @@ void UI::Update() {
 
 //•`‰æˆ—
 void UI::Draw() {
+	float sc;
+	sc = m_scroll.x;
 	switch (UI_number) {
 	case 1:
 		m_img.SetPos(GetScreenPos(m_pos));
-		m_img.SetRect(hp * 1300,0,(hp + 1) * 1300,1950);
+		m_img.SetRect(hp * 1300 ,0,(hp + 1) * 1300,1950);
 		m_img.Draw();
 		break;
 	case 2:

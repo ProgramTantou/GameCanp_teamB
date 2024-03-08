@@ -5,6 +5,7 @@
 #include"Game/Player.h"
 #include "Game/Enemy.h"
 #include"Game/Field.h"
+#include"Game/Game.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -87,14 +88,9 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 
+	Base::Add(new Game());
+
 	
-
-	//Base::Add(new Title(CVector2D(950, 600)));
-	Base::Add(new light(CVector2D(950, 600)));
-	Base::Add(new Player(CVector2D(300, 500)));
-	Base::Add(new Enemy(CVector2D(1000,500)));
-	Base::Add(new Field());
-
 
 
 }

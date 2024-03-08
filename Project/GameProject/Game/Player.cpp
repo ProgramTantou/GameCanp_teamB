@@ -11,12 +11,14 @@ extern TexAnimData player_anim_data[] = {
 	{Idle,sizeof(Idle)/sizeof(Idle[0])}, 
 };
 
-Player::Player(const CVector3D& p) :Base(eType_Player)
+Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	m_pos = p;
 	m_img.ChangeAnimation(0);
 	m_img.SetSize(512 / 2, 512 / 2);
+	m_img.SetCenter(256/2, 256/2);
+	m_flip = flip;
 	m_is_ground = true;
 	m_attack_no = rand();
 }
@@ -33,24 +35,28 @@ void Player::Move() {
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
 		m_img.ChangeAnimation(0);
+		m_flip = true;
 		isMove = true;
 	}
 	//右向きの移動(D)
 	else if (HOLD(CInput::eButton4)) {
 		m_pos.x += move_speed;
 		m_img.ChangeAnimation(0);
+		m_flip = false;
 		isMove = true;
 	}
 	//Z軸（右斜め上）(W)
 	if (HOLD(CInput::eButton1)) {
 		m_pos.z += move_speed;
 		m_img.ChangeAnimation(0);
+		m_flip = false;
 		isMove = true;
 	}
 	//Z軸（左斜め下）(S)
 	else if (HOLD(CInput::eButton3)) {
 		m_pos.z -= move_speed;
 		m_img.ChangeAnimation(0);
+		m_flip = true;
 		isMove = true;
 	}
 	
@@ -103,14 +109,18 @@ void Player::Update()
 		m_is_ground = false;
 		m_vec.y += GRAVITY;
 		m_pos += m_vec;
-		//m_scroll.x = m_pos.x - 1920 / 2;
+		m_scroll.x = m_pos.x - 1920 / 2;
+		
 }
 
 void Player::Draw()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
-	
 	m_img.Draw();
+	Utility::DrawQuad(
+		GetScreenPos(m_pos),
+		CVector2D(16, 16),
+		CVector4D(1, 0, 0, 0.5f));
 }
 
 void Player::Collision(Base* b)

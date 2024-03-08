@@ -7,11 +7,12 @@ private:
 	CImage m_img;
 	bool m_is_ground;
 	int m_attack_no;
+	bool m_flip;
 	//int m_damage_no;
 	//int m_hp;
 
 public:
-	Player(const CVector3D& p );
+	Player(const CVector3D& p,bool flip);
 	
 	// CVector2D& GetPos()const;
 

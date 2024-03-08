@@ -18,8 +18,8 @@ Enemy::Enemy(const CVector3D& p) :Base(eType_Enemy) {
 	//座標設定
 	m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(0, 0/*???*/);
-	m_rect = CRect(-0, 0, 0, 0);
+	m_img.SetCenter(256, 256);
+	m_rect = CRect(-256, -256, 256, 256);
 	//反転フラグ
 	//m_flip = flip;
 }
@@ -28,7 +28,7 @@ void Enemy::Update() {
 	m_pos;
 	m_pos_old = m_pos;
 	//移動量
-	const float move_spped = 2;
+	const float move_speed = 2;
 	//移動フラグ
 	bool move_flag = false;
 	//ジャンプ力
@@ -37,10 +37,47 @@ void Enemy::Update() {
 	//左移動
 	if (player->m_pos.x < m_pos.x - 64) {
 		//移動量を設定
-		m_pos.x += -move_spped;
+		m_pos.x += -move_speed;
 		move_flag = true;
 	}
-
+	//右移動
+	if (player->m_pos.x > m_pos.x + 64) {
+		//移動量を設定
+		m_pos.x += move_speed;
+		//反転フラグ
+		m_flip = false;
+		move_flag = true;
+	}
+	//奥移動
+	if (player->m_pos.z < m_pos.z - 64) {
+		//移動量を設定
+		m_pos.z += -move_speed;
+		move_flag = true;
+	}
+	//手前移動
+	if (player->m_pos.z > m_pos.z + 64) {
+		//移動量を設定
+		m_pos.z += move_speed;
+		//反転フラグ
+		m_flip = false;
+		move_flag = true;
+	}
+	/*
+	//上移動
+	if (player->m_pos.y < m_pos.y - 64) {
+		//移動量を設定
+		m_pos.y += -move_speed;
+		move_flag = true;
+	}
+	//右移動
+	if (player->m_pos.y > m_pos.y + 64) {
+		//移動量を設定
+		m_pos.y += move_speed;
+		//反転フラグ
+		m_flip = false;
+		move_flag = true;
+	}
+*/
 
 	m_img.ChangeAnimation(move_dir);
 	//アニメーション更新
@@ -53,7 +90,7 @@ void Enemy::Draw() {
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
-	//DrawRect();
+	DrawRect();
 }
 
 void Enemy::Collision(Base* b)

@@ -11,7 +11,9 @@ extern TexAnimData player_anim_data[] = {
 	{Idle,sizeof(Idle)/sizeof(Idle[0])}, 
 };
 
+
 int Player::m_hp;
+
 //コンストラクタ
 Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 {
@@ -21,11 +23,17 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	m_img.SetSize(512 / 2, 512 / 2);
 	m_img.SetCenter(256/2, 256/1);
 	m_img.SetRect(-512/4, -512/2, 512/4, 0);
-	m_rect = CRect(-512/4, -512/2, 512/4, 0);
+	m_rect = CRect(-512/6, -512/2, 512/6, 0);
 	m_flip = flip;
+	m_state = eState_Move;
 	m_is_ground = true;
 	m_attack_no = rand();
+	m_damage_no = rand();
+	//damage_count = 0;
+	m_damage = 0;
+	m_draw_count = 1;
 	m_hp = 9;
+	move_speed = 6;
 }
 //移動
 void Player::Move() {
@@ -33,13 +41,15 @@ void Player::Move() {
 	//移動フラグ
 	bool isMove = false;
 	//移動スピード
-	int move_speed = 4;
-	/*if (Damage)
-	{
-		move_speed = move_speed / 2;
-	}*/
+	move_speed = 6;
 	//ジャンプ力
-	const float jump_pow=12;         
+	const float jump_pow=12;  
+	//攻撃を受けたら減速
+	if (m_damage > 0) {
+		move_speed = move_speed / 2;
+		m_damage--;
+	}
+	
 	//左向きの移動(A)
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
@@ -99,34 +109,75 @@ void Player::Move() {
 		}
 	}
 	if (PUSH(CInput::eButton6)) {
-		Attack();
+		m_state=eState_Attack;
 		m_attack_no++;
 	}
-	Damage();
+	else if (PUSH(CInput::eButton7)) 
+	{
+		m_state=eState_Attack;
+		m_attack_no++;
+	}
+	else if (PUSH(CInput::eButton8)) 
+	{
+		m_state=eState_Attack;
+		m_attack_no++;
+	}
+	if (PUSH(CInput::eMouseL))
+	{
+		m_state = eState_Damage;
+	}
 }
 
-//攻撃を受けた際の点滅表示
 void Player::Damage()
 {
-
+	m_img.ChangeAnimation(0);
+	m_damage = 60 * 3;
+	
+		
+	
+	
+	// = false;
+	/*if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Move;
+	}*/
+	m_state = eState_Move;
 }
+
 //攻撃
 void Player::Attack() {
+	m_img.ChangeAnimation(0);
 	//Cキー
-	if (PUSH(CInput::eButton6)) {
+	if (PUSH(CInput::eButton6))
+	{
 		Base::Add(new Fish(CVector2D (GetScreenPos(m_pos)), 1));
+		m_state = eState_Move;
 	}
 	//Vキー
 	else if (PUSH(CInput::eButton7)) 
 	{
 		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 2));
+		m_state = eState_Move;
 	}
 	//Bキー
 	else if (PUSH(CInput::eButton8)) 
 	{
 		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 3));
+		m_state = eState_Move;
 	}
 	
+	/*if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Move;
+	}*/
+}
+void Player::Down()
+{
+	/*m_img.ChangeAnimation(0);
+	if (m_img.CheckAnimationEnd())
+	{
+		m_kill = true;
+	}*/
 }
 //
 int Player::GetHp()
@@ -137,7 +188,22 @@ int Player::GetHp()
 //更新
 void Player::Update()
 {
-	Move();
+	//m_pos_old = m_pos;
+	switch (m_state) 
+	{
+	case eState_Move:
+		Move(); 
+		break;
+	case eState_Attack:
+		Attack();
+		break;
+	case eState_Damage:
+		Damage();
+		break;
+	case eState_Down:
+		Down();
+		break;
+	}
 	m_img.UpdateAnimation();
 	m_vec.y += GRAVITY;
 	m_pos += m_vec;
@@ -149,8 +215,15 @@ void Player::Draw()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
-	m_img.Draw();
-	DrawRect();
+
+		
+		
+	
+	if(m_damage%8==0)
+		m_img.Draw();
+	
+	
+	//DrawRect();
 }
 //衝突判定
 void Player::Collision(Base* b)

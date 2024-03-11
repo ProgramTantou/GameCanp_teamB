@@ -11,9 +11,33 @@ private:
 	int m_attack_no;
 	//反転フラグ
 	bool m_flip;
-	//int m_damage_no;
+	int m_damage_no;
 	//HP残量
 	static int m_hp;
+	//ダメージ受けた際の表示時間
+	//int damage_count;
+	//攻撃を受けた時のフラグ
+	int m_damage;
+	int m_draw_count;
+	int move_speed;
+
+	int m_state;
+
+	enum {
+		eState_Move,
+		eState_Attack,
+		eState_Damage,
+		eState_Down
+	};
+	//移動
+	void Move();
+	//ダメージ
+	void Damage();
+	//攻撃
+	void Attack();
+	//死
+	void Down();
+
 
 public:
 	Player(const CVector3D& p,bool flip);
@@ -24,12 +48,7 @@ public:
 	 static int GetHp();
 	//更新
 	void Update();
-	//移動
-	void Move();
-	//ダメージ
-	void Damage();
-	//攻撃
-	void Attack();
+	
 	//描画
 	void Draw();
 	//衝突処理

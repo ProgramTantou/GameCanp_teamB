@@ -14,6 +14,7 @@ private:
 	int m_damage_no;
 	//HP残量
 	static int m_hp;
+	//最大HP
 	static int m_maxhp;
 	//ダメージ受けた際の表示時間
 	int damage_count;

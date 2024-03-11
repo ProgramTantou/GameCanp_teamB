@@ -20,7 +20,7 @@ private:
 	int m_damage;
 	int m_draw_count;
 	int move_speed;
-
+	int jump_pow;
 	int m_state;
 
 	enum {

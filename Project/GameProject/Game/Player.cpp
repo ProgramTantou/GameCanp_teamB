@@ -32,8 +32,9 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	//damage_count = 0;
 	m_damage = 0;
 	m_draw_count = 1;
-	m_hp = 9;
+	m_hp = 2;
 	move_speed = 6;
+	jump_pow = 12;
 }
 //移動
 void Player::Move() {
@@ -43,10 +44,11 @@ void Player::Move() {
 	//移動スピード
 	move_speed = 6;
 	//ジャンプ力
-	const float jump_pow=12;  
+	jump_pow=12;  
 	//攻撃を受けたら減速
 	if (m_damage > 0) {
 		move_speed = move_speed / 2;
+		jump_pow = jump_pow / 2;
 		m_damage--;
 	}
 	
@@ -124,26 +126,17 @@ void Player::Move() {
 	}
 	if (PUSH(CInput::eMouseL))
 	{
-		m_state = eState_Damage;
+		if (m_hp > 0) {
+			m_state = eState_Damage;
+		}
+		else if (m_hp == 0)
+		{
+			m_state = eState_Down;
+		}
+		
+		
 	}
 }
-
-void Player::Damage()
-{
-	m_img.ChangeAnimation(0);
-	m_damage = 60 * 3;
-	
-		
-	
-	
-	// = false;
-	/*if (m_img.CheckAnimationEnd())
-	{
-		m_state = eState_Move;
-	}*/
-	m_state = eState_Move;
-}
-
 //攻撃
 void Player::Attack() {
 	m_img.ChangeAnimation(0);
@@ -171,15 +164,31 @@ void Player::Attack() {
 		m_state = eState_Move;
 	}*/
 }
+//ダメージ
+void Player::Damage()
+{
+	m_hp--;
+	m_img.ChangeAnimation(0);
+	m_damage = 60 * 3;
+	
+	// = false;
+	/*if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Move;
+	}*/
+	m_state = eState_Move;
+}
+//死亡
 void Player::Down()
 {
-	/*m_img.ChangeAnimation(0);
+	m_img.ChangeAnimation(0);
 	if (m_img.CheckAnimationEnd())
 	{
 		m_kill = true;
-	}*/
+	}
+	
 }
-//
+
 int Player::GetHp()
 {
 	return m_hp;

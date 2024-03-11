@@ -16,11 +16,14 @@ m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 void GameData::Update() {
 	//1フレーム毎に+1
 	m_count++;
-	//カウントが60で割り切れるなら
-	if (m_count % 60 == 0) {
-		//残り時間-1
-		m_time -= 1;
-		m_count = 0;
+	//ゲームクリアかゲームオーバーでないなら
+	if (GameData::clear_flag == false || GameData::death_flag == false) {
+		//カウントが60で割り切れるなら
+		if (m_count % 60 == 0) {
+			//残り時間-1
+			m_time -= 1;
+			m_count = 0;
+		}
 	}
 	//ゲームクリアかゲームオーバーになったなら
 	if (GameData::clear_flag == true || GameData::death_flag == true) {

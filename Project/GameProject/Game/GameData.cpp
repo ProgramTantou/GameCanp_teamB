@@ -16,8 +16,8 @@ m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 void GameData::Update() {
 	//1フレーム毎に+1
 	m_count++;
-	//ゲームクリアかゲームオーバーでないなら
-	if (GameData::clear_flag == false || GameData::death_flag == false) {
+	//ゲームクリアでもゲームオーバーでないなら
+	if (GameData::clear_flag == false && GameData::death_flag == false) {
 		//カウントが60で割り切れるなら
 		if (m_count % 60 == 0) {
 			//残り時間-1
@@ -39,8 +39,8 @@ void GameData::Update() {
 
 //描画処理
 void GameData::Draw() {
-	//ゲームクリアかゲームオーバーでないなら
-	if (GameData::clear_flag == false || GameData::death_flag == false) {
+	//ゲームクリアでもゲームオーバーでないなら
+	if (GameData::clear_flag == false && GameData::death_flag == false) {
 		//右上に現在スコアと残りタイムを表示
 		m_GameData_text.Draw(750, 90, 0, 0, 0, "TIME");
 		m_GameData_text.Draw(750, 120, 0, 0, 0, "%d",GameData::m_time);

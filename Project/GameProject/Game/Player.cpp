@@ -183,10 +183,11 @@ void Player::Damage()
 void Player::Down()
 {
 	m_img.ChangeAnimation(0);
+	GameData::death_flag = true;
 	if (m_img.CheckAnimationEnd())
 	{
 		m_kill = true;
-		GameData::death_flag = true;
+		//GameData::death_flag = true;
 	}
 	
 }

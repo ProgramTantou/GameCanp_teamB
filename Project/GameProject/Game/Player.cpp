@@ -14,6 +14,7 @@ extern TexAnimData player_anim_data[] = {
 
 
 int Player::m_hp;
+int Player::m_maxhp;
 
 //コンストラクタ
 Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
@@ -30,10 +31,11 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	m_is_ground = true;
 	m_attack_no = rand();
 	m_damage_no = rand();
-	//damage_count = 0;
+	
 	m_damage = 0;
 	m_draw_count = 1;
-	m_hp = 9;
+	m_maxhp = 11;
+	m_hp = 11;
 	move_speed = 6;
 	jump_pow = 12;
 }
@@ -125,6 +127,7 @@ void Player::Move() {
 		m_state=eState_Attack;
 		m_attack_no++;
 	}
+	
 	if (PUSH(CInput::eMouseL))
 	{
 		if (m_hp > 0) {
@@ -134,9 +137,9 @@ void Player::Move() {
 		{
 			m_state = eState_Down;
 		}
-		
-		
 	}
+	
+	
 }
 //攻撃
 void Player::Attack() {
@@ -168,15 +171,17 @@ void Player::Attack() {
 //ダメージ
 void Player::Damage()
 {
+	
 	m_hp--;
 	m_img.ChangeAnimation(0);
 	m_damage = 60 * 3;
-	
+
 	// = false;
 	/*if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
 	}*/
+	
 	m_state = eState_Move;
 }
 //死亡
@@ -184,10 +189,10 @@ void Player::Down()
 {
 	m_img.ChangeAnimation(0);
 	GameData::death_flag = true;
+	
 	if (m_img.CheckAnimationEnd())
 	{
 		m_kill = true;
-		//GameData::death_flag = true;
 	}
 	
 }

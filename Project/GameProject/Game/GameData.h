@@ -9,6 +9,8 @@ public:
 	static bool death_flag; //ゲームオーバー確認用のフラグ
 	//コンストラクタ
 	GameData();
+	//デストラクタ
+	~GameData();
 private:
 	int m_count;        //時間計算用の変数
 	int m_fontsize;     //文字大きさのサイズ

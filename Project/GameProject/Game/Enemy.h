@@ -8,12 +8,20 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	void Attack(CVector2D&);
+	int GetHP();
 
+	//“G‚ÌŽí—Þ
 	int Enemy_Number;
 private:
 	CImage m_img;
-	bool m_flip;
+	int m_Attack_no;
+	int m_hp;
 	int move_dir;
+	float bullet_Timer;
+	float bullet_Interval;
+	bool m_flip;
+	
 
 
 };

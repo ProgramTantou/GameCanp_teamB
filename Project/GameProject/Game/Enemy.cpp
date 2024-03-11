@@ -9,7 +9,7 @@ extern TexAnimData enemy_anim_data[] = {
 	{enemy_Idle,sizeof(enemy_Idle) / sizeof(enemy_Idle[0])},
 };
 
-
+//コンストラクタ
 Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 	Enemy_Number = enemy_number;
 	switch (Enemy_Number)
@@ -28,6 +28,10 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		m_rect = CRect(-256 / 2, -256 / 4, 256 / 2, 256 / 4);
 		//反転フラグ
 		m_flip = flip;
+		m_Attack_no = rand();
+		m_hp = 2;
+		bullet_Timer = 0;
+		bullet_Interval = 60.0f;
 		break;
 	}
 	case 1:
@@ -44,6 +48,10 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		m_rect = CRect(-256 / 2, -256 / 4, 256 / 2, 256 / 4);
 		//反転フラグ
 		m_flip = flip;
+		m_Attack_no = rand();
+		m_hp = 3;
+		bullet_Timer = 0.0f;
+		bullet_Interval = 60.0f;
 		break;
 	}
 	case 2:
@@ -60,11 +68,21 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
 		//反転フラグ
 		m_flip = flip;
+		m_Attack_no = rand();
+		m_hp = 1;
+		bullet_Timer = 0.0f;
+		bullet_Interval = 60.0f;
 		break;
 	}
 
 	}
 	
+}
+
+//敵のHPを取得
+int Enemy::GetHP()
+{
+	return m_hp;
 }
 
 void Enemy::Update() {
@@ -93,13 +111,13 @@ void Enemy::Update() {
 		move_flag = true;
 	}
 	//奥移動
-	if (player->m_pos.z < m_pos.z - 64) {
+	if (player->m_pos.z < m_pos.z ) {
 		//移動量を設定
 		m_pos.z += -move_speed;
 		move_flag = true;
 	}
 	//手前移動
-	if (player->m_pos.z > m_pos.z + 64) {
+	if (player->m_pos.z > m_pos.z ) {
 		//移動量を設定
 		m_pos.z += move_speed;
 		//反転フラグ
@@ -107,20 +125,20 @@ void Enemy::Update() {
 	}
 	
 	//上移動
-	if (player->m_pos.y < m_pos.y - 64) {
+	if (player->m_pos.y-70 < m_pos.y ) {
 		//移動量を設定
 		m_pos.y += -move_speed;
 		move_flag = true;
 	}
 	//下移動
-	if (player->m_pos.y > m_pos.y + 64) {
+	if (player->m_pos.y+70> m_pos.y ) {
 		//移動量を設定
 		m_pos.y += move_speed;
 		//反転フラグ
 		move_flag = true;
 	}
 
-
+	//アニメーションの変更
 	m_img.ChangeAnimation(move_dir);
 	//アニメーション更新
 	m_img.UpdateAnimation();
@@ -135,6 +153,21 @@ void Enemy::Draw() {
 	DrawRect();
 }
 
+//敵の攻撃
+void Enemy::Attack(CVector2D&)
+{
+	Base* p = Base::FindObject(eType_Player);
+	bullet_Timer++;
+	if (bullet_Timer >= bullet_Interval)
+	{
+		CVector3D bullet_Position = m_pos;
+		bullet_Timer = 0.0f;
+		//敵の攻撃弾の生成
+		//Base::Add(new EnemyBullet(m_pos)
+	}
+}
+
+//敵の当たり判定
 void Enemy::Collision(Base* b)
 {
 

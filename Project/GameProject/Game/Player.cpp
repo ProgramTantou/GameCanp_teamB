@@ -2,6 +2,7 @@
 #include"Field.h"
 #include"Fish.h"
 #include"Enemy.h"
+#include"GameData.h"
 
 //アニメーション
 TexAnim Idle[] = {
@@ -32,7 +33,7 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	//damage_count = 0;
 	m_damage = 0;
 	m_draw_count = 1;
-	m_hp = 2;
+	m_hp = 9;
 	move_speed = 6;
 	jump_pow = 12;
 }
@@ -185,6 +186,7 @@ void Player::Down()
 	if (m_img.CheckAnimationEnd())
 	{
 		m_kill = true;
+		GameData::death_flag = true;
 	}
 	
 }

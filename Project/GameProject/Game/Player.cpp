@@ -34,8 +34,8 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	
 	m_damage = 0;
 	m_draw_count = 1;
-	m_maxhp = 11;
-	m_hp = 11;
+	m_maxhp = 10;
+	m_hp = 10;
 	move_speed = 6;
 	jump_pow = 12;
 }
@@ -189,11 +189,11 @@ void Player::Down()
 {
 	m_img.ChangeAnimation(0);
 	GameData::death_flag = true;
-	
-	if (m_img.CheckAnimationEnd())
+	m_kill = true;
+	/*if (m_img.CheckAnimationEnd())
 	{
-		m_kill = true;
-	}
+		
+	}*/
 	
 }
 

@@ -17,4 +17,8 @@ enum {
 	eAnimDown,
 };
 
+//プレイヤーのアニメーションデータ
 extern TexAnimData player_animdata[];
+//敵のアニメーションデータ
+extern TexAnimData enemy_anim_data[];
+

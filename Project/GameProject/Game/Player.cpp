@@ -31,13 +31,14 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	m_is_ground = true;
 	m_attack_no = rand();
 	m_damage_no = rand();
-	
+	damage = false;
 	m_damage = 0;
 	m_draw_count = 1;
 	m_maxhp = 10;
 	m_hp = 10;
 	move_speed = 6;
 	jump_pow = 12;
+	int i = 0;
 }
 //à⁄ìÆ
 void Player::Move() {
@@ -128,18 +129,18 @@ void Player::Move() {
 		m_attack_no++;
 	}
 	
-	if (PUSH(CInput::eMouseL))
-	{
-		if (m_hp > 0) {
-			m_state = eState_Damage;
-		}
-		else if (m_hp == 0)
+	if (damage == false) {
+		if (PUSH(CInput::eMouseL))
 		{
-			m_state = eState_Down;
+			if (m_hp == 0)
+			{
+				m_state = eState_Down;
+			}
+			if (m_hp > 0) {
+				m_state = eState_Damage;
+			}
 		}
 	}
-	
-	
 }
 //çUåÇ
 void Player::Attack() {
@@ -171,11 +172,11 @@ void Player::Attack() {
 //É_ÉÅÅ[ÉW
 void Player::Damage()
 {
-	
+	damage = true;
 	m_hp--;
 	m_img.ChangeAnimation(0);
 	m_damage = 60 * 3;
-
+	
 	
 	/*if (m_img.CheckAnimationEnd())
 	{
@@ -225,7 +226,14 @@ void Player::Update()
 	m_vec.y += GRAVITY;
 	m_pos += m_vec;
 	m_scroll.x = m_pos.x - 1920 / 2;
-
+	if (damage==true) {
+		i++;
+		if (i == 180) 
+		{
+			damage = false;
+			i = 0;
+		}
+	}
 }
 //ï`âÊ
 void Player::Draw()

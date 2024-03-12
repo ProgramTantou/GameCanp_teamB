@@ -14,6 +14,8 @@ private:
 	int m_damage_no;
 	//HP残量
 	static int m_hp;
+	bool damage;
+	int i;
 	
 	//ダメージ受けた際の表示時間
 	int damage_count;

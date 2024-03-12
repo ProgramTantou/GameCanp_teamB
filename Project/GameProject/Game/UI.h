@@ -17,7 +17,7 @@ private:
 	Base* p_player;
 public:
 	//コンストラクタ
-	UI(const CVector3D& pos,int UI_Nunber, Base* b);
+	UI(const CVector3D& pos,int UI_Nunber);
 	//デストラクタ
 	~UI();
 	//更新処理

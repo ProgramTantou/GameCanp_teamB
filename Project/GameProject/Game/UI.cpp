@@ -3,14 +3,13 @@
 #include "GameData.h"
 
 //コンストラクタ
-UI::UI(const CVector3D& pos, int UI_Nunber, Base* b) : Base(eType_UI),
+UI::UI(const CVector3D& pos, int UI_Nunber) : Base(eType_UI),
 m_UI_text("C:\\Windows\\Fonts\\msgothic.ttc", 64) {
 	m_img = COPY_RESOURCE("HP",CImage);
 	//m_img2 = COPY_RESOURCE("Box", CImage);
 	hp = 0;
 	m_pos = pos;
 	UI_number = UI_Nunber;
-	p_player = b;
 	switch (UI_number)
 	{
 	case 1:
@@ -30,7 +29,7 @@ UI::~UI() {
 //更新処理
 void UI::Update() {
 	hp = Player::m_maxhp - Player::GetHp();
-	m_pos = p_player->m_pos + CVector2D(100,100);
+	m_pos = (CVector3D(100 + m_scroll.x, 120, 0));
 }
 
 //描画処理

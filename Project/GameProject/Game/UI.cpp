@@ -43,7 +43,7 @@ void UI::Draw() {
 	switch (UI_number) {
 	case 1:
 		m_img.SetPos(GetScreenPos(m_pos));
-		m_img.SetRect(hp * 2489, m_Rect, (hp + 1) * 2489, m_Rect2);
+		m_img.SetRect(hp * 512, 0, (hp + 1) * 512, 0);
 		if (Player::GetHp != 0) {
 			m_img.Draw();
 		}

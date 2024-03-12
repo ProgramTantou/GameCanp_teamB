@@ -13,9 +13,11 @@ private:
 	int hp;
 	//UIの判別用の変数
 	int UI_number;
+	//プレイヤーのポインター
+	Base* p_player;
 public:
 	//コンストラクタ
-	UI(const CVector2D& pos,int UI_Nunber);
+	UI(const CVector3D& pos,int UI_Nunber, Base* b);
 	//デストラクタ
 	~UI();
 	//更新処理

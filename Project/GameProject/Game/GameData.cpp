@@ -46,14 +46,14 @@ void GameData::Draw() {
 	//ゲームクリアでもゲームオーバーでないなら
 	if (GameData::clear_flag == false && GameData::death_flag == false) {
 		//右上に現在スコアと残りタイムを表示
-		m_GameData_text.Draw(750, 90, 0, 0, 0, "TIME");
-		m_GameData_text.Draw(750, 120, 0, 0, 0, "%d",GameData::m_time);
-		m_GameData_text.Draw(650, 90, 0, 0, 0, "SCORE");
-		m_GameData_text.Draw(650, 120, 0, 0, 0, "%d",GameData::m_score);
+		m_GameData_text.Draw(1800, 70, 1, 1, 1, "TIME");
+		m_GameData_text.Draw(1800, 100, 1, 1, 1, "%d",GameData::m_time);
+		m_GameData_text.Draw(1600, 70, 1, 1, 1, "SCORE");
+		m_GameData_text.Draw(1600, 100, 1, 1, 1, "%d",GameData::m_score);
 	}
 	//ゲームクリアかゲームオーバーになったなら
 	else {
 		//最終スコアを表示
-		m_GameData_text.Draw(960, 540, 0, 0, 0, "SCORE:%d",GameData::m_score);
+		m_GameData_text.Draw(880, 540, 0, 0, 0, "SCORE:%d",GameData::m_score);
 	}
 }

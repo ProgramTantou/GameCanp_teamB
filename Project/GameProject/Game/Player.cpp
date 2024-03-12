@@ -128,15 +128,12 @@ void Player::Move() {
 		m_state=eState_Attack;
 		m_attack_no++;
 	}
-	
-	if (damage == false) {
+	if (damage == false) 
+	{
 		if (PUSH(CInput::eMouseL))
 		{
-			if (m_hp == 0)
+			if (m_hp > 0)
 			{
-				m_state = eState_Down;
-			}
-			if (m_hp > 0) {
 				m_state = eState_Damage;
 			}
 		}
@@ -188,14 +185,14 @@ void Player::Damage()
 //éÄñS
 void Player::Down()
 {
-	m_img.ChangeAnimation(0);
 	GameData::death_flag = true;
 	m_kill = true;
-	/*if (m_img.CheckAnimationEnd())
+	m_img.ChangeAnimation(0);
+	
+	if (m_img.CheckAnimationEnd())
 	{
 		
-	}*/
-	
+	}
 }
 
 int Player::GetHp()
@@ -206,6 +203,11 @@ int Player::GetHp()
 //çXêV
 void Player::Update()
 {
+	if (m_hp == 0) {
+		m_state = eState_Down;
+	}
+
+
 	//m_pos_old = m_pos;
 	switch (m_state) 
 	{

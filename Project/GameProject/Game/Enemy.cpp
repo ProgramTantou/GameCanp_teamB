@@ -1,5 +1,5 @@
 #include "Enemy.h"
-
+#include "EnemyAttack.h"
 
 TexAnim enemy_Idle[] = {
 {0,6},
@@ -29,6 +29,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		//”½“]ƒtƒ‰ƒO
 		m_flip = flip;
 		m_Attack_no = rand();
+		
 		m_hp = 2;
 		attack_Timer = 0.0f;
 		attack_Interval = 60.0f;
@@ -49,6 +50,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		//”½“]ƒtƒ‰ƒO
 		m_flip = flip;
 		m_Attack_no = rand();
+		
 		m_hp = 3;
 		attack_Timer = 0.0f;
 		attack_Interval = 60.0f;
@@ -69,6 +71,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 		//”½“]ƒtƒ‰ƒO
 		m_flip = flip;
 		m_Attack_no = rand();
+
 		m_hp = 1;
 		attack_Timer = 0.0f;
 		attack_Interval = 60.0f;
@@ -76,7 +79,8 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
 	}
 
 	}
-	
+	//UŒ‚”Ô†
+	attack_no = rand();
 }
 
 //“G‚ÌHP‚ğæ“¾
@@ -120,6 +124,7 @@ void Enemy::Update() {
 			//ˆÚ“®—Ê‚ğİ’è
 			m_pos.z += -move_speed1;
 			move_flag = true;
+			Attack();
 		}
 		//è‘OˆÚ“®
 		if (player->m_pos.z > m_pos.z) {
@@ -152,6 +157,7 @@ void Enemy::Update() {
 			//ˆÚ“®—Ê‚ğİ’è
 			m_pos.x += -move_speed;
 			m_flip = false;
+			Attack();
 			move_flag = true;
 		}
 		//‰EˆÚ“®
@@ -161,12 +167,14 @@ void Enemy::Update() {
 			//”½“]ƒtƒ‰ƒO
 			m_flip = true;
 			move_flag = true;
+			Attack();
 		}
 		//‰œˆÚ“®
 		if (player->m_pos.z < m_pos.z) {
 			//ˆÚ“®—Ê‚ğİ’è
 			m_pos.z += -move_speed;
 			move_flag = true;
+			
 		}
 		//è‘OˆÚ“®
 		if (player->m_pos.z > m_pos.z) {
@@ -256,7 +264,7 @@ void Enemy::Draw() {
 }
 
 //“G‚ÌUŒ‚
-void Enemy::Attack(CVector2D&)
+void Enemy::Attack()
 {
 	Base* p = Base::FindObject(eType_Player);
 	attack_Timer++;
@@ -264,8 +272,19 @@ void Enemy::Attack(CVector2D&)
 	{
 		CVector3D bullet_Position = m_pos;
 		attack_Timer = 0.0f;
-		//“G‚ÌUŒ‚’e‚Ì¶¬
-		//Base::Add(new EnemyAttack(m_pos)
+		if (m_flip) 
+		{
+			//“G‚ÌUŒ‚‚Ì¶¬
+			Base::Add(new EnemyAttack(m_pos+CVector2D(+256,0), attack_no, 1, m_flip));
+			{
+			}
+		}
+		else 
+		{
+			Base::Add(new EnemyAttack(m_pos +CVector2D(0,0), attack_no, 1, m_flip));
+			{
+			}
+		}
 	}
 }
 

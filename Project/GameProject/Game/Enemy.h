@@ -8,14 +8,17 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
-	void Attack(CVector2D&);
+	void Attack();
 	int GetHP();
+	int attack_no;
 
 	//“G‚Ìí—Ş
 	int Enemy_Number;
 private:
 	CImage m_img;
+	//UŒ‚”Ô†
 	int m_Attack_no;
+	int m_Damage_no;
 	int m_hp;
 	int move_dir;
 	float attack_Timer;

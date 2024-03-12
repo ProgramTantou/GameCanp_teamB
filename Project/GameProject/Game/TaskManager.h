@@ -17,6 +17,18 @@ public:
 
 	static void Update();
 	static void Render();
+	static void CollisionAll();
+/*	static void Collision(Task* b);
+	static bool CollisionCircle(Task* b1, Task* b2);
+	static bool CollisionRect(Task* b1, Task* b2);*/
+
+	void DrawRect(Task* b1, Task* b2);
+
+	//static void Add(Task* b);
+
+
+	static Task* FindObject(int type);
+	static std::list<Task*> FindObjects(int type);
 
 private:
 	TaskManager();

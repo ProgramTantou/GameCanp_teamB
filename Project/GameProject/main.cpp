@@ -2,14 +2,17 @@
 #include "Title/Title.h"
 #include "Game/Casol.h"
 #include "Game/light.h"
-#include"Game/Player.h"
+#include "Game/Player.h"
 #include "Game/Enemy.h"
-#include"Game/Field.h"
+#include "Game/Task.h"
+#include "Game/TaskManager.h"
+#include "Game/Field.h"
+#include "Game/Test.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
 
-
+Player* p_player = nullptr;
 
 
 
@@ -19,12 +22,16 @@ void MainLoop(void) {
 	//ゲーム中の動きはここに書く
 	//ゲーム中はこの関数_を1秒間に60回呼び出している
 	//--------------------------------------------------------------
+	/*
 	Base::CheckKillAll();
 	Base::UpdateAll();
 	Base::CollisionAll();
 	Base::DrawAll();
+	*/
 
-	
+	TaskManager::Update();
+	TaskManager::Render();
+	TaskManager::CollisionAll();
 }
 void Init(void)
 
@@ -90,11 +97,12 @@ void Init(void)
 	
 
 	//Base::Add(new Title(CVector2D(950, 600)));
-	Base::Add(new light(CVector2D(950, 600)));
-	Base::Add(new Player(CVector2D(300, 500)));
-	Base::Add(new Enemy(CVector2D(1000,500)));
-	Base::Add(new Field());
-
+	//Base::Add(new light(CVector2D(950, 600)));
+	//Base::Add(new Enemy(CVector2D(1000,500)));
+	new Field();
+	new Player();
+	new Test();
+	new Test();
 
 
 }

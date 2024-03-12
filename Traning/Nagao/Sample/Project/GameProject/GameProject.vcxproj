@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="CharaBase.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
+    <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -22,6 +23,7 @@
   <ItemGroup>
     <ClInclude Include="CharaBase.h" />
     <ClInclude Include="ObjectBase.h" />
+    <ClInclude Include="Shadow.h" />
     <ClInclude Include="Slime.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Player.h" />

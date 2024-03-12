@@ -16,12 +16,16 @@
     <ClCompile Include="Game\BackGround.cpp" />
     <ClCompile Include="Game\Boss.cpp" />
     <ClCompile Include="Game\Casol.cpp" />
+    <ClCompile Include="Game\CharaBase.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\Field.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\GameOver.cpp" />
-    <ClCompile Include="Game\light.cpp" />
+    <ClCompile Include="Game\ObjectBase.cpp" />
     <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Task.cpp" />
+    <ClCompile Include="Game\TaskManager.cpp" />
+    <ClCompile Include="Game\Test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Title\Title.cpp" />
   </ItemGroup>
@@ -31,12 +35,16 @@
     <ClInclude Include="Game\BackGround.h" />
     <ClInclude Include="Game\Boss.h" />
     <ClInclude Include="Game\Casol.h" />
+    <ClInclude Include="Game\CharaBase.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\Field.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameOver.h" />
-    <ClInclude Include="Game\light.h" />
+    <ClInclude Include="Game\ObjectBase.h" />
     <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Task.h" />
+    <ClInclude Include="Game\TaskManager.h" />
+    <ClInclude Include="Game\Test.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Title\Title.h" />
   </ItemGroup>

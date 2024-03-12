@@ -1,6 +1,9 @@
 #pragma once
 #include "../Base/Base.h"
-class Field : public Base {
+#include "Task.h"
+#include "ObjectBase.h"
+
+class Field : public Task {
 public:
 	//コンストラクタ
 	Field();
@@ -20,9 +23,9 @@ public:
 	void SetPos(const CVector2D& pos);
 
 	//更新処理
-	void Update();
+	void Update() override;
 	//描画処理
-	void Draw();
+	void Render() override;
 
 	/// <summary>
 	/// フィールドの高さを取得

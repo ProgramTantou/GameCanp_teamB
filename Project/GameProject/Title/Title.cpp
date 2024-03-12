@@ -1,4 +1,4 @@
-#include "Title.h"
+/*#include "Title.h"
 
 Title::Title(const CVector2D& p) :Base(eType_Screen) {
 	m_img.Load("Image/ƒ^ƒCƒgƒ‹‰æ–Ê.png");
@@ -31,4 +31,4 @@ void Title::Draw() {
 	m_img.SetPos(m_pos.x,m_pos.y);
 	
 	m_img.Draw();
-}
+}*/

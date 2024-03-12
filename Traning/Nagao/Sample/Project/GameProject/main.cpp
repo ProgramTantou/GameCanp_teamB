@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Slime.h"
 #include "TaskManager.h"
+#include "Shadow.h"
 
 //--------------------------------------------
 //グローバル変数領域
@@ -58,6 +59,7 @@ void Init(void)
 	//初期化の命令を書く
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
+	new ShadowManager;
 
 	new Player();
 

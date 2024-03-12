@@ -2,7 +2,7 @@
 /// <summary>
 /// オブジェクトの種類
 /// </summary>
-enum {
+/*enum {
     eType_Field,
     eType_Door,
     eType_AreaChange,
@@ -16,7 +16,7 @@ enum {
     eType_Scene,
     eType_Screen,//ゲームオーバーなどのスクリーンのタイプ名。
     eType_UI,//画面のUI。
-};
+};*/
 //重力加速度
 #define GRAVITY (9.8f/20)
 /// <summary>

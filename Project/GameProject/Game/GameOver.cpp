@@ -1,4 +1,4 @@
-#include "GameOver.h"
+/*#include "GameOver.h"
 
 GameOver::GameOver(const CVector2D& p) :Base(eType_Screen) {
 	m_img.Load("Image/ゲームオーバー.png");
@@ -19,4 +19,4 @@ void GameOver::Draw() {
 	
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
-}
+}*/

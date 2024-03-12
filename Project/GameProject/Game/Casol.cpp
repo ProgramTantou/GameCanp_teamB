@@ -1,4 +1,4 @@
-#include "Casol.h"
+/*#include "Casol.h"
 
 Casol::Casol(const CVector2D& p) :Base(eType_Screen) {
 	m_img.Load("Image/ÉJÅ[É\Éã.png");
@@ -51,4 +51,4 @@ void Casol::Draw() {
 
 	
 	m_img.Draw();
-}
+}*/

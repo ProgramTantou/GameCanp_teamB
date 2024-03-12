@@ -1,8 +1,8 @@
 #include "Field.h"
 
+
 //コンストラクタ
-Field::Field() :Base(eType_Field)
-	,m_pos(960.0f,540.0f)
+Field::Field() : Task(eType_Field, (int)TaskPrio::Field)
 	//,mp_image(nullptr)
 {
 	mp_image = COPY_RESOURCE("Field", CImage);
@@ -36,7 +36,7 @@ void Field::Update() {
 }
 
 //描画処理
-void Field::Draw() {
+void Field::Render() {
 	float sc;
 	mp_image.Draw();
 	//sc = m_scroll.x

@@ -8,6 +8,7 @@
 #include "Game/TaskManager.h"
 #include "Game/Field.h"
 #include "Game/Test.h"
+#include"Game/Game.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -50,9 +51,9 @@ void Init(void)
 	CInput::SetButton(0, CInput::eButton3, 'S');
 	CInput::SetButton(0, CInput::eButton4, 'D');
 	CInput::SetButton(0, CInput::eButton5, VK_SPACE);
-	CInput::SetButton(0, CInput::eButton6, 'V');
-	CInput::SetButton(0, CInput::eButton7, 'Q');
-	CInput::SetButton(0, CInput::eButton8, 'E');
+	CInput::SetButton(0, CInput::eButton6, 'C');
+	CInput::SetButton(0, CInput::eButton7, 'V');
+	CInput::SetButton(0, CInput::eButton8, 'B');
 	CInput::SetButton(0, CInput::eButton10, VK_RETURN);
 	CInput::SetButton(0, CInput::eUp, VK_UP);
 	CInput::SetButton(0, CInput::eDown, VK_DOWN);
@@ -76,9 +77,12 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/walk1.png", player_anim_data, 512, 512));
-	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/butakame.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Field", CImage::CreateImage("Image/Field.png"));
+	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
@@ -93,6 +97,8 @@ void Init(void)
 	//初期化の命令を書く
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
+
+	Base::Add(new Game());
 
 	
 

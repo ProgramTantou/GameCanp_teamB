@@ -22,7 +22,7 @@ void TaskManager::Add(Task* add, bool isSort)
 	if (!isSort)
 	{
 		//追加する優先度がオブジェクト用ならオブジェクトリストに追加
-		if (add->m_prio = (int)TaskPrio::Object)
+		if (add->m_prio == (int)TaskPrio::Object)
 		{
 			m_objectList.push_back(add);
 		}
@@ -98,6 +98,14 @@ void TaskManager::DeleteAll()
 		delete del;
 	}
 }
+
+const std::list<Task*>& TaskManager::GetObjectList() 
+{
+	return m_objectList;
+}
+
+
+
 //リスト内の全タスクの更新処理を呼び出す
 void TaskManager::Update()
 {

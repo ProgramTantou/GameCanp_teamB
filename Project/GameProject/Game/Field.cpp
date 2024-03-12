@@ -7,7 +7,7 @@ Field::Field() : Task(eType_Field, (int)TaskPrio::Field)
 {
 	mp_image = COPY_RESOURCE("Field", CImage);
 	
-	m_ground_y = 300;
+	m_ground_y = 800;
 }
 
 //デストラクタ
@@ -38,6 +38,7 @@ void Field::Update() {
 //描画処理
 void Field::Render() {
 	float sc;
+	sc = m_scroll.x;
+	mp_image.SetRect(sc, 0, sc + 1920, 1080);
 	mp_image.Draw();
-	//sc = m_scroll.x
 }

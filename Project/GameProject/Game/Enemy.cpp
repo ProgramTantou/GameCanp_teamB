@@ -99,7 +99,7 @@ void Enemy::Update() {
 	switch (Enemy_Number)
 	{
 	case 0:
-	{
+	{if (player) {
 		//¶ˆÚ“®
 		if (player->m_pos.x < m_pos.x - 64) {
 			//ˆÚ“®—Ê‚ðÝ’è
@@ -142,10 +142,11 @@ void Enemy::Update() {
 			//”½“]ƒtƒ‰ƒO
 			move_flag = true;
 		}
+	}
 		break;
 	}
 	case 1:
-	{
+	{if (player) {
 		//¶ˆÚ“®
 		if (player->m_pos.x < m_pos.x - 64) {
 			//ˆÚ“®—Ê‚ðÝ’è
@@ -188,10 +189,11 @@ void Enemy::Update() {
 			//”½“]ƒtƒ‰ƒO
 			move_flag = true;
 		}
+	}
 		break;
 	}
 	case 2:
-	{
+	{if (player) {
 		//¶ˆÚ“®
 		if (player->m_pos.x < m_pos.x - 64) {
 			//ˆÚ“®—Ê‚ðÝ’è
@@ -208,7 +210,7 @@ void Enemy::Update() {
 			move_flag = true;
 		}
 		//‰œˆÚ“®
-		if (player->m_pos.z< m_pos.z) {
+		if (player->m_pos.z < m_pos.z) {
 			//ˆÚ“®—Ê‚ðÝ’è
 			m_pos.z += -move_speed;
 			move_flag = true;
@@ -222,7 +224,7 @@ void Enemy::Update() {
 		}
 
 		//ãˆÚ“®
-		if (player->m_pos.y-120 < m_pos.y) {
+		if (player->m_pos.y - 120 < m_pos.y) {
 			//ˆÚ“®—Ê‚ðÝ’è
 			m_pos.y += -move_speed;
 			move_flag = true;
@@ -234,6 +236,7 @@ void Enemy::Update() {
 			//”½“]ƒtƒ‰ƒO
 			move_flag = true;
 		}
+	}
 		break;
 	}
 	}

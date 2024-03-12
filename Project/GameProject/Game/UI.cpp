@@ -1,5 +1,6 @@
 #include "UI.h"
 #include "Player.h"
+#include "GameData.h"
 
 //コンストラクタ
 UI::UI(const CVector2D& pos, int UI_Nunber) : Base(eType_UI),
@@ -38,7 +39,7 @@ void UI::Draw() {
 	case 1:
 		m_img.SetPos(GetScreenPos(m_pos));
 		m_img.SetRect(hp * 512, 512, (hp + 1) * 512, 1024);
-		if (Player::GetHp != 0) {
+		if (GameData::clear_flag == false || GameData::death_flag == false) {
 			m_img.Draw();
 		}
 		break;

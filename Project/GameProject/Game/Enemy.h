@@ -18,8 +18,8 @@ private:
 	int m_Attack_no;
 	int m_hp;
 	int move_dir;
-	float bullet_Timer;
-	float bullet_Interval;
+	float attack_Timer;
+	float attack_Interval;
 	bool m_flip;
 	
 

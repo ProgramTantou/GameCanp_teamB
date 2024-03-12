@@ -14,8 +14,7 @@ private:
 	int m_damage_no;
 	//HP残量
 	static int m_hp;
-	//最大HP
-	static int m_maxhp;
+	
 	//ダメージ受けた際の表示時間
 	int damage_count;
 	//攻撃を受けた時のフラグ
@@ -56,6 +55,7 @@ public:
 	void Draw();
 	//衝突処理
 	void Collision(Base* b);
-	
+	//最大HP
+	static int m_maxhp;
 
 };

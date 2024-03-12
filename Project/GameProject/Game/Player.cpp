@@ -6,7 +6,7 @@
 
 //アニメーション
 TexAnim Idle[] = {
-{0,6},{1,6},{2,6},{3,6}
+{0,10},{1,10},{2,10},{3,10}
 };
 extern TexAnimData player_anim_data[] = {
 	{Idle,sizeof(Idle)/sizeof(Idle[0])}, 
@@ -176,7 +176,7 @@ void Player::Damage()
 	m_img.ChangeAnimation(0);
 	m_damage = 60 * 3;
 
-	// = false;
+	
 	/*if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;

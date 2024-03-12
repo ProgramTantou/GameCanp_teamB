@@ -3,14 +3,8 @@
 #include"Fish.h"
 #include"Enemy.h"
 #include"GameData.h"
+#include"AnimData.h"
 
-//アニメーション
-TexAnim Idle[] = {
-{0,10},{1,10},{2,10},{3,10}
-};
-extern TexAnimData player_anim_data[] = {
-	{Idle,sizeof(Idle)/sizeof(Idle[0])}, 
-};
 
 
 int Player::m_hp;
@@ -39,6 +33,7 @@ Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
 	move_speed = 6;
 	jump_pow = 12;
 	int i = 0;
+	
 }
 //移動
 void Player::Move() {
@@ -59,28 +54,28 @@ void Player::Move() {
 	//左向きの移動(A)
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
-		m_img.ChangeAnimation(0);
+		
 		m_flip = true;
 		isMove = true;
 	}
 	//右向きの移動(D)
 	else if (HOLD(CInput::eButton4)) {
 		m_pos.x += move_speed;
-		m_img.ChangeAnimation(0);
+		
 		m_flip = false;
 		isMove = true;
 	}
 	//Z軸（右斜め上）(W)
 	if (HOLD(CInput::eButton1) && FREE(CInput::eButton3) &&m_pos.z<80) {
 		m_pos.z += move_speed;
-		m_img.ChangeAnimation(0);
+		
 		m_flip = false;
 		isMove = true; 
 	}
 	//Z軸（左斜め下）(S)
 	else if (HOLD(CInput::eButton3)&&FREE(CInput::eButton1) &&m_pos.z>-280) {
 		m_pos.z -= move_speed;
-		m_img.ChangeAnimation(0);
+		
 		m_flip = true;
 		isMove = true;
 	}
@@ -92,13 +87,18 @@ void Player::Move() {
 		m_is_ground = false;
 	}
 	//ジャンプ中
-	if (!m_is_ground) {
+	if (!m_is_ground) 
+	{
 		if (m_vec.y < 0)
+		{
 			//上昇
-			m_img.ChangeAnimation(0);
+			//m_img.ChangeAnimation(0,false);
+		}
 		else
+		{
 			//下降
-			m_img.ChangeAnimation(0);
+			//m_img.ChangeAnimation(0,false);
+		}
 	}
 	//地面に着いている
 	else 
@@ -106,12 +106,12 @@ void Player::Move() {
 		if (isMove) 
 		{
 			//移動
-			m_img.ChangeAnimation(0);
+			m_img.ChangeAnimation(eAnimIdle,false);
 		}
 		else 
 		{
 			//待機
-			m_img.ChangeAnimation(0);
+			//m_img.ChangeAnimation(0,false);
 		}
 	}
 	if (PUSH(CInput::eButton6)) {
@@ -141,7 +141,7 @@ void Player::Move() {
 }
 //攻撃
 void Player::Attack() {
-	m_img.ChangeAnimation(0);
+	m_img.ChangeAnimation(0,false);
 	//Cキー
 	if (PUSH(CInput::eButton6))
 	{
@@ -171,7 +171,7 @@ void Player::Damage()
 {
 	damage = true;
 	m_hp--;
-	m_img.ChangeAnimation(0);
+	m_img.ChangeAnimation(0,false);
 	m_damage = 60 * 3;
 	
 	
@@ -187,12 +187,12 @@ void Player::Down()
 {
 	GameData::death_flag = true;
 	m_kill = true;
-	m_img.ChangeAnimation(0);
+	//m_img.ChangeAnimation(0,false);
 	
-	if (m_img.CheckAnimationEnd())
+	/*if (m_img.CheckAnimationEnd())
 	{
 		
-	}
+	}*/
 }
 
 int Player::GetHp()

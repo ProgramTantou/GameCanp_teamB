@@ -13,9 +13,6 @@ private:
 	int hp;
 	//UIの判別用の変数
 	int UI_number;
-	//読み取り先矩形用変数
-	int m_Rect;
-	int m_Rect2;
 public:
 	//コンストラクタ
 	UI(const CVector2D& pos,int UI_Nunber);

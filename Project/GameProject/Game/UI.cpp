@@ -18,8 +18,6 @@ m_UI_text("C:\\Windows\\Fonts\\msgothic.ttc", 64) {
 	case 2:
 		break;
 	}
-	m_Rect = 0;
-	m_Rect2 = 2489;
 };
 
 //デストラクタ
@@ -29,11 +27,7 @@ UI::~UI() {
 
 //更新処理
 void UI::Update() {
-	hp = 11 - Player::GetHp();
-	if (hp == 8) {
-		m_Rect += 2489;
-		m_Rect2 += 2489;
-	}
+	hp = Player::m_maxhp - Player::GetHp();
 }
 
 //描画処理
@@ -43,7 +37,7 @@ void UI::Draw() {
 	switch (UI_number) {
 	case 1:
 		m_img.SetPos(GetScreenPos(m_pos));
-		m_img.SetRect(hp * 512, 0, (hp + 1) * 512, 0);
+		m_img.SetRect(hp * 512, 512, (hp + 1) * 512, 1024);
 		if (Player::GetHp != 0) {
 			m_img.Draw();
 		}

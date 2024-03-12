@@ -9,8 +9,10 @@ static TexAnim playerIdle[] = {
 	{2,frame},
 	{3,frame},
 };
-
-/*static TexAnim playerAttack01[]{
+/*static TexAnim playerRun[] = {
+	
+};
+static TexAnim playerAttack01[]{
 
 };
 static TexAnim playerAttack01End[]{

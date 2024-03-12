@@ -92,12 +92,12 @@ void Player::Move() {
 		if (m_vec.y < 0)
 		{
 			//ã¸
-			//m_img.ChangeAnimation(0,false);
+			//m_img.ChangeAnimation(0);
 		}
 		else
 		{
 			//‰º~
-			//m_img.ChangeAnimation(0,false);
+			//m_img.ChangeAnimation(0);
 		}
 	}
 	//’n–Ê‚É’…‚¢‚Ä‚¢‚é
@@ -106,12 +106,12 @@ void Player::Move() {
 		if (isMove) 
 		{
 			//ˆÚ“®
-			m_img.ChangeAnimation(eAnimIdle,false);
+			//m_img.ChangeAnimation(0);
 		}
 		else 
 		{
 			//‘Ò‹@
-			//m_img.ChangeAnimation(0,false);
+			//m_img.ChangeAnimation(0);
 		}
 	}
 	if (PUSH(CInput::eButton6)) {
@@ -141,7 +141,7 @@ void Player::Move() {
 }
 //UŒ‚
 void Player::Attack() {
-	m_img.ChangeAnimation(0,false);
+//m_img.ChangeAnimation(0);
 	//CƒL[
 	if (PUSH(CInput::eButton6))
 	{
@@ -171,7 +171,7 @@ void Player::Damage()
 {
 	damage = true;
 	m_hp--;
-	m_img.ChangeAnimation(0,false);
+	//m_img.ChangeAnimation(0);
 	m_damage = 60 * 3;
 	
 	

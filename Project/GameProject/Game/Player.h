@@ -1,8 +1,8 @@
 #pragma once
-#include"../Base/Base.h"
+#include "ObjectBase.h"
 
 extern TexAnimData player_anim_data[];
-class Player :public Base {
+class Player :public ObjectBase{
 private:
 	CImage m_img;
 	//地面に足がついているかのフラグ
@@ -51,12 +51,12 @@ public:
 	//void SetPos(const CVector2D& pos);
 	 static int GetHp();
 	//更新
-	void Update();
+	void Update() override;
 	
 	//描画
-	void Draw();
+	void Render() override;
 	//衝突処理
-	void Collision(Base* b);
+	void Collision(Task* b) override;
 	//最大HP
 	static int m_maxhp;
 

@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Base\Base.cpp" />
     <ClCompile Include="Game\AnimData.cpp" />
     <ClCompile Include="Game\BackGround.cpp" />
     <ClCompile Include="Game\Boss.cpp" />
@@ -29,12 +28,10 @@
     <ClCompile Include="Game\Task.cpp" />
     <ClCompile Include="Game\UI.cpp" />
     <ClCompile Include="Game\TaskManager.cpp" />
-    <ClCompile Include="Game\Test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Title\Title.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Base\Base.h" />
     <ClInclude Include="Game\AnimData.h" />
     <ClInclude Include="Game\BackGround.h" />
     <ClInclude Include="Game\Boss.h" />
@@ -51,7 +48,6 @@
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Task.h" />
     <ClInclude Include="Game\TaskManager.h" />
-    <ClInclude Include="Game\Test.h" />
     <ClInclude Include="Game\UI.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Title\Title.h" />

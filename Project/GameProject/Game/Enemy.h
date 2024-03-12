@@ -1,13 +1,13 @@
 #pragma once
-#include "../Base/Base.h"
+#include "ObjectBase.h"
 
 extern TexAnimData enemy_anim_data[];
-class Enemy : public Base {
+class Enemy : public ObjectBase {
 public:
 	Enemy(const CVector3D& p,int enemy_number,bool flip);
-	void Update();
-	void Draw();
-	void Collision(Base* b);
+	void Update() override;
+	void Render() override;
+	void Collision(Task* b) override;
 	void Attack();
 	int GetHP();
 	int attack_no;

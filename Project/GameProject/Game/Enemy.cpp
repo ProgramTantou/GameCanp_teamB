@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "EnemyAttack.h"
+#include "TaskManager.h"
 
 TexAnim enemy_Idle[] = {
 {0,6},
@@ -10,7 +11,7 @@ extern TexAnimData enemy_anim_data[] = {
 };
 
 //ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :Base(eType_Enemy) {
+Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_Enemy) {
 	Enemy_Number = enemy_number;
 	switch (Enemy_Number)
 	{
@@ -91,7 +92,7 @@ int Enemy::GetHP()
 
 void Enemy::Update() {
 	m_pos;
-	m_pos_old = m_pos;
+	//m_pos_old = m_pos;
 	//ˆÚ“®—Ê
 	const float move_speed = 2;
 	const float move_speed1 = 1;
@@ -99,7 +100,7 @@ void Enemy::Update() {
 	bool move_flag = false;
 	//ƒWƒƒƒ“ƒv—Í
 	//const float jump_pow = 12;
-	Base* player = Base::FindObject(eType_Player);
+	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -254,7 +255,7 @@ void Enemy::Update() {
 	m_img.UpdateAnimation();
 }
 
-void Enemy::Draw() {
+void Enemy::Render() {
 	m_img.SetPos(GetScreenPos(m_pos));
 	//”½“]İ’è
 	m_img.SetFlipH(m_flip);
@@ -266,7 +267,7 @@ void Enemy::Draw() {
 //“G‚ÌUŒ‚
 void Enemy::Attack()
 {
-	Base* p = Base::FindObject(eType_Player);
+	Task* p = TaskManager::FindObject(eType_Player);
 	attack_Timer++;
 	if (attack_Timer >= attack_Interval)
 	{
@@ -275,13 +276,13 @@ void Enemy::Attack()
 		if (m_flip) 
 		{
 			//“G‚ÌUŒ‚‚Ì¶¬
-			Base::Add(new EnemyAttack(m_pos+CVector2D(+256,0), attack_no, 1, m_flip));
+			new EnemyAttack(m_pos+CVector2D(+256,0), attack_no, 1, m_flip);
 			{
 			}
 		}
 		else 
 		{
-			Base::Add(new EnemyAttack(m_pos +CVector2D(0,0), attack_no, 1, m_flip));
+			new EnemyAttack(m_pos +CVector2D(0,0), attack_no, 1, m_flip);
 			{
 			}
 		}
@@ -289,7 +290,7 @@ void Enemy::Attack()
 }
 
 //“G‚Ì“–‚½‚è”»’è
-void Enemy::Collision(Base* b)
+void Enemy::Collision(Task* b)
 {
 
 }

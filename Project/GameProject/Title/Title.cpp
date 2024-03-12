@@ -1,3 +1,4 @@
+#include "Title.h"
 /*#include "Title.h"
 
 Title::Title(const CVector2D& p) :Base(eType_Screen) {
@@ -32,3 +33,15 @@ void Title::Draw() {
 	
 	m_img.Draw();
 }*/
+
+Title::Title(const CVector2D& pos) : Task(eType_Scene, (int)TaskPrio::Scene)
+{
+}
+
+void Title::Update()
+{
+}
+
+void Title::Render()
+{
+}

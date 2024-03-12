@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Base\Base.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Casol.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
       <Filter>Task</Filter>
     </ClCompile>
     <ClCompile Include="Game\CharaBase.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Test.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\Fish.cpp">
@@ -119,12 +113,6 @@
       <Filter>Task</Filter>
     </ClInclude>
     <ClInclude Include="Game\CharaBase.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\Base.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Test.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Fish.h">

@@ -1,6 +1,6 @@
 #include "CharaBase.h"
 
-CVector2D CharaBase::m_scroll(0, 0);
+
 
 CharaBase::CharaBase(const CVector2D& pos,int type)
 	: ObjectBase(eType_Door)

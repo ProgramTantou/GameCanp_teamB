@@ -1,6 +1,7 @@
 #pragma once
 #include "Task.h"
 
+#define GRAVITY (9.8f/20)
 class ObjectBase : public Task
 {
 public:
@@ -20,10 +21,10 @@ public:
 	virtual bool CollisionRect(ObjectBase* b1, ObjectBase* b2);
 	void DrawRect();
 
-protected:
 	static CVector2D m_scroll;
 	CVector3D m_pos;
 	CVector3D m_vec;
 	float m_rad;
 	CRect m_rect;
+	
 };

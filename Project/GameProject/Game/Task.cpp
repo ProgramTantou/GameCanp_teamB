@@ -10,6 +10,7 @@ Task::Task(int type, int prio)
 , m_is_Enable(true)
 , m_is_Show(true)
 , m_is_Kill(false)
+, m_type(type)
 {
 	//タスクマネージャー追加
 	TaskManager::Add(this);

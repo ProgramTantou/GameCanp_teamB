@@ -1,6 +1,5 @@
 #include "ObjectBase.h"
-
-//CVector2D Task::m_scroll(0, 0);
+CVector2D ObjectBase::m_scroll(0, 0);
 
 ObjectBase::ObjectBase(int type)
 	:Task(type,(int)TaskPrio::Object)

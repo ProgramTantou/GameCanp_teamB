@@ -8,7 +8,7 @@ extern TexAnimData fish_anim_data[] = {
 	{fish,sizeof(fish) / sizeof(fish[0])},
 };
 //コンストラクタ
-Fish::Fish(const CVector2D& pos,int fish) :Base(eType_Fish) 
+Fish::Fish(const CVector3D& pos,int fish) :ObjectBase(eType_Fish) 
 {
 	m_fish = fish;
 	switch (m_fish) 
@@ -48,23 +48,23 @@ void Fish::Update()
 	m_img.UpdateAnimation();
 	if (m_pos.x < 0)
 	{
-		SetKill();
+		Kill();
 	}
 	if (m_pos.x > 1920) 
 	{
-		SetKill();
+		Kill();
 	}
 
 
 }
 //描画
-void Fish::Draw()
+void Fish::Render()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
 }
 //衝突判定
-void Fish::Collision(Base* b)
+void Fish::Collision(Task* b)
 {
 
 }

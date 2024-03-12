@@ -3,12 +3,11 @@
 #include "GameData.h"
 
 //コンストラクタ
-UI::UI(const CVector3D& pos, int UI_Nunber) : Base(eType_UI),
+UI::UI(const CVector3D& pos, int UI_Nunber) : Task(eType_UI,(int)TaskPrio::UI),
 m_UI_text("C:\\Windows\\Fonts\\msgothic.ttc", 64) {
 	m_img = COPY_RESOURCE("HP",CImage);
 	//m_img2 = COPY_RESOURCE("Box", CImage);
 	hp = 0;
-	m_pos = pos;
 	UI_number = UI_Nunber;
 	switch (UI_number)
 	{
@@ -29,14 +28,14 @@ UI::~UI() {
 //更新処理
 void UI::Update() {
 	hp = Player::m_maxhp - Player::GetHp();
-	m_pos = (CVector3D(100 + m_scroll.x, 120, 0));
+	//m_pos = (CVector3D(100 + m_scroll.x, 120, 0));
 }
 
 //描画処理
-void UI::Draw() {
+void UI::Render() {
 	switch (UI_number) {
 	case 1:
-		m_img.SetPos(GetScreenPos(m_pos));
+		m_img.SetPos(200,120);
 		m_img.SetRect(hp * 512, 512, (hp + 1) * 512, 1024);
 		if (GameData::clear_flag == false && GameData::death_flag == false) {
 			m_img.Draw();

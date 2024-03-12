@@ -1,6 +1,6 @@
 #include "EnemyAttack.h"
 
-EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, bool flip):Base(eType_Enemy_Attack)
+EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, bool flip):ObjectBase(eType_Enemy_Attack)
 {	
 	m_pos = pos;
 	m_flip = flip;
@@ -40,7 +40,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 
 void EnemyAttack::Update() {
 	if (m_timeout >= 120) {
-		SetKill();
+		Kill();
 	}
 	else
 	{
@@ -48,7 +48,7 @@ void EnemyAttack::Update() {
 	}
 }
 
-void EnemyAttack::Draw() {
+void EnemyAttack::Render() {
 	m_img.SetPos(GetScreenPos(m_pos));
 	//m_img.SetFlipH(m_flip);
 	//m_img.Draw();

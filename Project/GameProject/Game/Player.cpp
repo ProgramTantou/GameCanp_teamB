@@ -4,14 +4,13 @@
 #include"Enemy.h"
 #include"GameData.h"
 #include"AnimData.h"
-
-
+#include "ObjectBase.h"
 
 int Player::m_hp;
 int Player::m_maxhp;
 
 //コンストラクタ
-Player::Player(const CVector3D& p,bool flip) :Base(eType_Player)
+Player::Player(const CVector3D& p,bool flip) :ObjectBase(eType_Player)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	m_pos = p;
@@ -145,19 +144,19 @@ void Player::Attack() {
 	//Cキー
 	if (PUSH(CInput::eButton6))
 	{
-		Base::Add(new Fish(CVector2D (GetScreenPos(m_pos)), 1));
+		new Fish(m_pos,1);
 		m_state = eState_Move;
 	}
 	//Vキー
 	else if (PUSH(CInput::eButton7)) 
 	{
-		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 2));
+		new Fish(m_pos, 2);
 		m_state = eState_Move;
 	}
 	//Bキー
 	else if (PUSH(CInput::eButton8)) 
 	{
-		Base::Add(new Fish(CVector2D(GetScreenPos(m_pos)), 3));
+		new Fish(m_pos, 3);
 		m_state = eState_Move;
 	}
 	
@@ -186,7 +185,7 @@ void Player::Damage()
 void Player::Down()
 {
 	GameData::death_flag = true;
-	m_kill = true;
+	Kill();
 	//m_img.ChangeAnimation(0,false);
 	
 	/*if (m_img.CheckAnimationEnd())
@@ -238,7 +237,7 @@ void Player::Update()
 	}
 }
 //描画
-void Player::Draw()
+void Player::Render()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
@@ -253,7 +252,7 @@ void Player::Draw()
 	//DrawRect();
 }
 //衝突判定
-void Player::Collision(Base* b)
+void Player::Collision(Task* b)
 {
 	switch (b->m_type) {
 	case eType_Field:

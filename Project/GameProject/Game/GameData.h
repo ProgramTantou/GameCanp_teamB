@@ -1,7 +1,7 @@
 #pragma once
-#include "../Base/Base.h"
+#include "Task.h"
 
-class GameData : public Base {
+class GameData : public Task {
 public:
 	static int m_score; //最終スコア
 	static int m_time;  //残り時間
@@ -16,7 +16,7 @@ private:
 	int m_fontsize;     //文字大きさのサイズ
 	CFont m_GameData_text;  //文字表示オブジェクト
 	//更新処理
-	void Update();
+	void Update() override;
 	//描画処理
-	void Draw();
+	void Render() override;
 };

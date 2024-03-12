@@ -1,7 +1,7 @@
 #pragma once
-#include "Base/Base.h"
+#include "Task.h"
 
-class UI : public Base {
+class UI : public Task {
 private:
 	//HPの画像データ
 	CImage m_img;
@@ -14,14 +14,14 @@ private:
 	//UIの判別用の変数
 	int UI_number;
 	//プレイヤーのポインター
-	Base* p_player;
+	Task* p_player;
 public:
 	//コンストラクタ
 	UI(const CVector3D& pos,int UI_Nunber);
 	//デストラクタ
 	~UI();
 	//更新処理
-	void Update();
+	void Update() override;
 	//描画処理
-	void Draw();
+	void Render() override;
 };

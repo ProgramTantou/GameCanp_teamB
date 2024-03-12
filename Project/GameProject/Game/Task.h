@@ -12,11 +12,21 @@ enum {
 	eType_Scene,
 	eType_Screen,//ゲームオーバーなどのスクリーンのタイプ名。
 	eType_UI,//画面のUI。
+	eType_Enemy_Attack,
+	eType_Fish,
+};
+
+enum
+{
+	eFish_1,
+	eFish_2,
+	eFish_3
 };
 
 //処理の優先順
 enum  class TaskPrio
 {
+	Scene,
 	Field,
 	Shadow,
 	Object,

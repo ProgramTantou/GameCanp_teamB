@@ -1,17 +1,17 @@
 #pragma once
-#include"Base/Base.h"
+#include"ObjectBase.h"
 
-class Fish :public Base {
+class Fish :public ObjectBase {
 private:
 	CImage m_img;
 public:
-	Fish(const CVector2D& pos,int fish);
+	Fish(const CVector3D& pos,int fish);
 	//‹›‚Ìí—Ş
 	int m_fish;
 	//XV
-	void Update();
+	void Update() override;
 	//•`‰æ
-	void Draw();
+	void Render() override;
 	//Õ“Ë”»’è
-	void Collision(Base* b);
+	void Collision(Task* b) override;
 };

@@ -1,11 +1,11 @@
 #pragma once
-#include "../Base/Base.h"
+#include "Task.h"
 
-class GameOver :public Base {
+class GameOver :public Task {
 private:
 	CImage m_img;
 public:
 	GameOver(const CVector2D& pos);
-	void Update();
-	void Draw();
+	void Update() override;
+	void Render() override;
 };

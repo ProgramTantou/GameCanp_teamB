@@ -1,9 +1,9 @@
 #pragma once
-#include"Base/Base.h"
+#include"Task.h"
 
-class Game :public Base {
+class Game :public Task {
 public:
 	Game();
 	~Game();
-	void Update();
+	void Update() override;
 };

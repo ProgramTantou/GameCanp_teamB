@@ -6,7 +6,7 @@ bool GameData::clear_flag = false;
 bool GameData::death_flag = false;
 
 //コンストラクタ
-GameData::GameData() : Base(eType_UI),
+GameData::GameData() : Task(eType_UI,(int)TaskPrio::Scene),
 m_fontsize(32),
 m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 	m_count = 0;
@@ -42,7 +42,7 @@ void GameData::Update() {
 }
 
 //描画処理
-void GameData::Draw() {
+void GameData::Render() {
 	//ゲームクリアでもゲームオーバーでないなら
 	if (GameData::clear_flag == false && GameData::death_flag == false) {
 		//右上に現在スコアと残りタイムを表示

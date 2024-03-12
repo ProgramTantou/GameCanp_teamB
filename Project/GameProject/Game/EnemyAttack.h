@@ -1,14 +1,14 @@
 #pragma once
-#include"../Base/Base.h"
+#include"ObjectBase.h"
 
-class EnemyAttack : public Base {
+class EnemyAttack : public ObjectBase {
 public:
 	//コンストラクタ
 	EnemyAttack(const CVector3D& pos, const int attack_no, int attack, bool flip);
 	//更新メソッド
-	void Update();
+	void Update() override;
 	//描画メソッド
-	void Draw();
+	void Render() override;
 	//ダメージを取得
 	int GetDamage()const;
 	

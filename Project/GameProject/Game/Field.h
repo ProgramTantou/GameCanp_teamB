@@ -5,7 +5,7 @@
 class Field : public Task {
 public:
 	//コンストラクタ
-	Field();
+	Field(int Field_Nunber);
 	//デストラクタ
 	~Field();
 
@@ -36,6 +36,7 @@ private:
 	CVector2D m_pos;  //フィールドの座標
 	CImage mp_image; //フィールドの画像
 	float m_ground_y; //フィールドの当たり判定
+	int Field_number; //フィールドの種類判別用変数
 
 protected:
 

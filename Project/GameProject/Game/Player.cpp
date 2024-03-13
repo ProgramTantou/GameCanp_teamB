@@ -260,8 +260,7 @@ void Player::Collision(Task* b)
 				m_damage_no = e->GettAttackNo();
 				if (damage == false) {
 					m_hp -= 1;
-					//printf("a");
-
+					//printf("a");   
 					if (m_hp == 0) 
 					{
 						m_state = eState_Down;

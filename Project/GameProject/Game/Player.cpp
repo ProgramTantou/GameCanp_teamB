@@ -5,6 +5,7 @@
 #include"GameData.h"
 #include"AnimData.h"
 #include "ObjectBase.h"
+#include"EnemyAttack.h"
 
 int Player::m_hp;
 int Player::m_maxhp;
@@ -127,16 +128,6 @@ void Player::Move() {
 		m_state=eState_Attack;
 		m_attack_no++;
 	}
-	if (damage == false) 
-	{
-		if (PUSH(CInput::eMouseL))
-		{
-			if (m_hp > 0)
-			{
-				m_state = eState_Damage;
-			}
-		}
-	}
 }
 //çUåÇ
 void Player::Attack() {
@@ -202,11 +193,6 @@ int Player::GetHp()
 //çXêV
 void Player::Update()
 {
-	if (m_hp == 0) {
-		m_state = eState_Down;
-	}
-
-
 	//m_pos_old = m_pos;
 	switch (m_state) 
 	{
@@ -267,8 +253,27 @@ void Player::Collision(Task* b)
 		}
 		break;
 	case eType_Enemy_Attack:
-		
+		if (EnemyAttack* e = dynamic_cast<EnemyAttack*>(b)) 
+		{
+			if (m_damage_no != e->GettAttackNo() && ObjectBase::CollisionRect(this, e)) 
+			{
+				m_damage_no = e->GettAttackNo();
+				if (damage == false) {
+					m_hp -= 1;
+					//printf("a");
 
+					if (m_hp == 0) 
+					{
+						m_state = eState_Down;
+					}
+					else 
+					{
+						m_state = eState_Damage;
+					}
+				}
+				
+			}
+		}
 		break;
 	}
 }

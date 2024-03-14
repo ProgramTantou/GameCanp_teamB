@@ -11,6 +11,7 @@ enum {
 	eType_Goal,
 	eType_Scene,
 	eType_Screen,//ゲームオーバーなどのスクリーンのタイプ名。
+	eType_Title,
 	eType_UI,//画面のUI。
 	eType_Enemy_Attack,
 	eType_Fish,

@@ -1,13 +1,13 @@
 #include "Title.h"
-/*#include "Title.h"
+#include "Game/Casol.h"
+#include "../Game/ObjectBase.h"
+#include "Game/Game.h"
 
-Title::Title(const CVector2D& p) :Base(eType_Screen) {
-	m_img.Load("Image/タイトル画面.png");
-	m_rad = 15;
+Title::Title() : ObjectBase(eType_Title) {
+	m_img.Load("Image/title.png");
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);
-	m_pos = p;
-
+	new Casol(CVector2D(950, 600));
 	//変数一覧
 	int select_mode = 1;//現在選択中のモード
 
@@ -15,33 +15,41 @@ Title::Title(const CVector2D& p) :Base(eType_Screen) {
 
 void Title::Update() {
 	//モード選択処理
-	if (select_mode < 4)
+	if (PUSH(CInput::eRight))
 	{
-		if (PUSH(CInput::eUp))
-		{
-			select_mode += 1;
-		}
-		if (select_mode >= 4)
+		select_mode += 1;
+	}
+
+	if (select_mode > 3)
+	{
+		if (PUSH(CInput::eRight))
 		{
 			select_mode = 1;
 		}
 	}
+
+	if (PUSH(CInput::eLeft))
+	{
+		select_mode -= 1;
+	}
+	if (select_mode < 1)
+	{
+		if (PUSH(CInput::eLeft))
+		{
+			select_mode = 3;
+		}
+	}
+
+	//１でゲームスタート
+//２でクレジット
+//３でイグジット
+		if (PUSH(CInput::eButton5))
+		{
+			Kill();
+		}
 }
 
-void Title::Draw() {
-	m_img.SetPos(m_pos.x,m_pos.y);
-	
+void Title::Render() {
+	m_img.SetPos(900,500);
 	m_img.Draw();
-}*/
-
-Title::Title(const CVector2D& pos) : Task(eType_Scene, (int)TaskPrio::Scene)
-{
-}
-
-void Title::Update()
-{
-}
-
-void Title::Render()
-{
 }

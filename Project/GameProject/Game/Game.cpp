@@ -4,6 +4,7 @@
 #include"Field.h"
 #include"UI.h"
 #include"GameData.h"
+#include"GameOver.h"
 #include "TaskManager.h"
 
 
@@ -18,7 +19,8 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 
 Game::~Game()
 {
-	//KillAll();
+	TaskManager::KillAll();
+	new GameOver(CVector2D(900, 600));
 	//TaskManager::DeleteAll();
 	//Base::Add(new Title());
 }

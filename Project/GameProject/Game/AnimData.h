@@ -7,13 +7,9 @@ enum {
 	eAnimJumpUp,
 	eAnimJumpDown,
 	eAnimAttack01,
-	eAnimAttack01End,
 	eAnimAttack02,
-	eAnimAttack02End,
 	eAnimAttack03,
-	eAnimAttack03End,
 	eAnimDamage,
-	eAnimDamageEnd,
 	eAnimDown,
 };
 

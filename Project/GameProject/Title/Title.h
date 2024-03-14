@@ -1,13 +1,14 @@
 #pragma once
 #include "../Game/Task.h"
+#include "../Game/ObjectBase.h"
 
-class Title :public Task {
+class Title :public ObjectBase {
 private:
 	CImage m_img;
 public:
-	int select_mode;//現在選択中のモード
+	int select_mode=1;//現在選択中のモード
 
-	Title(const CVector2D& pos);
+	Title();
 	void Update() override;
 	void Render() override;
 };

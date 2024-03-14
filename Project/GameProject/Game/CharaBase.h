@@ -8,7 +8,7 @@ public:
 	virtual ~CharaBase();
 	void TakeDamage(int damage);
 	virtual void Death();
-	CRect m_rect;
+	CRect3D m_rect;
 
 protected:
 	int m_hp;

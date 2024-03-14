@@ -6,6 +6,7 @@
 #include "Game/TaskManager.h"
 #include "Game/Field.h"
 #include"Game/Game.h"
+#include "Title/Title.h"
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -94,8 +95,8 @@ void Init(void)
 	//初期化の命令を書く
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
-
-	new Game();
+	new Title();
+	//new Game();
 
 	
 

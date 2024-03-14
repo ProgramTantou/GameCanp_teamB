@@ -5,12 +5,13 @@
 #include"GameData.h"
 #include"AnimData.h"
 #include "ObjectBase.h"
+#include "GameOver.h"
 
 int Player::m_hp;
 int Player::m_maxhp;
 
 //コンストラクタ
-Player::Player(const CVector3D& p,bool flip) :ObjectBase(eType_Player)
+Player::Player(const CVector3D& p,bool flip) : ObjectBase(eType_Player)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	m_pos = p;
@@ -18,7 +19,7 @@ Player::Player(const CVector3D& p,bool flip) :ObjectBase(eType_Player)
 	m_img.SetSize(512 / 2, 512 / 2);
 	m_img.SetCenter(256/2, 256/1);
 	m_img.SetRect(-512/4, -512/2, 512/4, 0);
-	m_rect = CRect(-512/6, -512/2, 512/6, 0);
+	m_rect = CRect3D(-512/6, -512/2, 512/6, 0, 256 / 2, 256 / 2);
 	m_flip = flip;
 	m_state = eState_Move;
 	m_is_ground = true;
@@ -134,6 +135,7 @@ void Player::Move() {
 			if (m_hp > 0)
 			{
 				m_state = eState_Damage;
+				m_hp = 0;//デバッグ用即死処理（長尾が追加しました）
 			}
 		}
 	}
@@ -185,6 +187,7 @@ void Player::Damage()
 void Player::Down()
 {
 	GameData::death_flag = true;
+	new GameOver(CVector2D(900, 600));
 	Kill();
 	//m_img.ChangeAnimation(0,false);
 	
@@ -241,9 +244,7 @@ void Player::Render()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
-
-		
-		
+	DrawRect();
 	
 	if(m_damage%8==0)
 		m_img.Draw();

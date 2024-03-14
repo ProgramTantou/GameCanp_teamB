@@ -26,7 +26,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect(-256 / 2, -256 / 4, 256 / 2, 256 / 4);
+		m_rect = CRect3D(-256 / 2, -256 / 4, 256 / 2, 256 / 4, 256 / 2, 256 / 2);
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -47,7 +47,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect(-256 / 2, -256 / 4, 256 / 2, 256 / 4);
+		m_rect = CRect3D(-256 / 2, -256 / 4, 256 / 2, 256 / 4,256 / 2, 256 / 2);
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -68,7 +68,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect(-256 / 2, -256 / 2, 256 / 2, 256 / 2);
+		m_rect = CRect3D(-256 / 2, -256 / 2, 256 / 2, 256 / 2, 256 / 2, 256 / 2);
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();

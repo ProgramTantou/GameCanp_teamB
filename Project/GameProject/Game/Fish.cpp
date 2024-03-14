@@ -71,10 +71,7 @@ void Fish::Update()
 	}
 
 }
-void Fish::GetAttackNo()
-{
 
-}
 //•`‰æ
 void Fish::Render()
 {

@@ -7,6 +7,7 @@
 #include "Game/Field.h"
 #include"Game/Game.h"
 #include "Title/Title.h"
+#include"Game/AnimData.h"
 //--------------------------------------------
 //ƒOƒ[ƒoƒ‹•Ï”—Ìˆæ
 //--------------------------------------------

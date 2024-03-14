@@ -1,7 +1,7 @@
 #pragma once
 #include "ObjectBase.h"
 
-extern TexAnimData player_anim_data[];
+//extern TexAnimData player_anim_data[];
 class Player :public ObjectBase{
 private:
 	CImage m_img;

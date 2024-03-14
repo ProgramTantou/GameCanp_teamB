@@ -6,7 +6,6 @@
 #include "Game/TaskManager.h"
 #include "Game/Field.h"
 #include"Game/Game.h"
-#include "Title/Title.h"
 #include"Game/AnimData.h"
 //--------------------------------------------
 //ÉOÉçÅ[ÉoÉãïœêîóÃàÊ
@@ -85,6 +84,7 @@ void Init(void)
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
 	ADD_RESOURCE("Cursor", CImage::CreateImage("Image/cursor.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/title.png"));
+	ADD_RESOURCE("Resoult", CImage::CreateImage("Image/Resoult.ong"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

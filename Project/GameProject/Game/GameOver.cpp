@@ -53,7 +53,7 @@ void GameOver::Update() {
 //３でイグジット
 	switch (select_mode)
 	{
-	case 1:
+	case 1://リトライ
 		if (PUSH(CInput::eButton5))
 		{
 			new Game();
@@ -61,7 +61,7 @@ void GameOver::Update() {
 		}
 	break;
 
-	case 2:
+	case 2://タイトルに戻る
 		if (PUSH(CInput::eButton5))
 		{
 			Kill();

@@ -6,7 +6,6 @@
 
 Title::Title() : ObjectBase(eType_Title) {
 	m_img = COPY_RESOURCE("Title", CImage);
-	m_img.Load("Image/title.png");
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);
 	new Casol(CVector2D(950, 600));

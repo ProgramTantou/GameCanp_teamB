@@ -87,7 +87,7 @@ void ObjectBase::DrawRect()
 		m_pos.x + m_rect.m_left,
 		m_pos.y + m_rect.m_top,
 		m_pos.x + m_rect.m_right,
-		m_pos.y - m_rect.m_bottom,
+		m_pos.y + m_rect.m_bottom,
 		m_pos.z + m_rect.m_oku,
 		m_pos.z + m_rect.m_temae);
 	Utility::DrawQuad(

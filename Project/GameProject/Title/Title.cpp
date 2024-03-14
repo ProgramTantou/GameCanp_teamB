@@ -13,6 +13,11 @@ Title::Title() : ObjectBase(eType_Title) {
 	int select_mode = 1;//現在選択中のモード
 }
 
+Title::~Title()
+{
+
+}
+
 void Title::Update() {
 	//モード選択処理
 	if (PUSH(CInput::eRight))
@@ -43,7 +48,7 @@ void Title::Update() {
 	//１でゲームスタート
 //２でクレジット
 //３でイグジット
-		if (PUSH(CInput::eButton5))
+		if (PUSH(CInput::eButton5) && select_mode==1)
 		{
 			TaskManager::SelectKill(eType_UI);
 			Kill();

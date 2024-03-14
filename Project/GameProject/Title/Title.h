@@ -9,6 +9,7 @@ public:
 	int select_mode=1;//Œ»İ‘I‘ğ’†‚Ìƒ‚[ƒh
 
 	Title();
+	~Title();
 	void Update() override;
 	void Render() override;
 };

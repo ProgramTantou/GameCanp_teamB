@@ -160,10 +160,13 @@ void Player::Attack() {
 void Player::Damage()
 {
 	damage = true;
-	m_hp--;
+	//m_hp--;
 	//m_img.ChangeAnimation(0);
 	m_damage = 60 * 3;
-	
+	/*if (m_hp <= 0)
+	{
+		m_state = eState_Down;
+	}*/
 	
 	/*if (m_img.CheckAnimationEnd())
 	{
@@ -261,7 +264,7 @@ void Player::Collision(Task* b)
 				if (damage == false) {
 					m_hp -= 1;
 					//printf("a");   
-					if (m_hp == 0) 
+					if (m_hp <= 0) 
 					{
 						m_state = eState_Down;
 					}

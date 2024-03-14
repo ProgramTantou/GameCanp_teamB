@@ -23,7 +23,11 @@ private:
 	int move_dir;
 	float attack_Timer;
 	float attack_Interval;
+	float move_speed;
+	float move_speed1;
+	float move_speedtossin;
 	bool m_flip;
+	bool tossin;
 	
 
 

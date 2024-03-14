@@ -4,7 +4,8 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 {	
 	m_pos = pos;
 	m_flip = flip;
-	switch (attack)
+	m_attack = attack;
+	switch (m_attack)
 	{
 		{case 0:
 		{
@@ -15,7 +16,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 			//m_img.SetPos(GetScreenPos(m_pos));
 			//m_img.SetSize(128,128);
 			//m_img.SetCenter(128,128);
-			m_rect = CRect(-300, -30, 30, 30);
+			m_rect = CRect(-30, -30, 0, 30);
 			m_attack_no = attack_no;
 		}
 		break;
@@ -29,7 +30,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 			//m_img.SetPos(GetScreenPos(m_pos));
 			//m_img.SetSize(128,128);
 			//m_img.SetCenter(128,128);
-			m_rect = CRect(-300, -30, 30, 30);
+			m_rect = CRect(-200, -30, 0, 15);
 			m_attack_no = attack_no;
 		}
 		break;
@@ -39,12 +40,41 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 }
 
 void EnemyAttack::Update() {
-	if (m_timeout >= 120) {
-		Kill();
-	}
-	else
+	switch (m_attack)
 	{
-		m_timeout++;
+	case 0:
+	{
+		static const float moveSpeed = 5.0f;
+		if (m_flip)
+		{
+			m_pos.x += moveSpeed;
+		}
+		else m_pos.x -= moveSpeed;
+
+		if (m_timeout >= 150)
+		{
+			Kill();
+		}
+		else
+		{
+			m_timeout++;
+		}
+		break;
+	}
+	case 1:
+
+		if (m_timeout >= 10) {
+			Kill();
+		}
+		else
+		{
+			m_timeout++;
+		}
+		break;
+	case 2:
+	{
+
+	}
 	}
 }
 

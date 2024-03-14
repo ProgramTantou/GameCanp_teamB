@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "EnemyAttack.h"
 #include "TaskManager.h"
+#include "Fish.h"
 
 TexAnim enemy_Idle[] = {
 {0,6},
@@ -13,6 +14,10 @@ extern TexAnimData enemy_anim_data[] = {
 //コンストラクタ
 Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_Enemy) {
 	Enemy_Number = enemy_number;
+	//移動量
+	  move_speed = 2;
+	  move_speed1 = 1;
+	  move_speedtossin = 4;
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -55,6 +60,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_hp = 3;
 		attack_Timer = 0.0f;
 		attack_Interval = 150.0f;
+		tossin = false;
 		break;
 	}
 	case 2:
@@ -93,9 +99,7 @@ int Enemy::GetHP()
 void Enemy::Update() {
 	m_pos;
 	//m_pos_old = m_pos;
-	//移動量
-	const float move_speed = 2;
-	const float move_speed1 = 1;
+	
 	//移動フラグ
 	bool move_flag = false;
 	//ジャンプ力
@@ -156,7 +160,7 @@ void Enemy::Update() {
 		//左移動
 		if (player->m_pos.x < m_pos.x - 64) {
 			//移動量を設定
-			m_pos.x += -move_speed;
+			m_pos.x -= move_speed;
 			m_flip = false;
 			Attack();
 			move_flag = true;
@@ -272,18 +276,20 @@ void Enemy::Attack()
 	if (attack_Timer >= attack_Interval)
 	{
 		CVector3D bullet_Position = m_pos;
+		CVector3D bullet_Direction = (m_pos);
 		attack_Timer = 0.0f;
 		attack_no++;
+		tossin = true;
 		if (m_flip) 
 		{
 			//敵の攻撃の生成
-			new EnemyAttack(m_pos+CVector2D(+256,0), attack_no, 1, m_flip);
+			new EnemyAttack(m_pos+CVector2D(+190,0), attack_no, 0, m_flip);
 			{
 			}
 		}
-		else 
+		else
 		{
-			new EnemyAttack(m_pos +CVector2D(0,0), attack_no, 1, m_flip);
+			new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
 			{
 			}
 		}
@@ -293,5 +299,13 @@ void Enemy::Attack()
 //敵の当たり判定
 void Enemy::Collision(Task* b)
 {
-
+	/*
+	switch (b->m_type)
+	{
+	case eType_Fish:
+		{
+		if(Fish* e= dynamic_cast<Fish*>(b))
+			//if(m_Damage_no !=e-> )
+		}
+	}*/
 }

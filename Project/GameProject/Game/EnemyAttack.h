@@ -12,7 +12,7 @@ public:
 	//ƒ_ƒ[ƒW‚ğæ“¾
 	int GetDamage()const;
 	
-	int GettAttackNo() 
+	int GetAttackNo() 
 	{
 		return m_attack_no;
 	}

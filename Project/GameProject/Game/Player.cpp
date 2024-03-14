@@ -272,9 +272,9 @@ void Player::Collision(Task* b)
 	case eType_Enemy_Attack:
 		if (EnemyAttack* e = dynamic_cast<EnemyAttack*>(b)) 
 		{
-			if (m_damage_no != e->GettAttackNo() && ObjectBase::CollisionRect(this, e)) 
+			if (m_damage_no != e->GetAttackNo() && ObjectBase::CollisionRect(this, e)) 
 			{
-				m_damage_no = e->GettAttackNo();
+				m_damage_no = e->GetAttackNo();
 				if (damage == false) {
 					m_hp -= 1;
 					

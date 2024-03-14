@@ -65,7 +65,7 @@ void Init(void)
 	CInput::Update();
 	CInput::Update();
 
-
+		
 
 	SetCurrentDirectory("data");
 	CSound::GetInstance();

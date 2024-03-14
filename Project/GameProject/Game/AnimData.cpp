@@ -5,61 +5,65 @@ int frame = 10;
 
 static TexAnim playerIdle[] = {
 	{0,frame},
-	{1,frame},
-	{2,frame},
-	{3,frame},
+	{7,frame},
+	{14,frame},
+	{21,frame},
+	{28,frame},
 };
-/*static TexAnim playerRun[] = {
-	
+static TexAnim playerRun[] = {
+	{1,frame},
+	{8,frame},
+	{15,frame},
+	{22,frame},
+};
+static TexAnim playerJumpUp[] = {
+	{2,frame},
+	{9,frame},
+};
+static TexAnim playerJumpDown[] = {
+	{9,frame},
+	{2,frame},
 };
 static TexAnim playerAttack01[]{
-
+	{4,frame},
 };
-static TexAnim playerAttack01End[]{
 
-};
 static TexAnim playerAttack02[]{
-
-};
-static TexAnim playerAttack02End[]{
-
+	{11,frame},
 };
 static TexAnim playerAttack03[]{
-
+	{18,frame},
 };
-static TexAnim playerAttack03End[]{
 
-};
 
 static TexAnim playerDamage[] = {
-
+	{6,frame},
+	{13,frame},
+	{20,frame},
 };
 
-static TexAnim playerDamageEnd[] = {
 
-};
 
 static TexAnim playerDown[] = {
-
-};*/
+	{5,frame},
+	{12,frame},
+	{19,frame},
+	{26,frame},
+};
 
 TexAnimData player_anim_data[] = {
 	ANIMDATA(playerIdle),
-	/*ANIMDATA(playerRun),
+	ANIMDATA(playerRun),
 	ANIMDATA(playerJumpUp),
 	ANIMDATA(playerJumpDown),
 	ANIMDATA(playerAttack01),
-	ANIMDATA(playerAttack01End),
 	ANIMDATA(playerAttack02),
-	ANIMDATA(playerAttack02End),
 	ANIMDATA(playerAttack03),
-	ANIMDATA(playerAttack03End),
 	ANIMDATA(playerDamage),
-	ANIMDATA(playerDamageEnd),
-	ANIMDATA(playerDown),*/
+	ANIMDATA(playerDown),
 };
 
-/*static TexAnim enemyIdle[] = {
+/*/*static TexAnim enemyIdle[] = {
 	
 };
 static TexAnim enemyRun[] = {

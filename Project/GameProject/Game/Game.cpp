@@ -18,6 +18,7 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 
 Game::~Game()
 {
+	//KillAll();
 	//TaskManager::DeleteAll();
 	//Base::Add(new Title());
 }

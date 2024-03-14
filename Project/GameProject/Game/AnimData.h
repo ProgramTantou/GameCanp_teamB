@@ -14,7 +14,7 @@ enum {
 };
 
 //プレイヤーのアニメーションデータ
-extern TexAnimData player_animdata[];
+extern TexAnimData player_anim_data[];
 //敵のアニメーションデータ
 extern TexAnimData enemy_anim_data[];
 

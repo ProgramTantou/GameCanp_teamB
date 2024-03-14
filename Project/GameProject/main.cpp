@@ -6,6 +6,7 @@
 #include "Game/TaskManager.h"
 #include "Game/Field.h"
 #include"Game/Game.h"
+#include"Game/AnimData.h"
 //--------------------------------------------
 //ƒOƒ[ƒoƒ‹•Ï”—Ìˆæ
 //--------------------------------------------

@@ -181,6 +181,14 @@ void TaskManager::Render()
 	}
 }
 
+void TaskManager::KillAll()
+{
+	for (auto& b : m_taskList)
+	{
+			b->Kill();
+	}
+}
+
 /*void TaskManager::DrawRect(Task* b1, Task* b2)
 {
 	//デバッグ用　矩形の表示

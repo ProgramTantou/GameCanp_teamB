@@ -66,7 +66,7 @@ void GameOver::Update() {
 		{
 			new Title();
 			new UI(CVector2D(10, 120), 1);
-			Kill();
+			//KillAll();
 		}
 		break;
 

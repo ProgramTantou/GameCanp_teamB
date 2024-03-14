@@ -1,5 +1,6 @@
 #include "Title.h"
 #include "Game/Casol.h"
+#include "../Game/TaskManager.h"
 #include "../Game/ObjectBase.h"
 #include "Game/Game.h"
 
@@ -10,7 +11,6 @@ Title::Title() : ObjectBase(eType_Title) {
 	new Casol(CVector2D(950, 600));
 	//•Ï”ˆê——
 	int select_mode = 1;//Œ»İ‘I‘ğ’†‚Ìƒ‚[ƒh
-
 }
 
 void Title::Update() {

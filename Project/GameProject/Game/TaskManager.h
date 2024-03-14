@@ -28,6 +28,8 @@ public:
 
 
 	static Task* FindObject(int type);
+	static void KillAll();
+
 	static std::list<Task*> FindObjects(int type);
 
 private:

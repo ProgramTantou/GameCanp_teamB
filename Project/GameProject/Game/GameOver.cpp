@@ -56,7 +56,7 @@ void GameOver::Update() {
 	case 1:
 		if (PUSH(CInput::eButton5))
 		{
-			new Player(CVector2D(0, 300), true);
+			new Game();
 			Kill();
 		}
 	break;
@@ -64,9 +64,9 @@ void GameOver::Update() {
 	case 2:
 		if (PUSH(CInput::eButton5))
 		{
+			TaskManager::KillAll();
 			new Title();
 			new UI(CVector2D(10, 120), 1);
-			//KillAll();
 		}
 		break;
 

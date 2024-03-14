@@ -2,7 +2,7 @@
 #include "Game.h"
 
 Casol::Casol(const CVector2D& p) : ObjectBase(eType_UI) {
-	m_img.Load("Image/ÉJÅ[É\Éã.png");
+	m_img = COPY_RESOURCE("Cursor", CImage);
 	m_img.SetSize(200, 200);
 	m_img.SetCenter(100, 100);
 	select_mode = 1;

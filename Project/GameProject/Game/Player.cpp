@@ -93,12 +93,12 @@ void Player::Move() {
 		if (m_vec.y < 0)
 		{
 			//上昇
-			//m_img.ChangeAnimation(0);
+			m_img.ChangeAnimation(eAnimJumpUp,false);
 		}
 		else
 		{
 			//下降
-			//m_img.ChangeAnimation(0);
+			m_img.ChangeAnimation(eAnimJumpDown,false);
 		}
 	}
 	//地面に着いている
@@ -107,12 +107,12 @@ void Player::Move() {
 		if (isMove) 
 		{
 			//移動
-			//m_img.ChangeAnimation(0);
+			m_img.ChangeAnimation(eAnimRun);
 		}
 		else 
 		{
 			//待機
-			//m_img.ChangeAnimation(0);
+			m_img.ChangeAnimation(eAnimIdle);
 		}
 	}
 	if (PUSH(CInput::eButton6)) {
@@ -142,62 +142,66 @@ void Player::Move() {
 }
 //攻撃
 void Player::Attack() {
-//m_img.ChangeAnimation(0);
+	
 	//Cキー
 	if (PUSH(CInput::eButton6))
 	{
+		m_img.ChangeAnimation(eAnimAttack01,false);
 		new Fish(m_pos,1);
 		m_state = eState_Move;
 	}
 	//Vキー
 	else if (PUSH(CInput::eButton7)) 
 	{
+		m_img.ChangeAnimation(eAnimAttack02, false);
 		new Fish(m_pos, 2);
 		m_state = eState_Move;
 	}
 	//Bキー
 	else if (PUSH(CInput::eButton8)) 
 	{
+		m_img.ChangeAnimation(eAnimAttack03, false);
 		new Fish(m_pos, 3);
 		m_state = eState_Move;
 	}
 	
-	/*if (m_img.CheckAnimationEnd())
+	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
-	}*/
+	}
 }
 //ダメージ
 void Player::Damage()
 {
 	damage = true;
 	//m_hp--;
-	//m_img.ChangeAnimation(0);
+	m_img.ChangeAnimation(eAnimDamage,false);
 	m_damage = 60 * 3;
 	/*if (m_hp <= 0)
 	{
 		m_state = eState_Down;
 	}*/
 	
-	/*if (m_img.CheckAnimationEnd())
+	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
-	}*/
+	}
 	
-	m_state = eState_Move;
+	//m_state = eState_Move;
 }
 //死亡
 void Player::Down()
 {
-	GameData::death_flag = true;
-	new GameOver(CVector2D(900, 600));
-	Kill();
-	//m_img.ChangeAnimation(0,false);
 	
-	/*if (m_img.CheckAnimationEnd())
+	new GameOver(CVector2D(900, 600));
+	
+	m_img.ChangeAnimation(eAnimDown,false);
+	
+	if (m_img.CheckAnimationEnd())
 	{
-		
-	}*/
+		Kill();
+		GameData::death_flag = true;
+	}
 }
 
 int Player::GetHp()

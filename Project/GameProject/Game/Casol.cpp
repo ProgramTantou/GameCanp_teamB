@@ -49,7 +49,7 @@ void Casol::Update() {
 		case 1:
 			if (PUSH(CInput::eButton5))
 			{
-				new Game();
+				
 				Kill();
 			}
 		default:

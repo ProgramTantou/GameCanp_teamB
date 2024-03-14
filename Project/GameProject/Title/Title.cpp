@@ -20,7 +20,7 @@ Title::~Title()
 
 void Title::Update() {
 	//モード選択処理
-	if (PUSH(CInput::eRight))
+	/*if (PUSH(CInput::eRight))
 	{
 		select_mode += 1;
 	}
@@ -42,15 +42,15 @@ void Title::Update() {
 		if (PUSH(CInput::eLeft))
 		{
 			select_mode = 3;
-		}
-	}
+		}&& select_mode==1
+	}*/
 
 	//１でゲームスタート
 //２でクレジット
 //３でイグジット
-		if (PUSH(CInput::eButton5) && select_mode==1)
+		if (PUSH(CInput::eButton5) )
 		{
-			TaskManager::SelectKill(eType_UI);
+			//TaskManager::SelectKill(eType_UI);
 			Kill();
 		}
 }

@@ -29,7 +29,9 @@ private:
 
 	enum {
 		eState_Move,
-		eState_Attack,
+		eState_Attack01,
+		eState_Attack02,
+		eState_Attack03,
 		eState_Damage,
 		eState_Down
 	};
@@ -38,7 +40,9 @@ private:
 	//ƒ_ƒ[ƒW
 	void Damage();
 	//UŒ‚
-	void Attack();
+	void Attack01();
+	void Attack02();
+	void Attack03();
 	//€
 	void Down();
 

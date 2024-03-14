@@ -55,7 +55,6 @@ void Player::Move() {
 	//左向きの移動(A)
 	if (HOLD(CInput::eButton2)) {
 		m_pos.x -= move_speed;
-		
 		m_flip = true;
 		isMove = true;
 	}
@@ -116,55 +115,51 @@ void Player::Move() {
 		}
 	}
 	if (PUSH(CInput::eButton6)) {
-		m_state=eState_Attack;
+		m_state=eState_Attack01;
 		m_attack_no++;
 	}
 	else if (PUSH(CInput::eButton7)) 
 	{
-		m_state=eState_Attack;
+		m_state=eState_Attack02;
 		m_attack_no++;
 	}
 	else if (PUSH(CInput::eButton8)) 
 	{
-		m_state=eState_Attack;
+		m_state=eState_Attack03;
 		m_attack_no++;
-	}
-	if (damage == false) 
-	{
-		if (PUSH(CInput::eMouseL))
-		{
-			if (m_hp > 0)
-			{
-				m_state = eState_Damage;
-			}
-		}
 	}
 }
 //攻撃
-void Player::Attack() {
+//Cキー
+void Player::Attack01() {
+	m_img.ChangeAnimation(eAnimAttack01, false);
+	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, true);
+	m_state = eState_Move;
 	
-	//Cキー
-	if (PUSH(CInput::eButton6))
+	if (m_img.CheckAnimationEnd())
 	{
-		m_img.ChangeAnimation(eAnimAttack01,false);
-		new Fish(m_pos,1);
 		m_state = eState_Move;
 	}
-	//Vキー
-	else if (PUSH(CInput::eButton7)) 
+}
+//攻撃
+//Vキー
+void Player::Attack02() {
+	m_img.ChangeAnimation(eAnimAttack02, false);
+	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, true);
+	m_state = eState_Move;
+
+	if (m_img.CheckAnimationEnd())
 	{
-		m_img.ChangeAnimation(eAnimAttack02, false);
-		new Fish(m_pos, 2);
 		m_state = eState_Move;
 	}
-	//Bキー
-	else if (PUSH(CInput::eButton8)) 
-	{
-		m_img.ChangeAnimation(eAnimAttack03, false);
-		new Fish(m_pos, 3);
-		m_state = eState_Move;
-	}
-	
+}
+//攻撃
+//Bキー
+void Player::Attack03() {
+	m_img.ChangeAnimation(eAnimAttack03, false);
+	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, true);
+	m_state = eState_Move;
+
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -217,8 +212,14 @@ void Player::Update()
 	case eState_Move:
 		Move(); 
 		break;
-	case eState_Attack:
-		Attack();
+	case eState_Attack01:
+		Attack01();
+		break;
+	case eState_Attack02:
+		Attack02();
+		break;
+	case eState_Attack03:
+		Attack03();
 		break;
 	case eState_Damage:
 		Damage();

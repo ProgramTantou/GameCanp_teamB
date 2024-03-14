@@ -28,7 +28,7 @@ struct CRect3D
 		m_temae = te;
 
 		m_width = m_right - m_left;
-		m_height = m_top - m_bottom;
+		m_height = m_bottom - m_top;
 		m_Zhaba = m_oku - m_temae;
 	}
 };

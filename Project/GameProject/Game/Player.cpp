@@ -173,10 +173,12 @@ void Player::Attack() {
 //É_ÉÅÅ[ÉW
 void Player::Damage()
 {
+	m_img.ChangeAnimation(eAnimDamage,false);
 	damage = true;
 	//m_hp--;
-	m_img.ChangeAnimation(eAnimDamage,false);
 	m_damage = 60 * 3;
+	
+	
 	/*if (m_hp <= 0)
 	{
 		m_state = eState_Down;
@@ -192,9 +194,6 @@ void Player::Damage()
 //éÄñS
 void Player::Down()
 {
-	
-	
-	
 	m_img.ChangeAnimation(eAnimDown,false);
 	
 	if (m_img.CheckAnimationEnd())
@@ -248,7 +247,7 @@ void Player::Render()
 	m_img.SetFlipH(m_flip);
 	DrawRect();
 	
-	if(m_damage%8==0)
+	if(m_damage%10==0)
 		m_img.Draw();
 	
 	
@@ -277,6 +276,7 @@ void Player::Collision(Task* b)
 				m_damage_no = e->GettAttackNo();
 				if (damage == false) {
 					m_hp -= 1;
+					
 					//printf("a");   
 					if (m_hp <= 0) 
 					{
@@ -286,8 +286,8 @@ void Player::Collision(Task* b)
 					{
 						m_state = eState_Damage;
 					}
+					e->Kill();
 				}
-				
 			}
 		}
 		break;

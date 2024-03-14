@@ -6,6 +6,7 @@ private:
 	CImage m_img;
 public:
 	GameOver(const CVector2D& pos);
+	~GameOver();
 	void Update() override;
 	void Render() override;
 

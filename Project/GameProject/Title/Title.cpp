@@ -15,7 +15,7 @@ Title::Title() : ObjectBase(eType_Title) {
 
 Title::~Title()
 {
-
+	new Game();
 }
 
 void Title::Update() {

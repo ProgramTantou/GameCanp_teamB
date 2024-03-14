@@ -17,66 +17,24 @@ GameOver::GameOver(const CVector2D& p) : ObjectBase(eType_Title) {
 	select_mode = 1;
 }
 
-void GameOver::Update() {
-	//ゲームオーバー時の操作
-	//リトライ
-	
-
+GameOver::~GameOver()
+{
 	//タイトルへ戻る
-	if (PUSH(CInput::eRight))
-	{
-		select_mode += 1;
-	}
+	new Title();
+	//new UI(CVector2D(10, 120), 1);
+}
 
-	if (select_mode > 3)
-	{
-		if (PUSH(CInput::eRight))
-		{
-			select_mode = 1;
-		}
-	}
-
-	if (PUSH(CInput::eLeft))
-	{
-		select_mode -= 1;
-	}
-	if (select_mode < 1)
-	{
-		if (PUSH(CInput::eLeft))
-		{
-			select_mode = 3;
-		}
-	}
-
-	//１でゲームリトライ
-//２でタイトルに戻る
-//３でイグジット
-	switch (select_mode)
-	{
-	case 1://リトライ
-		if (PUSH(CInput::eButton5))
-		{
-			new Game();
-			Kill();
-		}
-	break;
-
-	case 2://タイトルに戻る
+void GameOver::Update() {
+	//リトライ
 		if (PUSH(CInput::eButton5))
 		{
 			Kill();
-			new Title();
-			new UI(CVector2D(10, 120), 1);
 		}
-		break;
-
-	default:
-		break;
-	}
 }
 
 void GameOver::Render() {
-	
+
+	FONT_T()->Draw(800, 1000, 1.0f, 0.0f, 0.0f, "あなたのスコア　%d", select_mode);
 	m_img.SetPos(950,500);
 	m_img.Draw();
 }

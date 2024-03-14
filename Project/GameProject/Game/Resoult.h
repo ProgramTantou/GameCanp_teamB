@@ -1,7 +1,7 @@
 #pragma once
-#include "Task.h"
+#include "ObjectBase.h"
 
-class Resoult : public Task
+class Resoult : public ObjectBase
 {
 private:
 	CImage m_img;

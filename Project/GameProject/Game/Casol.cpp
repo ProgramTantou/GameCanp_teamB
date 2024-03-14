@@ -59,7 +59,5 @@ void Casol::Update() {
 
 void Casol::Render() {
 	m_img.SetPos(GetScreenPos(m_pos));
-	FONT_T()->Draw(800, 1000, 1.0f, 0.0f, 0.0f, "ÉÇÅ[ÉhÅ@%d",select_mode);
-	
 	m_img.Draw();
 }

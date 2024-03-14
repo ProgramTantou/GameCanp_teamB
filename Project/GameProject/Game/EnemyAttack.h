@@ -22,6 +22,7 @@ private:
 	float m_rot; //UŒ‚‚ÌŒü‚«
 	int m_attack_no;//UŒ‚”Ô†
 	int m_timeout;//“G‚ÌUŒ‚‚ªÁ‚¦‚é‚Ü‚Å‚ÌŠÔ
+	int m_attack;
 	bool m_flip;
 
 };

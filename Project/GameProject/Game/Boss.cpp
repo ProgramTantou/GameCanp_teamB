@@ -21,8 +21,24 @@ int Boss::GetHP()
 
 void Boss::Update()
 {
-	
-
+	const float Boss_Speed = 3;
+	Timer++;
+	if (Timer >= 120)
+	{
+		m_pos.x += Boss_Speed;
+	}
+	if (Timer >= 240)
+	{
+		m_pos.y += Boss_Speed;
+	}
+	if (Timer = 360)
+	{
+		Timer == 0;
+	}
+	//アニメーションの変更
+	m_img.ChangeAnimation(move_dir);
+	//アニメーションの更新
+	m_img.UpdateAnimation();
 }
 
 void Boss::Render()

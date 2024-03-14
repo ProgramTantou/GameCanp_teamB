@@ -16,7 +16,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 			//m_img.SetPos(GetScreenPos(m_pos));
 			//m_img.SetSize(128,128);
 			//m_img.SetCenter(128,128);
-			m_rect = CRect(-30, -30, 0, 30);
+			m_rect = CRect3D(-30, -30, 0, 30,30,-30);
 			m_attack_no = attack_no;
 		}
 		break;
@@ -30,7 +30,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 			//m_img.SetPos(GetScreenPos(m_pos));
 			//m_img.SetSize(128,128);
 			//m_img.SetCenter(128,128);
-			m_rect = CRect(-200, -30, 0, 15);
+			m_rect = CRect3D(-200, -30, 0, 15,30,-30);
 			m_attack_no = attack_no;
 		}
 		break;

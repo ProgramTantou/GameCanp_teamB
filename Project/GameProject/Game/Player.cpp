@@ -136,7 +136,6 @@ void Player::Move() {
 			if (m_hp > 0)
 			{
 				m_state = eState_Damage;
-				m_hp = 0;//デバッグ用即死処理（長尾が追加しました）
 			}
 		}
 	}

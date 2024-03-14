@@ -6,8 +6,6 @@ public:
 	float m_top;
 	float m_right;
 	float m_bottom;
-	float m_oku;//奥
-	float m_temae;//手前
 
 	union {
 		struct {
@@ -15,7 +13,6 @@ public:
 			float m_y;
 			float m_width;
 			float m_height;
-			float m_okuhaba;
 		};
 		struct {
 			CVector2D m_pos;
@@ -33,7 +30,7 @@ public:
 	* @param r	[in]　右
 	* @param b	[in]　下
 	*/
-	CRect(float l, float t, float r, float b,float o,float te);
+	CRect(float l, float t, float r, float b);
 	/**
 	* @fn
 	* コンストラクタ（矩形設定）
@@ -54,7 +51,7 @@ public:
 	* @param r	[in]　右
 	* @param b	[in]　下
 	*/
-	void Set(float l, float t, float r, float b, float o, float te);
+	void Set(float l, float t, float r, float b);
 	/**
 	* @fn
 	* 矩形を設定する

@@ -83,6 +83,7 @@ void Init(void)
 	ADD_RESOURCE("Field_2", CImage::CreateImage("Image/Field_2.png"));
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
 	ADD_RESOURCE("Cursor", CImage::CreateImage("Image/cursor.png"));
+	ADD_RESOURCE("Title", CImage::CreateImage("Image/title.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

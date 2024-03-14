@@ -64,7 +64,7 @@ void GameOver::Update() {
 	case 2:
 		if (PUSH(CInput::eButton5))
 		{
-			TaskManager::KillAll();
+			Kill();
 			new Title();
 			new UI(CVector2D(10, 120), 1);
 		}

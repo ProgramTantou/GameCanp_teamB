@@ -33,7 +33,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		
 		m_hp = 2;
 		attack_Timer = 0.0f;
-		attack_Interval = 60.0f;
+		attack_Interval = 120.0f;
 		break;
 	}
 	case 1:
@@ -54,7 +54,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		
 		m_hp = 3;
 		attack_Timer = 0.0f;
-		attack_Interval = 60.0f;
+		attack_Interval = 150.0f;
 		break;
 	}
 	case 2:
@@ -75,7 +75,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 
 		m_hp = 1;
 		attack_Timer = 0.0f;
-		attack_Interval = 60.0f;
+		attack_Interval = 120.0f;
 		break;
 	}
 
@@ -261,7 +261,7 @@ void Enemy::Render() {
 	m_img.SetFlipH(m_flip);
 	//•`‰æ
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 
 //“G‚ÌUŒ‚
@@ -273,6 +273,7 @@ void Enemy::Attack()
 	{
 		CVector3D bullet_Position = m_pos;
 		attack_Timer = 0.0f;
+		attack_no++;
 		if (m_flip) 
 		{
 			//“G‚ÌUŒ‚‚Ì¶¬

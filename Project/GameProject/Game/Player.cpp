@@ -6,6 +6,7 @@
 #include"AnimData.h"
 #include "ObjectBase.h"
 #include "GameOver.h"
+#include"EnemyAttack.h"
 
 int Player::m_hp;
 int Player::m_maxhp;
@@ -171,10 +172,13 @@ void Player::Attack() {
 void Player::Damage()
 {
 	damage = true;
-	m_hp--;
+	//m_hp--;
 	//m_img.ChangeAnimation(0);
 	m_damage = 60 * 3;
-	
+	/*if (m_hp <= 0)
+	{
+		m_state = eState_Down;
+	}*/
 	
 	/*if (m_img.CheckAnimationEnd())
 	{
@@ -205,11 +209,6 @@ int Player::GetHp()
 //XV
 void Player::Update()
 {
-	if (m_hp == 0) {
-		m_state = eState_Down;
-	}
-
-
 	//m_pos_old = m_pos;
 	switch (m_state) 
 	{
@@ -268,8 +267,26 @@ void Player::Collision(Task* b)
 		}
 		break;
 	case eType_Enemy_Attack:
-		
-
+		if (EnemyAttack* e = dynamic_cast<EnemyAttack*>(b)) 
+		{
+			if (m_damage_no != e->GettAttackNo() && ObjectBase::CollisionRect(this, e)) 
+			{
+				m_damage_no = e->GettAttackNo();
+				if (damage == false) {
+					m_hp -= 1;
+					//printf("a");   
+					if (m_hp <= 0) 
+					{
+						m_state = eState_Down;
+					}
+					else 
+					{
+						m_state = eState_Damage;
+					}
+				}
+				
+			}
+		}
 		break;
 	}
 }

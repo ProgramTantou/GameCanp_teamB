@@ -2,10 +2,19 @@
 
 
 //コンストラクタ
-Field::Field() : Task(eType_Field, (int)TaskPrio::Field)
+Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
 	//,mp_image(nullptr)
 {
-	mp_image = COPY_RESOURCE("Field", CImage);
+	Field_number = Field_Nunber;
+	switch (Field_number)
+	{
+	case 1:
+		mp_image = COPY_RESOURCE("Field_1", CImage);
+		break;
+	case 2:
+		mp_image = COPY_RESOURCE("Field_2", CImage);
+		break;
+	}
 	
 	m_ground_y = 800;
 }

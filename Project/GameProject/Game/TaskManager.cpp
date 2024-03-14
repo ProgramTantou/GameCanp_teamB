@@ -189,6 +189,17 @@ void TaskManager::KillAll()
 	}
 }
 
+void TaskManager::SelectKill(int type)
+{
+	for (auto& b : m_taskList)
+	{
+		if (b->m_type == type)
+		{
+			b->Kill();
+		}
+	}
+}
+
 /*void TaskManager::DrawRect(Task* b1, Task* b2)
 {
 	//デバッグ用　矩形の表示

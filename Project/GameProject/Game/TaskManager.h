@@ -22,12 +22,11 @@ public:
 	static bool CollisionCircle(Task* b1, Task* b2);
 	static bool CollisionRect(Task* b1, Task* b2);*/
 
-	void DrawRect(Task* b1, Task* b2);
-
 	//static void Add(Task* b);
 
 
 	static Task* FindObject(int type);
+	static void SelectKill(int type);
 	static void KillAll();
 
 	static std::list<Task*> FindObjects(int type);

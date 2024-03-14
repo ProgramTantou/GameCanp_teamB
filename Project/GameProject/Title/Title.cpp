@@ -45,6 +45,7 @@ void Title::Update() {
 //３でイグジット
 		if (PUSH(CInput::eButton5))
 		{
+			TaskManager::SelectKill(eType_UI);
 			Kill();
 		}
 }

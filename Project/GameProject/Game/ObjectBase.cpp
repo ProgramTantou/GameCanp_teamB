@@ -67,13 +67,13 @@ bool ObjectBase::CollisionRect(ObjectBase* b1, ObjectBase* b2)
 		b2->m_pos.y + b2->m_rect.m_top,
 		b2->m_pos.x + b2->m_rect.m_right,
 		b2->m_pos.y + b2->m_rect.m_bottom,
-		b1->m_pos.z + b1->m_rect.m_oku,
-		b1->m_pos.z + b1->m_rect.m_temae);
+		b2->m_pos.z + b2->m_rect.m_oku,
+		b2->m_pos.z + b2->m_rect.m_temae);
 
 	//‹éŒ`“¯Žm‚Ì”»’è
 	if (rect1.m_left <= rect2.m_right && rect1.m_right >= rect2.m_left &&
 		rect1.m_top <= rect2.m_bottom && rect1.m_bottom >= rect2.m_top &&
-		rect1.m_oku >= rect2.m_temae
+		rect1.m_oku >= rect2.m_temae && rect1.m_temae<=rect2.m_oku
 		)
 		return true;
 
@@ -91,7 +91,7 @@ void ObjectBase::DrawRect()
 		m_pos.z + m_rect.m_oku,
 		m_pos.z + m_rect.m_temae);
 	Utility::DrawQuad(
-		GetScreenPos(CVector3D(rect.m_left, m_pos.y, m_pos.z)),
+		GetScreenPos(CVector3D(rect.m_left, rect.m_top, m_pos.z)),
 		CVector2D(rect.m_width, rect.m_height),
 		CVector4D(1, 0, 0, 0.5f));
 }

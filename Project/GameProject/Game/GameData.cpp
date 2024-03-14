@@ -6,7 +6,7 @@ bool GameData::clear_flag = false;
 bool GameData::death_flag = false;
 
 //コンストラクタ
-GameData::GameData() : Task(eType_UI,(int)TaskPrio::Scene),
+GameData::GameData() : Task(eType_UI,(int)TaskPrio::UI),
 m_fontsize(32),
 m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 	m_count = 0;

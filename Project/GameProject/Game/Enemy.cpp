@@ -2,6 +2,7 @@
 #include "EnemyAttack.h"
 #include "TaskManager.h"
 #include "Fish.h"
+#include "GameData.h"
 
 TexAnim enemy_Idle[] = {
 {0,6},
@@ -18,6 +19,8 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  move_speed = 2;
 	  move_speed1 = 1;
 	  move_speedtossin = 4;
+	  timer = 0;
+	  m_damage_no = rand();
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -31,7 +34,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//’†SˆÊ’uÝ’è
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2, -256 / 4, 256 / 2, 256 / 4, 256 / 2, 256 / 2);
+		m_rect = CRect3D(-256 / 2,-256 / 4,256 / 2,256 / 4, 256 / 2,-256 / 2);
 		//”½“]ƒtƒ‰ƒO
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -52,7 +55,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//’†SˆÊ’uÝ’è
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2, -256 / 4, 256 / 2, 256 / 4,256 / 2, 256 / 2);
+		m_rect = CRect3D(-256 / 2 , -256 / 4, 256 / 2, 256 / 4,256 , -256 );
 		//”½“]ƒtƒ‰ƒO
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -60,7 +63,6 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_hp = 3;
 		attack_Timer = 0.0f;
 		attack_Interval = 150.0f;
-		tossin = false;
 		break;
 	}
 	case 2:
@@ -74,7 +76,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//’†SˆÊ’uÝ’è
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2, -256 / 2, 256 / 2, 256 / 2, 256 / 2, 256 / 2);
+		m_rect = CRect3D(-256 / 2, -256 / 2, 256 / 2, 256 / 2, 256 / 2, -256 / 2);
 		//”½“]ƒtƒ‰ƒO
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -96,6 +98,11 @@ int Enemy::GetHP()
 	return m_hp;
 }
 
+void Enemy::GiveScore(int Score)
+{
+	GameData::m_score + (Score);
+}
+
 void Enemy::Update() {
 	m_pos;
 	//m_pos_old = m_pos;
@@ -110,60 +117,67 @@ void Enemy::Update() {
 	case 0:
 	{if (player) {
 		//¶ˆÚ“®
-		if (player->m_pos.x < m_pos.x - 64) {
-			//ˆÚ“®—Ê‚ðÝ’è
-			m_pos.x += -move_speed1;
-			m_flip = false;
-			move_flag = true;
-		}
-		//‰EˆÚ“®
-		if (player->m_pos.x > m_pos.x + 64) {
-			//ˆÚ“®—Ê‚ðÝ’è
-			m_pos.x += move_speed1;
-			//”½“]ƒtƒ‰ƒO
-			m_flip = true;
-			move_flag = true;
-		}
-		//‰œˆÚ“®
-		if (player->m_pos.z < m_pos.z) {
-			//ˆÚ“®—Ê‚ðÝ’è
-			m_pos.z += -move_speed1;
-			move_flag = true;
-			Attack();
-		}
-		//Žè‘OˆÚ“®
-		if (player->m_pos.z > m_pos.z) {
-			//ˆÚ“®—Ê‚ðÝ’è
-			m_pos.z += move_speed1;
-			//”½“]ƒtƒ‰ƒO
-			move_flag = true;
-		}
+if (player->m_pos.x < m_pos.x - 64) {
+	//ˆÚ“®—Ê‚ðÝ’è
+	m_pos.x += -move_speed1;
+	m_flip = false;
+	move_flag = true;
+	Attack();
+}
+//‰EˆÚ“®
+if (player->m_pos.x > m_pos.x + 64) {
+	//ˆÚ“®—Ê‚ðÝ’è
+	m_pos.x += move_speed1;
+	//”½“]ƒtƒ‰ƒO
+	m_flip = true;
+	move_flag = true;
+	Attack();
+	
+}
+//‰œˆÚ“®
+if (player->m_pos.z < m_pos.z) {
+	//ˆÚ“®—Ê‚ðÝ’è
+	m_pos.z += -move_speed1;
+	move_flag = true;
+	
+}
+//Žè‘OˆÚ“®
+if (player->m_pos.z > m_pos.z) {
+	//ˆÚ“®—Ê‚ðÝ’è
+	m_pos.z += move_speed1;
+	//”½“]ƒtƒ‰ƒO
+	move_flag = true;
+	
+}
 
-		//ãˆÚ“®
-		if (player->m_pos.y - 70 < m_pos.y) {
-			//ˆÚ“®—Ê‚ðÝ’è
-			m_pos.y += -move_speed1;
-			move_flag = true;
-		}
-		//‰ºˆÚ“®
-		if (player->m_pos.y + 70 > m_pos.y) {
-			//ˆÚ“®—Ê‚ðÝ’è
-			m_pos.y += move_speed1;
-			//”½“]ƒtƒ‰ƒO
-			move_flag = true;
-		}
+//ãˆÚ“®
+if (player->m_pos.y - 70 < m_pos.y) {
+	//ˆÚ“®—Ê‚ðÝ’è
+	m_pos.y += -move_speed1;
+	move_flag = true;
+}
+//‰ºˆÚ“®
+if (player->m_pos.y + 70 > m_pos.y) {
+	//ˆÚ“®—Ê‚ðÝ’è
+	m_pos.y += move_speed1;
+	//”½“]ƒtƒ‰ƒO
+	move_flag = true;
+}
+
 	}
-		break;
+	break;
 	}
 	case 1:
+
 	{if (player) {
 		//¶ˆÚ“®
 		if (player->m_pos.x < m_pos.x - 64) {
 			//ˆÚ“®—Ê‚ðÝ’è
 			m_pos.x -= move_speed;
 			m_flip = false;
-			Attack();
 			move_flag = true;
+			Attack();
+
 		}
 		//‰EˆÚ“®
 		if (player->m_pos.x > m_pos.x + 64) {
@@ -173,13 +187,14 @@ void Enemy::Update() {
 			m_flip = true;
 			move_flag = true;
 			Attack();
+
 		}
 		//‰œˆÚ“®
 		if (player->m_pos.z < m_pos.z) {
 			//ˆÚ“®—Ê‚ðÝ’è
 			m_pos.z += -move_speed;
 			move_flag = true;
-			
+
 		}
 		//Žè‘OˆÚ“®
 		if (player->m_pos.z > m_pos.z) {
@@ -190,18 +205,20 @@ void Enemy::Update() {
 		}
 
 		//ãˆÚ“®
-		if (player->m_pos.y - 70 < m_pos.y) {
+		if (player->m_pos.y < m_pos.y) {
 			//ˆÚ“®—Ê‚ðÝ’è
 			m_pos.y += -move_speed;
 			move_flag = true;
 		}
 		//‰ºˆÚ“®
-		if (player->m_pos.y + 70 > m_pos.y) {
+		if (player->m_pos.y > m_pos.y) {
 			//ˆÚ“®—Ê‚ðÝ’è
 			m_pos.y += move_speed;
 			//”½“]ƒtƒ‰ƒO
 			move_flag = true;
 		}
+		
+
 	}
 		break;
 	}
@@ -265,7 +282,7 @@ void Enemy::Render() {
 	m_img.SetFlipH(m_flip);
 	//•`‰æ
 	m_img.Draw();
-	//DrawRect();
+	DrawRect();
 }
 
 //“G‚ÌUŒ‚
@@ -279,33 +296,89 @@ void Enemy::Attack()
 		CVector3D bullet_Direction = (m_pos);
 		attack_Timer = 0.0f;
 		attack_no++;
-		tossin = true;
-		if (m_flip) 
+		switch (Enemy_Number)
 		{
-			//“G‚ÌUŒ‚‚Ì¶¬
-			new EnemyAttack(m_pos+CVector2D(+190,0), attack_no, 0, m_flip);
+		case 0:
+		{
+			if (m_flip)
 			{
+				//“G‚ÌUŒ‚‚Ì¶¬
+				new EnemyAttack(m_pos + CVector2D(+190, 0), attack_no, 0, m_flip);
+				{
+				}
+			}
+			else
+			{
+				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
+				{
+				}
 			}
 		}
-		else
+		break;
+		case 1:
 		{
-			new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
+			if (m_flip)
 			{
+				//“G‚ÌUŒ‚‚Ì¶¬
+				new EnemyAttack(m_pos + CVector2D(+190, 0), attack_no, 1, m_flip);
+				{
+				}
+			}
+			else
+			{
+				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 1, m_flip);
+				{
+				}
 			}
 		}
+		break;
+		case 2:
+		{
+			if (m_flip)
+			{
+				//“G‚ÌUŒ‚‚Ì¶¬
+				new EnemyAttack(m_pos + CVector2D(+190, 0), attack_no, 2, m_flip);
+				{
+				}
+			}
+			else
+			{
+				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 2, m_flip);
+				{
+				}
+			}
+		}
+		break;
+		}
+	
 	}
 }
 
 //“G‚Ì“–‚½‚è”»’è
 void Enemy::Collision(Task* b)
 {
-	/*
+
 	switch (b->m_type)
 	{
 	case eType_Fish:
+	{
+
+		if (Fish* e = dynamic_cast<Fish*>(b))
 		{
-		if(Fish* e= dynamic_cast<Fish*>(b))
-			//if(m_Damage_no !=e-> )
+			if (m_damage_no != e->GetAttackNo() && ObjectBase::CollisionRect(this, e))
+			{
+				m_damage_no = e->GetAttackNo();
+				m_hp - 1;
+				if (m_hp <= 0)
+				{
+					GiveScore(100);
+					e->Kill();
+				}
+			}
 		}
-	}*/
+	}
+	break;
+	}
 }
+
+

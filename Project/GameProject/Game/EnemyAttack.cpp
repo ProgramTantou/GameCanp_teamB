@@ -73,7 +73,13 @@ void EnemyAttack::Update() {
 		break;
 	case 2:
 	{
-
+		if (m_timeout >= 10) {
+			Kill();
+		}
+		else
+		{
+			m_timeout++;
+		}
 	}
 	}
 }

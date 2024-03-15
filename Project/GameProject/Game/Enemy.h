@@ -9,6 +9,7 @@ public:
 	void Render() override;
 	void Collision(Task* b) override;
 	void Attack();
+	void GiveScore(int Score);
 	int GetHP();
 	int attack_no;
 
@@ -21,13 +22,17 @@ private:
 	int m_Damage_no;
 	int m_hp;
 	int move_dir;
+	int timer;
+	int m_damage_no;
 	float attack_Timer;
 	float attack_Interval;
 	float move_speed;
 	float move_speed1;
 	float move_speedtossin;
+	float attack_range;
 	bool m_flip;
-	bool tossin;
+	
+	
 	
 
 

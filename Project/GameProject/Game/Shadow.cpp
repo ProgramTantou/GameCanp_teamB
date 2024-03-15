@@ -17,9 +17,20 @@ void Shadow::Render() {
 	auto& object = TaskManager::GetObjectList();
 	for (Task* task : object)
 	{
+		
 		ObjectBase* obj = dynamic_cast<ObjectBase*>(task);
 		if (obj == nullptr) continue;
-		m_img.SetPos(obj->GetScreenPos(CVector3D(obj->m_pos.x, obj->m_pos.y+100, obj->m_pos.z)));
+		if (obj->m_type == eType_Fish)
+		{
+		m_img.SetSize(50, 50);
+		m_img.SetPos(obj->GetScreenPos(CVector3D(obj->m_pos.x, 800, obj->m_pos.z)));
 		m_img.Draw();
+		}
+		else
+		{
+			m_img.SetSize(200, 200);
+			m_img.SetPos(obj->GetScreenPos(CVector3D(obj->m_pos.x, 800, obj->m_pos.z-100)));
+			m_img.Draw();
+		}
 	}
 }

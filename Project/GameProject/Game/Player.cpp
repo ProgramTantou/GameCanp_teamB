@@ -133,7 +133,7 @@ void Player::Move() {
 //Cキー
 void Player::Attack01() {
 	m_img.ChangeAnimation(eAnimAttack01, false);
-	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, true);
+	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, m_flip,m_attack_no);
 	m_state = eState_Move;
 	
 	if (m_img.CheckAnimationEnd())
@@ -145,7 +145,7 @@ void Player::Attack01() {
 //Vキー
 void Player::Attack02() {
 	m_img.ChangeAnimation(eAnimAttack02, false);
-	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, true);
+	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, m_flip,m_attack_no);
 	m_state = eState_Move;
 
 	if (m_img.CheckAnimationEnd())
@@ -157,7 +157,7 @@ void Player::Attack02() {
 //Bキー
 void Player::Attack03() {
 	m_img.ChangeAnimation(eAnimAttack03, false);
-	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, true);
+	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, m_flip,m_attack_no);
 	m_state = eState_Move;
 
 	if (m_img.CheckAnimationEnd())

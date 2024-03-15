@@ -8,7 +8,7 @@ TexAnim fish[] = {
 	{fish,sizeof(fish) / sizeof(fish[0])},
 };
 //コンストラクタ
-Fish::Fish(const CVector3D& pos,int fish,bool flip) :ObjectBase(eType_Fish) 
+Fish::Fish(const CVector3D& pos,int fish,bool flip,int attack_no) :ObjectBase(eType_Fish) 
 {
 	m_fish = fish;
 	switch (m_fish) 
@@ -25,6 +25,7 @@ Fish::Fish(const CVector3D& pos,int fish,bool flip) :ObjectBase(eType_Fish)
 	}
 	m_pos = pos;
 	m_flip = flip;
+	m_attack_no = attack_no;
 	m_img.ChangeAnimation(0, true);
 	m_img.SetSize(512 / 4, 512 / 4);
 	m_img.SetCenter(512 / 8, 512 / 8);

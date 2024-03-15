@@ -32,6 +32,7 @@ enum  class TaskPrio
 	Shadow,
 	Object,
 	UI,
+	Fade,
 };
 
 //オブジェクトの種類

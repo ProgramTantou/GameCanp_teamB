@@ -23,7 +23,6 @@ private:
 	int m_hp;
 	int move_dir;
 	int timer;
-	int m_damage_no;
 	float attack_Timer;
 	float attack_Interval;
 	float move_speed;

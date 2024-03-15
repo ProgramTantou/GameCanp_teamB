@@ -20,7 +20,6 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  move_speed1 = 1;
 	  move_speedtossin = 4;
 	  timer = 0;
-	  m_damage_no = rand();
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -38,7 +37,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
-		
+		m_Damage_no = rand();
 		m_hp = 2;
 		attack_Timer = 0.0f;
 		attack_Interval = 120.0f;
@@ -55,11 +54,11 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2 , -256 / 4, 256 / 2, 256 / 4,256 , -256 );
+		m_rect = CRect3D(-256 / 2 , -256 / 2, 256 / 2, 256 / 4,256 , -256 );
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
-		
+		m_Damage_no = rand();
 		m_hp = 3;
 		attack_Timer = 0.0f;
 		attack_Interval = 150.0f;
@@ -80,7 +79,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
-
+		m_Damage_no = rand();
 		m_hp = 1;
 		attack_Timer = 0.0f;
 		attack_Interval = 120.0f;
@@ -100,7 +99,7 @@ int Enemy::GetHP()
 
 void Enemy::GiveScore(int Score)
 {
-	GameData::m_score + (Score);
+	GameData::m_score += (Score);
 }
 
 void Enemy::Update() {
@@ -365,15 +364,15 @@ void Enemy::Collision(Task* b)
 
 		if (Fish* e = dynamic_cast<Fish*>(b))
 		{
-			if (m_damage_no != e->GetAttackNo() && ObjectBase::CollisionRect(this, e))
+			if (m_Damage_no != e->GetAttackNo() && ObjectBase::CollisionRect(this, e))
 			{
-				m_damage_no = e->GetAttackNo();
-				m_hp - 1;
+				m_Damage_no = e->GetAttackNo();
+				m_hp -= 1;
 				if (m_hp <= 0)
 				{
 					GiveScore(100);
-					e->Kill();
 				}
+				e->Kill();
 			}
 		}
 	}

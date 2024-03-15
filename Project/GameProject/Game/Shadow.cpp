@@ -1,13 +1,12 @@
 #include "Shadow.h"
 #include "Game.h"
+#include "TaskManager.h"
+#include "ObjectBase.h"
 
-Shadow::Shadow(const CVector2D& p) : ObjectBase(eType_UI) {
-	m_img = COPY_RESOURCE("shadow", CImage);
+Shadow::Shadow() : Task(eType_UI,(int)TaskPrio::Shadow) {
+	m_img = COPY_RESOURCE("Shadow", CImage);
 	m_img.SetSize(200, 200);
 	m_img.SetCenter(100, 100);
-	select_mode = 1;
-	m_pos.x = 600;
-	m_pos.y = 900;
 }
 
 void Shadow::Update() {
@@ -15,6 +14,12 @@ void Shadow::Update() {
 }
 
 void Shadow::Render() {
-	m_img.SetPos(GetScreenPos(m_pos));
-	m_img.Draw();
+	auto& object = TaskManager::GetObjectList();
+	for (Task* task : object)
+	{
+		ObjectBase* obj = dynamic_cast<ObjectBase*>(task);
+		if (obj == nullptr) continue;
+		m_img.SetPos(obj->GetScreenPos(CVector3D(obj->m_pos.x, obj->m_pos.y+100, obj->m_pos.z)));
+		m_img.Draw();
+	}
 }

@@ -246,7 +246,7 @@ void Player::Render()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
-	DrawRect();
+	//DrawRect();
 	
 	if(m_damage%10==0)
 		m_img.Draw();

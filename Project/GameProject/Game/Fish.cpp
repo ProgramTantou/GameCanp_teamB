@@ -79,7 +79,7 @@ void Fish::Render()
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
-	DrawRect();
+	//rawRect();
 }
 //Õ“Ë”»’è
 void Fish::Collision(Task* b)

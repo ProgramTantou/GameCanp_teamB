@@ -1,14 +1,13 @@
 #pragma once
-#include "ObjectBase.h"
+#include "Task.h"
 
-class Shadow :public  ObjectBase {
+class Shadow : public  Task {
 private:
 	CImage m_img;
 
 public:
-	int select_mode = 1;//Œ»İ‘I‘ğ’†‚Ìƒ‚[ƒh
 
-	Shadow(const CVector2D& pos);
+	Shadow();
 	void Update() override;
 	void Render() override;
 };

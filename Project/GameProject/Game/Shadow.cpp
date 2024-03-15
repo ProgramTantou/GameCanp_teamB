@@ -2,7 +2,7 @@
 #include "Game.h"
 
 Shadow::Shadow(const CVector2D& p) : ObjectBase(eType_UI) {
-	m_img = COPY_RESOURCE("Cursor", CImage);
+	m_img = COPY_RESOURCE("shadow", CImage);
 	m_img.SetSize(200, 200);
 	m_img.SetCenter(100, 100);
 	select_mode = 1;
@@ -11,7 +11,6 @@ Shadow::Shadow(const CVector2D& p) : ObjectBase(eType_UI) {
 }
 
 void Shadow::Update() {
-	//ÉÇÅ[ÉhëIëèàóù
 	
 }
 

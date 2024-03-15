@@ -16,9 +16,9 @@ extern TexAnimData enemy_anim_data[] = {
 Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_Enemy) {
 	Enemy_Number = enemy_number;
 	//移動量
-	  move_speed = 2;
-	  move_speed1 = 1;
-	  move_speedtossin = 4;
+	  move_speed = 2.0f;
+	  move_speed1 = 1.0f;
+	  move_charg = 5.0f;
 	  timer = 0;
 	switch (Enemy_Number)
 	{
@@ -32,8 +32,8 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_pos = p;
 		m_img.SetSize(256, 256);
 		//中心位置設定
-		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2,-256 / 4,256 / 2,256 / 4, 256 / 2,-256 / 2);
+		m_img.SetCenter(256 / 2, 256 );
+		m_rect = CRect3D(-512 / 4, -512 / 2, 512 / 4, 0, 256 / 16, -256 / 16);
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -53,8 +53,8 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_pos = p;
 		m_img.SetSize(256, 256);
 		//中心位置設定
-		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2 , -256 / 2, 256 / 2, 256 / 4,256/16, -256/16 );
+		m_img.SetCenter(256 / 2, 256 );
+		m_rect = CRect3D(-512 / 4, -512 / 2, 512 / 4, 0, 256 / 16, -256 / 16);
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -66,6 +66,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	}
 	case 2:
 	{
+		isCharging = false;
 		//画像複製
 		m_img = COPY_RESOURCE("Enemy3", CImage);
 		//再生アニメーション
@@ -74,8 +75,8 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_pos = p;
 		m_img.SetSize(256, 256);
 		//中心位置設定
-		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2, -256 / 2, 256 / 2, 256 / 2, 256 / 2, -256 / 2);
+		m_img.SetCenter(256 / 2, 256);
+		m_rect = CRect3D(-512 / 4, -512 / 2, 512 / 4, 0, 256 / 16, -256 / 16);
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -83,6 +84,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_hp = 1;
 		attack_Timer = 0.0f;
 		attack_Interval = 120.0f;
+		
 		break;
 	}
 
@@ -124,52 +126,52 @@ void Enemy::Update() {
 	case 0:
 	{if (player) {
 		//左移動
-if (player->m_pos.x < m_pos.x - 64) {
-	//移動量を設定
-	m_pos.x += -move_speed1;
-	m_flip = false;
-	move_flag = true;
-	Attack();
-}
-//右移動
-if (player->m_pos.x > m_pos.x + 64) {
-	//移動量を設定
-	m_pos.x += move_speed1;
-	//反転フラグ
-	m_flip = true;
-	move_flag = true;
-	Attack();
-	
-}
-//奥移動
-if (player->m_pos.z < m_pos.z) {
-	//移動量を設定
-	m_pos.z += -move_speed1;
-	move_flag = true;
-	
-}
-//手前移動
-if (player->m_pos.z > m_pos.z) {
-	//移動量を設定
-	m_pos.z += move_speed1;
-	//反転フラグ
-	move_flag = true;
-	
-}
+		if (player->m_pos.x < m_pos.x - 64) {
+			//移動量を設定
+			m_pos.x += -move_speed1;
+			m_flip = false;
+			move_flag = true;
+			Attack();
+		}
+		//右移動
+		if (player->m_pos.x > m_pos.x + 64) {
+			//移動量を設定
+			m_pos.x += move_speed1;
+			//反転フラグ
+			m_flip = true;
+			move_flag = true;
+			Attack();
 
-//上移動
-if (player->m_pos.y - 70 < m_pos.y) {
-	//移動量を設定
-	m_pos.y += -move_speed1;
-	move_flag = true;
-}
-//下移動
-if (player->m_pos.y + 70 > m_pos.y) {
-	//移動量を設定
-	m_pos.y += move_speed1;
-	//反転フラグ
-	move_flag = true;
-}
+		}
+		//奥移動
+		if (player->m_pos.z < m_pos.z) {
+			//移動量を設定
+			m_pos.z += -move_speed1;
+			move_flag = true;
+
+		}
+		//手前移動
+		if (player->m_pos.z > m_pos.z) {
+			//移動量を設定
+			m_pos.z += move_speed1;
+			//反転フラグ
+			move_flag = true;
+
+		}
+
+		//上移動
+		if (player->m_pos.y - 70 < m_pos.y) {
+			//移動量を設定
+			m_pos.y += -move_speed1;
+			move_flag = true;
+		}
+		//下移動
+		if (player->m_pos.y + 70 > m_pos.y) {
+			//移動量を設定
+			m_pos.y += move_speed1;
+			//反転フラグ
+			move_flag = true;
+		}
 
 	}
 	break;
@@ -224,24 +226,24 @@ if (player->m_pos.y + 70 > m_pos.y) {
 			//反転フラグ
 			move_flag = true;
 		}
-		
+
 
 	}
-		break;
+	break;
 	}
 	case 2:
 	{if (player) {
 		//左移動
 		if (player->m_pos.x < m_pos.x - 64) {
 			//移動量を設定
-			m_pos.x += ( - move_speed+0.5);
+			m_pos.x += (-move_speed + 0.5);
 			m_flip = false;
 			move_flag = true;
 		}
 		//右移動
 		if (player->m_pos.x > m_pos.x + 64) {
 			//移動量を設定
-			m_pos.x += (move_speed-0.5);
+			m_pos.x += (move_speed - 0.5);
 			//反転フラグ
 			m_flip = true;
 			move_flag = true;
@@ -249,13 +251,13 @@ if (player->m_pos.y + 70 > m_pos.y) {
 		//奥移動
 		if (player->m_pos.z < m_pos.z) {
 			//移動量を設定
-			m_pos.z += ( - move_speed+0.5);
+			m_pos.z += (-move_speed + 0.5);
 			move_flag = true;
 		}
 		//手前移動
 		if (player->m_pos.z > m_pos.z) {
 			//移動量を設定
-			m_pos.z += (move_speed-0.5);
+			m_pos.z += (move_speed - 0.5);
 			//反転フラグ
 			move_flag = true;
 		}
@@ -263,20 +265,43 @@ if (player->m_pos.y + 70 > m_pos.y) {
 		//上移動
 		if (player->m_pos.y - 120 < m_pos.y) {
 			//移動量を設定
-			m_pos.y += ( - move_speed+0.5);
+			m_pos.y += (-move_speed + 0.5);
 			move_flag = true;
 		}
 		//下移動
 		if (player->m_pos.y > m_pos.y) {
 			//移動量を設定
-			m_pos.y += (move_speed-0.5);
+			m_pos.y += (move_speed - 0.5);
 			//反転フラグ
 			move_flag = true;
 		}
+
+		//突進ここから作ります
+		if (!isCharging) {
+			if ((player->m_pos.x - m_pos.x) < 30)
+			{
+				isCharging = true;
+			}
+		}
+		else {
+			//突進中の処理
+			//突進速度で移動する
+			if (m_flip) {
+				m_pos.x += move_charg;
+			}
+			else {
+				m_pos.x -= move_charg;
+			}
+			if ((player->m_pos.x - m_pos.x) == 0)
+			{
+				isCharging = false;
+			}
+		}
 	}
-		break;
+	break;
 	}
 	}
+	
 	//アニメーションの変更
 	m_img.ChangeAnimation(move_dir);
 	//アニメーション更新
@@ -329,13 +354,34 @@ void Enemy::Attack()
 				//敵の攻撃の生成
 				new EnemyAttack(m_pos + CVector2D(+190, 0), attack_no, 1, m_flip);
 				{
+					timer++;
+					if (timer <= 30)
+					{
+						m_pos.x += 0;
+						if (timer >= 31)
+						{
+							m_pos.x += move_speed;
+							timer == 0;
+						}
+					}
 				}
 			}
 			else
 			{
 				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 1, m_flip);
 				{
+					timer++;
+					if (timer <= 30)
+					{
+						m_pos.x += 0;
+						if (timer >= 31)
+						{
+							m_pos.x += move_speed;
+							timer == 0;
+						}
+					}
 				}
+				
 			}
 		}
 		break;

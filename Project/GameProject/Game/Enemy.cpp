@@ -277,6 +277,7 @@ void Enemy::Update() {
 		}
 
 		//“Ëi‚±‚±‚©‚çì‚è‚Ü‚·
+	/*
 		if (!isCharging) {
 			if ((player->m_pos.x - m_pos.x) < 30)
 			{
@@ -296,7 +297,7 @@ void Enemy::Update() {
 			{
 				isCharging = false;
 			}
-		}
+		}*/
 	}
 	break;
 	}

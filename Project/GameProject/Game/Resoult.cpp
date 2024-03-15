@@ -4,7 +4,7 @@
 
 Resoult::Resoult() : ObjectBase(eType_Title)
 {
-	m_img = COPY_RESOURCE("Resoult", CImage);
+	m_img = COPY_RESOURCE("Resoult_kari", CImage);
 	m_img.SetSize(1920, 1080);
 	m_img.SetCenter(960, 540);
 }

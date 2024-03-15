@@ -26,6 +26,7 @@
     <ClCompile Include="Game\ObjectBase.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Resoult.cpp" />
+    <ClCompile Include="Game\Shadow.cpp" />
     <ClCompile Include="Game\Task.cpp" />
     <ClCompile Include="Game\UI.cpp" />
     <ClCompile Include="Game\TaskManager.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="Game\ObjectBase.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Resoult.h" />
+    <ClInclude Include="Game\Shadow.h" />
     <ClInclude Include="Game\Task.h" />
     <ClInclude Include="Game\TaskManager.h" />
     <ClInclude Include="Game\UI.h" />

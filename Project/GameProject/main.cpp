@@ -1,11 +1,13 @@
 #include "Title/Title.h"
 #include "Game/Casol.h"
 #include "Game/Player.h"
+#include"Game/Fish.h"
 #include "Game/Enemy.h"
 #include "Game/Task.h"
 #include "Game/TaskManager.h"
 #include "Game/Field.h"
 #include"Game/Game.h"
+#include "Game/Shadow.h"
 #include"Game/AnimData.h"
 //--------------------------------------------
 //グローバル変数領域
@@ -76,6 +78,9 @@ void Init(void)
 	//-----------------------------------------------------
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 512, 512));
+	ADD_RESOURCE("Fish_1", CImage::CreateImage("Image/unagi.png", fish_anim_data, 512, 512));
+	ADD_RESOURCE("Fish_2", CImage::CreateImage("Image/tako.png", fish_anim_data, 512, 512));
+	ADD_RESOURCE("Fish_3", CImage::CreateImage("Image/fugu.png", fish_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/butakame.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
@@ -84,7 +89,8 @@ void Init(void)
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
 	ADD_RESOURCE("Cursor", CImage::CreateImage("Image/cursor.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/title.png"));
-	ADD_RESOURCE("Resoult", CImage::CreateImage("Image/Resoult.ong"));
+	ADD_RESOURCE("Resoult", CImage::CreateImage("Image/Resoult_kari.png"));
+	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/shadow.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

@@ -19,38 +19,10 @@ Title::~Title()
 }
 
 void Title::Update() {
-	//モード選択処理
-	if (PUSH(CInput::eRight))
-	{
-		select_mode += 1;
-	}
-
-	if (select_mode > 3)
-	{
-		if (PUSH(CInput::eRight))
+	
+	//スペースキーでＧＡＭＥを生成し、ゲームスタートする。
+		if (PUSH(CInput::eButton5) )
 		{
-			select_mode = 1;
-		}
-	}
-
-	if (PUSH(CInput::eLeft))
-	{
-		select_mode -= 1;
-	}
-	if (select_mode < 1)
-	{
-		if (PUSH(CInput::eLeft))
-		{
-			select_mode = 3;
-		}
-	}
-
-	//１でゲームスタート
-//２でクレジット
-//３でイグジット
-		if (PUSH(CInput::eButton5) && select_mode==1)
-		{
-			TaskManager::SelectKill(eType_UI);
 			Kill();
 		}
 }

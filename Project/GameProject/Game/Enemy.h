@@ -28,9 +28,10 @@ private:
 	float attack_Interval;
 	float move_speed;
 	float move_speed1;
-	float move_speedtossin;
+	float move_charg;
 	float attack_range;
 	bool m_flip;
+	bool isCharging;
 	
 	
 	

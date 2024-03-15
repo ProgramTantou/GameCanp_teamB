@@ -13,6 +13,8 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 	new Field(2);
 	new Player(CVector3D(700, 1000, 0), false);
 	new Enemy(CVector3D(1000, 500, 0),1,false);
+	new Enemy(CVector3D(1500, 500, 0), 0, false);
+	new Enemy(CVector3D(1200, 500, 0), 2, false);
 	new UI(CVector2D(10, 120), 1);
 	new GameData();
 }

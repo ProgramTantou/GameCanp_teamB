@@ -54,7 +54,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.SetSize(256, 256);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 / 2);
-		m_rect = CRect3D(-256 / 2 , -256 / 2, 256 / 2, 256 / 4,256 , -256 );
+		m_rect = CRect3D(-256 / 2 , -256 / 2, 256 / 2, 256 / 4,256/16, -256/16 );
 		//反転フラグ
 		m_flip = flip;
 		m_Attack_no = rand();
@@ -100,6 +100,14 @@ int Enemy::GetHP()
 void Enemy::GiveScore(int Score)
 {
 	GameData::m_score += (Score);
+}
+void Enemy::Dead()
+{
+	if (m_hp >= 0)
+	{
+		Kill();
+	}
+		
 }
 
 void Enemy::Update() {
@@ -226,14 +234,14 @@ if (player->m_pos.y + 70 > m_pos.y) {
 		//左移動
 		if (player->m_pos.x < m_pos.x - 64) {
 			//移動量を設定
-			m_pos.x += -move_speed;
+			m_pos.x += ( - move_speed+0.5);
 			m_flip = false;
 			move_flag = true;
 		}
 		//右移動
 		if (player->m_pos.x > m_pos.x + 64) {
 			//移動量を設定
-			m_pos.x += move_speed;
+			m_pos.x += (move_speed-0.5);
 			//反転フラグ
 			m_flip = true;
 			move_flag = true;
@@ -241,13 +249,13 @@ if (player->m_pos.y + 70 > m_pos.y) {
 		//奥移動
 		if (player->m_pos.z < m_pos.z) {
 			//移動量を設定
-			m_pos.z += -move_speed;
+			m_pos.z += ( - move_speed+0.5);
 			move_flag = true;
 		}
 		//手前移動
 		if (player->m_pos.z > m_pos.z) {
 			//移動量を設定
-			m_pos.z += move_speed;
+			m_pos.z += (move_speed-0.5);
 			//反転フラグ
 			move_flag = true;
 		}
@@ -255,13 +263,13 @@ if (player->m_pos.y + 70 > m_pos.y) {
 		//上移動
 		if (player->m_pos.y - 120 < m_pos.y) {
 			//移動量を設定
-			m_pos.y += -move_speed;
+			m_pos.y += ( - move_speed+0.5);
 			move_flag = true;
 		}
 		//下移動
 		if (player->m_pos.y > m_pos.y) {
 			//移動量を設定
-			m_pos.y += move_speed;
+			m_pos.y += (move_speed-0.5);
 			//反転フラグ
 			move_flag = true;
 		}
@@ -362,17 +370,36 @@ void Enemy::Collision(Task* b)
 	case eType_Fish:
 	{
 
-		if (Fish* e = dynamic_cast<Fish*>(b))
+		if (Fish* f = dynamic_cast<Fish*>(b))
 		{
-			if (m_Damage_no != e->GetAttackNo() && ObjectBase::CollisionRect(this, e))
+			if (m_Damage_no != f->GetAttackNo() && ObjectBase::CollisionRect(this, f))
 			{
-				m_Damage_no = e->GetAttackNo();
+				m_Damage_no = f->GetAttackNo();
 				m_hp -= 1;
 				if (m_hp <= 0)
 				{
-					GiveScore(100);
+					Dead();
+					switch (Enemy_Number)
+					{
+					case 0:
+					{
+						GiveScore(150);
+					}
+					break;
+					case 1:
+					{
+						GiveScore(100);
+					}
+					break;
+					case 2:
+					{
+						GiveScore(200);
+					}
+					break;
+					}
+				
 				}
-				e->Kill();
+				f->Kill();
 			}
 		}
 	}

@@ -10,6 +10,7 @@ public:
 	void Collision(Task* b) override;
 	void Attack();
 	void GiveScore(int Score);
+	void Dead();
 	int GetHP();
 	int attack_no;
 

@@ -6,6 +6,7 @@
 #include"GameData.h"
 #include"GameOver.h"
 #include "TaskManager.h"
+#include "Fade.h"
 
 
 Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene) 
@@ -17,6 +18,7 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 	new Enemy(CVector3D(1200, 500, 0), 2, false);
 	new UI(CVector2D(10, 120), 1);
 	new GameData();
+	new Fade();
 }
 
 Game::~Game()

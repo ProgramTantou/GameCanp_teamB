@@ -12,7 +12,9 @@ Title::Title() : ObjectBase(eType_Title) {
 	new Casol(CVector2D(1000, 600));
 	m_img.ChangeAnimation(1, false);
 	//変数一覧
-	int select_mode = 1;//現在選択中のモード
+	select_mode = 1;//現在選択中のモード
+	selectOK = true;
+	
 }
 
 Title::~Title()
@@ -22,37 +24,39 @@ Title::~Title()
 
 void Title::Update() {
 	
-	//スペースキーでＧＡＭＥを生成し、ゲームスタートする。
-	if (PUSH(CInput::eRight))
-	{
-		select_mode += 1;
-	}
-
-	if (select_mode > 2)
+	//セレクトモードが２の時にスペースキーでＧＡＭＥを生成し、ゲームスタートする。
+	if (selectOK)
 	{
 		if (PUSH(CInput::eRight))
 		{
-			select_mode = 1;
+			select_mode += 1;
 		}
-	}
 
-	if (PUSH(CInput::eLeft))
-	{
-		select_mode -= 1;
-	}
-	if (select_mode < 1)
-	{
+		if (select_mode > 2)
+		{
+			if (PUSH(CInput::eRight))
+			{
+				select_mode = 1;
+			}
+		}
+
 		if (PUSH(CInput::eLeft))
 		{
-			select_mode = 2;
+			select_mode -= 1;
+		}
+		if (select_mode < 1)
+		{
+			if (PUSH(CInput::eLeft))
+			{
+				select_mode = 2;
+			}
+		}
+
+		if (select_mode != 2)
+		{
+			m_img.Load("Image/title.png");
 		}
 	}
-
-	if(select_mode!=2)
-	{
-		m_img.Load("Image/title.png");
-	}
-
 	//１でゲームスタート
 //２でクレジット
 //３でイグジット
@@ -68,12 +72,22 @@ void Title::Update() {
 	case 2:
 		if (PUSH(CInput::eButton5))
 		{
+			selectOK = false;
 			m_img.Load("Image/control_manual.png");
 		}
 		break;
 
 	default:
 		break;
+	}
+
+	//セレクトモードが２の時は、スペースキーを押せば再びセレクトできる。
+	if (select_mode == 2)
+	{
+		if (PUSH(CInput::eButton5))
+		{
+			selectOK = true;
+		}
 	}
 }
 

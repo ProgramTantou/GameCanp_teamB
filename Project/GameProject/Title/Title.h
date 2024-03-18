@@ -8,6 +8,8 @@ private:
 public:
 	int select_mode=1;//現在選択中のモード
 
+	bool selectOK = true;//これがtrueの間モードを選択できる。
+
 	Title();
 	~Title();
 	void Update() override;

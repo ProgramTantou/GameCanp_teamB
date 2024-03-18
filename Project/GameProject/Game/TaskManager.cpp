@@ -187,6 +187,11 @@ void TaskManager::KillAll()
 	{
 			b->Kill();
 	}
+
+	for (auto& b : m_objectList)
+	{
+		b->Kill();
+	}
 }
 
 void TaskManager::SelectKill(int type)

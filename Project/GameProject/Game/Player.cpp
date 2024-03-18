@@ -191,7 +191,7 @@ void Player::Damage()
 	m_img.ChangeAnimation(eAnimDamage,false);
 	damage = true;
 	//m_hp--;
-	m_damage = 60 * 3;
+	m_damage = 60 * 2;
 	
 	
 	/*if (m_hp <= 0)
@@ -210,11 +210,11 @@ void Player::Damage()
 void Player::Down()
 {
 	m_img.ChangeAnimation(eAnimDown,false);
-	
+	GameData::death_flag = true;
 	if (m_img.CheckAnimationEnd())
 	{
 		Kill();
-		GameData::death_flag = true;
+		
 	}
 }
 
@@ -271,7 +271,7 @@ void Player::Render()
 	if(m_damage%10==0)
 		m_img.Draw();
 	
-	DrawRect();
+	//DrawRect();
 }
 //Õ“Ë”»’è
 void Player::Collision(Task* b)

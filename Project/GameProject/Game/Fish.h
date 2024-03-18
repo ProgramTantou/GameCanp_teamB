@@ -13,7 +13,7 @@ private:
 	bool m_screen;
 	int m_attack_no;
 public:
-	Fish(const CVector3D& pos, int fish, bool flip, int attack_no);
+	Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type);
 	//‹›‚Ìí—Ş
 	int m_fish;
 	//XV

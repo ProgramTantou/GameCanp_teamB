@@ -34,7 +34,12 @@ Player::Player(const CVector3D& p,bool flip) : ObjectBase(eType_Player)
 	move_speed = 6;
 	jump_pow = 12;
 	int i = 0;
-	
+	cnt1 = 0;
+	cnt2 = 0;
+	cnt3 = 0;
+	player_attack1 = false;
+	player_attack2 = false;
+	player_attack3 = false;
 }
 //ˆÚ“®
 void Player::Move() {
@@ -114,26 +119,37 @@ void Player::Move() {
 			m_img.ChangeAnimation(eAnimIdle);
 		}
 	}
-	if (PUSH(CInput::eButton6)) {
-		m_state=eState_Attack01;
-		m_attack_no++;
+
+	if (cnt1 > 0 && player_attack1 == true) {
+		if (PUSH(CInput::eButton6)) {
+			m_state=eState_Attack01;
+			m_attack_no++;
+		}
 	}
-	else if (PUSH(CInput::eButton7)) 
+	else if (cnt2 > 0 && player_attack2 == true) 
 	{
-		m_state=eState_Attack02;
-		m_attack_no++;
+		if (PUSH(CInput::eButton7)) 
+		{
+			m_state=eState_Attack02;
+			m_attack_no++;
+		}
 	}
-	else if (PUSH(CInput::eButton8)) 
+	else if (cnt3 > 0 && player_attack3 == true)
 	{
-		m_state=eState_Attack03;
-		m_attack_no++;
+		if (PUSH(CInput::eButton8)) 
+		{
+			m_state=eState_Attack03;
+			m_attack_no++;
+		}
 	}
 }
 //UŒ‚
 //CƒL[
-void Player::Attack01() {
+void Player::Attack01() 
+{
 	m_img.ChangeAnimation(eAnimAttack01, false);
-	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, true,m_attack_no);
+	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, true,m_attack_no,eType_Player_Attack);
+	cnt1 -= 1;
 	m_state = eState_Move;
 	
 	if (m_img.CheckAnimationEnd())
@@ -143,9 +159,11 @@ void Player::Attack01() {
 }
 //UŒ‚
 //VƒL[
-void Player::Attack02() {
+void Player::Attack02()
+{
 	m_img.ChangeAnimation(eAnimAttack02, false);
-	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, true,m_attack_no);
+	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, true,m_attack_no, eType_Player_Attack);
+	cnt2 -= 1;
 	m_state = eState_Move;
 
 	if (m_img.CheckAnimationEnd())
@@ -155,9 +173,11 @@ void Player::Attack02() {
 }
 //UŒ‚
 //BƒL[
-void Player::Attack03() {
+void Player::Attack03() 
+{
 	m_img.ChangeAnimation(eAnimAttack03, false);
-	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, true,m_attack_no);
+	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, true,m_attack_no, eType_Player_Attack);
+	cnt3 -= 1;
 	m_state = eState_Move;
 
 	if (m_img.CheckAnimationEnd())
@@ -251,7 +271,7 @@ void Player::Render()
 	if(m_damage%10==0)
 		m_img.Draw();
 	
-	//DrawRect();
+	DrawRect();
 }
 //Õ“Ë”»’è
 void Player::Collision(Task* b)
@@ -287,6 +307,30 @@ void Player::Collision(Task* b)
 						m_state = eState_Damage;
 					}
 					e->Kill();
+				}
+			}
+		}
+		break;
+	case eType_Fish:
+		if (Fish* fish = dynamic_cast<Fish*>(b)) 
+		{
+			if (fish->m_type==eType_Fish&&ObjectBase::CollisionRect(this, fish)) 
+			{
+				b->Kill();
+				if (fish->m_fish == eFish_1) 
+				{
+					player_attack1 = true;
+					cnt1 += 1;
+				}
+				else if (fish->m_fish == eFish_2) 
+				{
+					player_attack2 = true;
+					cnt2 += 1;
+				}
+				else if (fish->m_fish == eFish_3) 
+				{
+					player_attack3 = true;
+					cnt3 += 1;
 				}
 			}
 		}

@@ -8,7 +8,7 @@ TexAnimData fish_anim_data[] = {
    {fish,sizeof(fish) / sizeof(fish[0])},
 };
 //コンストラクタ
-Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no) :ObjectBase(eType_Fish)
+Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type) :ObjectBase(type)
 {
 	m_fish = fish;
 	switch (m_fish)
@@ -30,9 +30,9 @@ Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no) :ObjectBase
 	m_flip = flip;
 	m_attack_no = attack_no;
 	m_img.ChangeAnimation(0, true);
-	m_img.SetSize(512 / 4, 512 / 4);
-	m_img.SetCenter(512 / 8, 512 / 8);
-	m_rect = CRect3D(-512 / 8, -512 / 8, 512 / 8, 512 / 8, 256 / 8, -256 / 8);
+	m_img.SetSize(512 / 2, 512 / 2);
+	m_img.SetCenter(512 / 4, 512 / 4);
+	m_rect = CRect3D(-512 / 4, -512 / 4, 512 / 4, 512 / 4, 256 / 4, -256 / 4);
 	m_screen = false;
 	int cnt = 0;
 	int time = 0;
@@ -95,7 +95,7 @@ void Fish::Render()
 	m_img.SetFlipH(m_flip);
 
 	m_img.Draw();
-	//DrawRect();
+	DrawRect();
 }
 //衝突判定
 void Fish::Collision(Task* b)

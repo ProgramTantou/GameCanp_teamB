@@ -11,10 +11,10 @@ Title::Title() : ObjectBase(eType_Title) {
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);
 	m_img.Load("Image/title.png");
-	new Casol(CVector2D(1000, 600));
-	m_img.ChangeAnimation(1, false);
+	//new Casol(CVector2D(1000, 600));
 	//変数一覧
 	select_mode = 1;//現在選択中のモード
+	selectOK = true;
 	cnt = 0;
 }
 
@@ -24,7 +24,18 @@ Title::~Title()
 }
 
 void Title::Update() {
-	
+
+	if (PUSH(CInput::eButton2))
+	{
+		Kill();
+	}
+
+	if (PUSH(CInput::eButton3))
+	{
+		m_img.Load("Image/control_manual.png");
+	}
+
+	/*
 	//cnt減少処理
 	if (cnt > 0)
 	{
@@ -39,7 +50,7 @@ void Title::Update() {
 			select_mode += 1;
 		}
 
-		if (select_mode >= 2)
+		if (select_mode > 2)
 		{
 			if (PUSH(CInput::eRight))
 			{
@@ -72,7 +83,7 @@ void Title::Update() {
 		break;
 
 	case 2:
-		if (PUSH(CInput::eButton5) && cnt==0)
+		if (PUSH(CInput::eButton5) && cnt==0 && selectOK)
 		{
 			selectOK = false;
 			cnt = 30;
@@ -85,13 +96,14 @@ void Title::Update() {
 	}
 
 	//セレクトモードが２の時は、スペースキーを押せば再びセレクトできる。
-		if (PUSH(CInput::eButton5) && !selectOK && cnt<=0)
+		if (PUSH(CInput::eButton5) && selectOK==false && cnt==0)
 		{
 			selectOK = true;
 			cnt = 30;
 			m_img.Load("Image/title.png");
 			//select_mode = 1;
 		}
+		*/
 }
 
 void Title::Render() {

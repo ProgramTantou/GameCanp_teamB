@@ -12,8 +12,8 @@
 
 Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene) 
 {
-	GameData::clear_flag == false;
-	GameData::death_flag == false;
+	GameData::clear_flag = false;
+	GameData::death_flag = false;
 	new Field(1);
 	new Player(CVector3D(200, 1000, 0), false);
 	new FishManager();

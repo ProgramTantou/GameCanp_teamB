@@ -29,7 +29,6 @@ UI::~UI() {
 //更新処理
 void UI::Update() {
 	hp = Player::m_maxhp - Player::GetHp();
-	//m_pos = (CVector3D(100 + m_scroll.x, 120, 0));
 }
 
 //描画処理
@@ -38,6 +37,7 @@ void UI::Render() {
 	case 1:
 		m_img.SetPos(200,120);
 		m_img.SetRect(hp * 512, 512, (hp + 1) * 512, 1024);
+		//ゲームクリアかゲームオーバーでないなら
 		if (GameData::clear_flag == false && GameData::death_flag == false) {
 			m_img.Draw();
 		}

@@ -10,6 +10,8 @@ GameData::GameData() : Task(eType_UI,(int)TaskPrio::UI),
 m_fontsize(32),
 m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 	m_count = 0;
+	GameData::m_score = 0;
+	GameData::m_time = 180;
 }
 
 //デストラクタ

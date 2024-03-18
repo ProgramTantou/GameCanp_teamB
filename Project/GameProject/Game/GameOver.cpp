@@ -34,6 +34,6 @@ void GameOver::Update() {
 void GameOver::Render() {
 
 	FONT_T()->Draw(800, 1000, 1.0f, 0.0f, 0.0f, "あなたのスコア　%d", select_mode);
-	m_img.SetPos(950,500);
+	m_img.SetPos(950, 500);
 	m_img.Draw();
 }

@@ -11,7 +11,7 @@ Title::Title() : ObjectBase(eType_Title) {
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);
 	m_img.Load("Image/title.png");
-	new Casol(CVector2D(1000, 600));
+	//new Casol(CVector2D(1000, 600));
 	//•Ï”ˆê——
 	select_mode = 1;//Œ»Ý‘I‘ð’†‚Ìƒ‚[ƒh
 	selectOK = true;
@@ -24,7 +24,18 @@ Title::~Title()
 }
 
 void Title::Update() {
-	
+
+	if (PUSH(CInput::eButton2))
+	{
+		Kill();
+	}
+
+	if (PUSH(CInput::eButton3))
+	{
+		m_img.Load("Image/control_manual.png");
+	}
+
+	/*
 	//cntŒ¸­ˆ—
 	if (cnt > 0)
 	{
@@ -92,6 +103,7 @@ void Title::Update() {
 			m_img.Load("Image/title.png");
 			//select_mode = 1;
 		}
+		*/
 }
 
 void Title::Render() {

@@ -41,6 +41,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_hp = 2;
 		attack_Timer = 0.0f;
 		attack_Interval = 120.0f;
+		waitdistance = 1000;
 		break;
 	}
 	case 1:
@@ -87,6 +88,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		attack_Timer = 0.0f;
 		attack_Interval = 100.0f;
 		ChargingInterval = 240;
+		waitdistance = 800;
 		break;
 	}
 
@@ -127,68 +129,74 @@ void Enemy::Update() {
 	{
 	case 0:
 	{if (player) {
-		//左移動
-		if (player->m_pos.x < m_pos.x - 64) {
-			//移動量を設定
-			m_pos.x += -move_speed1;
-			m_flip = false;
-			move_flag = true;
-			Attack();
-		}
-		//右移動
-		if (player->m_pos.x > m_pos.x + 64) {
-			//移動量を設定
-			m_pos.x += move_speed1;
-			//反転フラグ
-			m_flip = true;
-			move_flag = true;
-			Attack();
 
-		}
-		//奥移動
-		if (player->m_pos.z < m_pos.z) {
-			//移動量を設定
-			m_pos.z += -move_speed1;
-			move_flag = true;
-
-		}
-		//手前移動
-		if (player->m_pos.z > m_pos.z) {
-			//移動量を設定
-			m_pos.z += move_speed1;
-			//反転フラグ
-			move_flag = true;
-
-		}
-
-		//上移動
-		if (player->m_pos.y < m_pos.y) {
-			//移動量を設定
-			m_pos.y += -move_speed1;
-			move_flag = true;
-		}
-		//下移動
-		if (player->m_pos.y  > m_pos.y) {
-			//移動量を設定
-			m_pos.y += move_speed1;
-			//反転フラグ
-			move_flag = true;
-		}
-
-	}
-	break;
-	}
-	case 1:
-
-	{if (player) {
-
-		//プレイヤーと敵のX軸の距離を　distance(距離)　とする。
+		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
 		//プレイヤーの距離が「敵」の待機距離内に入ったら
 		if (distance <= waitdistance) {
 
-		//待機時間を超えるまで、waitTimerでカウント
+			//左移動
+			if (player->m_pos.x < m_pos.x - 64) {
+				//移動量を設定
+				m_pos.x += -move_speed1;
+				m_flip = false;
+				move_flag = true;
+				Attack();
+			}
+			//右移動
+			if (player->m_pos.x > m_pos.x + 64) {
+				//移動量を設定
+				m_pos.x += move_speed1;
+				//反転フラグ
+				m_flip = true;
+				move_flag = true;
+				Attack();
+
+			}
+			//奥移動
+			if (player->m_pos.z < m_pos.z) {
+				//移動量を設定
+				m_pos.z += -move_speed1;
+				move_flag = true;
+
+			}
+			//手前移動
+			if (player->m_pos.z > m_pos.z) {
+				//移動量を設定
+				m_pos.z += move_speed1;
+				//反転フラグ
+				move_flag = true;
+
+			}
+
+			//上移動
+			if (player->m_pos.y < m_pos.y) {
+				//移動量を設定
+				m_pos.y += -move_speed1;
+				move_flag = true;
+			}
+			//下移動
+			if (player->m_pos.y > m_pos.y) {
+				//移動量を設定
+				m_pos.y += move_speed1;
+				//反転フラグ
+				move_flag = true;
+			}
+		}
+	}
+	break;
+	}
+	case 1:
+	{if (player) {
+
+		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
+		float distance = abs(player->m_pos.x - m_pos.x);
+
+		//プレイヤーの距離が「敵」の待機距離内に入ったら
+		if (distance <= waitdistance) {
+
+		//待機時間を超えるまで、waitTimerでカウント ＊duration(間隔)
 			if (waitTimer < waitduration) 
 			{
 				waitTimer++;
@@ -255,6 +263,7 @@ void Enemy::Update() {
 		if (abs(player->m_pos.x - m_pos.x) <= 300) 
 		{
 			Attack();
+
 		}
 
 		//5秒間動く
@@ -273,104 +282,109 @@ void Enemy::Update() {
 	case 2:
 	{if (player) {
 
-		
-		//左移動
-		if (player->m_pos.x < m_pos.x - 64) 
-		{
-			//移動量を設定
-		//	if(isCharging=false)
-			m_pos.x -= (move_speed + 0.5);
-			m_flip = false;
-			move_flag = true;
-		
-		}
-		//右移動
-		if (player->m_pos.x > m_pos.x + 64)
-		{
-			//移動量を設定
-			m_pos.x += (move_speed - 0.5);
-			//反転フラグ
-			m_flip = true;
-			move_flag = true;
-			
-		}
+		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
+		float distance = abs(player->m_pos.x - m_pos.x);
 
-		//奥移動
-		if (player->m_pos.z < m_pos.z) 
-		{
-			//移動量を設定
-			m_pos.z += (-move_speed + 0.5);
-			move_flag = true;
-		}
-		//手前移動
-		if (player->m_pos.z > m_pos.z) 
-		{
-			//移動量を設定
-			m_pos.z += (move_speed - 0.5);
-			//反転フラグ
-			move_flag = true;
-		}
+		//プレイヤーの距離が「敵」の待機距離内に入ったら
+		if (distance <= waitdistance) {
 
-		//上移動
-		if (player->m_pos.y < m_pos.y) 
-		{
-			//移動量を設定
-			m_pos.y += (-move_speed + 0.5);
-			move_flag = true;
-		}
-		//下移動
-		if (player->m_pos.y > m_pos.y) 
-		{
-			//移動量を設定
-			m_pos.y += (move_speed - 0.5);
-			//反転フラグ
-			move_flag = true;
-		}
-
-	//ここから突進処理
-	
-		//突進不可だったら
-		if (!isCharging) 
-		{
-			timer++;//時間経過
-			//インターバルを過ぎたら
-			if (timer >= ChargingInterval) 
+			//左移動
+			if (player->m_pos.x < m_pos.x - 64)
 			{
-				isCharging = true;		//突進可能
-				timer = 0;
+				//移動量を設定
+			//	if(isCharging=false)
+				m_pos.x -= (move_speed + 0.5);
+				m_flip = false;
+				move_flag = true;
+
 			}
-		}
-		else
-		{
-			if (player) 
+			//右移動
+			if (player->m_pos.x > m_pos.x + 64)
 			{
+				//移動量を設定
+				m_pos.x += (move_speed - 0.5);
+				//反転フラグ
+				m_flip = true;
+				move_flag = true;
 
-			//プレイヤーのほうへ突進する。
-			if (player->m_pos.x < m_pos.x) 
+			}
+
+			//奥移動
+			if (player->m_pos.z < m_pos.z)
 			{
-				m_pos.x -= move_charg;
-				attack_Timer++;
+				//移動量を設定
+				m_pos.z += (-move_speed + 0.5);
+				move_flag = true;
+			}
+			//手前移動
+			if (player->m_pos.z > m_pos.z)
+			{
+				//移動量を設定
+				m_pos.z += (move_speed - 0.5);
+				//反転フラグ
+				move_flag = true;
+			}
+
+			//上移動
+			if (player->m_pos.y < m_pos.y)
+			{
+				//移動量を設定
+				m_pos.y += (-move_speed + 0.5);
+				move_flag = true;
+			}
+			//下移動
+			if (player->m_pos.y > m_pos.y)
+			{
+				//移動量を設定
+				m_pos.y += (move_speed - 0.5);
+				//反転フラグ
+				move_flag = true;
+			}
+
+			//ここから突進処理
+
+				//突進不可だったら
+			if (!isCharging)
+			{
+				timer++;//時間経過
+				//インターバルを過ぎたら
+				if (timer >= ChargingInterval)
+				{
+					isCharging = true;		//突進可能
+					timer = 0;
+				}
 			}
 			else
 			{
-				m_pos.x += move_charg;
-				attack_Timer++;
-			}
+				if (player)
+				{
 
-			}
+					//プレイヤーのほうへ突進する。
+					if (player->m_pos.x < m_pos.x)
+					{
+						m_pos.x -= move_charg;
+						attack_Timer++;
+					}
+					else
+					{
+						m_pos.x += move_charg;
+						attack_Timer++;
+					}
+
+				}
 				//プレイヤーとの距離が30以下なら
-			if (abs(player->m_pos.x - m_pos.x) <= 30) 
-			{
-				isCharging = false;		//突進不可
+				if (abs(player->m_pos.x - m_pos.x) <= 30)
+				{
+					isCharging = false;		//突進不可
+				}
+			}
+
+			//ある程度の距離になったら攻撃をする。(30以下)
+			if (abs(player->m_pos.x - m_pos.x) <= 30) {
+				Attack();
+				m_pos.x += 0;
 			}
 		}
-		
-		//ある程度の距離になったら攻撃をする。(30以下)
-		if (abs(player->m_pos.x - m_pos.x) <= 30) {
-			Attack();
-			m_pos.x += 0;
-		}
-
 		}
 	break;
 	}
@@ -487,7 +501,7 @@ void Enemy::Collision(Task* b)
 
 	switch (b->m_type)
 	{
-	case eType_Fish:
+	case eType_Player_Attack:
 	{
 
 		if (Fish* f = dynamic_cast<Fish*>(b))

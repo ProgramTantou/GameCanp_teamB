@@ -7,21 +7,24 @@ Fade::Fade() : Task(eType_Scene, (int)TaskPrio::Fade) {
 }
 
 void Fade::Update() {
-	time += 10;
-	if (Arufa_flag == false && time % 18 == 0) {
-		Arufa += 0.01f;
-		if (time == 1800) {
-			time = 0;
+	if(Arufa_flag == false && Arufa < 1.00){
+		Arufa += 0.05;
+	}
+
+	if (Arufa >= 1.0) {
+		time++;
+		if (time == 120){
 			Arufa_flag = true;
+			time = 0;
 		}
 	}
-	if (Arufa_flag == true && time % 18 == 0) {
-		Arufa -= 0.01f;
-		if (time == 1800) {
+	
+	if (Arufa_flag == true) {
+		Arufa -= 0.05;
+		if (Arufa <= 0.00) {
 			Kill();
 		}
 	}
-
 }
 
 void Fade::Render() {

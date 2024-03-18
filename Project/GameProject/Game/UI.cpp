@@ -5,6 +5,7 @@
 //コンストラクタ
 UI::UI(const CVector3D& pos, int UI_Nunber) : Task(eType_UI,(int)TaskPrio::UI),
 m_UI_text("C:\\Windows\\Fonts\\msgothic.ttc", 64) {
+
 	m_img = COPY_RESOURCE("HP",CImage);
 	//m_img2 = COPY_RESOURCE("Box", CImage);
 	hp = 0;

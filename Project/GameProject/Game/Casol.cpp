@@ -51,6 +51,8 @@ void Casol::Update() {
 			{
 				Kill();
 			}
+			break;
+
 		default:
 			break;
 		}

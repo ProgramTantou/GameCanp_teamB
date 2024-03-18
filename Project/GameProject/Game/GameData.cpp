@@ -52,7 +52,7 @@ void GameData::Render() {
 		m_GameData_text.Draw(1600, 100, 1, 1, 1, "%d",GameData::m_score);
 	}
 	//ゲームクリアかゲームオーバーになったなら
-	else {
+	else if(GameData::clear_flag == true || GameData::death_flag == true) {
 		//最終スコアを表示
 		m_GameData_text.Draw(880, 540, 0, 0, 0, "SCORE:%d",GameData::m_score);
 	}

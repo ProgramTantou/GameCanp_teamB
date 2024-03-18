@@ -6,7 +6,7 @@ Casol::Casol(const CVector2D& p) : ObjectBase(eType_UI) {
 	m_img.SetSize(200, 200);
 	m_img.SetCenter(100, 100);
 	select_mode = 1;
-	m_pos.x = 600;
+	m_pos.x = 300;
 	m_pos.y = 900;
 }
 
@@ -14,29 +14,29 @@ void Casol::Update() {
 	//ƒ‚[ƒh‘I‘ðˆ—
 		if (PUSH(CInput::eRight))
 		{
-			m_pos.x += 400;
+			m_pos.x += 700;
 			select_mode += 1;
 		}
 	
-	if (select_mode > 3)
+	if (select_mode > 2)
 	{
 		if (PUSH(CInput::eRight))
 		{
 			select_mode = 1;
-			m_pos.x = 600;
+			m_pos.x = 300;
 		}
 	}
 
 		if (PUSH(CInput::eLeft))
 		{
-			m_pos.x -= 400;
+			m_pos.x -= 700;
 			select_mode -= 1;
 		}
 		if (select_mode < 1)
 		{
 			if (PUSH(CInput::eLeft))
 			{
-				select_mode = 3;
+				select_mode = 2;
 				m_pos.x = 1000;
 			}
 		}

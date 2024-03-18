@@ -13,7 +13,6 @@ GameOver::GameOver(const CVector2D& p) : ObjectBase(eType_Title) {
 	m_img.Load("Image/gameover.png");
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);
-	new Casol(CVector2D(950, 600));
 	select_mode = 1;
 }
 

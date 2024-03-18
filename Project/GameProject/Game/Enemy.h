@@ -24,6 +24,10 @@ private:
 	int m_hp;
 	int move_dir;
 	int timer;
+	int waitTimer;
+	int waitdistance;
+	int waitduration;
+	int ChargingInterval;
 	float attack_Timer;
 	float attack_Interval;
 	float move_speed;

@@ -65,6 +65,9 @@
     <ClCompile Include="Game\Fade.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\FishManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -143,6 +146,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Fade.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\FishManager.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,7 +14,9 @@ enum {
 	eType_Title,
 	eType_UI,//‰æ–Ê‚ÌUIB
 	eType_Enemy_Attack,
+	eType_Player_Attack,
 	eType_Fish,
+	eType_FishManager
 };
 
 enum

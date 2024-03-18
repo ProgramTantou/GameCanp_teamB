@@ -16,7 +16,14 @@ private:
 	static int m_hp;
 	bool damage;
 	int i;
-	
+	int cnt1;
+	int cnt2;
+	int cnt3;
+	bool player_attack1;
+
+	bool player_attack2;
+
+	bool player_attack3;
 	//ダメージ受けた際の表示時間
 	int damage_count;
 	//攻撃を受けた時のフラグ

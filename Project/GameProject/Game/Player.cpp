@@ -1,6 +1,7 @@
 #include"Player.h"
 #include"Field.h"
 #include"Fish.h"
+#include"PlayerAttack.h"
 #include"Enemy.h"
 #include"GameData.h"
 #include"AnimData.h"
@@ -119,8 +120,12 @@ void Player::Move() {
 			m_img.ChangeAnimation(eAnimIdle);
 		}
 	}
-
-	if (cnt1 > 0 && player_attack1 == true) {
+	if (PUSH(CInput::eMouseL)) 
+	{
+		m_state = eState_Attack00;
+		m_attack_no++;
+	}
+	else if (cnt1 > 0 && player_attack1 == true) {
 		if (PUSH(CInput::eButton6)) {
 			m_state=eState_Attack01;
 			m_attack_no++;
@@ -143,15 +148,25 @@ void Player::Move() {
 		}
 	}
 }
+
+
 //çUåÇ
+void Player::Attack00()
+{
+	m_img.ChangeAnimation(eAnimAttack00, false);
+	new PlayerAttack(CVector3D(), m_flip, m_attack_no);
+	if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Move;
+	}
+}
+
 //CÉLÅ[
 void Player::Attack01() 
 {
 	m_img.ChangeAnimation(eAnimAttack01, false);
 	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, true,m_attack_no,eType_Player_Attack);
 	cnt1 -= 1;
-	m_state = eState_Move;
-	
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -164,8 +179,6 @@ void Player::Attack02()
 	m_img.ChangeAnimation(eAnimAttack02, false);
 	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, true,m_attack_no, eType_Player_Attack);
 	cnt2 -= 1;
-	m_state = eState_Move;
-
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -178,8 +191,6 @@ void Player::Attack03()
 	m_img.ChangeAnimation(eAnimAttack03, false);
 	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, true,m_attack_no, eType_Player_Attack);
 	cnt3 -= 1;
-	m_state = eState_Move;
-
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -231,6 +242,9 @@ void Player::Update()
 	{
 	case eState_Move:
 		Move(); 
+		break;
+	case eState_Attack00:
+		Attack00();
 		break;
 	case eState_Attack01:
 		Attack01();

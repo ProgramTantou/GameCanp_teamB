@@ -63,6 +63,7 @@ TexAnimData player_anim_data[] = {
 	ANIMDATA(playerRun),
 	ANIMDATA(playerJumpUp),
 	ANIMDATA(playerJumpDown),
+	ANIMDATA(playerAttack00),
 	ANIMDATA(playerAttack01),
 	ANIMDATA(playerAttack02),
 	ANIMDATA(playerAttack03),

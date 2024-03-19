@@ -1,4 +1,5 @@
 #include"Fish.h"
+#include"Player.h"
 
 //アニメーション
 TexAnim fish[] = {
@@ -8,7 +9,7 @@ TexAnimData fish_anim_data[] = {
    {fish,sizeof(fish) / sizeof(fish[0])},
 };
 //コンストラクタ
-Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type) :ObjectBase(type)
+Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int type) :ObjectBase(type)
 {
 	m_fish = fish;
 	switch (m_fish)
@@ -27,6 +28,7 @@ Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type) :O
 		break;
 	}
 	m_pos = pos;
+	player = b;
 	m_flip = flip;
 	m_attack_no = attack_no;
 	m_img.ChangeAnimation(0, true);
@@ -36,12 +38,11 @@ Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type) :O
 	m_screen = false;
 	int cnt = 0;
 	int time = 0;
-
+	move_speed = 0;
 }
 //更新
 void Fish::Update()
 {
-
 	if (m_scroll.x + 1920 < m_pos.x) 
 	{
 		Kill();
@@ -51,10 +52,21 @@ void Fish::Update()
 		Kill();
 	}
 
-
 	time++;
 	m_img.UpdateAnimation();
-	int move_speed = 3;
+	if (eType_Fish) 
+	{
+		move_speed = -3;
+	}
+	if (eType_Player_Attack&&m_flip == true) 
+	{
+		move_speed = -3;
+	}
+	else if (eType_Player_Attack && m_flip == false) 
+	{
+		move_speed = 3;
+	}
+	
 	if (m_fish == eFish_1)
 	{
 		m_pos.x += (move_speed + 1);
@@ -91,17 +103,8 @@ void Fish::Update()
 //描画
 void Fish::Render()
 {
-	if (m_fish == eFish_1)
-	{
-		m_img.SetAng(DtoR(360));
-	}
-	else if (m_fish == eFish_2)
-	{
-		m_img.SetAng(DtoR(270));
-	}
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
-
 	m_img.Draw();
 	//DrawRect();
 }

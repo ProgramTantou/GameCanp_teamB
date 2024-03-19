@@ -1,6 +1,7 @@
 #include "GameData.h"
 
 int GameData::m_score = 0;
+int GameData::m_max_score = 0;
 int GameData::m_time = 180; //3•ª
 bool GameData::clear_flag = false;
 bool GameData::death_flag = false;

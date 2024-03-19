@@ -38,6 +38,7 @@ Player::Player(const CVector3D& p,bool flip) : ObjectBase(eType_Player)
 	cnt1 = 0;
 	cnt2 = 0;
 	cnt3 = 0;
+	creat = false;
 	player_attack1 = false;
 	player_attack2 = false;
 	player_attack3 = false;
@@ -45,6 +46,7 @@ Player::Player(const CVector3D& p,bool flip) : ObjectBase(eType_Player)
 //移動
 void Player::Move() {
 	
+	creat = false;
 	//移動フラグ
 	bool isMove = false;
 	//移動スピード
@@ -125,7 +127,8 @@ void Player::Move() {
 		m_state = eState_Attack00;
 		m_attack_no++;
 	}
-	else if (cnt1 > 0 && player_attack1 == true) {
+
+	if (cnt1 > 0 && player_attack1 == true) {
 		if (PUSH(CInput::eButton6)) {
 			m_state=eState_Attack01;
 			m_attack_no++;
@@ -159,6 +162,7 @@ void Player::Attack00()
 		if (m_flip)
 		{
 			new PlayerAttack(CVector3D(m_pos.x - 100, m_pos.y - 70, m_pos.z), m_flip, m_attack_no);
+			
 		}
 		else 
 		{
@@ -166,7 +170,6 @@ void Player::Attack00()
 		}
 	}
 
-	
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -177,17 +180,21 @@ void Player::Attack00()
 void Player::Attack01() 
 {
 	m_img.ChangeAnimation(eAnimAttack01, false);
-	if (m_flip) 
-	{
-		new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z), 0, m_flip, m_attack_no, eType_Player_Attack);
-		cnt1 -= 1;
+	if (creat == false) {
+
+		if (m_flip)
+		{
+			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 0, m_flip, m_attack_no, eType_Player_Attack);
+			creat = true;
+			cnt1 -= 1;
+		}
+		else
+		{
+			new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z),this, 0, m_flip, m_attack_no, eType_Player_Attack);
+			creat = true;
+			cnt1 -= 1;
+		}
 	}
-	else 
-	{
-		new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z), 0, m_flip, m_attack_no, eType_Player_Attack);
-		cnt1 -= 1;
-	}
-	
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -198,15 +205,20 @@ void Player::Attack01()
 void Player::Attack02()
 {
 	m_img.ChangeAnimation(eAnimAttack02, false);
-	if (m_flip)
+	if (creat == false) 
 	{
-		new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z), 1, m_flip, m_attack_no, eType_Player_Attack);
-		cnt2 -= 1;
-	}
-	else
-	{
-		new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z), 1, m_flip, m_attack_no, eType_Player_Attack);
-		cnt2 -= 1;
+		if (m_flip)
+		{
+			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 1, m_flip, m_attack_no, eType_Player_Attack);
+			creat = true;
+			cnt2 -= 1;
+		}
+		else
+		{
+			new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z),this, 1, m_flip, m_attack_no, eType_Player_Attack);
+			creat = true;
+			cnt2 -= 1;
+		}
 	}
 	if (m_img.CheckAnimationEnd())
 	{
@@ -218,15 +230,20 @@ void Player::Attack02()
 void Player::Attack03() 
 {
 	m_img.ChangeAnimation(eAnimAttack03, false);
-	if (m_flip)
+	if (creat == false)
 	{
-		new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z), 2, m_flip, m_attack_no, eType_Player_Attack);
-		cnt3 -= 1;
-	}
-	else
-	{
-		new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z), 2, m_flip, m_attack_no, eType_Player_Attack);
-		cnt3 -= 1;
+		if (m_flip)
+		{
+			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 2, m_flip, m_attack_no, eType_Player_Attack);
+			creat = true;
+			cnt3 -= 1;
+		}
+		else
+		{
+			new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z),this, 2, m_flip, m_attack_no, eType_Player_Attack);
+			creat = true;
+			cnt3 -= 1;
+		}
 	}
 	if (m_img.CheckAnimationEnd())
 	{
@@ -274,6 +291,19 @@ int Player::GetHp()
 //更新
 void Player::Update()
 {
+	if (cnt1 <= 0) 
+	{
+		player_attack1 = false;
+	}
+	else if (cnt2 <= 0) 
+	{
+		player_attack2 = false;
+	}
+	else if (cnt3 <= 0) 
+	{
+		player_attack3 = false;
+	}
+
 	//m_pos_old = m_pos;
 	switch (m_state) 
 	{

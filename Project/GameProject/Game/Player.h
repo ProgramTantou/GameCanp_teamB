@@ -19,6 +19,7 @@ private:
 	int cnt1;
 	int cnt2;
 	int cnt3;
+	bool creat;
 	bool player_attack1;
 
 	bool player_attack2;

@@ -82,7 +82,7 @@ void Init(void)
 	ADD_RESOURCE("Fish_2", CImage::CreateImage("Image/tako.png", fish_anim_data, 512, 512));
 	ADD_RESOURCE("Fish_3", CImage::CreateImage("Image/fugu.png", fish_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
-	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/butakame.png", enemy_anim_data, 512, 512));
+	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/enemy1.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Field_1", CImage::CreateImage("Image/Field_1.png"));
 	ADD_RESOURCE("Field_2", CImage::CreateImage("Image/Field_2.png"));

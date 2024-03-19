@@ -30,23 +30,14 @@ void Boss::GiveScore(int Score)
 	GameData::m_score += Score;
 }
 
+void Boss::Dead() {
+	Kill();
+}
 
 void Boss::Update()
 {
 	const float Boss_Speed = 3;
-	Timer++;
-	if (Timer >= 120)
-	{
-		m_pos.x += Boss_Speed;
-	}
-	if (Timer >= 240)
-	{
-		m_pos.y += Boss_Speed;
-	}
-	if (Timer = 360)
-	{
-		Timer == 0;
-	}
+
 	//アニメーションの変更
 	m_img.ChangeAnimation(move_dir);
 	//アニメーションの更新
@@ -60,7 +51,7 @@ void Boss::Render()
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 
 void Boss::Attack()

@@ -402,7 +402,7 @@ void Enemy::Render() {
 	m_img.SetFlipH(m_flip);
 	//•`‰æ
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 
 //“G‚ÌUŒ‚

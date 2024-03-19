@@ -52,7 +52,7 @@ void Player::Move() {
 	//移動スピード
 	move_speed = 8;
 	//ジャンプ力
-	jump_pow=8;  
+	jump_pow=6;  
 	//攻撃を受けたら減速
 	if (m_damage > 0) {
 		move_speed = move_speed / 2;
@@ -75,14 +75,14 @@ void Player::Move() {
 	}
 	//Z軸（右斜め上）(W)
 	if (HOLD(CInput::eButton1) && FREE(CInput::eButton3) &&m_pos.z<80) {
-		m_pos.z += move_speed;
+		m_pos.z += move_speed = 4;
 		
 		m_flip = false;
 		isMove = true; 
 	}
 	//Z軸（左斜め下）(S)
 	else if (HOLD(CInput::eButton3)&&FREE(CInput::eButton1) &&m_pos.z>-280) {
-		m_pos.z -= move_speed;
+		m_pos.z -= move_speed = 4;
 		
 		m_flip = true;
 		isMove = true;

@@ -6,23 +6,26 @@
 bool Field::Next_flag = false;
 
 //コンストラクタ
-Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
+Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 	//,mp_image(nullptr)
 {
+	Stage_number = stage_number;
 	//敵の位置制御用変数の初期化
 	Enemy_pos_Control = 0;
 	//フィールドナンバーの代入
-	Field_number = Field_Nunber;
+	//Field_number = Field_Nunber;
 	//次のステージに行けるかの判定用フラグの初期化
 	Field::Next_flag = false;
 	//フィールドナンバーによる読み込み画像の分岐
-	switch (Field_number)
+	switch (Stage_number)
 	{
 	case 1:
+	case 2:
+	case 3:
 		//明るい背景
 		mp_image = COPY_RESOURCE("Field_1", CImage);
 		break;
-	case 2:
+	case 4:
 		//暗い背景
 		mp_image = COPY_RESOURCE("Field_2", CImage);
 		break;
@@ -76,29 +79,29 @@ Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
 //デストラクタ
 Field::~Field() {
 	//ゲームクリアでもなくゲームオーバーでもないなら
-	if (GameData::clear_flag == false && GameData::death_flag == false) {
+	//if (GameData::clear_flag == false && GameData::death_flag == false) {
 		//削除される度にステージナンバー+1
-		Stage_number += 1;
+		//Stage_number += 1;
 		//ステージナンバーが4より小さいなら
-		if (Stage_number < 4) {
+		//if (Stage_number < 4) {
 			//明るい背景のステージを生成
-			new Field(1);
-		}
+			//new Field(1);
+		//}
 		//ステージナンバーが4なら
-		else if (Stage_number == 4) {
+		//else if (Stage_number == 4) {
 			//暗い背景のステージを生成
-			new Field(2);
-		}
+			//new Field(2);
+		//}
 		//それ以外のナンバーなら
-		else {
+		//else {
 			//何もしない
-		}
-	}
+		//}
+	//}
 	//ゲームクリアかゲームオーバーなら
-	else {
+	//else {
 		//ステージナンバーの初期化
-		Stage_number = 1;
-	}
+		//Stage_number = 1;
+	//}
 }
 
 //フィールドの座標を設定
@@ -113,7 +116,10 @@ const float Field::GetGroundY(){
 
 //更新処理
 void Field::Update() {
-	if (!TaskManager::FindObject(eType_Enemy)) {
+	//if (!TaskManager::FindObject(eType_Enemy)) {
+		//Field::Next_flag = true;
+	//}
+	if (PUSH(CInput::eButton5)) {
 		Field::Next_flag = true;
 	}
 }

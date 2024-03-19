@@ -33,7 +33,7 @@ struct CRect3D
 	}
 };
 
-#define GRAVITY (9.8f/20)
+#define GRAVITY (9.8f/80)
 	class ObjectBase : public Task
 	{
 	public:

@@ -52,7 +52,7 @@ void Player::Move() {
 	//移動スピード
 	move_speed = 8;
 	//ジャンプ力
-	jump_pow=12;  
+	jump_pow=8;  
 	//攻撃を受けたら減速
 	if (m_damage > 0) {
 		move_speed = move_speed / 2;
@@ -89,7 +89,7 @@ void Player::Move() {
 	}
 	
 	//ジャンプ(スペース)
-	if (m_is_ground && PUSH(CInput::eButton5)) 
+	if (m_pos.y>400 && PUSH(CInput::eButton5)) 
 	{
 		m_vec.y = -jump_pow;
 		m_is_ground = false;

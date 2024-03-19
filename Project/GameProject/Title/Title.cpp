@@ -21,8 +21,8 @@ Title::Title() : ObjectBase(eType_Title) {
 
 Title::~Title()
 {
-	new Game();//リザルトテストプレイ用に、一時的にタイトル開始時にリザルトが出るようにします。
-	//new Resoult();
+	//new Game();//リザルトテストプレイ用に、一時的にタイトル開始時にリザルトが出るようにします。
+	new Resoult(2);
 }
 
 void Title::Update() {

@@ -5,7 +5,7 @@
 #include"Enemy.h"
 #include"GameData.h"
 #include"AnimData.h"
-#include "ObjectBase.h"
+#include "Resoult.h"
 #include "GameOver.h"
 #include"EnemyAttack.h"
 
@@ -181,7 +181,6 @@ void Player::Attack01()
 {
 	m_img.ChangeAnimation(eAnimAttack01, false);
 	if (creat == false) {
-
 		if (m_flip)
 		{
 			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 0, m_flip, m_attack_no, eType_Player_Attack);
@@ -276,9 +275,11 @@ void Player::Down()
 {
 	m_img.ChangeAnimation(eAnimDown,false);
 	GameData::death_flag = true;
+	
 	if (m_img.CheckAnimationEnd())
 	{
 		Kill();
+		new Resoult(1);
 	}
 }
 

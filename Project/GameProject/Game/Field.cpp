@@ -64,7 +64,7 @@ Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
 		break;
 	case 4:
 		//ƒ{ƒX‚ð1‘Ì
-		new Enemy(CVector3D(2900, 650, -100), 0, false);
+		new Boss(CVector3D(2900, 650, -100),  false);
 		break;
 	default:
 		break;

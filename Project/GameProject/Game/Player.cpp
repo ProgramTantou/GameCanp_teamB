@@ -48,7 +48,7 @@ void Player::Move() {
 	//移動フラグ
 	bool isMove = false;
 	//移動スピード
-	move_speed = 6;
+	move_speed = 8;
 	//ジャンプ力
 	jump_pow=12;  
 	//攻撃を受けたら減速
@@ -154,7 +154,19 @@ void Player::Move() {
 void Player::Attack00()
 {
 	m_img.ChangeAnimation(eAnimAttack00, false);
-	new PlayerAttack(CVector3D(), m_flip, m_attack_no);
+	if (m_img.GetIndex() == 3)
+	{
+		if (m_flip)
+		{
+			new PlayerAttack(CVector3D(m_pos.x - 100, m_pos.y - 70, m_pos.z), m_flip, m_attack_no);
+		}
+		else 
+		{
+			new PlayerAttack(CVector3D(m_pos.x + 100, m_pos.y - 70, m_pos.z), m_flip, m_attack_no);
+		}
+	}
+
+	
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -165,8 +177,17 @@ void Player::Attack00()
 void Player::Attack01() 
 {
 	m_img.ChangeAnimation(eAnimAttack01, false);
-	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 0, true,m_attack_no,eType_Player_Attack);
-	cnt1 -= 1;
+	if (m_flip) 
+	{
+		new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z), 0, m_flip, m_attack_no, eType_Player_Attack);
+		cnt1 -= 1;
+	}
+	else 
+	{
+		new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z), 0, m_flip, m_attack_no, eType_Player_Attack);
+		cnt1 -= 1;
+	}
+	
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -177,8 +198,16 @@ void Player::Attack01()
 void Player::Attack02()
 {
 	m_img.ChangeAnimation(eAnimAttack02, false);
-	new Fish (CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 1, true,m_attack_no, eType_Player_Attack);
-	cnt2 -= 1;
+	if (m_flip)
+	{
+		new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z), 1, m_flip, m_attack_no, eType_Player_Attack);
+		cnt2 -= 1;
+	}
+	else
+	{
+		new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z), 1, m_flip, m_attack_no, eType_Player_Attack);
+		cnt2 -= 1;
+	}
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;
@@ -189,8 +218,16 @@ void Player::Attack02()
 void Player::Attack03() 
 {
 	m_img.ChangeAnimation(eAnimAttack03, false);
-	new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z ), 2, true,m_attack_no, eType_Player_Attack);
-	cnt3 -= 1;
+	if (m_flip)
+	{
+		new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z), 2, m_flip, m_attack_no, eType_Player_Attack);
+		cnt3 -= 1;
+	}
+	else
+	{
+		new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z), 2, m_flip, m_attack_no, eType_Player_Attack);
+		cnt3 -= 1;
+	}
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Move;

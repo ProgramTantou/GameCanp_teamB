@@ -32,6 +32,7 @@ public:
 	/// <returns>フィールドの高さ</returns>
 	const float GetGroundY();
 
+	static int Stage_number; //ステージの判別用の変数
 private:
 	CVector2D m_pos;  //フィールドの座標
 	CImage mp_image; //フィールドの画像

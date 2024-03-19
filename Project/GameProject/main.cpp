@@ -91,6 +91,7 @@ void Init(void)
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/title.png"));
 	ADD_RESOURCE("Resoult", CImage::CreateImage("Image/Resoult_frame.png"));
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/shadow.png"));
+	//ADD_RESOURCE("Effect", CImage::CreateImage("Image/Effect.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	//ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

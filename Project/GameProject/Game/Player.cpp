@@ -279,7 +279,6 @@ void Player::Down()
 	if (m_img.CheckAnimationEnd())
 	{
 		Kill();
-		
 	}
 }
 

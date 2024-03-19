@@ -43,8 +43,6 @@ Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int t
 //XV
 void Fish::Update()
 {
-	
-
 	if (m_scroll.x + 1920 < m_pos.x) 
 	{
 		Kill();
@@ -53,7 +51,6 @@ void Fish::Update()
 	{
 		Kill();
 	}
-
 
 	time++;
 	m_img.UpdateAnimation();
@@ -69,7 +66,6 @@ void Fish::Update()
 	{
 		move_speed = 3;
 	}
-	
 	
 	if (m_fish == eFish_1)
 	{
@@ -107,18 +103,8 @@ void Fish::Update()
 //•`‰æ
 void Fish::Render()
 {
-	if (m_fish == eFish_1)
-	{
-		//m_img.SetAng(DtoR(180));
-	}
-	else if (m_fish == eFish_2)
-	{
-		m_img.SetAng(DtoR(270));
-	}
-	
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
-
 	m_img.Draw();
 	//DrawRect();
 }

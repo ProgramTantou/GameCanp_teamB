@@ -4,6 +4,7 @@
 #include "GameData.h"
 #include "EnemyAttack.h"
 #include "TaskManager.h"
+#include "Resoult.h"
 
 
 Boss::Boss(const CVector3D& pos, bool flip) :ObjectBase(eType_Enemy) {
@@ -61,18 +62,27 @@ void Boss::Attack()
 
 void Boss::Collision(Task* b) 
 {
-	if (Fish* f = dynamic_cast<Fish*>(b))
+	switch (b->m_type)
 	{
-		if (m_Damage_no != f->GetAttackNo() && ObjectBase::CollisionRect(this, f))
+	case eType_Player_Attack:
+	{
+		if (Fish* f = dynamic_cast<Fish*>(b))
 		{
-			m_Damage_no = f->GetAttackNo();
-			m_hp -= 1;
-			if (m_hp <= 0)
+			if (m_Damage_no != f->GetAttackNo() && ObjectBase::CollisionRect(this, f))
 			{
-			//	Dead();
-				GiveScore(500);
+				m_Damage_no = f->GetAttackNo();
+				m_hp -= 1;
+				if (m_hp <= 0)
+				{
+					Dead();
+					GiveScore(500);
+					GameData::clear_flag = true;
+					new Resoult(2);
+				}
+				f->Kill();
 			}
 		}
+	}
 	}
 }
 

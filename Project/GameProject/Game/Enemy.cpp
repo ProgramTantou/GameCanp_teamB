@@ -3,14 +3,7 @@
 #include "TaskManager.h"
 #include "Fish.h"
 #include "GameData.h"
-
-TexAnim enemy_Idle[] = {
-{0,6},
-};
-
-extern TexAnimData enemy_anim_data[] = {
-	{enemy_Idle,sizeof(enemy_Idle) / sizeof(enemy_Idle[0])},
-};
+#include "AnimData.h"
 
 //コンストラクタ
 Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_Enemy) {
@@ -20,6 +13,8 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  move_speed1 = 1.0f;
 	  move_charg = 6.5f;
 	  timer = 0;
+	  if (m_hp >= 0)
+	  m_state = eState_Move;
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -30,7 +25,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.ChangeAnimation(0);
 		//座標設定
 		m_pos = p;
-		m_img.SetSize(256, 256);
+		m_img.SetSize(512 / 2, 512 / 2);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 );
 		m_rect = CRect3D(-512 / 4, -512 / 2, 512 / 4, 0, 256 / 16, -256 / 16);
@@ -52,7 +47,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.ChangeAnimation(0);
 		//座標設定
 		m_pos = p;
-		m_img.SetSize(256, 256);
+		m_img.SetSize(512/2, 512/2);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256 );
 		m_rect = CRect3D(-512 / 4, -512 / 2, 512 / 4, 0, 256 / 16, -256 / 16);
@@ -60,7 +55,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_flip = flip;
 		m_Attack_no = rand();
 		m_Damage_no = rand();
-		m_hp = 3;
+		m_hp = 1;
 		attack_Timer = 0.0f;
 		attack_Interval = 300.0f;
 		waitdistance = 1000;
@@ -76,7 +71,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_img.ChangeAnimation(0);
 		//座標設定
 		m_pos = p;
-		m_img.SetSize(256, 256);
+		m_img.SetSize(512 / 2, 512 / 2);
 		//中心位置設定
 		m_img.SetCenter(256 / 2, 256);
 		m_rect = CRect3D(-512 / 4, -512 / 2, 512 / 4, 0, 256 / 16, -256 / 16);
@@ -103,31 +98,17 @@ int Enemy::GetHP()
 	return m_hp;
 }
 
-void Enemy::GiveScore(int Score)
-{
-	GameData::m_score += (Score);
-}
-void Enemy::Dead()
-{
-	if (m_hp >= 0)
-	{
-		Kill();
-	}
-		
-}
+//敵の動きまとめてる処
 
-void Enemy::Update() {
+void Enemy::EnemyMove() {
 	m_pos;
 	//m_pos_old = m_pos;
-	
+
 	//移動フラグ
 	bool move_flag = false;
 	//ジャンプ力
 	//const float jump_pow = 12;
 	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
-	switch (Enemy_Number)
-	{
-	case 0:
 	{if (player) {
 
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
@@ -143,6 +124,8 @@ void Enemy::Update() {
 				m_flip = false;
 				move_flag = true;
 				Attack();
+				if (m_hp >= 0)
+					m_state = eState_Move;
 			}
 			//右移動
 			if (player->m_pos.x > m_pos.x + 64) {
@@ -152,6 +135,8 @@ void Enemy::Update() {
 				m_flip = true;
 				move_flag = true;
 				Attack();
+				if (m_hp >= 0)
+					m_state = eState_Move;
 
 			}
 			//奥移動
@@ -159,6 +144,8 @@ void Enemy::Update() {
 				//移動量を設定
 				m_pos.z += -move_speed1;
 				move_flag = true;
+				if (m_hp >= 0)
+					m_state = eState_Move;
 
 			}
 			//手前移動
@@ -167,6 +154,8 @@ void Enemy::Update() {
 				m_pos.z += move_speed1;
 				//反転フラグ
 				move_flag = true;
+				if (m_hp >= 0)
+					m_state = eState_Move;
 
 			}
 
@@ -185,9 +174,18 @@ void Enemy::Update() {
 			}
 		}
 	}
-	break;
 	}
-	case 1:
+}
+void Enemy::EnemyMove1(){
+	m_pos;
+	//m_pos_old = m_pos;
+
+	//移動フラグ
+	bool move_flag = false;
+	//ジャンプ力
+	//const float jump_pow = 12;
+	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
+
 	{if (player) {
 
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
@@ -196,90 +194,120 @@ void Enemy::Update() {
 		//プレイヤーの距離が「敵」の待機距離内に入ったら
 		if (distance <= waitdistance) {
 
-		//待機時間を超えるまで、waitTimerでカウント ＊duration(間隔)
-			if (waitTimer < waitduration) 
+			//待機時間を超えるまで、waitTimerでカウント ＊duration(間隔)
+			if (waitTimer < waitduration)
 			{
 				waitTimer++;
 			}
-			else {	
+			else {
 				timer++;
 				attack_Timer++;
 
-		//左移動
-		if (player->m_pos.x < m_pos.x - 64) 
-		{
-			//移動量を設定
-			m_pos.x -= (move_speed+0.5);
-			m_flip = false;
-			move_flag = true;
-		
-		}
-		//右移動
-		if (player->m_pos.x > m_pos.x + 64) 
-		{
-			//移動量を設定
-			m_pos.x += (move_speed+0.5);
-			//反転フラグ
-			m_flip = true;
-			move_flag = true;
-		
-		}
-		//奥移動
-		if (player->m_pos.z < m_pos.z) 
-		{
-			//移動量を設定
-			m_pos.z += -(move_speed+0.5);
-			move_flag = true;
+				//左移動
+				if (player->m_pos.x < m_pos.x - 64)
+				{
+					//移動量を設定
+					m_pos.x -= (move_speed + 0.5);
+					m_flip = false;
+					move_flag = true;
+					if (m_hp >= 0)
+					{
+						m_state = eState_Move;
+					}
 
-		}
+				}
+				//右移動
+				if (player->m_pos.x > m_pos.x + 64)
+				{
+					//移動量を設定
+					m_pos.x += (move_speed + 0.5);
+					//反転フラグ
+					m_flip = true;
+					move_flag = true;
+					if (m_hp >= 0)
+					{
+						m_state = eState_Move;
+					}
+				}
+				//奥移動
+				if (player->m_pos.z < m_pos.z)
+				{
+					//移動量を設定
+					m_pos.z += -(move_speed + 0.5);
+					move_flag = true;
+					if (m_hp >= 0)
+					{
+						m_state = eState_Move;
+					}
+				}
 
-		//手前移動
-		if (player->m_pos.z > m_pos.z) 
-		{
-			//移動量を設定
-			m_pos.z += (move_speed+0.5);
-			//反転フラグ
-			move_flag = true;
-		}
+				//手前移動
+				if (player->m_pos.z > m_pos.z)
+				{
+					//移動量を設定
+					m_pos.z += (move_speed + 0.5);
+					//反転フラグ
+					move_flag = true;
+					if (m_hp >= 0)
+					{
+						m_state = eState_Move;
+					}
+				}
 
-		//上移動
-		if (player->m_pos.y < m_pos.y) 
-		{
-			//移動量を設定
-			m_pos.y += -move_speed;
-			move_flag = true;
-		}
-		//下移動
-		if (player->m_pos.y > m_pos.y) 
-		{
+				//上移動
+				if (player->m_pos.y < m_pos.y)
+				{
+					//移動量を設定
+					m_pos.y += -move_speed;
+					move_flag = true;
+				}
+				//下移動
+				if (player->m_pos.y > m_pos.y)
+				{
 
-			//移動量を設定
-			m_pos.y += move_speed;
-			//反転フラグ
-			move_flag = true;
-		}
+					//移動量を設定
+					m_pos.y += move_speed;
+					//反転フラグ
+					move_flag = true;
+				}
 
-		//ある程度の距離になったら攻撃をする。(300以下)
-		if (abs(player->m_pos.x - m_pos.x) <= 300) 
-		{
-			Attack();
+				//ある程度の距離になったら攻撃をする。(200以下)
+				if (abs(player->m_pos.x - m_pos.x) <= 200)
+				{
+					m_state = eState_Attack01;
+					m_img.ChangeAnimation(eState_Attack01, true);
+					{
+						Attack();
+						if (m_hp <= 0)
+						{
+							m_state = eState_Down;
+						}
+					}
+				}
 
-		}
-
-		//5秒間動く
-		if (timer >= 300) 
-			{
-			//待機時間を超えるまで~ に戻る
-			waitTimer = 0;
-			timer = 0;
+				//5秒間動く
+				if (timer >= 300)
+				{
+					//待機時間を超えるまで~ に戻る
+					waitTimer = 0;
+					timer = 0;
+				}
 			}
 		}
-	}
 
 	}
-	break;
 	}
-	case 2:
+}
+void Enemy::EnemyMove2() {
+	m_pos;
+	//m_pos_old = m_pos;
+
+	//移動フラグ
+	bool move_flag = false;
+	//ジャンプ力
+	//const float jump_pow = 12;
+	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
+
 	{if (player) {
 
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
@@ -296,6 +324,8 @@ void Enemy::Update() {
 				m_pos.x -= (move_speed + 0.5);
 				m_flip = false;
 				move_flag = true;
+				if (m_hp >= 0)
+					m_state = eState_Move;
 
 			}
 			//右移動
@@ -306,7 +336,8 @@ void Enemy::Update() {
 				//反転フラグ
 				m_flip = true;
 				move_flag = true;
-
+				if (m_hp >= 0)
+					m_state = eState_Move;
 			}
 
 			//奥移動
@@ -315,6 +346,8 @@ void Enemy::Update() {
 				//移動量を設定
 				m_pos.z += (-move_speed + 0.5);
 				move_flag = true;
+				if (m_hp >= 0)
+					m_state = eState_Move;
 			}
 			//手前移動
 			if (player->m_pos.z > m_pos.z)
@@ -323,6 +356,8 @@ void Enemy::Update() {
 				m_pos.z += (move_speed - 0.5);
 				//反転フラグ
 				move_flag = true;
+				if (m_hp >= 0)
+					m_state = eState_Move;
 			}
 
 			//上移動
@@ -385,14 +420,69 @@ void Enemy::Update() {
 				m_pos.x += 0;
 			}
 		}
-		}
-	break;
 	}
+	}
+}
+
+//スコア加算
+void Enemy::GiveScore(int Score)
+{
+	GameData::m_score += (Score);
+}
+
+//死亡処理
+void Enemy::Dead()
+{
+	m_img.ChangeAnimation(eState_Down, false);
+	if (m_img.CheckAnimationEnd())
+	{
+		Kill();
+	}
+		
+}
+
+void Enemy::Update() {
+	m_pos;
+	//m_pos_old = m_pos;
+	
+	//移動フラグ
+	bool move_flag = false;
+	//ジャンプ力
+	//const float jump_pow = 12;
+	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
+	switch (Enemy_Number)
+	{
+	case 0:
+		if (m_state == eState_Move)
+		EnemyMove();
+	break;
+	case 1:
+		if (m_state == eState_Move || m_state == eState_Attack01)
+			EnemyMove1();
+	break;
+	
+	case 2:
+		if (m_state == eState_Move)
+			EnemyMove2();
+	break;
+	
 	}
 	
+	switch (m_state)
+	{
+	case eState_Move:
+		m_img.ChangeAnimation(eState_Move, true);
+		break;
+	case eState_Down:
+		Dead();
+		break;
+	}
+
+	/*
 	//アニメーションの変更
 	m_img.ChangeAnimation(move_dir);
 	//アニメーション更新
+	*/
 	m_img.UpdateAnimation();
 }
 
@@ -402,7 +492,7 @@ void Enemy::Render() {
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 
 //敵の攻撃
@@ -512,7 +602,7 @@ void Enemy::Collision(Task* b)
 				m_hp -= 1;
 				if (m_hp <= 0)
 				{
-					Dead();
+					m_state = eState_Down;
 					switch (Enemy_Number)
 					{
 					case 0:

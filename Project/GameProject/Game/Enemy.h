@@ -1,7 +1,7 @@
 #pragma once
 #include "ObjectBase.h"
 
-extern TexAnimData enemy_anim_data[];
+//extern TexAnimData enemy_anim_data[];
 class Enemy : public ObjectBase {
 public:
 	Enemy(const CVector3D& p,int enemy_number,bool flip);
@@ -9,6 +9,9 @@ public:
 	void Render() override;
 	void Collision(Task* b) override;
 	void Attack();
+	void EnemyMove();
+	void EnemyMove1();
+	void EnemyMove2();
 	void GiveScore(int Score);
 	void Dead();
 	int GetHP();
@@ -24,10 +27,12 @@ private:
 	int m_hp;
 	int move_dir;
 	int timer;
+	int deathtimer;
 	int waitTimer;
 	int waitdistance;
 	int waitduration;
 	int ChargingInterval;
+	int m_state;
 	float attack_Timer;
 	float attack_Interval;
 	float move_speed;
@@ -37,7 +42,14 @@ private:
 	bool m_flip;
 	bool isCharging;
 	
-	
+	enum {
+		eState_Move,
+		eState_Attack01,
+		eState_Attack02,
+		eState_Attack03,
+		eState_Damage,
+		eState_Down
+	};
 	
 
 

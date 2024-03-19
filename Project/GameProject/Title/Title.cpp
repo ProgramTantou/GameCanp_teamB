@@ -3,6 +3,7 @@
 #include "../Game/TaskManager.h"
 #include "../Game/ObjectBase.h"
 #include "Game/Game.h"
+#include "Game/Resoult.h"
 
 Title::Title() : ObjectBase(eType_Title) {
 	//m_img = COPY_RESOURCE("Title", CImage);
@@ -20,7 +21,8 @@ Title::Title() : ObjectBase(eType_Title) {
 
 Title::~Title()
 {
-	new Game();
+	new Game();//リザルトテストプレイ用に、一時的にタイトル開始時にリザルトが出るようにします。
+	//new Resoult();
 }
 
 void Title::Update() {

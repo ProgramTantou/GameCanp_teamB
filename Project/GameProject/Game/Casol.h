@@ -4,6 +4,7 @@
 class Casol :public  ObjectBase{
 private:
 	CImage m_img;
+	CFont m_font;
 
 public:
 	int select_mode=1;//Œ»İ‘I‘ğ’†‚Ìƒ‚[ƒh

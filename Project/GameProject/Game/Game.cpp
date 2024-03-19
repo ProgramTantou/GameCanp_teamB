@@ -9,6 +9,7 @@
 #include "Fade.h"
 #include"FishManager.h"
 #include "Boss.h"
+#include "Shadow.h"
 
 Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene) 
 {
@@ -24,12 +25,13 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 	new UI(CVector2D(10, 120), 1);
 	new GameData();
 	//new Fade();
+	new Shadow();
 }
 
 Game::~Game()
 {
-	TaskManager::KillAll();
-	new GameOver(CVector2D(900, 600));
+	//TaskManager::KillAll();
+	//new GameOver(CVector2D(900, 600));
 	//TaskManager::DeleteAll();
 	//Base::Add(new Title());
 }
@@ -37,7 +39,4 @@ Game::~Game()
 void Game::Update()
 {
 
-	if (!TaskManager::FindObject(eType_Player) && PUSH(CInput::eButton5)) {
-		Kill();
-	}
 }

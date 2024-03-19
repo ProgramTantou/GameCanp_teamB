@@ -31,8 +31,8 @@ Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type) :O
 	m_attack_no = attack_no;
 	m_img.ChangeAnimation(0, true);
 	m_img.SetSize(512 / 2, 512 / 2);
-	m_img.SetCenter(512 / 4, 512 / 4);
-	m_rect = CRect3D(-512 / 4, -512 / 4, 512 / 4, 512 / 4, 256 / 4, -256 / 4);
+	m_img.SetCenter(512 / 8, 512 / 8);
+	m_rect = CRect3D(-512 / 8, -512 / 8, 512 / 8, 512 / 8, 256 / 8, -256 / 8);
 	m_screen = false;
 	int cnt = 0;
 	int time = 0;
@@ -41,14 +41,23 @@ Fish::Fish(const CVector3D& pos, int fish, bool flip, int attack_no,int type) :O
 //çXêV
 void Fish::Update()
 {
+
+	if (m_scroll.x + 1920 < m_pos.x) 
+	{
+		Kill();
+	}
+	else if (m_scroll.x > m_pos.x)
+	{
+		Kill();
+	}
+
+
 	time++;
-
 	m_img.UpdateAnimation();
-
 	int move_speed = 3;
 	if (m_fish == eFish_1)
 	{
-		m_pos.x += (move_speed + 3);
+		m_pos.x += (move_speed + 1);
 		cnt++;
 		if (cnt >= 180)
 		{
@@ -58,7 +67,6 @@ void Fish::Update()
 	}
 	else if (m_fish == eFish_2)
 	{
-
 		m_pos.x += abs(sin(DtoR(time))) * 5;
 		cnt++;
 		if (cnt >= 180)
@@ -69,7 +77,7 @@ void Fish::Update()
 	}
 	else if (m_fish == eFish_3)
 	{
-		m_pos.x += (move_speed + 1);
+		m_pos.x += (move_speed + 0.5);
 		cnt++;
 		if (cnt >= 180)
 		{
@@ -95,7 +103,7 @@ void Fish::Render()
 	m_img.SetFlipH(m_flip);
 
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 //è’ìÀîªíË
 void Fish::Collision(Task* b)

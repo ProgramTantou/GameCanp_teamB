@@ -3,56 +3,75 @@
 #include "../Game/TaskManager.h"
 #include "../Game/ObjectBase.h"
 #include "Game/Game.h"
+#include "Game/Resoult.h"
 
 Title::Title() : ObjectBase(eType_Title) {
 	//m_img = COPY_RESOURCE("Title", CImage);
+	m_pos.x = 600;
+	m_pos.y = 1000;
 	m_img.SetSize(2000, 1200);
 	m_img.SetCenter(1000, 600);
 	m_img.Load("Image/title.png");
-	new Casol(CVector2D(1000, 600));
-	m_img.ChangeAnimation(1, false);
+	//new Casol(CVector2D(1000, 600));
 	//変数一覧
-	int select_mode = 1;//現在選択中のモード
+	select_mode = 1;//現在選択中のモード
+	selectOK = true;
+	cnt = 0;
 }
 
 Title::~Title()
 {
-	new Game();
+	new Game();//リザルトテストプレイ用に、一時的にタイトル開始時にリザルトが出るようにします。
+	//new Resoult();
 }
 
 void Title::Update() {
-	
-	//スペースキーでＧＡＭＥを生成し、ゲームスタートする。
-	if (PUSH(CInput::eRight))
+
+	if (PUSH(CInput::eButton2))
 	{
-		select_mode += 1;
+		Kill();
 	}
 
-	if (select_mode > 2)
+	if (PUSH(CInput::eButton3))
+	{
+		m_img.Load("Image/control_manual.png");
+	}
+
+	/*
+	//cnt減少処理
+	if (cnt > 0)
+	{
+		cnt--;
+	}
+
+	//セレクトモードが２の時にスペースキーでＧＡＭＥを生成し、ゲームスタートする。
+	if (selectOK)
 	{
 		if (PUSH(CInput::eRight))
 		{
-			select_mode = 1;
+			select_mode += 1;
 		}
-	}
 
-	if (PUSH(CInput::eLeft))
-	{
-		select_mode -= 1;
-	}
-	if (select_mode < 1)
-	{
+		if (select_mode > 2)
+		{
+			if (PUSH(CInput::eRight))
+			{
+				select_mode = 1;
+			}
+		}
+
 		if (PUSH(CInput::eLeft))
 		{
-			select_mode = 2;
+			select_mode -= 1;
+		}
+		if (select_mode < 1)
+		{
+			if (PUSH(CInput::eLeft))
+			{
+				select_mode = 2;
+			}
 		}
 	}
-
-	if(select_mode!=2)
-	{
-		m_img.Load("Image/title.png");
-	}
-
 	//１でゲームスタート
 //２でクレジット
 //３でイグジット
@@ -66,8 +85,10 @@ void Title::Update() {
 		break;
 
 	case 2:
-		if (PUSH(CInput::eButton5))
+		if (PUSH(CInput::eButton5) && cnt==0 && selectOK)
 		{
+			selectOK = false;
+			cnt = 30;
 			m_img.Load("Image/control_manual.png");
 		}
 		break;
@@ -75,6 +96,16 @@ void Title::Update() {
 	default:
 		break;
 	}
+
+	//セレクトモードが２の時は、スペースキーを押せば再びセレクトできる。
+		if (PUSH(CInput::eButton5) && selectOK==false && cnt==0)
+		{
+			selectOK = true;
+			cnt = 30;
+			m_img.Load("Image/title.png");
+			//select_mode = 1;
+		}
+		*/
 }
 
 void Title::Render() {

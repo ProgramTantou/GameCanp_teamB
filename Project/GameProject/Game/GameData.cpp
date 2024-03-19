@@ -9,7 +9,12 @@ bool GameData::death_flag = false;
 GameData::GameData() : Task(eType_UI,(int)TaskPrio::UI),
 m_fontsize(32),
 m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
+	//タイム制御用の変数
 	m_count = 0;
+	//スコアの初期化
+	GameData::m_score = 0;
+	//タイムの初期化
+	GameData::m_time = 180;
 }
 
 //デストラクタ
@@ -52,8 +57,8 @@ void GameData::Render() {
 		m_GameData_text.Draw(1600, 100, 1, 1, 1, "%d",GameData::m_score);
 	}
 	//ゲームクリアかゲームオーバーになったなら
-	else {
+	else if(GameData::clear_flag == true || GameData::death_flag == true) {
 		//最終スコアを表示
-		m_GameData_text.Draw(880, 540, 0, 0, 0, "SCORE:%d",GameData::m_score);
+		//m_GameData_text.Draw(880, 540, 0, 0, 0, "SCORE:%d",GameData::m_score);
 	}
 }

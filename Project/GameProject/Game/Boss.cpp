@@ -29,6 +29,8 @@ Boss::Boss(const CVector3D& pos, bool flip) :ObjectBase(eType_Enemy) {
 
 Boss::~Boss() {
 	GameData::clear_flag = true;
+	new Resoult(2);
+	TaskManager::SelectKill(eType_Player);
 }
 
 int Boss::GetHP() 

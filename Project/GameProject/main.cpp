@@ -85,8 +85,8 @@ void Init(void)
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/eEnemy1.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
-	ADD_RESOURCE("Field_1", CImage::CreateImage("Image/Field_1.png"));
-	ADD_RESOURCE("Field_2", CImage::CreateImage("Image/Field_2.png"));
+	ADD_RESOURCE("Field_1", CImage::CreateImage("Image/Field_1_.png"));
+	ADD_RESOURCE("Field_2", CImage::CreateImage("Image/Field_2_.png"));
 	ADD_RESOURCE("Back_1", CImage::CreateImage("Image/Back_1.png"));
 	ADD_RESOURCE("Back_2", CImage::CreateImage("Image/Back_2.png"));
 	ADD_RESOURCE("Pillar_1", CImage::CreateImage("Image/Pillar_1.png"));

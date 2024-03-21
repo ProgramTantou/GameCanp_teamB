@@ -399,6 +399,7 @@ void Player::Collision(Task* b)
 		{
 			if (fish->m_type==eType_Fish&&ObjectBase::CollisionRect(this, fish)) 
 			{
+				fish->m_type = eType_Player_Attack;
 				b->Kill();
 				if (fish->m_fish == eFish_1) 
 				{

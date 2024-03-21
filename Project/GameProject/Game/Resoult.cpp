@@ -8,9 +8,6 @@ Resoult::Resoult(int CorO) : ObjectBase(eType_Title),m_font("HGRPP1.TTC",150),m_
 	//m_img.SetSize(1000, 1000);
 	m_img.SetCenter(565, 540);
 	coro = CorO;
-	if (GameData::m_score > GameData::m_max_score) {
-		GameData::m_max_score = GameData::m_score;
-	}
 }
 
 Resoult::~Resoult()

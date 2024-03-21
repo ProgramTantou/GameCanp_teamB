@@ -21,4 +21,5 @@ private:
 	void Update() override;
 	//描画処理
 	void Render() override;
+	bool Score_flag; //スコア加算制御用フラグ
 };

@@ -44,10 +44,10 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 			if (i % 3 == 0) {
 				Enemy_pos_Control += 1;
 			}
-			//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 0, false);
+			new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 0, false);
 		}
 		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 1, false);
-		//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 2, false);
+		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 2, false);
 		new MostFront(1);
 		break;
 	case 2:
@@ -56,9 +56,9 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 			if (i % 3 == 0) {
 				Enemy_pos_Control += 1;
 			}
-			//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 1, false);
+			new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 1, false);
 		}
-		//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 2, false);
+		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 2, false);
 		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 0, false);
 		new MostFront(1);
 		break;
@@ -68,9 +68,9 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 			if (i % 3 == 0) {
 				Enemy_pos_Control += 1;
 			}
-			//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 2, false);
+			new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 2, false);
 		}
-		//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 0, false);
+		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 0, false);
 		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 1, false);
 		new MostFront(1);
 		break;

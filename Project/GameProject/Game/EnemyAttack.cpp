@@ -27,6 +27,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 			m_img = COPY_RESOURCE("EnemyBullet", CImage);
 			m_timeout = 0;
 			m_damage = 1;
+			m_img.ChangeAnimation(0);
 			const CVector2D size(0.0f, 0.0f);
 			m_img.SetPos(GetScreenPos(m_pos));
 			m_img.SetSize(128,128);

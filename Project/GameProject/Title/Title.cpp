@@ -6,6 +6,7 @@
 #include "Game/Resoult.h"
 #include "Game/seaweed.h"
 #include "Game/FrontObject.h"
+#include "Game/jellyfish_Manager.h"
 
 Title::Title() : ObjectBase(eType_Title) {
 	//m_img = COPY_RESOURCE("Title", CImage);
@@ -24,10 +25,11 @@ Title::Title() : ObjectBase(eType_Title) {
 Title::~Title()
 {
 	new Game();//リザルトテストプレイ用に、一時的にタイトル開始時にリザルトが出るようにします。
-	new seaweed(CVector3D(500, 700, 0), eType_Seaweeds);
-	new seaweed(CVector3D(500, 700, 0), eType_coral);
-	new seaweed(CVector3D(500, 700, 0), eType_jellyfish);
+	new seaweed(CVector3D(500, 700, 0));
+	new seaweed(CVector3D(500, 700, 0));
+	new seaweed(CVector3D(500, 700, 0));
 	new FrontObject(eType_coral);
+	new jellyfish_Manager();
 	//new Resoult(2);
 
 }

@@ -1,185 +1,184 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game\Casol.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Player.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Enemy.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\BackGround.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\GameOver.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Boss.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\AnimData.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Field.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Game.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Title\Title.cpp">
-      <Filter>Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Task.cpp">
-      <Filter>Task</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\TaskManager.cpp">
-      <Filter>Task</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\ObjectBase.cpp">
-      <Filter>Task</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\CharaBase.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Fish.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\UI.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\GameData.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\EnemyAttack.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Resoult.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Shadow.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Fade.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\FishManager.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\PlayerAttack.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\seaweed.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\FrontObject.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\MostFlont.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Effect.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
+	<ClCompile Include="main.cpp" />
+	<ClCompile Include="Game\Casol.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Player.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Enemy.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\BackGround.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\GameOver.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Boss.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\AnimData.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Field.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Game.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Title\Title.cpp">
+	  <Filter>Title</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Task.cpp">
+	  <Filter>Task</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\TaskManager.cpp">
+	  <Filter>Task</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\ObjectBase.cpp">
+	  <Filter>Task</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\CharaBase.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Fish.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\UI.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\GameData.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\EnemyAttack.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Resoult.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Shadow.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\Fade.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\FishManager.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\PlayerAttack.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\seaweed.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\FrontObject.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+	<ClCompile Include="Game\MostFlont.cpp">
+	  <Filter>Game</Filter>
+	</ClCompile>
+ <Filter>Game</Filter>
+	</ClCompile>  </ItemGroup>
+  <ItemGroup>
+	<Filter Include="Base">
+	  <UniqueIdentifier>{92d21a0f-3d8d-4a8b-8c39-31fd384788c0}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="Game">
+	  <UniqueIdentifier>{a707ae22-fe1c-41de-8f05-6889ca57e513}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="Title">
+	  <UniqueIdentifier>{9cb35df8-dd92-44d4-9ed7-a501479538bb}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="Task">
+	  <UniqueIdentifier>{273d5008-a791-4048-b513-1d4a8b490185}</UniqueIdentifier>
+	</Filter>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Base">
-      <UniqueIdentifier>{92d21a0f-3d8d-4a8b-8c39-31fd384788c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{a707ae22-fe1c-41de-8f05-6889ca57e513}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Title">
-      <UniqueIdentifier>{9cb35df8-dd92-44d4-9ed7-a501479538bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Task">
-      <UniqueIdentifier>{273d5008-a791-4048-b513-1d4a8b490185}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Global.h" />
-    <ClInclude Include="Game\Casol.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Player.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Enemy.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\BackGround.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\GameOver.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Boss.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\AnimData.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Field.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Game.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Title\Title.h">
-      <Filter>Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Task.h">
-      <Filter>Task</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\TaskManager.h">
-      <Filter>Task</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\ObjectBase.h">
-      <Filter>Task</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\CharaBase.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Fish.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\UI.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\GameData.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\EnemyAttack.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Resoult.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Shadow.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Fade.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\FishManager.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\PlayerAttack.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\seaweed.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\FrontObject.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\MostFront.h">
-      <Filter>Game</Filter>
-    </ClInclude>
+	<ClInclude Include="Global.h" />
+	<ClInclude Include="Game\Casol.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Player.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Enemy.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\BackGround.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\GameOver.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Boss.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\AnimData.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Field.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Game.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Title\Title.h">
+	  <Filter>Title</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Task.h">
+	  <Filter>Task</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\TaskManager.h">
+	  <Filter>Task</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\ObjectBase.h">
+	  <Filter>Task</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\CharaBase.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Fish.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\UI.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\GameData.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\EnemyAttack.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Resoult.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Shadow.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\Fade.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\FishManager.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\PlayerAttack.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\seaweed.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\FrontObject.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+	<ClInclude Include="Game\MostFront.h">
+	  <Filter>Game</Filter>
+	</ClInclude>
+ <ClInclude Include="Game\jellyfish_Manager.h">
     <ClInclude Include="Game\Effect.h">
-      <Filter>Game</Filter>
-    </ClInclude>
+	  <Filter>Game</Filter>
+	</ClInclude>
   </ItemGroup>
 </Project>

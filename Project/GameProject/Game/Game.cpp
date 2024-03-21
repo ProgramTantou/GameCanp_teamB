@@ -10,6 +10,7 @@
 #include"FishManager.h"
 #include "Boss.h"
 #include "Shadow.h"
+#include "Casol.h"
 
 Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene) 
 {
@@ -26,6 +27,7 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 	new UI(CVector2D(10, 120), 2);
 	new GameData();
 	new Shadow();
+	//new Casol();
 }
 
 Game::~Game()

@@ -1,18 +1,27 @@
 #pragma once
 #include "ObjectBase.h"
+#include <list>
 
 class Casol :public  ObjectBase{
 private:
+	//画像オブジェクト
 	CImage m_img;
-	CFont m_font;
-
+	//左側の敵存在フラグ
+	bool Enemy_flag_left;
+	//右側の敵存在フラグ
+	bool Enemy_flag_right;
+	//プレイヤーのポインター
+	ObjectBase* p;
+	//敵のポインター
+	ObjectBase* e;
+	std::list<ObjectBase*> lst;
 public:
-	int select_mode=1;//現在選択中のモード
-	int cnt = 0;//この数字が１以上だと、カーソルを操作できない。
-
-	bool selectOK = true;//これがtrueの間モードを選択できる。
-
-	Casol(const CVector2D& pos);
+	//コンストラクタ
+	Casol();
+	//更新処理
 	void Update() override;
+	//描画処理
 	void Render() override;
+	//画像反転用フラグ
+	bool m_flip;
 };

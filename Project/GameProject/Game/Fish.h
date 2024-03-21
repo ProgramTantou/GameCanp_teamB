@@ -11,12 +11,7 @@ private:
 		e_Down
 	};
 	int m_State;
-	//ˆÚ“®
-	void Move();
-	//UŒ‚
-	void Attack();
-	//€
-	void Down();
+	
 	CImage m_img;
 	Task* player;
 	int cnt;
@@ -29,6 +24,12 @@ public:
 	Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int type);
 	//‹›‚Ìí—Ş
 	int m_fish;
+	//ˆÚ“®
+	void Move();
+	//UŒ‚
+	void Attack();
+	//€
+	void Down();
 	//XV
 	void Update() override;
 	int GetAttackNo()

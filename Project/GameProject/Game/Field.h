@@ -5,17 +5,13 @@
 
 class Field : public Task {
 public:
-	//コンストラクタ
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="Field_Nunber">フィールド画像の分岐</param>
 	Field(int Field_Nunber);
 	//デストラクタ
 	~Field();
-
-	/// <summary>
-	/// フィールドの座標を設定
-	/// </summary>
-	/// <param name="pos"></param>
-	void SetPos(const CVector2D& pos);
-
 	//更新処理
 	void Update() override;
 	//描画処理

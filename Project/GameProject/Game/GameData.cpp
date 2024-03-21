@@ -80,9 +80,4 @@ void GameData::Render() {
 			m_GameData_text.Draw(1328, 70, 1, 1, 1, "ボスを倒せ！");
 		}
 	}
-	//ゲームクリアかゲームオーバーになったなら
-	else if(GameData::clear_flag == true || GameData::death_flag == true) {
-		//最終スコアを表示
-		//m_GameData_text.Draw(880, 540, 0, 0, 0, "SCORE:%d",GameData::m_score);
-	}
 }

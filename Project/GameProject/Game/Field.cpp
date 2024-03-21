@@ -91,11 +91,6 @@ Field::~Field() {
 	
 }
 
-//フィールドの座標を設定
-void Field::SetPos(const CVector2D& pos) {
-	m_pos = pos;
-}
-
 //フィールドの高さを取得
 const float Field::GetGroundY(){
 	return m_ground_y;
@@ -106,9 +101,6 @@ void Field::Update() {
 	if (!TaskManager::FindObject(eType_Enemy)) {
 		Field::Next_flag = true;
 	}
-	//if (PUSH(CInput::eButton5)) {
-		//Field::Next_flag = true;
-	//}
 }
 
 //描画処理

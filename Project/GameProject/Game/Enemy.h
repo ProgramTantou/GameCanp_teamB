@@ -33,6 +33,9 @@ private:
 	int waitduration;
 	int ChargingInterval;
 	int m_state;
+	int count;
+	float randomX;
+	float randomY;
 	float attack_Timer;
 	float attack_Interval;
 	float move_speed;

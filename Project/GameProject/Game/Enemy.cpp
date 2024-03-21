@@ -14,6 +14,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  move_speed1 = 1.0f;
 	  move_charg = 6.5f;
 	  timer = 0;
+	  count = 0;
 	  if (m_hp >= 0)
 	  m_state = eState_Move;
 	switch (Enemy_Number)
@@ -34,7 +35,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_flip = flip;
 		m_Attack_no = rand();
 		m_Damage_no = rand();
-		m_hp = 2;
+		m_hp = 1;
 		attack_Timer = 0.0f;
 		attack_Interval = 180.0f;
 		waitdistance = 1000;
@@ -112,19 +113,6 @@ void Enemy::EnemyMove() {
 	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
 	{if (player) {
 
-		ObjectBase* otherEnemy = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
-		if (otherEnemy) {
-			float distanceEnemy = abs(otherEnemy->m_pos.z - m_pos.z);
-			float distanceEnemy1 = abs(otherEnemy->m_pos.x - m_pos.x);
-			if (distanceEnemy <= 100) {
-				move_speed1 = 0.1f;
-			
-			}
-			else {
-				move_speed1 = 1.5f;
-			}
-		}
-
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
@@ -186,6 +174,17 @@ void Enemy::EnemyMove() {
 				//反転フラグ
 				move_flag = true;
 			}
+
+			//ランダムな感覚で動きを変更
+			static float EnemySpeed = 0.8f;
+			count++;
+			if (count == 90)
+			{
+				randomX = static_cast<float>(rand() % 3 - 1);
+				randomY = static_cast<float>(rand() % 3 - 1);
+				count = 0;
+			}
+			m_pos.x += randomX * EnemySpeed;
 		}
 	}
 	}
@@ -201,19 +200,6 @@ void Enemy::EnemyMove1(){
 	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
 
 	{if (player) {
-
-		ObjectBase* otherEnemy = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
-		if (otherEnemy) {
-			float distanceEnemy = abs(otherEnemy->m_pos.z - m_pos.z);
-			float distanceEnemy1 = abs(otherEnemy->m_pos.x - m_pos.x);
-			if (distanceEnemy <= 100) {
-				move_speed1 = 0.1f;
-
-			}
-			else {
-				move_speed1 = 1.0f;
-			}
-		}
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
@@ -318,6 +304,17 @@ void Enemy::EnemyMove1(){
 					waitTimer = 0;
 					timer = 0;
 				}
+
+				//ランダムな感覚で動きを変更
+				static float EnemySpeed = 0.8f;
+				count++;
+				if (count == 90)
+				{
+					randomX = static_cast<float>(rand() % 3 - 1);
+					randomY = static_cast<float>(rand() % 3 - 1);
+					count = 0;
+				}
+				m_pos.x += randomX * EnemySpeed;
 			}
 		}
 
@@ -335,18 +332,6 @@ void Enemy::EnemyMove2() {
 	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
 
 	{if (player) {
-		ObjectBase* otherEnemy = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
-		if (otherEnemy) {
-			float distanceEnemy = abs(otherEnemy->m_pos.z - m_pos.z);
-			float distanceEnemy1 = abs(otherEnemy->m_pos.x - m_pos.x);
-			if (distanceEnemy <= 100) {
-				move_speed1 = 0.5f;
-
-			}
-			else {
-				move_speed1 = 1.5f;
-			}
-		}
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
@@ -456,6 +441,16 @@ void Enemy::EnemyMove2() {
 				Attack();
 				m_pos.x += 0;
 			}
+			//ランダムな感覚で動きを変更
+			static float EnemySpeed = 0.8f;
+			count++;
+			if (count == 90)
+			{
+				randomX = static_cast<float>(rand() % 3 - 1);
+				randomY = static_cast<float>(rand() % 3 - 1);
+				count = 0;
+			}
+			m_pos.x += randomX * EnemySpeed;
 		}
 	}
 	}

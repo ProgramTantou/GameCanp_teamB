@@ -6,7 +6,7 @@ seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 {
 	//m_img = COPY_RESOURCE("Seaweed_1", CImage);
 	m_img = COPY_RESOURCE("FrontObject", CImage);
-	m_img.SetSize(600, 300);
+	m_img.SetSize(700, 300);
 	m_img.SetCenter(700 / 2, 300 / 2);
 	m_img.ChangeAnimation(0);
 

@@ -1,19 +1,11 @@
 #include "seaweed.h"
 
-static TexAnim seaweed_nomal_anim[] = {
-	{0,10},
-	{1,10},
-	{2,10},
-};
 
-TexAnimData seaweedA[] = {
-	ANIMDATA(seaweed_nomal_anim),
-};
 
 seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 {
 	//m_img = COPY_RESOURCE("Seaweed_1", CImage);
-	m_img.Load("Image/Seaweed_1.png",seaweedA,512,500);
+	m_img = COPY_RESOURCE("FrontObject", CImage);
 	m_img.SetSize(200, 200);
 	m_img.SetCenter(200 / 2, 200 / 2);
 	m_img.ChangeAnimation(0);

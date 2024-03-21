@@ -249,7 +249,7 @@ void Boss::Update()
 				}
 				 if (DropTimer >=120)
 				{
-					 m_state = eState_Attack;
+					 Attack();
 				}
 				//printf("C");
 				break;

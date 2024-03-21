@@ -17,6 +17,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  count = 0;
 	  if (m_hp >= 0)
 	  m_state = eState_Move;
+	  GameData::Enemy_rest += 1;
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -92,6 +93,10 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	}
 	//UŒ‚”Ô†
 	attack_no = rand();
+}
+
+Enemy::~Enemy() {
+	GameData::Enemy_rest -= 1;
 }
 
 //“G‚ÌHP‚ğæ“¾

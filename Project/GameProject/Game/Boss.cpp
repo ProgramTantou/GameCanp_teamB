@@ -44,12 +44,8 @@ void Boss::GiveScore(int Score)
 }
 
 void Boss::Dead() {
-	m_state = eState_Damage;
 	m_img.ChangeAnimation(eState_Dead, false);
-	if (m_img.CheckAnimationEnd()) 
-	{
 		Kill();
-	}
 }
 
 void Boss::Move() {
@@ -62,7 +58,7 @@ void Boss::Move() {
 				//移動量を設定
 				m_pos.x += -Boss_Speed;
 				m_flip = false;
-				m_state = eStete_Move;
+				
 
 			}
 			//右移動
@@ -71,14 +67,14 @@ void Boss::Move() {
 				m_pos.x += Boss_Speed;
 				//反転フラグ
 				m_flip = true;
-				m_state = eStete_Move;
+				
 
 			}
 			//奥移動
 			if (player->m_pos.z < m_pos.z) {
 				//移動量を設定
 				m_pos.z += -Boss_Speed;
-				m_state = eStete_Move;
+				
 
 			}
 			//手前移動
@@ -86,7 +82,7 @@ void Boss::Move() {
 				//移動量を設定
 				m_pos.z += Boss_Speed;
 				//反転フラグ
-				m_state = eStete_Move;
+			
 
 			}
 
@@ -114,13 +110,13 @@ void Boss::Move1() {
 		if (player->m_pos.z < m_pos.z) {
 			//移動量を設定
 			m_pos.z += -Boss_Speed;
-			m_state = eStete_Move;
+			
 		}
 		//手前移動
 		if (player->m_pos.z > m_pos.z) {
 			//移動量を設定
 			m_pos.z += Boss_Speed;
-			m_state = eStete_Move;
+		
 		}
 		//上移動
 		if (player->m_pos.y < m_pos.y) {
@@ -147,7 +143,7 @@ void Boss::Move2() {
 			//移動量を設定
 			m_pos.x -= (Boss_Speed1);
 			m_flip = false;
-			m_state = eStete_Move;
+			
 
 		}
 		//右移動
@@ -156,13 +152,13 @@ void Boss::Move2() {
 			m_pos.x += (Boss_Speed1);
 			//反転フラグ
 			m_flip = true;
-			m_state = eStete_Move;
+			
 		}
 		//奥移動
 		if (player->m_pos.z < m_pos.z) {
 			//移動量を設定
 			m_pos.z -= (Boss_Speed1);
-			m_state = eStete_Move;
+		
 
 		}
 		//手前移動
@@ -170,10 +166,12 @@ void Boss::Move2() {
 			//移動量を設定
 			m_pos.z += (Boss_Speed1);
 			//反転フラグ
-			m_state = eStete_Move;
+		
 
 		}
 	}
+}
+void Boss::Action(){
 }
 
 void Boss::Update()
@@ -200,8 +198,15 @@ void Boss::Update()
 							m_pos.x -= (Boss_Speed + 3);
 						}
 					}
-					m_state = eState_Attack;
-					Attack();
+					
+					m_img.ChangeAnimation(eState_Attack, true);
+					{
+						m_state = eState_Attack;
+						if (m_hp <= 0)
+						{
+							m_state = eState_Dead;
+						}
+					}
 				}
 					//printf("A");
 				break;
@@ -219,8 +224,15 @@ void Boss::Update()
 						}
 					}
 				}
-				m_state = eState_Attack;
-				Attack();
+			
+				m_img.ChangeAnimation(eState_Attack, true);
+				{
+					m_state = eState_Attack;
+					if (m_hp <= 0)
+					{
+						m_state = eState_Dead;
+					}
+				}
 				break;
 			case 2://ボスの上空から落下してくる攻撃
 				Timer++;
@@ -238,7 +250,6 @@ void Boss::Update()
 				 if (DropTimer >=120)
 				{
 					 m_state = eState_Attack;
-					Attack();
 				}
 				//printf("C");
 				break;
@@ -267,18 +278,21 @@ void Boss::Update()
 			m_flip = false;
 		}
 
+		if (m_hp <= 0)
+		{
+			m_state = eState_Dead;
+		}
+
 		switch (m_state) {
 		case eStete_Move:
-			m_img.ChangeAnimation(eStete_Move, true);
 			break;
 		case eState_Attack:
-			m_img.ChangeAnimation(eState_Attack, true);
+			Attack();
 			break;
 		case eState_Damage:
-			m_img.ChangeAnimation(eState_Damage, false);
 			break;
 		case eState_Dead:
-			m_img.ChangeAnimation(eState_Dead, false);
+			Dead();
 			break;
 		}
 
@@ -374,7 +388,7 @@ void Boss::Collision(Task* b)
 				m_state = eState_Damage;
 				if (m_hp <= 0)
 				{
-					Dead();
+					m_state = eState_Dead;
 					GiveScore(500);	
 					GameData::clear_flag = true;
 					new Resoult(2);

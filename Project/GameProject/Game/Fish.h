@@ -7,7 +7,7 @@ class Fish :public ObjectBase {
 private:
 	enum {
 		e_Move,
-		e_wait_Attack,
+		e_Wait_Attack,
 		e_Attack,
 		e_Down
 	};
@@ -27,6 +27,7 @@ public:
 	int m_fish;
 	//ˆÚ“®
 	void Move();
+	void WaitAttack();
 	//UŒ‚
 	void Attack();
 	//€

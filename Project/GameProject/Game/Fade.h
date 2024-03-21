@@ -7,8 +7,6 @@ private:
 	CImage m_img;
 	//経過時間の変数
 	int time;
-	//アルファ値の変数
-	float Arufa;
 	//アルファ値制御用のフラグ
 	bool Arufa_flag;
 public:
@@ -18,4 +16,6 @@ public:
 	void Update() override;
 	//描画処理
 	void Render() override;
+	//アルファ値の変数
+	static float Arufa;
 };

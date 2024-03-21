@@ -17,15 +17,12 @@ m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 	GameData::m_score = 0;
 	//タイムの初期化
 	GameData::m_time = 180;
+	Score_flag = false;
 }
 
 //デストラクタ
 GameData::~GameData() {
-	//ゲームをクリアしたなら
-	if (GameData::clear_flag == true) {
-		//スコアに残りタイムを加算
-		GameData::m_score += m_time * 10;
-	}
+	
 }
 
 //更新処理
@@ -41,10 +38,15 @@ void GameData::Update() {
 			m_count = 0;
 		}
 	}
-	//ゲームクリアかゲームオーバーになったなら
-	if (GameData::clear_flag == true || GameData::death_flag == true) {
-		//フォントサイズ4倍
-		m_fontsize *= 4;
+	//ゲームクリア時に1度だけスコアを加算
+	if (GameData::clear_flag == true) {
+		if (Score_flag == false) {
+			GameData::m_score += m_time * 10;
+			if (GameData::m_score > GameData::m_max_score) {
+				GameData::m_max_score = GameData::m_score;
+			}
+			Score_flag = true;
+		}
 	}
 }
 

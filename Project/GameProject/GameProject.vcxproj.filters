@@ -77,6 +77,9 @@
     <ClCompile Include="Game\FrontObject.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\MostFlont.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -167,6 +170,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\FrontObject.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MostFront.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,9 +13,9 @@ seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 		break;
 
 	case eType_coral:
-		//m_img.SetSize(40, 40);
-		//m_img.SetCenter(20, 20);
-		//m_img.Load("Image/coral.png");//見た目がバグっている。
+		m_img.SetSize(40, 40);
+		m_img.SetCenter(20, 20);
+		m_img.Load("Image/footballfish.png");//見た目がバグっている。
 		break;
 
 	case eType_jellyfish:

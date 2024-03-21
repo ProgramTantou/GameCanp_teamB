@@ -17,7 +17,23 @@ enum {
 	eType_Player_near,
 	eType_Player_Attack,
 	eType_Fish,
-	eType_FishManager
+	eType_FishManager,
+	eType_seaweed,
+};
+
+	//海藻、飾りオブジェクトの種類。ミドルグラウンド
+enum 
+{
+	eType_Seaweeds,//海藻
+	eType_coral,//サンゴ
+	eType_jellyfish,//クラゲ
+};
+
+	//前景
+enum 
+{
+	Front_jellyfish,
+
 };
 
 enum
@@ -34,6 +50,7 @@ enum  class TaskPrio
 	Field,
 	Shadow,
 	Object,
+	FrontObjects,
 	UI,
 	Fade,
 };

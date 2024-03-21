@@ -71,7 +71,10 @@
     <ClCompile Include="Game\PlayerAttack.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\FrontGraund.cpp">
+    <ClCompile Include="Game\seaweed.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\FrontObject.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\MostFlont.cpp">
@@ -163,7 +166,10 @@
     <ClInclude Include="Game\PlayerAttack.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\FrontGraund.h">
+    <ClInclude Include="Game\seaweed.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\FrontObject.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\MostFront.h">

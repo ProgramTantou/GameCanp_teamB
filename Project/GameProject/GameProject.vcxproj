@@ -22,7 +22,7 @@
     <ClCompile Include="Game\Field.cpp" />
     <ClCompile Include="Game\Fish.cpp" />
     <ClCompile Include="Game\FishManager.cpp" />
-    <ClCompile Include="Game\FrontGraund.cpp" />
+    <ClCompile Include="Game\FrontObject.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\GameData.cpp" />
     <ClCompile Include="Game\GameOver.cpp" />
@@ -31,6 +31,7 @@
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\PlayerAttack.cpp" />
     <ClCompile Include="Game\Resoult.cpp" />
+    <ClCompile Include="Game\seaweed.cpp" />
     <ClCompile Include="Game\Shadow.cpp" />
     <ClCompile Include="Game\Task.cpp" />
     <ClCompile Include="Game\UI.cpp" />
@@ -50,7 +51,7 @@
     <ClInclude Include="Game\Field.h" />
     <ClInclude Include="Game\Fish.h" />
     <ClInclude Include="Game\FishManager.h" />
-    <ClInclude Include="Game\FrontGraund.h" />
+    <ClInclude Include="Game\FrontObject.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameData.h" />
     <ClInclude Include="Game\GameOver.h" />
@@ -59,6 +60,7 @@
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\PlayerAttack.h" />
     <ClInclude Include="Game\Resoult.h" />
+    <ClInclude Include="Game\seaweed.h" />
     <ClInclude Include="Game\Shadow.h" />
     <ClInclude Include="Game\Task.h" />
     <ClInclude Include="Game\TaskManager.h" />

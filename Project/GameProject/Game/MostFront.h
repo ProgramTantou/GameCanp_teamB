@@ -1,9 +1,13 @@
 #pragma once
-#include "Task.h"
+#include "ObjectBase.h"
 
-class MostFront : public Task {
+class MostFront : public ObjectBase {
 public:
-	//CImage 
+	CImage mp_image_Light;
+	CImage mp_image_Underwater;
+	MostFront(int Field_Number);
 private:
-
+	void Update();
+	void Render();
+	int Field_number;
 };

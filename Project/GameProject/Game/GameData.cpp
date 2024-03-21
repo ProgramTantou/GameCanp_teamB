@@ -6,6 +6,11 @@ int GameData::m_time = 300; //5分
 bool GameData::clear_flag = false;
 bool GameData::death_flag = false;
 int GameData::Stage_number = 1;
+int GameData::GetFish1 = 0;
+int GameData::GetFish2 = 0;
+int GameData::GetFish3 = 0;
+int GameData::Enemy_rest = 0;
+
 
 //コンストラクタ
 GameData::GameData() : Task(eType_UI,(int)TaskPrio::UI),

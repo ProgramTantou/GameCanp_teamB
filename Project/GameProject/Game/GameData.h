@@ -8,6 +8,7 @@ public:
 	static int m_max_score; //最高スコア
 	static bool clear_flag; //ゲームクリア確認用のフラグ
 	static bool death_flag; //ゲームオーバー確認用のフラグ
+	static int Stage_number;
 	//コンストラクタ
 	GameData();
 	//デストラクタ

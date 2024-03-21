@@ -1,5 +1,6 @@
 #include"Fish.h"
 #include"Player.h"
+#include"GameData.h"
 
 //アニメーション
 TexAnim fish[] = {
@@ -43,6 +44,11 @@ Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int t
 //更新
 void Fish::Update()
 {
+	if (GameData::death_flag == true || GameData::clear_flag == true)
+	{
+		Kill();
+	}
+
 	if (m_scroll.x + 1920 < m_pos.x) 
 	{
 		Kill();

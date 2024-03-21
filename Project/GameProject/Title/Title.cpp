@@ -27,6 +27,7 @@ Title::~Title()
 	new seaweed(CVector3D(500, 700, 0), eType_coral);
 	new seaweed(CVector3D(500, 700, 0), eType_jellyfish);
 	//new Resoult(2);
+
 }
 
 void Title::Update() {

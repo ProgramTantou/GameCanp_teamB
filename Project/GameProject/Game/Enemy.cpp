@@ -484,6 +484,10 @@ void Enemy::Update() {
 	//アニメーション更新
 	*/
 	m_img.UpdateAnimation();
+	if (GameData::death_flag == true || GameData::clear_flag == true)
+	{
+		Kill();
+	}
 }
 
 void Enemy::Render() {

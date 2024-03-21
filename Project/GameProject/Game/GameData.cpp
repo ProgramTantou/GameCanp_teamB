@@ -5,6 +5,7 @@ int GameData::m_max_score = 0;
 int GameData::m_time = 180; //3分
 bool GameData::clear_flag = false;
 bool GameData::death_flag = false;
+int GameData::Stage_number = 1;
 
 //コンストラクタ
 GameData::GameData() : Task(eType_UI,(int)TaskPrio::UI),

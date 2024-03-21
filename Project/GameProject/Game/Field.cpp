@@ -6,25 +6,29 @@
 bool Field::Next_flag = false;
 
 //コンストラクタ
-Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
-	//,mp_image(nullptr)
+Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 {
+	Stage_number = stage_number;
 	//敵の位置制御用変数の初期化
 	Enemy_pos_Control = 0;
-	//フィールドナンバーの代入
-	Field_number = Field_Nunber;
 	//次のステージに行けるかの判定用フラグの初期化
 	Field::Next_flag = false;
 	//フィールドナンバーによる読み込み画像の分岐
-	switch (Field_number)
+	switch (Stage_number)
 	{
 	case 1:
-		//明るい背景
-		mp_image = COPY_RESOURCE("Field_1", CImage);
-		break;
 	case 2:
+	case 3:
+		//明るい背景
+		mp_image_Back = COPY_RESOURCE("Back_1", CImage);
+		mp_image_Field = COPY_RESOURCE("Field_1", CImage);
+		mp_image_Pillar = COPY_RESOURCE("Pillar_1", CImage);
+		break;
+	case 4:
 		//暗い背景
-		mp_image = COPY_RESOURCE("Field_2", CImage);
+		mp_image_Back = COPY_RESOURCE("Back_2", CImage);
+		mp_image_Field = COPY_RESOURCE("Field_2", CImage);
+		mp_image_Pillar = COPY_RESOURCE("Pillar_2", CImage);
 		break;
 	}
 	//ステージナンバーによる敵生成の分岐
@@ -64,7 +68,7 @@ Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
 		break;
 	case 4:
 		//ボスを1体
-		new Enemy(CVector3D(2900, 650, -100), 0, false);
+		new Boss(CVector3D(2900, 650, -100),  false);
 		break;
 	default:
 		break;
@@ -75,30 +79,7 @@ Field::Field(int Field_Nunber) : Task(eType_Field, (int)TaskPrio::Field)
 
 //デストラクタ
 Field::~Field() {
-	//ゲームクリアでもなくゲームオーバーでもないなら
-	if (GameData::clear_flag == false && GameData::death_flag == false) {
-		//削除される度にステージナンバー+1
-		Stage_number += 1;
-		//ステージナンバーが4より小さいなら
-		if (Stage_number < 4) {
-			//明るい背景のステージを生成
-			new Field(1);
-		}
-		//ステージナンバーが4なら
-		else if (Stage_number == 4) {
-			//暗い背景のステージを生成
-			new Field(2);
-		}
-		//それ以外のナンバーなら
-		else {
-			//何もしない
-		}
-	}
-	//ゲームクリアかゲームオーバーなら
-	else {
-		//ステージナンバーの初期化
-		Stage_number = 1;
-	}
+	
 }
 
 //フィールドの座標を設定
@@ -116,12 +97,23 @@ void Field::Update() {
 	if (!TaskManager::FindObject(eType_Enemy)) {
 		Field::Next_flag = true;
 	}
+	//if (PUSH(CInput::eButton5)) {
+		//Field::Next_flag = true;
+	//}
 }
 
 //描画処理
 void Field::Render() {
 	float sc;
+	sc = ObjectBase::m_scroll.x / 4;
+	mp_image_Back.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Back.Draw();
+
+	sc = ObjectBase::m_scroll.x / 2;
+	mp_image_Pillar.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Pillar.Draw();
+
 	sc = ObjectBase::m_scroll.x;
-	mp_image.SetRect(sc, 0, sc + 1920, 1080);
-	mp_image.Draw();
+	mp_image_Field.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Field.Draw();
 }

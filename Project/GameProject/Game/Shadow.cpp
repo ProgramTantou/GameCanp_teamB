@@ -20,7 +20,7 @@ void Shadow::Render() {
 		
 		ObjectBase* obj = dynamic_cast<ObjectBase*>(task);
 		if (obj == nullptr) continue;
-		if (obj->m_type != eType_Field && obj->m_type != eType_Title && obj->m_type != eType_UI && obj->m_type != eType_Scene && obj->m_type != eType_Door && obj->m_type != eType_FishManager && obj->m_type != eType_seaweed)
+		if (obj->m_type != eType_Field && obj->m_type != eType_Title && obj->m_type != eType_UI && obj->m_type != eType_Scene && obj->m_type != eType_Door && obj->m_type != eType_FishManager && obj->m_type != eType_seaweed && obj->m_type != eType_Front && obj->m_type != eType_MostFront)
 		{
 			if (obj->m_type == eType_Fish || obj->m_type == eType_Enemy_Attack || obj->m_type == eType_Player_Attack)
 			{

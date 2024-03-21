@@ -39,8 +39,8 @@ FrontObject::FrontObject(int type) : Task(eType_Front,(int)TaskPrio::UI)
 		m_img.Load("Image/footballfish.png");
 		break;
 	}*/
-	m_img.SetSize(500, 500);
-	m_img.SetCenter(250, 250);
+	m_img.SetSize(500*4, 500/2);
+	m_img.SetCenter(250*4, 250/2);
 	
 }
 
@@ -60,6 +60,6 @@ void FrontObject::Render()
 	float sc;
 	//m_img.SetPos(1920/2,1200);
 	sc = ObjectBase::m_scroll.x*1.5;
-	m_img.SetRect(sc, 0, sc + 1920, 1080/3);
+	m_img.SetRect(sc, 0, sc + 1920*3, 1080/3);
 	m_img.Draw();
 }

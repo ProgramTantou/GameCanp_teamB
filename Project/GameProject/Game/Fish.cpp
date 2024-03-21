@@ -45,17 +45,16 @@ void Fish::Move() {
 	time++;
 	m_img.UpdateAnimation();
 
-	if (eType_Fish)
+	if (m_type==eType_Fish)
 	{
-		if (m_flip == true) 
+		if (m_flip == true)
 		{
 			move_speed = -3;
 		}
-		else if (m_flip == false) 
+		else if (m_flip == false)
 		{
 			move_speed = 3;
 		}
-		
 		if (m_fish == eFish_1)
 		{
 			m_img.ChangeAnimation(eMove, false);
@@ -64,13 +63,6 @@ void Fish::Move() {
 			{
 				m_State = e_Move;
 			}
-			/*icnt++;
-			f (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
-
 		}
 		else if (m_fish == eFish_2)
 		{
@@ -80,12 +72,6 @@ void Fish::Move() {
 			{
 				m_State = e_Move;
 			}
-			/*cnt++;
-			 if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 		}
 		else if (m_fish == eFish_3)
 		{
@@ -95,30 +81,18 @@ void Fish::Move() {
 			{
 				m_State = e_Move;
 			}
-			/*cnt++;
-			if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 		}
 	}
 }
 
 void Fish::Attack() {
-	if (eType_Player_Attack && m_flip == true)
+	if (m_type==eType_Player_Attack && m_flip == true)
 	{
 		move_speed = -3;
 		if (m_fish == eFish_1)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eAttack,false);
 			m_pos.x += (move_speed + 1);
-			/*cnt++;
-			if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -127,13 +101,7 @@ void Fish::Attack() {
 		else if (m_fish == eFish_2)
 		{
 			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += abs(sin(DtoR(time))) * 5;
-			/*cnt++;
-			 if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
+			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -143,31 +111,19 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += (move_speed + 0.5);
-			/*cnt++;
-			if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
 			}
 		}
 	}
-	else if (eType_Player_Attack && m_flip == false)
+	else if (m_type==eType_Player_Attack && m_flip == false)
 	{
 		move_speed = 3;
 		if (m_fish == eFish_1)
 		{
 			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += (move_speed + 1);
-			/*cnt++;
-			if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -176,13 +132,7 @@ void Fish::Attack() {
 		else if (m_fish == eFish_2)
 		{
 			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += abs(sin(DtoR(time))) * 5;
-			/*cnt++;
-			 if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
+			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -192,12 +142,6 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += (move_speed + 0.5);
-			/*/cnt++;
-			if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -208,7 +152,8 @@ void Fish::Attack() {
 
 void Fish::Down() 
 {
-	m_img.ChangeAnimation(e_Down, false);
+	m_img.ChangeAnimation(eDown, false);
+	
 	if (m_img.CheckAnimationEnd())
 	{
 		Kill();
@@ -266,9 +211,8 @@ void Fish::Collision(Task* b)
 		{
 			if (m_type==eType_Player_Attack&&ObjectBase::CollisionRect(this, e))
 			{
-				
 				m_type = eType_Fish;
-				m_State = eDown;
+				m_State = e_Down;
 			}
 		}
 		break;

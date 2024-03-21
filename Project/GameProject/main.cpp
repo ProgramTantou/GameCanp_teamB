@@ -102,7 +102,7 @@ void Init(void)
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/shadow.png"));
 	//ADD_RESOURCE("Seaweed", CImage::CreateImage("Image/seaweed.png"));
 	ADD_RESOURCE("Seaweed_1", CImage::CreateImage("Image/Seaweed_1.png"));
-	ADD_RESOURCE("Boss", CImage::CreateImage("Image/warasubo.png"));
+	ADD_RESOURCE("Boss", CImage::CreateImage("Image/Boss.png",boss_anim_data,512,512));
 	ADD_RESOURCE("FrontObject", CImage::CreateImage("Image/jellyfish.png"));
 	//ADD_RESOURCE("Effect", CImage::CreateImage("Image/Effect.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));

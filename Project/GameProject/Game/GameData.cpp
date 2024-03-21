@@ -2,7 +2,7 @@
 
 int GameData::m_score = 0;
 int GameData::m_max_score = 0;
-int GameData::m_time = 180; //3分
+int GameData::m_time = 300; //5分
 bool GameData::clear_flag = false;
 bool GameData::death_flag = false;
 int GameData::Stage_number = 1;
@@ -38,14 +38,22 @@ void GameData::Update() {
 			m_count = 0;
 		}
 	}
-	//ゲームクリア時に1度だけスコアを加算
+	//ゲームクリア時に1度だけタイムスコアを加算
 	if (GameData::clear_flag == true) {
 		if (Score_flag == false) {
 			GameData::m_score += m_time * 10;
+			//スコアが最高スコアより高ければ更新
 			if (GameData::m_score > GameData::m_max_score) {
 				GameData::m_max_score = GameData::m_score;
 			}
 			Score_flag = true;
+		}
+	}
+	//ゲームオーバー時にスコア比較
+	if (GameData::death_flag == true) {
+		//スコアが最高スコアより高ければ更新
+		if (GameData::m_score > GameData::m_max_score) {
+			GameData::m_max_score = GameData::m_score;
 		}
 	}
 }

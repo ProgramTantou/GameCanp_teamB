@@ -276,7 +276,7 @@ void Player::Update()
 			m_attack_no++;
 		}
 	}
-	else if (cnt2 > 0 && player_attack2 == true)
+	if (cnt2 > 0 && player_attack2 == true)
 	{
 		if (PUSH(CInput::eButton7))
 		{
@@ -284,7 +284,7 @@ void Player::Update()
 			m_attack_no++;
 		}
 	}
-	else if (cnt3 > 0 && player_attack3 == true)
+	if (cnt3 > 0 && player_attack3 == true)
 	{
 		if (PUSH(CInput::eButton8))
 		{

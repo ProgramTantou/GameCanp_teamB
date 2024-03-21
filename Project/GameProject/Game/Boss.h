@@ -14,6 +14,7 @@ public:
 	void Move();
 	void Move1();
 	void Move2();
+	void Action();
 	int GetHP();
 	int attack_no;
 	int m_Damage_no;

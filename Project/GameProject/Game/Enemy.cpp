@@ -2,6 +2,7 @@
 #include "EnemyAttack.h"
 #include "TaskManager.h"
 #include "Fish.h"
+#include "PlayerAttack.h"
 #include "GameData.h"
 #include "AnimData.h"
 
@@ -35,7 +36,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_Damage_no = rand();
 		m_hp = 2;
 		attack_Timer = 0.0f;
-		attack_Interval = 120.0f;
+		attack_Interval = 180.0f;
 		waitdistance = 1000;
 		break;
 	}
@@ -111,6 +112,19 @@ void Enemy::EnemyMove() {
 	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
 	{if (player) {
 
+		ObjectBase* otherEnemy = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
+		if (otherEnemy) {
+			float distanceEnemy = abs(otherEnemy->m_pos.z - m_pos.z);
+			float distanceEnemy1 = abs(otherEnemy->m_pos.x - m_pos.x);
+			if (distanceEnemy <= 100) {
+				move_speed1 = 0.1f;
+			
+			}
+			else {
+				move_speed1 = 1.5f;
+			}
+		}
+
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
@@ -120,7 +134,7 @@ void Enemy::EnemyMove() {
 			//左移動
 			if (player->m_pos.x < m_pos.x - 64) {
 				//移動量を設定
-				m_pos.x += -move_speed1;
+				m_pos.x += -(move_speed-0.5f);
 				m_flip = false;
 				move_flag = true;
 				Attack();
@@ -130,7 +144,7 @@ void Enemy::EnemyMove() {
 			//右移動
 			if (player->m_pos.x > m_pos.x + 64) {
 				//移動量を設定
-				m_pos.x += move_speed1;
+				m_pos.x += (move_speed-0.5f);
 				//反転フラグ
 				m_flip = true;
 				move_flag = true;
@@ -188,6 +202,18 @@ void Enemy::EnemyMove1(){
 
 	{if (player) {
 
+		ObjectBase* otherEnemy = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
+		if (otherEnemy) {
+			float distanceEnemy = abs(otherEnemy->m_pos.z - m_pos.z);
+			float distanceEnemy1 = abs(otherEnemy->m_pos.x - m_pos.x);
+			if (distanceEnemy <= 100) {
+				move_speed1 = 0.1f;
+
+			}
+			else {
+				move_speed1 = 1.0f;
+			}
+		}
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
@@ -233,7 +259,7 @@ void Enemy::EnemyMove1(){
 				if (player->m_pos.z < m_pos.z)
 				{
 					//移動量を設定
-					m_pos.z += -(move_speed + 0.5);
+					m_pos.z += -(move_speed1+ 0.5);
 					move_flag = true;
 					if (m_hp >= 0)
 					{
@@ -245,7 +271,7 @@ void Enemy::EnemyMove1(){
 				if (player->m_pos.z > m_pos.z)
 				{
 					//移動量を設定
-					m_pos.z += (move_speed + 0.5);
+					m_pos.z += (move_speed1 + 0.5);
 					//反転フラグ
 					move_flag = true;
 					if (m_hp >= 0)
@@ -258,7 +284,7 @@ void Enemy::EnemyMove1(){
 				if (player->m_pos.y < m_pos.y)
 				{
 					//移動量を設定
-					m_pos.y += -move_speed;
+					m_pos.y += -move_speed1;
 					move_flag = true;
 				}
 				//下移動
@@ -266,7 +292,7 @@ void Enemy::EnemyMove1(){
 				{
 
 					//移動量を設定
-					m_pos.y += move_speed;
+					m_pos.y += move_speed1;
 					//反転フラグ
 					move_flag = true;
 				}
@@ -309,7 +335,18 @@ void Enemy::EnemyMove2() {
 	ObjectBase* player = dynamic_cast <ObjectBase*>(TaskManager::FindObject(eType_Player));
 
 	{if (player) {
+		ObjectBase* otherEnemy = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
+		if (otherEnemy) {
+			float distanceEnemy = abs(otherEnemy->m_pos.z - m_pos.z);
+			float distanceEnemy1 = abs(otherEnemy->m_pos.x - m_pos.x);
+			if (distanceEnemy <= 100) {
+				move_speed1 = 0.5f;
 
+			}
+			else {
+				move_speed1 = 1.5f;
+			}
+		}
 		//プレイヤーと敵のX軸の距離を　＊distance(距離)　とする。
 		float distance = abs(player->m_pos.x - m_pos.x);
 
@@ -344,7 +381,7 @@ void Enemy::EnemyMove2() {
 			if (player->m_pos.z < m_pos.z)
 			{
 				//移動量を設定
-				m_pos.z += (-move_speed + 0.5);
+				m_pos.z += (-move_speed1 + 0.5);
 				move_flag = true;
 				if (m_hp >= 0)
 					m_state = eState_Move;
@@ -353,7 +390,7 @@ void Enemy::EnemyMove2() {
 			if (player->m_pos.z > m_pos.z)
 			{
 				//移動量を設定
-				m_pos.z += (move_speed - 0.5);
+				m_pos.z += (move_speed1 - 0.5);
 				//反転フラグ
 				move_flag = true;
 				if (m_hp >= 0)
@@ -364,14 +401,14 @@ void Enemy::EnemyMove2() {
 			if (player->m_pos.y < m_pos.y)
 			{
 				//移動量を設定
-				m_pos.y += (-move_speed + 0.5);
+				m_pos.y += (-move_speed1 + 0.5);
 				move_flag = true;
 			}
 			//下移動
 			if (player->m_pos.y > m_pos.y)
 			{
 				//移動量を設定
-				m_pos.y += (move_speed - 0.5);
+				m_pos.y += (move_speed1 - 0.5);
 				//反転フラグ
 				move_flag = true;
 			}
@@ -625,12 +662,47 @@ void Enemy::Collision(Task* b)
 					}
 					break;
 					}
-				
+
 				}
 				f->Kill();
 			}
 		}
 	}
+	break;
+
+	case eType_Player_near:
+		if (PlayerAttack* n = dynamic_cast<PlayerAttack*>(b))
+		{
+			if (m_Damage_no != n->GetAttackNo() && ObjectBase::CollisionRect(this, n))
+			{
+				m_Damage_no = n->GetAttackNo();
+				m_hp -= 1;
+				if (m_hp <= 0)
+				{
+					m_state = eState_Down;
+					switch (Enemy_Number)
+					{
+					case 0:
+					{
+						GiveScore(150);
+					}
+					break;
+					case 1:
+					{
+						GiveScore(100);
+					}
+					break;
+					case 2:
+					{
+						GiveScore(200);
+					}
+					break;
+					}
+
+				}
+				n->Kill();
+			}
+		}
 	break;
 	}
 }

@@ -80,13 +80,13 @@ void Init(void)
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 512, 512));
 	ADD_RESOURCE("Fish_1", CImage::CreateImage("Image/fish_1.png", fish_anim_data, 512, 512));
-	ADD_RESOURCE("Fish_2", CImage::CreateImage("Image/tako.png", fish_anim_data, 512, 512));
-	ADD_RESOURCE("Fish_3", CImage::CreateImage("Image/fugu.png", fish_anim_data, 512, 512));
+	ADD_RESOURCE("Fish_2", CImage::CreateImage("Image/tako.png"));
+	ADD_RESOURCE("Fish_3", CImage::CreateImage("Image/fugu.png"));
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/eEnemy1.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));
-	ADD_RESOURCE("Field_1", CImage::CreateImage("Image/Field_1.png"));
-	ADD_RESOURCE("Field_2", CImage::CreateImage("Image/Field_2.png"));
+	ADD_RESOURCE("Field_1", CImage::CreateImage("Image/Field_1_.png"));
+	ADD_RESOURCE("Field_2", CImage::CreateImage("Image/Field_2_.png"));
 	ADD_RESOURCE("Back_1", CImage::CreateImage("Image/Back_1.png"));
 	ADD_RESOURCE("Back_2", CImage::CreateImage("Image/Back_2.png"));
 	ADD_RESOURCE("Pillar_1", CImage::CreateImage("Image/Pillar_1.png"));

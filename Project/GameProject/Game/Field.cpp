@@ -97,9 +97,9 @@ void Field::Update() {
 	if (!TaskManager::FindObject(eType_Enemy)) {
 		Field::Next_flag = true;
 	}
-	//if (PUSH(CInput::eButton5)) {
-		//Field::Next_flag = true;
-	//}
+	if (PUSH(CInput::eButton5)) {
+		Field::Next_flag = true;
+	}
 }
 
 //•`‰æˆ—

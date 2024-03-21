@@ -122,34 +122,7 @@ void Player::Move() {
 			m_img.ChangeAnimation(eAnimIdle);
 		}
 	}
-	if (PUSH(CInput::eMouseL)) 
-	{
-		m_state = eState_Attack00;
-		m_attack_no++;
-	}
-
-	if (cnt1 > 0 && player_attack1 == true) {
-		if (PUSH(CInput::eButton6)) {
-			m_state=eState_Attack01;
-			m_attack_no++;
-		}
-	}
-	else if (cnt2 > 0 && player_attack2 == true) 
-	{
-		if (PUSH(CInput::eButton7)) 
-		{
-			m_state=eState_Attack02;
-			m_attack_no++;
-		}
-	}
-	else if (cnt3 > 0 && player_attack3 == true)
-	{
-		if (PUSH(CInput::eButton8)) 
-		{
-			m_state=eState_Attack03;
-			m_attack_no++;
-		}
-	}
+	
 }
 
 
@@ -291,6 +264,35 @@ int Player::GetHp()
 //XV
 void Player::Update()
 {
+	if (PUSH(CInput::eMouseL))
+	{
+		m_state = eState_Attack00;
+		m_attack_no++;
+	}
+
+	if (cnt1 > 0 && player_attack1 == true) {
+		if (PUSH(CInput::eButton6)) {
+			m_state = eState_Attack01;
+			m_attack_no++;
+		}
+	}
+	else if (cnt2 > 0 && player_attack2 == true)
+	{
+		if (PUSH(CInput::eButton7))
+		{
+			m_state = eState_Attack02;
+			m_attack_no++;
+		}
+	}
+	else if (cnt3 > 0 && player_attack3 == true)
+	{
+		if (PUSH(CInput::eButton8))
+		{
+			m_state = eState_Attack03;
+			m_attack_no++;
+		}
+	}
+
 	if (cnt1 <= 0) 
 	{
 		player_attack1 = false;

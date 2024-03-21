@@ -17,6 +17,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  count = 0;
 	  if (m_hp >= 0)
 	  m_state = eState_Move;
+	  isDeath = false;
 	  GameData::Enemy_rest += 1;
 	switch (Enemy_Number)
 	{
@@ -643,24 +644,27 @@ void Enemy::Collision(Task* b)
 				m_hp -= 1;
 				if (m_hp <= 0)
 				{
-					m_state = eState_Down;
-					switch (Enemy_Number)
+					if (m_hp > -1)
 					{
-					case 0:
-					{
-						GiveScore(150);
-					}
-					break;
-					case 1:
-					{
-						GiveScore(100);
-					}
-					break;
-					case 2:
-					{
-						GiveScore(200);
-					}
-					break;
+						m_state = eState_Down;
+						switch (Enemy_Number)
+						{
+						case 0:
+						{
+							GiveScore(150);
+						}
+						break;
+						case 1:
+						{
+							GiveScore(100);
+						}
+						break;
+						case 2:
+						{
+							GiveScore(200);
+						}
+						break;
+						}
 					}
 
 				}

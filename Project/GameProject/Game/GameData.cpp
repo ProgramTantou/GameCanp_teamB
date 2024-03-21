@@ -72,6 +72,13 @@ void GameData::Render() {
 		m_GameData_text.Draw(1800, 100, 1, 1, 1, "%d",GameData::m_time);
 		m_GameData_text.Draw(1600, 70, 1, 1, 1, "SCORE");
 		m_GameData_text.Draw(1600, 100, 1, 1, 1, "%d",GameData::m_score);
+		if (GameData::Stage_number <= 3) {
+			m_GameData_text.Draw(1328, 70, 1, 1, 1, "残りの敵の数");
+			m_GameData_text.Draw(1400, 100, 1, 1, 1, "%d体", GameData::Enemy_rest);
+		}
+		if (GameData::Stage_number >= 4) {
+			m_GameData_text.Draw(1328, 70, 1, 1, 1, "ボスを倒せ！");
+		}
 	}
 	//ゲームクリアかゲームオーバーになったなら
 	else if(GameData::clear_flag == true || GameData::death_flag == true) {

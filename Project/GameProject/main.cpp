@@ -91,6 +91,10 @@ void Init(void)
 	ADD_RESOURCE("Back_2", CImage::CreateImage("Image/Back_2.png"));
 	ADD_RESOURCE("Pillar_1", CImage::CreateImage("Image/Pillar_1.png"));
 	ADD_RESOURCE("Pillar_2", CImage::CreateImage("Image/Pillar_2.png"));
+	ADD_RESOURCE("Light_1", CImage::CreateImage("Image/Light_1.png"));
+	ADD_RESOURCE("Light_2", CImage::CreateImage("Image/Light_2.png"));
+	ADD_RESOURCE("Underwater_1", CImage::CreateImage("Image/Underwater_1.png"));
+	ADD_RESOURCE("Underwater_2", CImage::CreateImage("Image/Underwater_2.png"));
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
 	ADD_RESOURCE("Cursor", CImage::CreateImage("Image/cursor.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/title.png"));

@@ -1,6 +1,7 @@
 #include "Field.h"
 #include "Enemy.h"
 #include "Boss.h"
+#include "MostFront.h"
 #include "GameData.h"
 
 bool Field::Next_flag = false;
@@ -43,6 +44,7 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 		}
 		new Enemy(CVector3D(200 + 900 * Enemy_pos_Control, 650, 7 * -50), 1, false);
 		new Enemy(CVector3D(200 + 900 * Enemy_pos_Control, 650, 8 * -50), 2, false);
+		new MostFront(1);
 		break;
 	case 2:
 		//“G2‚ğ7‘Ì,“G3‚ğ1‘ÌA“G1‚ğ1‘Ì
@@ -54,6 +56,7 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 		}
 		new Enemy(CVector3D(200 + 900 * Enemy_pos_Control, 650, 7 * -50), 2, false);
 		new Enemy(CVector3D(200 + 900 * Enemy_pos_Control, 650, 8 * -50), 0, false);
+		new MostFront(1);
 		break;
 	case 3:
 		//“G3‚ğ7‘Ì,“G1‚ğ1‘ÌA“G2‚ğ1‘Ì
@@ -65,10 +68,12 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 		}
 		new Enemy(CVector3D(200 + 900 * Enemy_pos_Control, 650, 7 * -50), 0, false);
 		new Enemy(CVector3D(200 + 900 * Enemy_pos_Control, 650, 8 * -50), 1, false);
+		new MostFront(1);
 		break;
 	case 4:
 		//ƒ{ƒX‚ğ1‘Ì
 		new Boss(CVector3D(2900, 650, -100),  false);
+		new MostFront(2);
 		break;
 	default:
 		break;

@@ -41,6 +41,7 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 	
 }
 
+//XVˆ—
 void EnemyAttack::Update() {
 	switch (m_attack)
 	{
@@ -91,7 +92,7 @@ void EnemyAttack::Render() {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }
 
 int EnemyAttack::GetDamage() const

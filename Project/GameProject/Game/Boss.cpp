@@ -8,6 +8,7 @@
 #include "PlayerAttack.h"
 #include "AnimData.h"
 
+//コンストラクタ
 Boss::Boss(const CVector3D& pos, bool flip) :ObjectBase(eType_Enemy) {
 	m_pos = pos;
 	m_flip = flip;
@@ -26,28 +27,38 @@ Boss::Boss(const CVector3D& pos, bool flip) :ObjectBase(eType_Enemy) {
 	intervalmax = 60;
 	randamAction = 0;
 	m_state = eStete_Move;
-	
 }
 
+//デストラクタ
 Boss::~Boss() {
 
 }
 
+//HP取得
 int Boss::GetHP() 
 {
 	return m_hp;
 }
 
+//スコア加算
 void Boss::GiveScore(int Score)
 {
 	GameData::m_score += Score;
 }
 
+//死亡
 void Boss::Dead() {
 	m_img.ChangeAnimation(eState_Dead, false);
-		Kill();
+	if (m_img.CheckAnimationEnd())
+	{
+		Kill();		
+		GameData::clear_flag = true;
+		new Resoult(2);	
+		TaskManager::SelectKill(eType_Player);
+	}
 }
 
+//ボスの動き　その1
 void Boss::Move() {
 	ObjectBase* player = dynamic_cast<ObjectBase*>(TaskManager::FindObject (eType_Player));
 		const float Boss_Speed = 3;
@@ -58,7 +69,6 @@ void Boss::Move() {
 				//移動量を設定
 				m_pos.x += -Boss_Speed;
 				m_flip = false;
-				
 
 			}
 			//右移動
@@ -67,7 +77,6 @@ void Boss::Move() {
 				m_pos.x += Boss_Speed;
 				//反転フラグ
 				m_flip = true;
-				
 
 			}
 			//奥移動
@@ -100,10 +109,9 @@ void Boss::Move() {
 
 			}
 
-			
-
 		}
 }
+//その２
 void Boss::Move1() {
 	ObjectBase* player = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Player));
 	const float Boss_Speed = 3;
@@ -135,6 +143,7 @@ void Boss::Move1() {
 		}
 	}
 }
+//その3
 void Boss::Move2() {
 	ObjectBase* player = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Player));
 	const float Boss_Speed = 3;
@@ -174,18 +183,21 @@ void Boss::Move2() {
 		}
 	}
 }
-void Boss::Action(){
-}
 
 void Boss::Update()
 {	
+
+	//ここから　ボスの動き　その４
 	ObjectBase* player = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Player));
 	const float Boss_Speed = 3;
 		if (interval >= intervalmax)
 		{
-			if (Timer == 0)
+			if (m_hp >= 1) 
 			{
-				randamAction = rand() % 3;
+				if (Timer == 0)
+				{
+					randamAction = rand() % 3;
+				}
 			}
 
 			switch (randamAction)
@@ -254,6 +266,9 @@ void Boss::Update()
 					 Attack();
 				}
 				//printf("C");
+				 if (m_hp <= 0) {
+					 m_state = eState_Dead;
+				 }
 				break;
 			}
 
@@ -280,10 +295,7 @@ void Boss::Update()
 			m_flip = false;
 		}
 
-		if (m_hp <= 0)
-		{
-			m_state = eState_Dead;
-		}
+		
 
 		switch (m_state) {
 		case eStete_Move:
@@ -296,10 +308,14 @@ void Boss::Update()
 			break;
 		}
 
-		if (m_hp <= 7)
+		//HPが半分となったら、第二形態
+		if (m_hp <= 7 && m_hp > 0)
 		{
 			m_img.ChangeAnimation(eState_Attack, true);
 		}
+
+		//ここまで　ボスの動き　その4
+
 	//アニメーションの更新
 	m_img.UpdateAnimation();
 }
@@ -314,6 +330,7 @@ void Boss::Render()
 	//DrawRect();
 }
 
+//攻撃
 void Boss::Attack()
 {
 	attack_no++;
@@ -350,13 +367,15 @@ void Boss::Attack()
 			{
 				//敵の攻撃の生成
 				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
-				{
+				if (m_hp <= 7) {
+					new EnemyAttack(m_pos + CVector2D(0, 100), attack_no, 0, m_flip);
 				}
 			}
 			else
 			{
 				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
-				{
+				if (m_hp <= 7) {
+					new EnemyAttack(m_pos + CVector2D(0, 100), attack_no, 0, m_flip);
 				}
 			}
 			break;
@@ -379,6 +398,7 @@ void Boss::Attack()
 	}
 }
 
+//当たり判定
 void Boss::Collision(Task* b) 
 {
 	switch (b->m_type)
@@ -398,9 +418,6 @@ void Boss::Collision(Task* b)
 					{
 						m_state = eState_Dead;
 						GiveScore(500);
-						GameData::clear_flag = true;
-						new Resoult(2);
-						TaskManager::SelectKill(eType_Player);
 					}
 				}
 				f->Kill();
@@ -417,10 +434,12 @@ void Boss::Collision(Task* b)
 				m_hp -= 1;
 				if (m_hp <= 0)
 				{
-					Dead();
-					GiveScore(500);
-					GameData::clear_flag = true;
-					new Resoult(2);
+					if (m_hp > -1)
+					{
+						m_state = eState_Dead;
+						GiveScore(500);
+					
+					}
 				}
 				n->Kill();
 			}

@@ -19,6 +19,7 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 	  m_state = eState_Move;
 	  isDeath = false;
 	  GameData::Enemy_rest += 1;
+
 	switch (Enemy_Number)
 	{
 	case 0:
@@ -83,14 +84,13 @@ Enemy::Enemy(const CVector3D& p,int enemy_number,bool flip) :ObjectBase(eType_En
 		m_flip = flip;
 		m_Attack_no = rand();
 		m_Damage_no = rand();
-		m_hp = 1;
+		m_hp = 2;
 		attack_Timer = 0.0f;
 		attack_Interval = 100.0f;
 		ChargingInterval = 240;
 		waitdistance = 800;
 		break;
 	}
-
 	}
 	//攻撃番号
 	attack_no = rand();
@@ -106,8 +106,9 @@ int Enemy::GetHP()
 	return m_hp;
 }
 
-//敵の動きまとめてる処
+//敵の動きまとめてる所↓
 
+//ウナギ
 void Enemy::EnemyMove() {
 	m_pos;
 	//m_pos_old = m_pos;
@@ -194,7 +195,8 @@ void Enemy::EnemyMove() {
 		}
 	}
 	}
-}
+} 
+//アンコウ
 void Enemy::EnemyMove1(){
 	m_pos;
 	//m_pos_old = m_pos;
@@ -327,6 +329,7 @@ void Enemy::EnemyMove1(){
 	}
 	}
 }
+//ネコ
 void Enemy::EnemyMove2() {
 	m_pos;
 	//m_pos_old = m_pos;
@@ -479,6 +482,7 @@ void Enemy::Dead()
 		
 }
 
+//更新処理
 void Enemy::Update() {
 	m_pos;
 	//m_pos_old = m_pos;
@@ -498,12 +502,10 @@ void Enemy::Update() {
 		if (m_state == eState_Move || m_state == eState_Attack01)
 			EnemyMove1();
 	break;
-	
 	case 2:
 		if (m_state == eState_Move)
 			EnemyMove2();
 	break;
-	
 	}
 	
 	switch (m_state)

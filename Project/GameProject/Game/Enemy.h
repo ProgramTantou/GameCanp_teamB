@@ -17,12 +17,10 @@ public:
 	void Dead();
 	int GetHP();
 	int attack_no;
-
 	//“G‚Ìí—Ş
 	int Enemy_Number;
 private:
 	CImage m_img;
-	//UŒ‚”Ô†
 	int m_Attack_no;
 	int m_Damage_no;
 	int m_hp;

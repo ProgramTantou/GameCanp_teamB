@@ -30,7 +30,9 @@ public:
 	static bool Next_flag; //次のステージに行けるかの判定用フラグ
 private:
 	CVector2D m_pos;  //フィールドの座標
-	CImage mp_image; //フィールドの画像
+	CImage mp_image_Back; //背景の画像
+	CImage mp_image_Field; //フィールドの画像
+	CImage mp_image_Pillar; //柱の画像
 	float m_ground_y; //フィールドの当たり判定
 	int Field_number; //フィールドの種類判別用変数
 	int Stage_number = 1; //ステージの判別用の変数

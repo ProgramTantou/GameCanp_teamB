@@ -20,11 +20,15 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 	case 2:
 	case 3:
 		//ñæÇÈÇ¢îwåi
-		mp_image = COPY_RESOURCE("Field_1", CImage);
+		mp_image_Back = COPY_RESOURCE("Back_1", CImage);
+		mp_image_Field = COPY_RESOURCE("Field_1", CImage);
+		mp_image_Pillar = COPY_RESOURCE("Pillar_1", CImage);
 		break;
 	case 4:
 		//à√Ç¢îwåi
-		mp_image = COPY_RESOURCE("Field_2", CImage);
+		mp_image_Back = COPY_RESOURCE("Back_2", CImage);
+		mp_image_Field = COPY_RESOURCE("Field_2", CImage);
+		mp_image_Pillar = COPY_RESOURCE("Pillar_2", CImage);
 		break;
 	}
 	//ÉXÉeÅ[ÉWÉiÉìÉoÅ[Ç…ÇÊÇÈìGê∂ê¨ÇÃï™äÚ
@@ -93,15 +97,23 @@ void Field::Update() {
 	if (!TaskManager::FindObject(eType_Enemy)) {
 		Field::Next_flag = true;
 	}
-	//if (PUSH(CInput::eButton5)) {
-		//Field::Next_flag = true;
-	//}
+	if (PUSH(CInput::eButton5)) {
+		Field::Next_flag = true;
+	}
 }
 
 //ï`âÊèàóù
 void Field::Render() {
 	float sc;
+	sc = ObjectBase::m_scroll.x / 4;
+	mp_image_Back.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Back.Draw();
+
+	sc = ObjectBase::m_scroll.x / 2;
+	mp_image_Pillar.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Pillar.Draw();
+
 	sc = ObjectBase::m_scroll.x;
-	mp_image.SetRect(sc, 0, sc + 1920, 1080);
-	mp_image.Draw();
+	mp_image_Field.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Field.Draw();
 }

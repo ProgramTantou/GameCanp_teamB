@@ -56,7 +56,7 @@ void FrontObject::SetPos(const CVector2D& pos)
 
 void FrontObject::Render()
 {
-	//m_img.SetPos(1920 / 2, 1380);
+	m_img.SetPos(1920 / 2, 1380);
 	float sc;
 	//m_img.SetPos(1920/2,1200);
 	sc = ObjectBase::m_scroll.x*1.5;

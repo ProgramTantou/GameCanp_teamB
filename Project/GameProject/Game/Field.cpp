@@ -44,10 +44,10 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 			if (i % 3 == 0) {
 				Enemy_pos_Control += 1;
 			}
-			//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 0, false);
+			new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 0, false);
 		}
 		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 1, false);
-		//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 2, false);
+		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 2, false);
 		new MostFront(1);
 		break;
 	case 2:
@@ -56,9 +56,9 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 			if (i % 3 == 0) {
 				Enemy_pos_Control += 1;
 			}
-			//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 1, false);
+			new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 1, false);
 		}
-		//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 2, false);
+		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 2, false);
 		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 0, false);
 		new MostFront(1);
 		break;
@@ -68,9 +68,9 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 			if (i % 3 == 0) {
 				Enemy_pos_Control += 1;
 			}
-			//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 2, false);
+			new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, i * -50), 2, false);
 		}
-		//new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 0, false);
+		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 7 * -50), 0, false);
 		new Enemy(CVector3D(-2550 + 1900 * Enemy_pos_Control, 650, 8 * -50), 1, false);
 		new MostFront(1);
 		break;
@@ -91,11 +91,6 @@ Field::~Field() {
 	
 }
 
-//フィールドの座標を設定
-void Field::SetPos(const CVector2D& pos) {
-	m_pos = pos;
-}
-
 //フィールドの高さを取得
 const float Field::GetGroundY(){
 	return m_ground_y;
@@ -106,9 +101,6 @@ void Field::Update() {
 	if (!TaskManager::FindObject(eType_Enemy)) {
 		Field::Next_flag = true;
 	}
-	//if (PUSH(CInput::eButton5)) {
-		//Field::Next_flag = true;
-	//}
 }
 
 //描画処理

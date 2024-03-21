@@ -16,7 +16,7 @@ Boss::Boss(const CVector3D& pos, bool flip) :ObjectBase(eType_Enemy) {
 	m_img.SetSize(512, 512);
 	m_img.SetCenter(256/2, 256);
 	m_rect = CRect3D(-256, -256, 256, 256,256,-256);
-	m_hp = 7;
+	m_hp = 14;
 	Timer = 0;
 	DropTimer = 0;
 	attack_no = rand();
@@ -99,6 +99,9 @@ void Boss::Move() {
 				//反転フラグ
 
 			}
+
+			
+
 		}
 }
 void Boss::Move1() {
@@ -199,7 +202,6 @@ void Boss::Update()
 						}
 					}
 					
-					m_img.ChangeAnimation(eState_Attack, true);
 					{
 						m_state = eState_Attack;
 						if (m_hp <= 0)
@@ -225,7 +227,7 @@ void Boss::Update()
 					}
 				}
 			
-				m_img.ChangeAnimation(eState_Attack, true);
+			
 				{
 					m_state = eState_Attack;
 					if (m_hp <= 0)
@@ -289,15 +291,15 @@ void Boss::Update()
 		case eState_Attack:
 			Attack();
 			break;
-		case eState_Damage:
-			break;
 		case eState_Dead:
 			Dead();
 			break;
 		}
 
-	//アニメーションの変更
-	m_img.ChangeAnimation(move_dir);
+		if (m_hp <= 7)
+		{
+			m_img.ChangeAnimation(eState_Attack, true);
+		}
 	//アニメーションの更新
 	m_img.UpdateAnimation();
 }
@@ -329,14 +331,18 @@ void Boss::Attack()
 			{
 				//敵の攻撃の生成
 				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
-				{
+				if (m_hp <= 7) {
+					new EnemyAttack(m_pos+CVector2D(0,100), attack_no, 0, m_flip);
 				}
+				
 			}
 			else
 			{
 				new EnemyAttack(m_pos + CVector2D(0, 0), attack_no, 0, m_flip);
-				{
+				if (m_hp <= 7) {
+					new EnemyAttack(m_pos + CVector2D(0, 100), attack_no, 0, m_flip);
 				}
+
 			}
 			break;
 		case 1:

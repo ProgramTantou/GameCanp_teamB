@@ -2,29 +2,34 @@
 #include "GameData.h"
 #include "Title/Title.h"
 
+//コンストラクタ
 Resoult::Resoult(int CorO) : ObjectBase(eType_Title),m_font("HGRPP1.TTC",150),m_font2("HGRPP1.TTC",70)
 {
 	m_img = COPY_RESOURCE("Resoult", CImage);
-	//m_img.SetSize(1000, 1000);
 	m_img.SetCenter(565, 540);
 	coro = CorO;
 }
 
+//デストラクタ
 Resoult::~Resoult()
 {
+	//全オブジェクト削除
 	TaskManager::KillAll();
+	//タイトル生成
 	new Title();
 }
 
+//更新処理
 void Resoult::Update()
 {
-	//スペースボタンを押すと、タイトルへと戻る。
+	//スペースボタンで削除
 	if (PUSH(CInput::eButton5))
 	{
 		Kill();
 	}
 }
 
+//描画処理
 void Resoult::Render()
 {
 	//引数が１ならゲームオーバー、２ならゲームクリアを表示

@@ -1,5 +1,6 @@
 #pragma once
 #include "ObjectBase.h"
+#include "AnimData.h"
 
 class seaweed : public ObjectBase
 {

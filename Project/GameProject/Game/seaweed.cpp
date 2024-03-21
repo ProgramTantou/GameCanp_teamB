@@ -1,12 +1,24 @@
 #include "seaweed.h"
 
+static TexAnim seaweed_nomal_anim[] = {
+	{0,10},
+	{1,10},
+	{2,10},
+};
+
+TexAnimData seaweedA[] = {
+	ANIMDATA(seaweed_nomal_anim),
+};
+
 seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 {
 	m_img.Load("Image/seaweed.png");
 	m_img.SetSize(800, 800);
 	m_img.SetCenter(800 / 2, 800 / 2);
+	m_img.ChangeAnimation(0);
 
-	switch (type)
+	//このオブジェクトは海草専用になったので、このプログラムは必要なくなりました。
+	/*switch (type)
 	{
 	case eType_Seaweeds:
 		m_img.Load("Image/seaweed.png");
@@ -24,7 +36,7 @@ seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 
 	default:
 		break;
-	}
+	}*/
 	
 	m_pos=pos;
 }

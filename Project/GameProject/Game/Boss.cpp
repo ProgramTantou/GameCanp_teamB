@@ -388,11 +388,14 @@ void Boss::Collision(Task* b)
 				m_state = eState_Damage;
 				if (m_hp <= 0)
 				{
-					m_state = eState_Dead;
-					GiveScore(500);	
-					GameData::clear_flag = true;
-					new Resoult(2);
-					TaskManager::SelectKill(eType_Player);
+					if (m_hp > -1)
+					{
+						m_state = eState_Dead;
+						GiveScore(500);
+						GameData::clear_flag = true;
+						new Resoult(2);
+						TaskManager::SelectKill(eType_Player);
+					}
 				}
 				f->Kill();
 			}

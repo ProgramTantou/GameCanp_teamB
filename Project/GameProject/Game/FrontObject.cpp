@@ -28,8 +28,8 @@ FrontObject::FrontObject(int type) : Task(eType_Front,(int)TaskPrio::UI)
 		break;
 	}*/
 	m_img.Load("Image/jellyfish.png");
-	m_img.SetSize(4000, 4000);
-	m_img.SetCenter(2000, 2000);
+	m_img.SetSize(2000, 2000);
+	m_img.SetCenter(1000, 1000);
 }
 
 void FrontObject::Update()
@@ -40,8 +40,8 @@ void FrontObject::Update()
 void FrontObject::Render()
 {
 	float sc;
-	m_img.SetPos(1920/2,1080/2);
-	sc = ObjectBase::m_scroll.x;
-	m_img.SetRect(sc, 0, sc + 1920, 1080);
+	m_img.SetPos(1920/2,1080);
+	sc = ObjectBase::m_scroll.x*2;
+	m_img.SetRect(sc, 0, sc + 1920, 1080+130);
 	m_img.Draw();
 }

@@ -54,6 +54,4 @@ private:
 		eState_Down
 	};
 	
-
-
 };

@@ -42,9 +42,6 @@ Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int t
 }
 
 void Fish::Move() {
-	time++;
-	
-
 	if (m_type==eType_Fish)
 	{
 		if (m_flip == true)
@@ -92,12 +89,12 @@ void Fish::WaitAttack()
 		move_speed = -3;
 		if (m_fish == eFish_1)
 		{
-			m_img.ChangeAnimation(eAttackWait, true);
+			m_img.ChangeAnimation(eAttackWait, false);
 			m_pos.x += (move_speed + 1);
 			if (m_img.CheckAnimationEnd())
 			{
 				Attack();
-				////m_State = e_Move;
+				//m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_2)
@@ -106,8 +103,8 @@ void Fish::WaitAttack()
 			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Attack;
-				////m_State = e_Move;
+				//m_State = e_Attack;
+				m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_3)
@@ -116,8 +113,8 @@ void Fish::WaitAttack()
 			m_pos.x += (move_speed + 0.5);
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Attack;
-				//m_State = e_Move;
+				//m_State = e_Attack;
+				m_State = e_Move;
 			}
 		}
 	}
@@ -126,7 +123,7 @@ void Fish::WaitAttack()
 		move_speed = 3;
 		if (m_fish == eFish_1)
 		{
-			m_img.ChangeAnimation(eAttackWait, true);
+			m_img.ChangeAnimation(eAttackWait, false);
 			m_pos.x += (move_speed + 1);
 			if (m_img.CheckAnimationEnd())
 			{
@@ -140,8 +137,8 @@ void Fish::WaitAttack()
 			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Attack;
-				//m_State = e_Move;
+				//m_State = e_Attack;
+				m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_3)
@@ -150,8 +147,8 @@ void Fish::WaitAttack()
 			m_pos.x += (move_speed + 0.5);
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Attack;
-				//m_State = e_Move;
+				//m_State = e_Attack;
+				m_State = e_Move;
 			}
 		}
 	}
@@ -179,7 +176,7 @@ void Fish::Down()
 //çXêV
 void Fish::Update()
 {
-	m_img.UpdateAnimation();
+	
 	switch (m_State)
 	{
 	case e_Move:
@@ -210,6 +207,8 @@ void Fish::Update()
 	{
 		Kill();
 	}
+
+	m_img.UpdateAnimation();
 }
 
 

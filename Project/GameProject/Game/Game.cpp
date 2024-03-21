@@ -37,7 +37,6 @@ Game::~Game()
 
 void Game::Update()
 {
-	Player* p;
 	if (Field::Next_flag == true) {
 		if (GameData::clear_flag == false && GameData::death_flag == false) {
 			if (GameData::Stage_number <= 4) {
@@ -52,7 +51,6 @@ void Game::Update()
 				if (Fade::Arufa >= 1) {
 					TaskManager::SelectKill(eType_Field);
 					new Field(GameData::Stage_number);
-					p->ObjectBase::SetPos(CVector3D(200, 1000, 0));
 					Plus_flag = false;
 					Fade_flag = false;
 				}

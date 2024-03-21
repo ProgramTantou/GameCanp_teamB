@@ -45,6 +45,7 @@ private:
 	float attack_range;
 	bool m_flip;
 	bool isCharging;
+	bool isDeath;
 	
 	enum {
 		eState_Move,

@@ -53,7 +53,6 @@ void Game::Update()
 					TaskManager::SelectKill(eType_Field);
 					TaskManager::SelectKill(eType_MostFront);
 					new Field(GameData::Stage_number);
-					p->ObjectBase::SetPos(CVector3D(200, 1000, 0));
 					
 					Plus_flag = false;
 					Fade_flag = false;

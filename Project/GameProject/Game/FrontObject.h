@@ -16,3 +16,5 @@ public:
 
 	int front_type = 0;
 };
+
+extern TexAnimData seaweedA[];

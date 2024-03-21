@@ -9,6 +9,7 @@ bool Field::Next_flag = false;
 //コンストラクタ
 Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 {
+	//引数を代入
 	Stage_number = stage_number;
 	//敵の位置制御用変数の初期化
 	Enemy_pos_Control = 0;

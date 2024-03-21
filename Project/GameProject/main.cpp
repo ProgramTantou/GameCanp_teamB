@@ -10,7 +10,6 @@
 #include "Game/Shadow.h"
 #include"Game/AnimData.h"
 #include "Game/Boss.h"
-#include "Game/FrontObject.h"
 //--------------------------------------------
 //ÉOÉçÅ[ÉoÉãïœêîóÃàÊ
 //--------------------------------------------
@@ -103,7 +102,7 @@ void Init(void)
 	ADD_RESOURCE("Resoult", CImage::CreateImage("Image/Resoult_frame.png"));
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/shadow.png"));
 	//ADD_RESOURCE("Seaweed", CImage::CreateImage("Image/seaweed.png"));
-	ADD_RESOURCE("Seaweed_1", CImage::CreateImage("Image/Seaweed_1.png", seaweedA,2048/4,512));
+	ADD_RESOURCE("Seaweed_1", CImage::CreateImage("Image/Seaweed_1.png"));
 	ADD_RESOURCE("Boss", CImage::CreateImage("Image/Boss.png",boss_anim_data,512,512));
 	ADD_RESOURCE("FrontObject", CImage::CreateImage("Image/jellyfish.png"));
 	ADD_RESOURCE("Fish1_UI", CImage::CreateImage("Image/unagi.png"));

@@ -16,7 +16,7 @@ m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 	//スコアの初期化
 	GameData::m_score = 0;
 	//タイムの初期化
-	GameData::m_time = 180;
+	GameData::m_time = 300;
 	Score_flag = false;
 }
 

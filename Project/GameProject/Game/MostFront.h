@@ -10,4 +10,6 @@ private:
 	void Update();
 	void Render();
 	int Field_number;
+	int count;
+	int count2;
 };

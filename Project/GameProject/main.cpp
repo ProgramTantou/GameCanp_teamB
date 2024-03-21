@@ -96,6 +96,7 @@ void Init(void)
 	ADD_RESOURCE("Underwater_1", CImage::CreateImage("Image/Underwater_1.png"));
 	ADD_RESOURCE("Underwater_2", CImage::CreateImage("Image/Underwater_2.png"));
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/HP.png"));
+	ADD_RESOURCE("Box", CImage::CreateImage("Image/Frame.png"));
 	ADD_RESOURCE("Cursor", CImage::CreateImage("Image/cursor.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/title.png"));
 	ADD_RESOURCE("Resoult", CImage::CreateImage("Image/Resoult_frame.png"));

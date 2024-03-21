@@ -7,4 +7,6 @@ public:
 	Game();
 	~Game();
 	void Update() override;
+	bool Fade_flag;
+	bool Plus_flag;
 };

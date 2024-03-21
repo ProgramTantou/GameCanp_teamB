@@ -192,7 +192,7 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += (move_speed + 0.5);
-			/*cnt++;
+			/*/cnt++;
 			if (cnt >= 180)
 			{
 				Kill();
@@ -264,8 +264,10 @@ void Fish::Collision(Task* b)
 	case eType_Enemy:
 		if (Enemy* e = dynamic_cast<Enemy*>(b))
 		{
-			if (ObjectBase::CollisionRect(this, e))
+			if (m_type==eType_Player_Attack&&ObjectBase::CollisionRect(this, e))
 			{
+				
+				m_type = eType_Fish;
 				m_State = eDown;
 			}
 		}

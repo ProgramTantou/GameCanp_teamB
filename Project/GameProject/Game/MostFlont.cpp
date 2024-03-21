@@ -24,9 +24,11 @@ void MostFront::Render() {
 	float sc;
 	sc = ObjectBase::m_scroll.x;
 	mp_image_Underwater.SetRect(sc, 0, sc + 1920, 1080);
+	//mp_image_Underwater.SetColor(1, 1, 1, 0.2);
 	mp_image_Underwater.Draw();
 
 	sc = ObjectBase::m_scroll.x;
 	mp_image_Light.SetRect(sc, 0, sc + 1920, 1080);
+	mp_image_Light.SetColor(1, 1, 1, 0.2);
 	mp_image_Light.Draw();
 }

@@ -20,12 +20,13 @@ enum {
 	eType_FishManager,
 	eType_seaweed,
 	eType_MostFront,
+	eType_Front,
 };
 
 	//海藻、飾りオブジェクトの種類。ミドルグラウンド
 enum 
 {
-	eType_Seaweeds,//海藻
+	eType_Seaweeds=1,//海藻
 	eType_coral,//サンゴ
 	eType_jellyfish,//クラゲ
 };
@@ -51,9 +52,9 @@ enum  class TaskPrio
 	Field,
 	Shadow,
 	Object,
-	FrontObjects,
 	UI,
 	Fade,
+	FrontObjects,
 	MostFront,
 };
 

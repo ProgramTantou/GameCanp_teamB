@@ -5,6 +5,7 @@
 #include "Game/Game.h"
 #include "Game/Resoult.h"
 #include "Game/seaweed.h"
+#include "Game/FrontObject.h"
 
 Title::Title() : ObjectBase(eType_Title) {
 	//m_img = COPY_RESOURCE("Title", CImage);
@@ -26,6 +27,7 @@ Title::~Title()
 	new seaweed(CVector3D(500, 700, 0), eType_Seaweeds);
 	new seaweed(CVector3D(500, 700, 0), eType_coral);
 	new seaweed(CVector3D(500, 700, 0), eType_jellyfish);
+	new FrontObject(eType_coral);
 	//new Resoult(2);
 
 }

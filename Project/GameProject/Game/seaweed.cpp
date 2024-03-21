@@ -12,9 +12,10 @@ TexAnimData seaweedA[] = {
 
 seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 {
-	m_img.Load("Image/seaweed.png");
-	m_img.SetSize(800, 800);
-	m_img.SetCenter(800 / 2, 800 / 2);
+	//m_img = COPY_RESOURCE("Seaweed_1", CImage);
+	m_img.Load("Image/Seaweed_1.png",seaweedA,512,500);
+	m_img.SetSize(200, 200);
+	m_img.SetCenter(200 / 2, 200 / 2);
 	m_img.ChangeAnimation(0);
 
 	//このオブジェクトは海草専用になったので、このプログラムは必要なくなりました。
@@ -44,6 +45,7 @@ seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 void seaweed::Update()
 {
 	//シーウィードもランダムで登場するようにする？敵と同じように？
+	m_img.UpdateAnimation();
 }
 
 void seaweed::Render()

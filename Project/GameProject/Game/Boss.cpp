@@ -28,9 +28,7 @@ Boss::Boss(const CVector3D& pos, bool flip) :ObjectBase(eType_Enemy) {
 }
 
 Boss::~Boss() {
-	GameData::clear_flag = true;
-	new Resoult(2);
-	TaskManager::SelectKill(eType_Player);
+
 }
 
 int Boss::GetHP() 
@@ -348,7 +346,10 @@ void Boss::Collision(Task* b)
 				if (m_hp <= 0)
 				{
 					Dead();
-					GiveScore(500);
+					GiveScore(500);	
+					GameData::clear_flag = true;
+					new Resoult(2);
+					TaskManager::SelectKill(eType_Player);
 				}
 				f->Kill();
 			}

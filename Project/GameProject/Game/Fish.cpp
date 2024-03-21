@@ -85,68 +85,84 @@ void Fish::Move() {
 	}
 }
 
-void Fish::Attack() {
-	if (m_type==eType_Player_Attack && m_flip == true)
+void Fish::WaitAttack()
+{
+	if (m_type == eType_Player_Attack && m_flip == true)
 	{
 		move_speed = -3;
 		if (m_fish == eFish_1)
 		{
-			m_img.ChangeAnimation(eAttack,false);
+			m_img.ChangeAnimation(eAttackWait, true);
 			m_pos.x += (move_speed + 1);
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Move;
+				Attack();
+				////m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_2)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eAttackWait, false);
 			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Move;
+				m_State = e_Attack;
+				////m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_3)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eAttackWait, false);
 			m_pos.x += (move_speed + 0.5);
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Move;
+				m_State = e_Attack;
+				//m_State = e_Move;
 			}
 		}
 	}
-	else if (m_type==eType_Player_Attack && m_flip == false)
+	else if (m_type == eType_Player_Attack && m_flip == false)
 	{
 		move_speed = 3;
 		if (m_fish == eFish_1)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eAttackWait, true);
 			m_pos.x += (move_speed + 1);
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Move;
+				m_State = e_Attack;
+				//m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_2)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eAttackWait, false);
 			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Move;
+				m_State = e_Attack;
+				//m_State = e_Move;
 			}
 		}
 		else if (m_fish == eFish_3)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eAttackWait, false);
 			m_pos.x += (move_speed + 0.5);
 			if (m_img.CheckAnimationEnd())
 			{
-				m_State = e_Move;
+				m_State = e_Attack;
+				//m_State = e_Move;
 			}
 		}
+	}
+}
+
+void Fish::Attack() {
+	m_img.ChangeAnimation(eAttack, false);
+	if (m_img.CheckAnimationEnd()) 
+	{
+		m_type = eType_Fish;
+		Down();
 	}
 }
 
@@ -169,6 +185,9 @@ void Fish::Update()
 	case e_Move:
 		Move();
 		break;
+	case e_Wait_Attack:
+		WaitAttack();
+		break;
 	case e_Attack:
 		Attack();
 	case e_Down:
@@ -177,7 +196,7 @@ void Fish::Update()
 	}
 	if (m_type == eType_Player_Attack)
 	{
-		Attack();
+		WaitAttack();
 	}
 	if (GameData::death_flag == true || GameData::clear_flag == true)
 	{
@@ -212,8 +231,7 @@ void Fish::Collision(Task* b)
 		{
 			if (m_type==eType_Player_Attack&&ObjectBase::CollisionRect(this, e))
 			{
-				m_type = eType_Fish;
-				m_State = e_Down;
+				m_State = e_Attack;
 			}
 		}
 		break;

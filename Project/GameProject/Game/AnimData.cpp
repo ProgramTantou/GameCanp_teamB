@@ -78,8 +78,14 @@ static TexAnim fishMove[] =
 	{2,frame},
 };
 
-static TexAnim fishAttack[] =
+static TexAnim fishAttackWait[] =
 {
+	{16,frame},
+	{17,frame},
+	{18,frame},
+};
+
+static TexAnim fishAttack[] = {
 	{24,frame},
 	{25,frame},
 	{26,frame},
@@ -94,6 +100,7 @@ static TexAnim fishDown[] =
 
 TexAnimData fish_anim_data[] = {
 	ANIMDATA(fishMove),
+	ANIMDATA(fishAttackWait),
 	ANIMDATA(fishAttack),
 	ANIMDATA(fishDown),
 };

@@ -10,7 +10,7 @@ private:
 public:
 	
 
-	seaweed(const CVector3D& pos,int type);
+	seaweed(const CVector3D& pos);
 
 	void Update() override;
 	void Render() override;

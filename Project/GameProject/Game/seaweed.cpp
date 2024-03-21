@@ -2,7 +2,7 @@
 
 
 
-seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
+seaweed::seaweed(const CVector3D& pos) : ObjectBase(eType_seaweed)
 {
 	//m_img = COPY_RESOURCE("Seaweed_1", CImage);
 	m_img = COPY_RESOURCE("FrontObject", CImage);
@@ -36,8 +36,16 @@ seaweed::seaweed(const CVector3D& pos,int type) : ObjectBase(eType_seaweed)
 
 void seaweed::Update()
 {
-	//シーウィードもランダムで登場するようにする？敵と同じように？
-	m_img.UpdateAnimation();
+	//壁端に当たると消える処理
+	if (m_pos.x < m_scroll.x - 400)
+	{
+		Kill();
+	}
+
+	if (m_pos.x > m_scroll.x + 400+1920)
+	{
+		Kill();
+	}
 }
 
 void seaweed::Render()

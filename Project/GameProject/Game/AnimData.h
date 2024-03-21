@@ -16,6 +16,7 @@ enum {
 
 enum {
 	eMove=0,
+	eAttackWait,
 	eAttack,
 	eDown,
 };

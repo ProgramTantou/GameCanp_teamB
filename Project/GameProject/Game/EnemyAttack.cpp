@@ -9,13 +9,14 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 	{
 		{case 0:
 		{
-			//m_img = COPY_RESOURCE("", CImage);
+			m_img = COPY_RESOURCE("EnemyBullet", CImage);
 			m_timeout = 0;
 			m_damage = 1;
+			m_img.ChangeAnimation(0);
 			const CVector2D size(0.0f, 0.0f);
-			//m_img.SetPos(GetScreenPos(m_pos));
-			//m_img.SetSize(128,128);
-			//m_img.SetCenter(128,128);
+			m_img.SetPos(GetScreenPos(m_pos));
+			m_img.SetSize(256,256);
+			m_img.SetCenter(128,128);
 			m_rect = CRect3D(-30, -30, 0, 30,15,-15);
 			m_attack_no = attack_no;
 		}
@@ -23,13 +24,13 @@ EnemyAttack::EnemyAttack(const CVector3D& pos, const int attack_no, int attack, 
 		}
 		{case 1:
 		{
-			//m_img = COPY_RESOURCE("", CImage);
+			m_img = COPY_RESOURCE("EnemyBullet", CImage);
 			m_timeout = 0;
 			m_damage = 1;
 			const CVector2D size(0.0f, 0.0f);
-			//m_img.SetPos(GetScreenPos(m_pos));
-			//m_img.SetSize(128,128);
-			//m_img.SetCenter(128,128);
+			m_img.SetPos(GetScreenPos(m_pos));
+			m_img.SetSize(128,128);
+			m_img.SetCenter(128,128);
 			m_rect = CRect3D(-200, -30, 0, 15,15,-15);
 			m_attack_no = attack_no;
 		}
@@ -82,12 +83,13 @@ void EnemyAttack::Update() {
 		}
 	}
 	}
+	m_img.UpdateAnimation();
 }
 
 void EnemyAttack::Render() {
 	m_img.SetPos(GetScreenPos(m_pos));
-	//m_img.SetFlipH(m_flip);
-	//m_img.Draw();
+	m_img.SetFlipH(m_flip);
+	m_img.Draw();
 	DrawRect();
 }
 

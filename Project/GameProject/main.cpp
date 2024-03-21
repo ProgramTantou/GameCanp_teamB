@@ -109,6 +109,7 @@ void Init(void)
 	ADD_RESOURCE("Fish1_UI", CImage::CreateImage("Image/unagi.png"));
 	ADD_RESOURCE("Fish2_UI", CImage::CreateImage("Image/tako.png"));
 	ADD_RESOURCE("Fish3_UI", CImage::CreateImage("Image/fugu.png"));
+	ADD_RESOURCE("EnemyBullet", CImage::CreateImage("Image/eEnemy2.png",enemy_anim_data,512,512));
 	//ADD_RESOURCE("Effect", CImage::CreateImage("Image/Effect.png"));
 	//ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	//ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));

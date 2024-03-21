@@ -50,13 +50,12 @@ void Player::Move() {
 	//移動フラグ
 	bool isMove = false;
 	//移動スピード
-	move_speed = 8;
+	move_speed = 10;
 	//ジャンプ力
-	jump_pow=6;  
+	jump_pow=7;  
 	//攻撃を受けたら減速
 	if (m_damage > 0) {
 		move_speed = move_speed / 2;
-		jump_pow = jump_pow / 2;
 		m_damage--;
 	}
 	
@@ -89,7 +88,7 @@ void Player::Move() {
 	}
 	
 	//ジャンプ(スペース)
-	if (m_pos.y>600 && PUSH(CInput::eButton5)) 
+	if (damage==false&&m_pos.y>600 && PUSH(CInput::eButton5)) 
 	{
 		m_vec.y = -jump_pow;
 		m_is_ground = false;
@@ -158,13 +157,13 @@ void Player::Attack01()
 		{
 			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 0, m_flip, m_attack_no, eType_Player_Attack);
 			creat = true;
-			cnt1 -= 1;
+			GameData::GetFish1 -= 1;
 		}
 		else
 		{
 			new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z),this, 0, m_flip, m_attack_no, eType_Player_Attack);
 			creat = true;
-			cnt1 -= 1;
+			GameData::GetFish1 -= 1;
 		}
 	}
 	if (m_img.CheckAnimationEnd())
@@ -183,13 +182,13 @@ void Player::Attack02()
 		{
 			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 1, m_flip, m_attack_no, eType_Player_Attack);
 			creat = true;
-			cnt2 -= 1;
+			GameData::GetFish2 -= 1;
 		}
 		else
 		{
 			new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z),this, 1, m_flip, m_attack_no, eType_Player_Attack);
 			creat = true;
-			cnt2 -= 1;
+			GameData::GetFish2 -= 1;
 		}
 	}
 	if (m_img.CheckAnimationEnd())
@@ -208,13 +207,13 @@ void Player::Attack03()
 		{
 			new Fish(CVector3D(m_pos.x + 20, m_pos.y - 130, m_pos.z),this, 2, m_flip, m_attack_no, eType_Player_Attack);
 			creat = true;
-			cnt3 -= 1;
+			GameData::GetFish3 -= 1;
 		}
 		else
 		{
 			new Fish(CVector3D(m_pos.x - 20, m_pos.y - 130, m_pos.z),this, 2, m_flip, m_attack_no, eType_Player_Attack);
 			creat = true;
-			cnt3 -= 1;
+			GameData::GetFish3 -= 1;
 		}
 	}
 	if (m_img.CheckAnimationEnd())
@@ -269,14 +268,13 @@ void Player::Update()
 		m_state = eState_Attack00;
 		m_attack_no++;
 	}
-
-	if (cnt1 > 0 && player_attack1 == true) {
+	if (GameData::GetFish1 > 0 && player_attack1 == true) {
 		if (PUSH(CInput::eButton6)) {
 			m_state = eState_Attack01;
 			m_attack_no++;
 		}
 	}
-	if (cnt2 > 0 && player_attack2 == true)
+	if (GameData::GetFish2 > 0 && player_attack2 == true)
 	{
 		if (PUSH(CInput::eButton7))
 		{
@@ -284,7 +282,7 @@ void Player::Update()
 			m_attack_no++;
 		}
 	}
-	if (cnt3 > 0 && player_attack3 == true)
+	if (GameData::GetFish3 > 0 && player_attack3 == true)
 	{
 		if (PUSH(CInput::eButton8))
 		{
@@ -293,15 +291,15 @@ void Player::Update()
 		}
 	}
 
-	if (cnt1 <= 0) 
+	if (GameData::GetFish1 <= 0)
 	{
 		player_attack1 = false;
 	}
-	else if (cnt2 <= 0) 
+	else if (GameData::GetFish2 <= 0)
 	{
 		player_attack2 = false;
 	}
-	else if (cnt3 <= 0) 
+	else if (GameData::GetFish3 <= 0)
 	{
 		player_attack3 = false;
 	}
@@ -404,17 +402,17 @@ void Player::Collision(Task* b)
 				if (fish->m_fish == eFish_1) 
 				{
 					player_attack1 = true;
-					cnt1 += 1;
+					GameData::GetFish1 += 1;
 				}
 				else if (fish->m_fish == eFish_2) 
 				{
 					player_attack2 = true;
-					cnt2 += 1;
+					GameData::GetFish2 += 1;
 				}
 				else if (fish->m_fish == eFish_3) 
 				{
 					player_attack3 = true;
-					cnt3 += 1;
+					GameData::GetFish3 += 1;
 				}
 			}
 		}

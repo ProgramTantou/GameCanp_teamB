@@ -7,7 +7,6 @@ class Fish :public ObjectBase {
 private:
 	enum {
 		e_Move,
-		e_Wait_Attack,
 		e_Attack,
 		e_Down
 	};
@@ -25,9 +24,10 @@ public:
 	Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int type);
 	//‹›‚Ìí—Ş
 	int m_fish;
+	
 	//ˆÚ“®
 	void Move();
-	void WaitAttack();
+	
 	//UŒ‚
 	void Attack();
 	//€

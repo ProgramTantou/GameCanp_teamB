@@ -475,6 +475,7 @@ void Enemy::Dead()
 	if (m_img.CheckAnimationEnd())
 	{
 		Kill();
+		
 	}
 		
 }
@@ -646,7 +647,9 @@ void Enemy::Collision(Task* b)
 				{
 					if (m_hp > -1)
 					{
-						m_state = eState_Down;
+						
+							m_state = eState_Down;
+						
 						switch (Enemy_Number)
 						{
 						case 0:
@@ -668,6 +671,7 @@ void Enemy::Collision(Task* b)
 					}
 
 				}
+				
 				//f->Kill();
 			}
 		}

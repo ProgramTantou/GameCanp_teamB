@@ -1,16 +1,22 @@
 #pragma once
 #include"ObjectBase.h"
 
-//魚のアニメーションデータ
-extern TexAnimData fish_anim_data[];
+
 
 class Fish :public ObjectBase {
 private:
 	enum {
-		eMove,
-		eAttack,
-		eDown,
+		e_Move,
+		e_Attack,
+		e_Down
 	};
+	int m_State;
+	//移動
+	void Move();
+	//攻撃
+	void Attack();
+	//死
+	void Down();
 	CImage m_img;
 	Task* player;
 	int cnt;

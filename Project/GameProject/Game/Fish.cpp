@@ -2,35 +2,12 @@
 #include"Player.h"
 #include"GameData.h"
 #include"AnimData.h"
+#include"Enemy.h"
 
-int frm = 10;
-
-static TexAnim fishRun[] = {
-	{0,frm},
-	{1,frm},
-	{2,frm},
-};
-
-static TexAnim fishAttack00[] = {
-	{24,frm},
-	{25,frm},
-	{26,frm},
-};
-
-static TexAnim fishDown[] = {
-	{32,frm},
-	{33,frm},
-	{34,frm},
-};
-
-TexAnimData fish_anim_data[] = {
-	ANIMDATA(fishRun),
-	ANIMDATA(fishAttack00),
-	ANIMDATA(fishDown),
-};
 //コンストラクタ
 Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int type) :ObjectBase(type)
 {
+	m_State = e_Move;
 	m_fish = fish;
 	switch (m_fish)
 	{
@@ -63,85 +40,48 @@ Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int t
 	int time = 0;
 	move_speed = 0;
 }
-//更新
-void Fish::Update()
-{
-	if (GameData::death_flag == true || GameData::clear_flag == true)
-	{
-		Kill();
-	}
 
-	if (m_scroll.x + 1920 < m_pos.x) 
-	{
-		Kill();
-	}
-	else if (m_scroll.x > m_pos.x)
-	{
-		Kill();
-	}
-
+void Fish::Move() {
 	time++;
 	m_img.UpdateAnimation();
 
 	if (eType_Fish)
 	{
-		move_speed = -3;
+		if (m_flip == true) 
+		{
+			move_speed = -3;
+		}
+		else if (m_flip == false) 
+		{
+			move_speed = 3;
+		}
+		
 		if (m_fish == eFish_1)
 		{
 			m_img.ChangeAnimation(eMove, false);
 			m_pos.x += (move_speed + 1);
-			cnt++;
-			/*if (cnt >= 180)
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+			/*icnt++;
+			f (cnt >= 180)
 			{
 				Kill();
 				cnt = 0;
 			}*/
-		}
-		else if (m_fish == eFish_2)
-		{
-			m_img.ChangeAnimation(eMove, false);
-			m_pos.x += abs(sin(DtoR(time))) * 5;
-			cnt++;
-			/* if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
-		}
-		else if (m_fish == eFish_3)
-		{
-			m_img.ChangeAnimation(eMove, false);
-			m_pos.x += (move_speed + 0.5);
-			cnt++;
-			/*if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
-		}
-	}
 
-	
-	if (eType_Player_Attack&&m_flip == true) 
-	{
-		move_speed = -3;
-		if (m_fish == eFish_1)
-		{
-			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += (move_speed + 1);
-			cnt++;
-			/*if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
 		}
 		else if (m_fish == eFish_2)
 		{
-			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += abs(sin(DtoR(time))) * 5;
-			cnt++;
-			/* if (cnt >= 180)
+			m_img.ChangeAnimation(eMove, false);
+			m_pos.x += abs(sin(DtoR(time))) * 6;
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+			/*cnt++;
+			 if (cnt >= 180)
 			{
 				Kill();
 				cnt = 0;
@@ -149,47 +89,14 @@ void Fish::Update()
 		}
 		else if (m_fish == eFish_3)
 		{
-			m_img.ChangeAnimation(eAttack, false);
+			m_img.ChangeAnimation(eMove, false);
 			m_pos.x += (move_speed + 0.5);
-			cnt++;
-			/*if (cnt >= 180)
+			if (m_img.CheckAnimationEnd())
 			{
-				Kill();
-				cnt = 0;
-			}*/
-		}
-	}
-	else if (eType_Player_Attack && m_flip == false) 
-	{
-		move_speed = 3;
-		if (m_fish == eFish_1)
-		{
-			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += (move_speed + 1);
-			cnt++;
-			/*if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
-		}
-		else if (m_fish == eFish_2)
-		{
-			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += abs(sin(DtoR(time))) * 5;
-			cnt++;
-			/* if (cnt >= 180)
-			{
-				Kill();
-				cnt = 0;
-			}*/
-		}
-		else if (m_fish == eFish_3)
-		{
-			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += (move_speed + 0.5);
-			cnt++;
-			/*if (cnt >= 180)
+				m_State = e_Move;
+			}
+			/*cnt++;
+			if (cnt >= 180)
 			{
 				Kill();
 				cnt = 0;
@@ -197,6 +104,150 @@ void Fish::Update()
 		}
 	}
 }
+
+void Fish::Attack() {
+	if (eType_Player_Attack && m_flip == true)
+	{
+		move_speed = -3;
+		if (m_fish == eFish_1)
+		{
+			m_img.ChangeAnimation(eAttack, false);
+			m_pos.x += (move_speed + 1);
+			/*cnt++;
+			if (cnt >= 180)
+			{
+				Kill();
+				cnt = 0;
+			}*/
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+		}
+		else if (m_fish == eFish_2)
+		{
+			m_img.ChangeAnimation(eAttack, false);
+			m_pos.x += abs(sin(DtoR(time))) * 5;
+			/*cnt++;
+			 if (cnt >= 180)
+			{
+				Kill();
+				cnt = 0;
+			}*/
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+		}
+		else if (m_fish == eFish_3)
+		{
+			m_img.ChangeAnimation(eAttack, false);
+			m_pos.x += (move_speed + 0.5);
+			/*cnt++;
+			if (cnt >= 180)
+			{
+				Kill();
+				cnt = 0;
+			}*/
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+		}
+	}
+	else if (eType_Player_Attack && m_flip == false)
+	{
+		move_speed = 3;
+		if (m_fish == eFish_1)
+		{
+			m_img.ChangeAnimation(eAttack, false);
+			m_pos.x += (move_speed + 1);
+			/*cnt++;
+			if (cnt >= 180)
+			{
+				Kill();
+				cnt = 0;
+			}*/
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+		}
+		else if (m_fish == eFish_2)
+		{
+			m_img.ChangeAnimation(eAttack, false);
+			m_pos.x += abs(sin(DtoR(time))) * 5;
+			/*cnt++;
+			 if (cnt >= 180)
+			{
+				Kill();
+				cnt = 0;
+			}*/
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+		}
+		else if (m_fish == eFish_3)
+		{
+			m_img.ChangeAnimation(eAttack, false);
+			m_pos.x += (move_speed + 0.5);
+			/*cnt++;
+			if (cnt >= 180)
+			{
+				Kill();
+				cnt = 0;
+			}*/
+			if (m_img.CheckAnimationEnd())
+			{
+				m_State = e_Move;
+			}
+		}
+	}
+}
+
+void Fish::Down() 
+{
+	m_img.ChangeAnimation(e_Down, false);
+	if (m_img.CheckAnimationEnd())
+	{
+		Kill();
+	}
+}
+
+//更新
+void Fish::Update()
+{
+	switch (m_State)
+	{
+	case e_Move:
+		Move();
+		break;
+	case e_Attack:
+		Attack();
+	case e_Down:
+		Down();
+		break;
+	}
+	if (m_type == eType_Player_Attack)
+	{
+		Attack();
+	}
+	if (GameData::death_flag == true || GameData::clear_flag == true)
+	{
+		Kill();
+	}
+	if (m_scroll.x + 2100 < m_pos.x)
+	{
+		Kill();
+	}
+	else if (m_scroll.x - 180 > m_pos.x)
+	{
+		Kill();
+	}
+}
+
+
 
 //描画
 void Fish::Render()
@@ -209,5 +260,15 @@ void Fish::Render()
 //衝突判定
 void Fish::Collision(Task* b)
 {
-
+	switch (b->m_type) {
+	case eType_Enemy:
+		if (Enemy* e = dynamic_cast<Enemy*>(b))
+		{
+			if (ObjectBase::CollisionRect(this, e))
+			{
+				m_State = eDown;
+			}
+		}
+		break;
+	}
 }

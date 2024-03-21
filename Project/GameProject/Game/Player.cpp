@@ -89,7 +89,7 @@ void Player::Move() {
 	}
 	
 	//ジャンプ(スペース)
-	if (m_pos.y>400 && PUSH(CInput::eButton5)) 
+	if (m_pos.y>600 && PUSH(CInput::eButton5)) 
 	{
 		m_vec.y = -jump_pow;
 		m_is_ground = false;

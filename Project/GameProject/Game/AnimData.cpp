@@ -1,7 +1,7 @@
 #include"AnimData.h"
 
 
-int frame = 40;
+int frame = 10;
 
 static TexAnim playerIdle[] = {
 	{0,frame},
@@ -71,7 +71,32 @@ TexAnimData player_anim_data[] = {
 	ANIMDATA(playerDown),
 };
 
+static TexAnim fishMove[] =
+{
+	{0,frame},
+	{1,frame},
+	{2,frame},
+};
 
+static TexAnim fishAttack[] =
+{
+	{24,frame},
+	{25,frame},
+	{26,frame},
+};
+
+static TexAnim fishDown[] =
+{
+	{32,frame},
+	{33,frame},
+	{34,frame},
+};
+
+TexAnimData fish_anim_data[] = {
+	ANIMDATA(fishMove),
+	ANIMDATA(fishAttack),
+	ANIMDATA(fishDown),
+};
 
 static TexAnim enemyRun[] = {
 	{0,frame},

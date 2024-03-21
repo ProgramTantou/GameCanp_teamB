@@ -4,7 +4,7 @@
 
 //ÉRÉìÉXÉgÉâÉNÉ^
 UI::UI(const CVector3D& pos, int UI_Nunber) : Task(eType_UI,(int)TaskPrio::UI),
-m_UI_text("C:\\Windows\\Fonts\\msgothic.ttc", 64) {
+m_UI_text("C:\\Windows\\Fonts\\msgothic.ttc", 32) {
 	hp = 0;
 	UI_number = UI_Nunber;
 	switch (UI_number) {
@@ -67,10 +67,13 @@ void UI::Render() {
 			}
 			m_img_fish1.SetPos(170 + 188 * 1, 140);
 			m_img_fish1.Draw();
+			m_UI_text.Draw(199 + 190 * 1, 200, 1, 1, 1, "Å~%d",GameData::GetFish1);
 			m_img_fish2.SetPos(170 + 188 * 2, 140);
 			m_img_fish2.Draw();
+			m_UI_text.Draw(198 + 190 * 2, 200, 1, 1, 1, "Å~%d", GameData::GetFish2);
 			m_img_fish3.SetPos(170 + 188 * 3, 140);
 			m_img_fish3.Draw();
+			m_UI_text.Draw(197 + 190 * 3, 200, 1, 1, 1, "Å~%d", GameData::GetFish3);
 		}
 		break;
 	}

@@ -17,6 +17,7 @@ public:
 	int GetHP();
 	int attack_no;
 	int m_Damage_no;
+	int m_state;
 
 private:
 	CImage m_img;
@@ -31,4 +32,11 @@ private:
 	float Timer;
 	float DropTimer;
 	bool m_flip;
+
+	enum {
+		eStete_Move,
+		eState_Attack,
+		eState_Damage,
+		eState_Dead,
+	};
 };

@@ -136,3 +136,41 @@ TexAnimData enemy_anim_data[] = {
 	ANIMDATA(enemyDown),
 	
 };
+
+
+static TexAnim bossRun[] = {
+	{0,frame},
+	{1,frame},
+};
+
+static TexAnim bossAttack[] = {
+	{8,frame},
+	{9,frame},
+	{10,frame},
+	{11,frame},
+	{12,frame},
+};
+
+static TexAnim bossDamage[] = {
+	{24,frame},
+	{25,frame},
+	{26,frame},
+};
+
+static TexAnim bossDead[] = {
+	{16,frame},
+	{17,frame},
+	{18,frame},
+	{19,frame},
+	{20,frame},
+	{21,frame},
+	{22,frame},
+};
+
+TexAnimData boss_anim_data[] = {
+	ANIMDATA(bossRun),
+	ANIMDATA(bossAttack),
+	ANIMDATA(bossDamage),
+	ANIMDATA(bossDead),
+
+};

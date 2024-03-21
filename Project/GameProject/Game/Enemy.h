@@ -5,6 +5,7 @@
 class Enemy : public ObjectBase {
 public:
 	Enemy(const CVector3D& p,int enemy_number,bool flip);
+	~Enemy();
 	void Update() override;
 	void Render() override;
 	void Collision(Task* b) override;

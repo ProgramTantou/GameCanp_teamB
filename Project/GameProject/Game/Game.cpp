@@ -40,10 +40,12 @@ Game::~Game()
 void Game::Update()
 {
 	if (Field::Next_flag == true) {
-		if (GameData::Stage_number < 4) {
-			GameData::Stage_number++;
-			TaskManager::SelectKill(eType_Field);
-			new Field(GameData::Stage_number);
+		if (GameData::clear_flag == false && GameData::death_flag == false) {
+			if (GameData::Stage_number < 4) {
+				GameData::Stage_number++;
+				TaskManager::SelectKill(eType_Field);
+				new Field(GameData::Stage_number);
+			}
 		}
 	}
 }

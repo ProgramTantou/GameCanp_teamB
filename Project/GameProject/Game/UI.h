@@ -7,6 +7,10 @@ private:
 	CImage m_img;
 	//所持している魚の画像データ
 	CImage m_img2;
+	//魚の画像データ
+	CImage m_img_fish1;
+	CImage m_img_fish2;
+	CImage m_img_fish3;
 	//スコア表示用の文字表示オブジェクト
 	CFont m_UI_text;
 	//画像矩形用の変数

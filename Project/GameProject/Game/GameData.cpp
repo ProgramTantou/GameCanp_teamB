@@ -6,6 +6,11 @@ int GameData::m_time = 300; //5分
 bool GameData::clear_flag = false;
 bool GameData::death_flag = false;
 int GameData::Stage_number = 1;
+int GameData::GetFish1 = 0;
+int GameData::GetFish2 = 0;
+int GameData::GetFish3 = 0;
+int GameData::Enemy_rest = 0;
+
 
 //コンストラクタ
 GameData::GameData() : Task(eType_UI,(int)TaskPrio::UI),
@@ -16,7 +21,7 @@ m_GameData_text("C:\\Windows\\Fonts\\msgothic.ttc", m_fontsize){
 	//スコアの初期化
 	GameData::m_score = 0;
 	//タイムの初期化
-	GameData::m_time = 180;
+	GameData::m_time = 300;
 	Score_flag = false;
 }
 

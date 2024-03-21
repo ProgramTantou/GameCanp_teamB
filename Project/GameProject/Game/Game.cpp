@@ -19,10 +19,11 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 	GameData::Stage_number = 1;
 	GameData::clear_flag = false;
 	GameData::death_flag = false;
-	new Field(GameData::Stage_number);
 	new Player(CVector3D(200, 1000, 0), false);
+	new Field(GameData::Stage_number);
 	new FishManager();
 	new UI(CVector2D(10, 120), 1);
+	new UI(CVector2D(10, 120), 2);
 	new GameData();
 	new Shadow();
 }
@@ -50,7 +51,10 @@ void Game::Update()
 				}
 				if (Fade::Arufa >= 1) {
 					TaskManager::SelectKill(eType_Field);
+					TaskManager::SelectKill(eType_MostFront);
 					new Field(GameData::Stage_number);
+					p->ObjectBase::SetPos(CVector3D(200, 1000, 0));
+					
 					Plus_flag = false;
 					Fade_flag = false;
 				}

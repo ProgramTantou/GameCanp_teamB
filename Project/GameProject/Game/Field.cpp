@@ -14,6 +14,10 @@ Field::Field(int stage_number) : Task(eType_Field, (int)TaskPrio::Field)
 	Enemy_pos_Control = 0;
 	//次のステージに行けるかの判定用フラグの初期化
 	Field::Next_flag = false;
+	//プレイヤーのポインター
+	ObjectBase* p = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Player));
+	//プレイヤーの座標の初期化
+	p->SetPos(CVector3D(200, 1000, 0));
 	//フィールドナンバーによる読み込み画像の分岐
 	switch (Stage_number)
 	{

@@ -43,7 +43,7 @@ Fish::Fish(const CVector3D& pos,Task*b, int fish, bool flip, int attack_no,int t
 
 void Fish::Move() {
 	time++;
-	m_img.UpdateAnimation();
+	
 
 	if (m_type==eType_Fish)
 	{
@@ -163,6 +163,7 @@ void Fish::Down()
 //çXêV
 void Fish::Update()
 {
+	m_img.UpdateAnimation();
 	switch (m_State)
 	{
 	case e_Move:

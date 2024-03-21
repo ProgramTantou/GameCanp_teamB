@@ -659,7 +659,7 @@ void Enemy::Collision(Task* b)
 					}
 
 				}
-				f->Kill();
+				//f->Kill();
 			}
 		}
 	}

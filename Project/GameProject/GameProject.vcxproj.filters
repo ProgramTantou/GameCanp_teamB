@@ -71,6 +71,12 @@
     <ClCompile Include="Game\PlayerAttack.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\seaweed.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\FrontObject.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -155,6 +161,12 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\PlayerAttack.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\seaweed.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\FrontObject.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

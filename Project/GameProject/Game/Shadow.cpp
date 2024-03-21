@@ -33,7 +33,7 @@ void Shadow::Render() {
 			{
 				m_img.SetSize(200, 200);
 				m_img.SetCenter(100, 100);
-				m_img.SetPos(obj->GetScreenPos(CVector3D(obj->m_pos.x, 750, obj->m_pos.z)));
+				m_img.SetPos(obj->GetScreenPos(CVector3D(obj->m_pos.x, 780, obj->m_pos.z)));
 				m_img.Draw();
 			}
 		}

@@ -93,6 +93,13 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, true);
 			m_pos.x += (move_speed -2);
+			cnt++;
+			if (cnt >= 300)
+			{
+				cnt = 0;
+				m_type = eType_Fish;
+				m_State = e_Down;
+			}
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -102,6 +109,13 @@ void Fish::Attack() {
 		{
 		m_img.ChangeAnimation(eAttack, true);
 			m_pos.x += (move_speed -3);
+			cnt++;
+			if (cnt >= 300)
+			{
+				cnt = 0;
+				m_type = eType_Fish;
+				m_State = e_Down;
+			}
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -111,6 +125,13 @@ void Fish::Attack() {
 		{	
 			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += abs(sin(DtoR(time))) * -6;
+			cnt++;
+			if (cnt >= 300)
+			{
+				cnt = 0;
+				m_type = eType_Fish;
+				m_State = e_Down;
+			}
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -124,6 +145,13 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, true);
 			m_pos.x += (move_speed + 2);
+			cnt++;
+			if (cnt >= 300)
+			{
+				cnt = 0;
+				m_type = eType_Fish;
+				m_State = e_Down;
+			}
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -133,6 +161,13 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, true);
 			m_pos.x += (move_speed + 3);
+			cnt++;
+			if (cnt >= 300)
+			{
+				cnt = 0;
+				m_type = eType_Fish;
+				m_State = e_Down;
+			}
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -142,6 +177,14 @@ void Fish::Attack() {
 		{
 			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += abs(sin(DtoR(time))) * 6;
+			cnt++;
+			if (cnt >= 300)
+			{
+				cnt = 0;
+				m_type = eType_Fish;
+				m_State = e_Down;
+				
+			}
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -185,11 +228,11 @@ void Fish::Update()
 	{
 		Kill();
 	}
-	if (m_scroll.x + 2100 < m_pos.x)
+	if (m_type==eType_Player_Attack&&m_scroll.x + 2100 < m_pos.x)
 	{
 		Kill();
 	}
-	else if (m_scroll.x - 180 > m_pos.x)
+	else if (m_scroll.x - 300 > m_pos.x)
 	{
 		Kill();
 	}

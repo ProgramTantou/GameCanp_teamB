@@ -99,6 +99,15 @@ TexAnimData fish_anim_data_1[] = {
 	ANIMDATA(fish_1Attack),
 	ANIMDATA(fish_1Down),
 };
+
+static TexAnim effect_1[] = {
+	{1,frame},
+	{0,frame},
+};
+TexAnimData effect_anim_data_1[] = {
+	ANIMDATA(effect_1),
+};
+
 static TexAnim fish_2Move[] =
 {
 	{0,frame},
@@ -128,6 +137,16 @@ TexAnimData fish_anim_data_2[] = {
 	ANIMDATA(fish_2Down),
 };
 
+static TexAnim effect_2[] = {
+	{0,frame},
+	{1,frame},
+	{2,frame},
+	{3,frame},
+};
+TexAnimData effect_anim_data_2[] = {
+	ANIMDATA(effect_2),
+};
+
 static TexAnim fish_3Move[] =
 {
 	{}
@@ -148,6 +167,13 @@ TexAnimData fish_anim_data_3[] = {
 	ANIMDATA(fish_3Move),
 	ANIMDATA(fish_3Attack),
 	ANIMDATA(fish_3Down),
+};
+
+static TexAnim effect_3[] = {
+	{}
+};
+static TexAnimData effect_anim_data_3[] = {
+	ANIMDATA(effect_3),
 };
 
 static TexAnim enemyRun[] = {

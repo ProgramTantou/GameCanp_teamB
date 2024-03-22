@@ -2,6 +2,7 @@
 #include "Game/Casol.h"
 #include "Game/Player.h"
 #include"Game/Fish.h"
+#include"Game/Effect.h"
 #include "Game/Enemy.h"
 #include "Game/Task.h"
 #include "Game/TaskManager.h"
@@ -80,8 +81,11 @@ void Init(void)
 	//画像の読み込みと登録　”リソース名”　　　　”ファイル名” , アニメーションデータ , 幅 , 高さ
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 512, 512));
 	ADD_RESOURCE("Fish_1", CImage::CreateImage("Image/fish_1.png", fish_anim_data_1, 512, 512));
-	ADD_RESOURCE("Fish_2", CImage::CreateImage("Image/tako.png", fish_anim_data_2, 512, 512));
+	ADD_RESOURCE("Effect_1", CImage::CreateImage("Image/fish_1_Effect.png", effect_anim_data_1, 512, 512));
+	ADD_RESOURCE("Fish_2", CImage::CreateImage("Image/fish_2.png", fish_anim_data_2, 512, 512));
+	ADD_RESOURCE("Effect_2", CImage::CreateImage("Image/fish_2_Effect.png", effect_anim_data_2, 512, 512));
 	ADD_RESOURCE("Fish_3", CImage::CreateImage("Image/tako.png"));
+	//ADD_RESOURCE("Effect_3", CImage::CreateImage("Image/fish_3_Effect.png", effect_anim_data_3, 512, 512));
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/dennkiusagi.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/eEnemy1.png", enemy_anim_data, 512, 512));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/tyoutinnneko.png", enemy_anim_data, 512, 512));

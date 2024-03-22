@@ -3,6 +3,7 @@
 #include"GameData.h"
 #include"AnimData.h"
 #include"Enemy.h"
+#include"Effect.h"
 
 //コンストラクタ
 Fish::Fish(const CVector3D& pos, Task* b, int fish, bool flip, int attack_no, int type) :ObjectBase(type)
@@ -42,16 +43,16 @@ Fish::Fish(const CVector3D& pos, Task* b, int fish, bool flip, int attack_no, in
 }
 
 void Fish::Move() {
-	time++;
+	
 	if (m_type == eType_Fish)
 	{
 		if (m_flip == true)
 		{
-			move_speed = -3;
+			move_speed = -6;
 		}
 		else if (m_flip == false)
 		{
-			move_speed = 3;
+			move_speed = 6;
 		}
 		if (m_fish == eFish_1)
 		{
@@ -65,7 +66,7 @@ void Fish::Move() {
 		else if (m_fish == eFish_2)
 		{
 			m_img.ChangeAnimation(eMove, false);
-			m_pos.x += (move_speed + 0.5);
+			m_pos.x += (move_speed + 2);
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -84,14 +85,14 @@ void Fish::Move() {
 }
 
 void Fish::Attack() {
-	time++;
+	
 	if (m_type == eType_Player_Attack && m_flip == true)
 	{
 		move_speed = -3;
 		if (m_fish == eFish_1)
 		{
 			m_img.ChangeAnimation(eAttack, true);
-			m_pos.x += (move_speed + 1);
+			m_pos.x += (move_speed -2);
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -99,8 +100,8 @@ void Fish::Attack() {
 		}
 		else if (m_fish == eFish_2)
 		{
-		m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += (move_speed + 0.5);
+		m_img.ChangeAnimation(eAttack, true);
+			m_pos.x += (move_speed -3);
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -108,7 +109,7 @@ void Fish::Attack() {
 		}
 		else if (m_fish == eFish_3)
 		{	
-			m_img.ChangeAnimation(eAttack, true);
+			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += abs(sin(DtoR(time))) * -6;
 			if (m_img.CheckAnimationEnd())
 			{
@@ -122,7 +123,7 @@ void Fish::Attack() {
 		if (m_fish == eFish_1)
 		{
 			m_img.ChangeAnimation(eAttack, true);
-			m_pos.x += (move_speed + 1);
+			m_pos.x += (move_speed + 2);
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -130,8 +131,8 @@ void Fish::Attack() {
 		}
 		else if (m_fish == eFish_2)
 		{
-			m_img.ChangeAnimation(eAttack, false);
-			m_pos.x += (move_speed + 0.5);
+			m_img.ChangeAnimation(eAttack, true);
+			m_pos.x += (move_speed + 3);
 			if (m_img.CheckAnimationEnd())
 			{
 				m_State = e_Move;
@@ -139,7 +140,7 @@ void Fish::Attack() {
 		}
 		else if (m_fish == eFish_3)
 		{
-			m_img.ChangeAnimation(eAttack, true);
+			m_img.ChangeAnimation(eAttack, false);
 			m_pos.x += abs(sin(DtoR(time))) * 6;
 			if (m_img.CheckAnimationEnd())
 			{
@@ -163,6 +164,7 @@ void Fish::Down()
 //更新
 void Fish::Update()
 {
+	time++;
 	m_img.UpdateAnimation();
 	switch (m_State)
 	{
@@ -212,8 +214,28 @@ void Fish::Collision(Task* b)
 		{
 			if (m_type == eType_Player_Attack && ObjectBase::CollisionRect(this, e))
 			{
-				m_type = eType_Fish;
-				m_State = e_Down;
+				switch (m_fish)
+				{
+				case eFish_1:
+					//ピンク
+					new Effect("Effect_1", m_pos, m_flip);
+					m_type = eType_Fish;
+					m_State = e_Down;
+					break;
+				case eFish_2:
+					//青
+					new Effect("Effect_2", m_pos, m_flip);
+					m_type = eType_Fish;
+					m_State = e_Down;
+					break;
+				case eFish_3:
+					//たこ
+					m_type = eType_Fish;
+					m_State = e_Down;
+					break;
+				default:
+					break;
+				}
 			}
 		}
 		break;

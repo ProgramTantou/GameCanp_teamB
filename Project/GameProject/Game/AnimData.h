@@ -26,7 +26,10 @@ extern TexAnimData player_anim_data[];
 extern TexAnimData enemy_anim_data[];
 //魚のアニメーションデータ
 extern TexAnimData fish_anim_data_1[];
+extern TexAnimData effect_anim_data_1[];
 extern TexAnimData fish_anim_data_2[];
+extern TexAnimData effect_anim_data_2[];
 extern TexAnimData fish_anim_data_3[];
+extern TexAnimData effect_anim_data_3[];
 //ボスのアニメーションデータ
 extern TexAnimData boss_anim_data[];

@@ -17,6 +17,7 @@ enum {
 	eType_Player_near,
 	eType_Player_Attack,
 	eType_Fish,
+	eType_Effect,
 	eType_FishManager,
 	eType_seaweed,
 	eType_MostFront,

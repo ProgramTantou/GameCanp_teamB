@@ -228,7 +228,7 @@ void Fish::Update()
 	{
 		Kill();
 	}
-	if (m_type==eType_Player_Attack&&m_scroll.x + 2100 < m_pos.x)
+	if (m_scroll.x + 2100 < m_pos.x)
 	{
 		Kill();
 	}

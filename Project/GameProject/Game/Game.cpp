@@ -27,7 +27,7 @@ Game::Game() :Task(eType_Scene,(int)TaskPrio::Scene)
 	new UI(CVector2D(10, 120), 2);
 	new GameData();
 	new Shadow();
-	//new Casol();
+	new Casol();
 }
 
 Game::~Game()

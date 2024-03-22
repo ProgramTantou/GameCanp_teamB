@@ -70,10 +70,10 @@ void UI::Render() {
 			m_img_fish1.Draw();
 			m_UI_text.Draw(199 + 190 * 1, 200, 1, 1, 1, "Å~%d",GameData::GetFish1);
 			m_img_fish2.SetPos(170 + 188 * 2, 140);
+			m_img_fish2.SetRect(0, 0, 512, 512);
 			m_img_fish2.Draw();
 			m_UI_text.Draw(198 + 190 * 2, 200, 1, 1, 1, "Å~%d", GameData::GetFish2);
 			m_img_fish3.SetPos(170 + 188 * 3, 140);
-			m_img_fish3.SetRect(0, 0, 512, 512);
 			m_img_fish3.Draw();
 			m_UI_text.Draw(197 + 190 * 3, 200, 1, 1, 1, "Å~%d", GameData::GetFish3);
 		}

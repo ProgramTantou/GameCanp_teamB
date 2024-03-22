@@ -13,30 +13,26 @@ Casol::Casol() : ObjectBase(eType_UI) {
 	m_flip = false;
 	//プレイヤーのポインター
 	p = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Player));
-	//敵のポインター
-	e = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
-	
 }
 
 void Casol::Update() {
-	//プレイヤーの座標の取得
-	CVector3D Player_pos = p->GetPos();
-	//プレイヤーの座標の取得
-	CVector3D Enemy_pos = e->GetPos();
-	if (e == nullptr) {
-		e = dynamic_cast<ObjectBase*>(TaskManager::FindObject(eType_Enemy));
-	}
-	if (Player_pos.x > Enemy_pos.x) {
-		Enemy_flag_left = true;
-	}
-	else {
-		Enemy_flag_left = false;
-	}
-	if (Player_pos.x < Enemy_pos.x) {
-		Enemy_flag_right = true;
-	}
-	else {
-		Enemy_flag_right = false;
+	//フラグの初期化
+	Enemy_flag_left = false;
+	Enemy_flag_right = false;
+	//リストの取得
+	enemy_list = (TaskManager::FindObjects(eType_Enemy));
+	for (auto& v : enemy_list) {
+		//プレイヤーの座標の取得
+		CVector3D Player_pos = p->GetPos();
+		//敵の座標の取得
+		e = dynamic_cast<ObjectBase*>(v);
+		CVector3D Enemy_pos = e->GetPos();
+		if (Player_pos.x > Enemy_pos.x) {
+			Enemy_flag_left = true;
+		}
+		if (Player_pos.x < Enemy_pos.x) {
+			Enemy_flag_right = true;
+		}
 	}
 }
 

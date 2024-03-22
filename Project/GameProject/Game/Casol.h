@@ -14,7 +14,8 @@ private:
 	ObjectBase* p;
 	//敵のポインター
 	ObjectBase* e;
-	std::list<ObjectBase*> lst;
+	
+	std::list<Task*> enemy_list;
 public:
 	//コンストラクタ
 	Casol();

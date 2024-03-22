@@ -4,6 +4,7 @@
 #include"AnimData.h"
 #include"Enemy.h"
 #include"Effect.h"
+#include"TaskManager.h"
 
 //コンストラクタ
 Fish::Fish(const CVector3D& pos, Task* b, int fish, bool flip, int attack_no, int type) :ObjectBase(type)
@@ -224,6 +225,11 @@ void Fish::Update()
 	{
 		Attack();
 	}
+	if (!TaskManager::FindObject(eType_Player))
+	{
+		Kill();
+	}
+	
 	if (GameData::death_flag == true || GameData::clear_flag == true)
 	{
 		Kill();

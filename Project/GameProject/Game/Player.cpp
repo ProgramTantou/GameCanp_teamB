@@ -263,7 +263,7 @@ int Player::GetHp()
 //XV
 void Player::Update()
 {
-	if (PUSH(CInput::eMouseL))
+	if (PUSH(CInput::eMouseL)&&damage==false)
 	{
 		m_state = eState_Attack00;
 		m_attack_no++;
